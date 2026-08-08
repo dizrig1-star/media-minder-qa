@@ -1,0 +1,275 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='utf-8'>
+<title>Media Minder</title>
+<style>
+:root{
+  --bg:#f8f4ea;
+  --surface:#ffffff;
+  --text:#2f2f2f;
+  --teal:#4f9ea6;
+  --coral:#e57b6f;
+  --cream:#f8f4ea;
+  --gold:#d8b247;
+  --silver:#b8bcc3;
+  --bronze:#a86c3d;
+  --radius:16px;
+  --space:8px;
+}
+
+
+body{font-family:system-ui,sans-serif;}
+h1,h2,h3{margin:.5rem 0;}
+
+
+.card{border:1px solid #ddd;border-radius:var(--radius);padding:16px;background:var(--surface);margin-bottom:16px;}
+.btn{padding:.6rem 1rem;border-radius:var(--radius);border:1px solid #bbb;background:#fafafa;cursor:pointer;}
+.grid{display:grid;grid-template-columns:2fr 1fr;gap:20px;}
+.hero{min-height:280px;}
+nav.mm-nav{display:flex;flex-wrap:wrap;gap:8px;padding:12px;background:var(--surface);border-bottom:1px solid #ddd;}
+nav.mm-nav button{padding:.5rem .9rem;border-radius:12px;border:1px solid #bbb;background:#fafafa;cursor:pointer;}
+nav.mm-nav button.active{background:var(--teal);color:#fff;}
+header.mm-header,footer.mm-footer{background:var(--teal);color:#fff;padding:16px;}
+main{padding:24px;}
+
+
+.mm-logo{display:flex;align-items:center;font-weight:700;font-size:2rem;}
+.mm-badge{display:inline-flex;padding:.35rem .8rem;border-radius:999px;font-weight:700;color:#fff;}
+.mm-gold{background:var(--gold);}
+.mm-silver{background:var(--silver);color:#222;}
+.mm-bronze{background:var(--bronze);}
+.editorial-note{font-style:italic;border-left:4px solid var(--teal);padding-left:12px;}
+.future-feature{border:2px dashed var(--coral);border-radius:var(--radius);padding:1rem;}
+
+</style>
+</head>
+<body>
+<div id='header-slot'></div>
+<div id='nav-slot'></div>
+<main id='view'></main>
+<div id='footer-slot'></div>
+<script>
+// Single application state manager -- the one source of truth for runtime state.
+// No component or service should keep its own copy of this data.
+
+const listeners = new Set();
+
+let state = Object.freeze({
+  page: 'landing',
+  shows: [],
+  movies: [],
+  profile: null,
+  landingModel: { hero: null, silver: [] }
+});
+
+function getState() {
+  return state;
+}
+
+function setState(patch) {
+  state = Object.freeze({ ...state, ...patch });
+  listeners.forEach(fn => fn(state));
+  return state;
+}
+
+function subscribe(fn) {
+  listeners.add(fn);
+  return () => listeners.delete(fn);
+}
+
+function Header(){
+  return `<header class='mm-header'><div class='mm-logo'>Media Minder</div></header>`;
+}
+
+function Footer(version='1.0'){
+  return `<footer class='mm-footer'>Media Minder &middot; v${version}</footer>`;
+}
+
+function Navigation(active='landing'){
+  return `<nav class='mm-nav'><button data-page='landing'>Landing</button><button data-page='tonight'>Tonight</button><button data-page='recommendations'>Recommendations</button><button data-page='watchlist'>Watchlist</button><button data-page='calendar'>Calendar</button><button data-page='premieres'>Premieres</button><button data-page='movies'>Movies</button><button data-page='franchises'>Franchises</button><button data-page='reviews'>My Reviews</button><button data-page='settings'>Settings</button><button data-page='search'>Search</button></nav>`;
+}
+function bindNavigation(onNavigate){
+  document.querySelectorAll('.mm-nav button').forEach(b=>{
+    b.onclick=()=>onNavigate(b.dataset.page);
+  });
+}
+function setActiveNav(page){
+  document.querySelectorAll('.mm-nav button').forEach(b=>b.classList.toggle('active', b.dataset.page===page));
+}
+
+function Card(title, bodyHtml=''){
+  return `<article class='card'><h3>${title}</h3>${bodyHtml}</article>`;
+}
+
+function Badge(level='Gold'){
+  const cls = level==='Gold' ? 'mm-gold' : level==='Silver' ? 'mm-silver' : 'mm-bronze';
+  return `<span class='mm-badge ${cls}'>MM SELECT ${level.toUpperCase()}</span>`;
+}
+
+function Hero(show){
+  if(!show){
+    return `<section class='card hero'><h2>MM's Choice</h2><p class='editorial-note'>Nothing rates an MM Select Gold right now.</p></section>`;
+  }
+  return `<section class='card hero'>
+    <h2>MM's Choice</h2>
+    <p class='editorial-note'>Tonight's custom-curated feature</p>
+    ${Badge(show.mmSelect || 'Gold')}
+    <h3>${show.title}</h3>
+    <p>${show.platform}</p>
+  </section>`;
+}
+
+function Button(label='Button'){
+  return `<button class='btn'>${label}</button>`;
+}
+
+function PlatformChip(name='Netflix'){
+  return `<span class='platform-chip'>${name}</span>`;
+}
+
+function Modal(title='Details'){
+  return `<dialog class='mm-modal'>${title}</dialog>`;
+}
+
+function Timeline(){
+  return `<div class='card'>Timeline -- reserved for Calendar / Looking Back (Deferred to full content pass).</div>`;
+}
+
+// Enforced data shape for a Show. This -- not docs/API.md -- is the single
+// source of truth: bad data throws at load time instead of drifting silently.
+const REQUIRED = ['id', 'title', 'genre', 'platform', 'mmSelect'];
+const MM_LEVELS = ['Gold', 'Silver', 'Bronze'];
+
+function createShow(raw) {
+  for (const key of REQUIRED) {
+    if (!(key in raw)) throw new Error(`Show is missing required field "${key}": ${JSON.stringify(raw)}`);
+  }
+  if (!MM_LEVELS.includes(raw.mmSelect)) {
+    throw new Error(`Show.mmSelect must be one of ${MM_LEVELS.join(', ')}, got "${raw.mmSelect}"`);
+  }
+  return Object.freeze({
+    id: raw.id,
+    title: raw.title,
+    genre: raw.genre,
+    platform: raw.platform,
+    mmSelect: raw.mmSelect
+  });
+}
+
+// Canonical MM Select engine. Supersedes the separate v0.5 recommendationService.js,
+// which duplicated this logic under a different field name (mm vs mmSelect) -- removed.
+function mmChoice(items){
+  return items.find(i => i.mmSelect === 'Gold') || null; // never fabricate a Gold pick
+}
+function bySelect(items, level){
+  return items.filter(i => i.mmSelect === level);
+}
+
+const profileEngine = {
+  matches: (item, profile) =>
+    profile.preferredGenres.includes(item.genre) &&
+    profile.preferredPlatforms.includes(item.platform)
+};
+
+const editorial = {
+  sort: items => [...items].sort((a,b) => (a.mmSelect||'').localeCompare(b.mmSelect||''))
+};
+
+const contentEngine = {
+  eligible: items => items.filter(i => i.mmSelect)
+};
+
+function composeLanding(shows){
+  return { hero: mmChoice(shows), silver: bySelect(shows, 'Silver') };
+}
+
+// TODO: Every entry below is placeholder copy standing in for the screen
+// until the production-quality content catalog lands (Deferred to Version
+// 1.0 -- see docs/ProjectionRoom.md and MediaMinder_Status.md). Replace the
+// string with real composed content the same way `landing` composes Hero +
+// Card from live data; do not remove this TODO until that happens.
+const STATIC_PAGES = {
+  tonight: Card('Tonight', '<p>What fits my evening?</p>'), // TODO: compose from real "tonight" data
+  recommendations: Card('Recommendations', '<p>Curated recommendations, once the production catalog lands.</p>'), // TODO: wire to recommendation engine output
+  watchlist: Card('Watchlist', '<p>Episode 4 of 8 -- never percentages.</p>'), // TODO: compose from real watchlist/progress data
+  calendar: Card('Calendar', '<p>Upcoming viewing + Future Features.</p>'), // TODO: compose from real calendar/events data
+  premieres: Card('Premieres', '<p>New and returning releases.</p>'), // TODO: compose from real premieres data
+  movies: Card('Movies', '<p>Movie Night Picks, matched to mood.</p>'), // TODO: compose from real movies data
+  franchises: Card('Franchises', '<p>Featured Franchise &middot; My Worlds &middot; Prepare for What&rsquo;s Next.</p>'), // TODO: compose from real franchises data
+  reviews: Card('My Reviews', '<p>Your personal viewing journal.</p>'), // TODO: compose from real reviews data
+  settings: Card('Settings', '<p>Personalization studio.</p>'), // TODO: build real settings form bound to profile model
+  search: Card('Search', '<p>Find titles, people and franchises.</p>') // TODO: wire to real search
+};
+
+function renderPage(page, landingModel) {
+  if (page === 'landing') {
+    return `<div class='grid'><section>${Hero(landingModel.hero)}${Card("Tonight's Watchlist")}</section>
+      <aside>${Card('Premieres This Week')}${landingModel.silver.map(s => Card(s.title, `<p>${s.platform}</p>`)).join('')}</aside></div>`;
+  }
+  return STATIC_PAGES[page] || Card('404', '<p>Page not found.</p>');
+}
+
+
+const SHOWS = [
+  {
+    "id": 1,
+    "title": "Slow Horses",
+    "genre": "Mystery",
+    "platform": "Apple TV+",
+    "mmSelect": "Gold"
+  },
+  {
+    "id": 2,
+    "title": "The Diplomat",
+    "genre": "Political Thriller",
+    "platform": "Netflix",
+    "mmSelect": "Silver"
+  },
+  {
+    "id": 3,
+    "title": "Masterpiece",
+    "genre": "Historical Drama",
+    "platform": "PBS",
+    "mmSelect": "Silver"
+  },
+  {
+    "id": 4,
+    "title": "Andor",
+    "genre": "Fantasy",
+    "platform": "Disney+",
+    "mmSelect": "Gold"
+  }
+];
+
+function paint() {
+  const { page, landingModel } = getState();
+  setActiveNav(page);
+  document.getElementById('view').innerHTML = renderPage(page, landingModel);
+  location.hash = page;
+}
+
+function navigate(page) {
+  setState({ page });
+}
+
+function init() {
+  document.getElementById('header-slot').innerHTML = Header();
+  document.getElementById('nav-slot').innerHTML = Navigation();
+  document.getElementById('footer-slot').innerHTML = Footer('1.0.0-rc.1 (bundled QA copy)');
+
+  subscribe(paint);
+
+  const shows = SHOWS.map(createShow);
+  setState({ shows, landingModel: composeLanding(shows) });
+
+  bindNavigation(navigate);
+  setState({ page: location.hash.replace('#', '') || 'landing' });
+  window.addEventListener('hashchange', () => setState({ page: location.hash.replace('#', '') || 'landing' }));
+}
+
+init();
+
+</script>
+</body>
+</html>
