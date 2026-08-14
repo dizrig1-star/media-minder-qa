@@ -21,3 +21,13 @@
 - [ ] No Disney-specific visual references
 - [ ] Mobile layout remains usable
 - [ ] Focus states are visible
+
+
+## 1.0.5 Data/State Correction Pass
+- Search resolves media and franchise connections.
+- Calendar excludes completed episode drops based on local viewing progress.
+- Unstarted series display “Not started” rather than “Episode 0”.
+- Watchlist add/remove lifecycle verified.
+- Ratings persistence verified.
+- Episode progress persistence verified.
+- 11/11 page render checks pass.

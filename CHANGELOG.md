@@ -26,3 +26,9 @@
 ## 1.0.3
 - Fixed Tonight and Recommendations route rendering argument mismatch.
 - Hardened application-shell routing.
+
+## 1.0.5
+- Corrected local viewing-state normalization and episode-progress presentation.
+- Calendar now excludes episode drops already completed by the user.
+- Search now includes franchise connections, including Andor via Star Wars.
+- Preserved local beta state across the correction pass.

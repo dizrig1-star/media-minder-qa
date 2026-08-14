@@ -1,6 +1,6 @@
 {
   "name": "media-minder",
-  "version": "1.0.0",
+  "version": "1.0.5",
   "private": true,
   "description": "Media Minder \u2014 curated entertainment companion.",
   "scripts": {

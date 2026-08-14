@@ -1,7 +1,9 @@
 import {heading,platformName} from "./pageUtils.js";
 export function Calendar(state){
  const rows=[];
- state.shows.forEach(x => (x.episodeDrops||[]).forEach(e => rows.push({...e,show:x})));
+ state.shows.forEach(show => (show.episodeDrops||[])
+   .filter(drop => Number(drop.episode) > Number(state.progress[show.id] || 0))
+   .forEach(e => rows.push({...e,show})));
  rows.sort((a,b)=>`${a.date} ${a.time}`.localeCompare(`${b.date} ${b.time}`));
  return `${heading("The calendar","Calendar","Week-by-week episode drops and premieres.")}
  <div class="list">${rows.slice(0,20).map(x=>`<article class="card media-row">

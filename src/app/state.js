@@ -59,5 +59,16 @@ export function hydrateLocalState(){
   try{
     const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}");
     state = {...state, ...saved};
-  }catch{}
+    state.watchlist = Array.isArray(state.watchlist) ? state.watchlist : [];
+    state.watched = Array.isArray(state.watched) ? state.watched : [];
+    state.progress = state.progress && typeof state.progress === "object" ? state.progress : {};
+    state.ratings = state.ratings && typeof state.ratings === "object" ? state.ratings : {};
+    // Normalize persisted progress so an invalid/legacy value can never render as Episode 0+.
+    for(const [id,value] of Object.entries(state.progress)){
+      const n = Number(value);
+      state.progress[id] = Number.isFinite(n) && n >= 0 ? Math.floor(n) : 0;
+    }
+  }catch{
+    state = {...initialState};
+  }
 }
