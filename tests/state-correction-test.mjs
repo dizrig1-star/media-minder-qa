@@ -8,21 +8,32 @@ const platforms=JSON.parse(fs.readFileSync("src/data/platforms.json","utf8"));
 const profile=JSON.parse(fs.readFileSync("src/data/profile.json","utf8"));
 const movies=JSON.parse(fs.readFileSync("src/data/movies.json","utf8"));
 
-const makeState=(progress={},query="")=>({shows,movies,franchises,platforms,profile,progress,ratings:{},watchlist:[],query});
+const makeState=(progress={},query="",watchlist=[])=>({shows,movies,franchises,platforms,profile,progress,ratings:{},watchlist,query});
 
-let html=Calendar(makeState({"project-runway-s22":2}));
+let html=Calendar(makeState({"project-runway-s22":2},"",["project-runway-s22"]));
 if(html.includes("<h3>Project Runway</h3><p>Season Premiere")) throw new Error("Stale Project Runway premiere remains after progress 2");
 if(!html.includes("<h3>Project Runway</h3><p>Episode 3")) throw new Error("Project Runway Episode 3 is not the next relevant drop");
 console.log("PASS — Project Runway progress 2 -> next calendar drop Episode 3");
 
-html=Calendar(makeState({"slow-horses-s6":2}));
+html=Calendar(makeState({"slow-horses-s6":2},"",["slow-horses-s6"]));
 if(html.includes("<h3>Slow Horses</h3><p>Season Premiere")) throw new Error("Stale Slow Horses premiere remains after progress 2");
 if(!html.includes("<h3>Slow Horses</h3><p>Episode 3")) throw new Error("Slow Horses Episode 3 is not the next relevant drop");
 console.log("PASS — Slow Horses progress 2 -> next calendar drop Episode 3");
 
-html=Calendar(makeState({"the-shards":4}));
+html=Calendar(makeState({"the-shards":4},"",["the-shards"]));
 if(html.includes("<h3>The Shards</h3>")) throw new Error("The Shards appears in Calendar despite no future drops");
 console.log("PASS — The Shards excluded from Calendar");
+
+html=Calendar(makeState({},"",[]));
+if(html.includes("<h3>Graveyard</h3>") || html.includes("<h3>Project Runway</h3>") || html.includes("<h3>Slow Horses</h3>"))
+  throw new Error("Calendar displays catalog titles when watchlist is empty");
+console.log("PASS — Empty watchlist produces no personalized calendar entries");
+
+html=Calendar(makeState({"project-runway-s22":2,"slow-horses-s6":2},"",["project-runway-s22","slow-horses-s6"]));
+if(html.includes("<h3>Graveyard</h3>")) throw new Error("Unwatched Graveyard appears on personalized Calendar");
+if(!html.includes("<h3>Project Runway</h3><p>Episode 3")) throw new Error("Project Runway next drop missing from personalized Calendar");
+if(!html.includes("<h3>Slow Horses</h3><p>Episode 3")) throw new Error("Slow Horses next drop missing from personalized Calendar");
+console.log("PASS — Calendar is limited to watchlist titles and next relevant drops");
 
 html=Search(makeState({}, "Andor"));
 if(!html.includes("Andor") || !html.includes("Star Wars")) throw new Error("Andor search failed");

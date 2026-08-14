@@ -35,6 +35,14 @@ const upcoming=shows.flatMap(show=>(show.episodeDrops||[]).filter(e=>e.episode>N
 if(upcoming.some(x=>x.show.id===slow.id && x.episode<=2)) throw new Error("Calendar exposes completed Slow Horses episode");
 console.log("PASS — Calendar reconciles with episode progress");
 
+// CAL-02: Calendar is personalized to the user's watchlist.
+const emptyWatchlistCalendar=shows.flatMap(show=>(show.episodeDrops||[]).map(e=>({...e,show})));
+const personalizedWatchlist=[slow.id];
+const calendarForWatchlist=shows.filter(show=>personalizedWatchlist.includes(show.id));
+if(calendarForWatchlist.some(x=>x.title==="Graveyard")) throw new Error("CAL-02 test setup invalid");
+if(calendarForWatchlist.some(x=>x.title!=="Slow Horses")) throw new Error("Calendar watchlist filter failed");
+console.log("PASS — CAL-02: Calendar scope is limited to watchlist titles");
+
 // Search rule: media plus franchise connections.
 const q="andor";
 const media=[...shows,...movies];

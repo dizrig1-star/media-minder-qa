@@ -38,3 +38,7 @@
 - Added complete future episode schedules for catalog series.
 - Hardened Search to match title, cast, genre, summary, and franchise connections using tokenized queries.
 - Bumped release metadata to 1.0.6.
+
+## 1.0.7
+- Fixed CAL-02: Calendar is now limited to titles on the user watchlist.
+- Added regression coverage for empty and multi-title watchlists, including next-drop calculation after episode progress.

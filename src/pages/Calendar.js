@@ -8,8 +8,12 @@ function nextRelevantDrops(show, progress){
 }
 
 export function Calendar(state){
+  // Calendar is the user's upcoming viewing schedule, not the global catalog.
+  // Only titles explicitly placed on the user's watchlist participate.
+  const watchlistIds=new Set(state.watchlist || []);
   const rows=[];
   state.shows.forEach(show=>{
+    if(!watchlistIds.has(show.id)) return;
     rows.push(...nextRelevantDrops(show,state.progress));
   });
   rows.sort((a,b)=>`${a.date} ${a.time}`.localeCompare(`${b.date} ${b.time}`));
