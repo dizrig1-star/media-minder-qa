@@ -1,10 +1,11 @@
 {
   "name": "media-minder",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "private": true,
   "description": "Media Minder \u2014 curated entertainment companion.",
   "scripts": {
     "start": "python -m http.server 4173",
     "test": "node tests/smoke-test.mjs"
-  }
+  },
+  "type": "module"
 }

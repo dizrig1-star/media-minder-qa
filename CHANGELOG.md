@@ -32,3 +32,9 @@
 - Calendar now excludes episode drops already completed by the user.
 - Search now includes franchise connections, including Andor via Star Wars.
 - Preserved local beta state across the correction pass.
+
+## 1.0.6
+- Corrected Calendar to derive upcoming drops from persisted episode progress.
+- Added complete future episode schedules for catalog series.
+- Hardened Search to match title, cast, genre, summary, and franchise connections using tokenized queries.
+- Bumped release metadata to 1.0.6.

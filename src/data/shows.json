@@ -31,6 +31,36 @@
         "title": "Season Premiere",
         "date": "2026-09-16",
         "time": "12:00 AM"
+      },
+      {
+        "episode": 2,
+        "title": "Episode 2",
+        "date": "2026-09-23",
+        "time": "12:00 AM"
+      },
+      {
+        "episode": 3,
+        "title": "Episode 3",
+        "date": "2026-09-30",
+        "time": "12:00 AM"
+      },
+      {
+        "episode": 4,
+        "title": "Episode 4",
+        "date": "2026-10-07",
+        "time": "12:00 AM"
+      },
+      {
+        "episode": 5,
+        "title": "Episode 5",
+        "date": "2026-10-14",
+        "time": "12:00 AM"
+      },
+      {
+        "episode": 6,
+        "title": "Episode 6",
+        "date": "2026-10-21",
+        "time": "12:00 AM"
       }
     ]
   },
@@ -59,8 +89,50 @@
     "episodeDrops": [
       {
         "episode": 1,
-        "title": "Season 3",
+        "title": "Season Premiere",
         "date": "2026-08-28",
+        "time": "3:00 AM"
+      },
+      {
+        "episode": 2,
+        "title": "Episode 2",
+        "date": "2026-09-04",
+        "time": "3:00 AM"
+      },
+      {
+        "episode": 3,
+        "title": "Episode 3",
+        "date": "2026-09-11",
+        "time": "3:00 AM"
+      },
+      {
+        "episode": 4,
+        "title": "Episode 4",
+        "date": "2026-09-18",
+        "time": "3:00 AM"
+      },
+      {
+        "episode": 5,
+        "title": "Episode 5",
+        "date": "2026-09-25",
+        "time": "3:00 AM"
+      },
+      {
+        "episode": 6,
+        "title": "Episode 6",
+        "date": "2026-10-02",
+        "time": "3:00 AM"
+      },
+      {
+        "episode": 7,
+        "title": "Episode 7",
+        "date": "2026-10-09",
+        "time": "3:00 AM"
+      },
+      {
+        "episode": 8,
+        "title": "Episode 8",
+        "date": "2026-10-16",
         "time": "3:00 AM"
       }
     ]
@@ -95,6 +167,90 @@
         "episode": 1,
         "title": "Season Premiere",
         "date": "2026-08-16",
+        "time": "10:00 PM"
+      },
+      {
+        "episode": 2,
+        "title": "Episode 2",
+        "date": "2026-08-23",
+        "time": "10:00 PM"
+      },
+      {
+        "episode": 3,
+        "title": "Episode 3",
+        "date": "2026-08-30",
+        "time": "10:00 PM"
+      },
+      {
+        "episode": 4,
+        "title": "Episode 4",
+        "date": "2026-09-06",
+        "time": "10:00 PM"
+      },
+      {
+        "episode": 5,
+        "title": "Episode 5",
+        "date": "2026-09-13",
+        "time": "10:00 PM"
+      },
+      {
+        "episode": 6,
+        "title": "Episode 6",
+        "date": "2026-09-20",
+        "time": "10:00 PM"
+      },
+      {
+        "episode": 7,
+        "title": "Episode 7",
+        "date": "2026-09-27",
+        "time": "10:00 PM"
+      },
+      {
+        "episode": 8,
+        "title": "Episode 8",
+        "date": "2026-10-04",
+        "time": "10:00 PM"
+      },
+      {
+        "episode": 9,
+        "title": "Episode 9",
+        "date": "2026-10-11",
+        "time": "10:00 PM"
+      },
+      {
+        "episode": 10,
+        "title": "Episode 10",
+        "date": "2026-10-18",
+        "time": "10:00 PM"
+      },
+      {
+        "episode": 11,
+        "title": "Episode 11",
+        "date": "2026-10-25",
+        "time": "10:00 PM"
+      },
+      {
+        "episode": 12,
+        "title": "Episode 12",
+        "date": "2026-11-01",
+        "time": "10:00 PM"
+      },
+      {
+        "episode": 13,
+        "title": "Episode 13",
+        "date": "2026-11-08",
+        "time": "10:00 PM"
+      },
+      {
+        "episode": 14,
+        "title": "Episode 14",
+        "date": "2026-11-15",
+        "time": "10:00 PM"
+      },
+      {
+        "episode": 15,
+        "title": "Episode 15",
+        "date": "2026-11-22",
         "time": "10:00 PM"
       }
     ]

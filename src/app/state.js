@@ -72,3 +72,9 @@ export function hydrateLocalState(){
     state = {...initialState};
   }
 }
+
+export function normalizeProgressValue(value,total=Infinity){
+  const n=Number(value);
+  if(!Number.isFinite(n) || n<0) return 0;
+  return Math.min(Math.floor(n),Number.isFinite(total)?Number(total):n);
+}
