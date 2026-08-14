@@ -1,0 +1,25 @@
+:root{
+  --ink:#202d31;
+  --ink-soft:#53656a;
+  --cream:#f6f0df;
+  --paper:#fffdf6;
+  --teal:#1f5e69;
+  --teal-2:#347f88;
+  --coral:#d86f62;
+  --mustard:#e7b84b;
+  --bronze:#9b633d;
+  --silver:#9aa3a8;
+  --gold:#c79520;
+  --line:#d9d0bc;
+  --shadow:0 10px 30px rgba(32,45,49,.10);
+  --radius-lg:24px;
+  --radius-md:16px;
+  --radius-sm:10px;
+  --max:1240px;
+  --space-1:.5rem;
+  --space-2:.75rem;
+  --space-3:1rem;
+  --space-4:1.5rem;
+  --space-5:2rem;
+  --space-6:3rem;
+}
