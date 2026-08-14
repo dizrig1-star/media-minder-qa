@@ -4,7 +4,7 @@
 .header-tagline{font-family:Georgia,serif;font-size:.9rem;text-align:right;max-width:260px}
 .nav-wrap{background:var(--paper);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}
 .nav-inner{width:min(var(--max),calc(100% - 32px));margin:auto;display:flex;overflow:auto}
-.nav-item{border:0;background:transparent;padding:13px 12px;color:var(--ink-soft);font-weight:700;white-space:nowrap;border-bottom:3px solid transparent}
+.nav-item{display:block;text-decoration:none;border:0;background:transparent;padding:13px 12px;color:var(--ink-soft);font-weight:700;white-space:nowrap;border-bottom:3px solid transparent}
 .nav-item:hover,.nav-item.active{color:var(--teal);border-bottom-color:var(--coral)}
 .site-footer{border-top:1px solid var(--line);padding:24px 0;background:#eee5d2;color:var(--ink-soft)}
 .footer-inner{width:min(var(--max),calc(100% - 32px));margin:auto;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}

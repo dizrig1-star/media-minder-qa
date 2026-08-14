@@ -32,7 +32,7 @@ function render(route){
 }
 
 function bind(){
- document.querySelectorAll("[data-route]").forEach(el=>el.onclick=()=>navigate(el.dataset.route));
+ document.querySelectorAll("[data-route]").forEach(el=>el.addEventListener("click",event=>{event.preventDefault();navigate(el.dataset.route)}));
  document.querySelectorAll("[data-watch]").forEach(el=>el.onclick=()=>appState.toggleWatchlist(el.dataset.watch));
  document.querySelectorAll("[data-rate-id]").forEach(el=>el.onclick=()=>appState.rate(el.dataset.rateId,Number(el.dataset.rating))); document.querySelectorAll("[data-progress-id]").forEach(el=>el.onchange=()=>appState.setProgress(el.dataset.progressId,Number(el.value)));
  document.querySelectorAll("[data-detail]").forEach(el=>{

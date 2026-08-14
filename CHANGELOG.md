@@ -18,3 +18,11 @@
 - Final focused brand-art pass incorporated.
 - Release scope frozen according to the Design Bible.
 - Deferred enhancements remain in the Projection Room.
+
+## 1.0.2
+- Fixed GitHub Pages asset paths for the MM logo and MM Select artwork.
+- Hardened primary navigation and landing-page CTAs with native hash links.
+
+## 1.0.3
+- Fixed Tonight and Recommendations route rendering argument mismatch.
+- Hardened application-shell routing.

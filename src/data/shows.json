@@ -109,25 +109,21 @@
       "Crime Thriller"
     ],
     "mmSelect": "Silver",
-    "status": "new",
+    "status": "returning",
     "season": 1,
     "episodes": 8,
     "runtime": 50,
     "cast": [],
     "franchises": [],
-    "premiere": "2026-08-16",
+    "premiere": null,
     "episodeTime": "10:00 PM",
-    "episodeTitle": "Series Premiere",
+    "episodeTitle": "Episode 4",
     "summary": "FX's new series arrives on Hulu as part of the August schedule.",
     "why": "A new mystery-leaning option worth watching before the crowd gets to it.",
     "releasePattern": "weekly",
-    "episodeDrops": [
-      {
-        "episode": 1,
-        "title": "Series Premiere",
-        "date": "2026-08-16",
-        "time": "10:00 PM"
-      }
-    ]
+    "episodeDrops": [],
+    "seasonPremiereDate": null,
+    "currentEpisode": 4,
+    "nextEpisode": 5
   }
 ]
