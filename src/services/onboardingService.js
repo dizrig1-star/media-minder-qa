@@ -19,8 +19,20 @@ export function buildProfileFromInitialWatches(baseProfile, items, ratings={}){
   return profile;
 }
 
-export function getOnboardingCandidates(shows, limit=6){
-  return (shows||[]).filter(item=>item.type==="series").slice(0,limit);
+/** All current series are searchable during first-time setup; the UI filters them client-side. */
+export function getOnboardingCandidates(shows){
+  return (shows||[]).filter(item=>item.type==="series");
+}
+
+export function searchOnboardingCandidates(shows, query=""){
+  const needle=String(query).trim().toLowerCase();
+  if(!needle) return getOnboardingCandidates(shows);
+  return getOnboardingCandidates(shows).filter(item=>[
+    item.title,
+    ...(item.genre||[]),
+    ...(item.cast||[]),
+    ...(item.franchises||[])
+  ].some(value=>String(value).toLowerCase().includes(needle)));
 }
 
 // Ratings below four stars remain useful user history but do not seed strong taste signals.
