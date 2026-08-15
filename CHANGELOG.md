@@ -67,3 +67,10 @@
 - Unknown/stale watchlist IDs are ignored safely.
 - Added explicit regression coverage proving non-watchlisted titles cannot appear.
 - Added GitHub Pages module cache-busting metadata for the 1.0.9 release.
+
+## 1.0.11
+- Finalized CAL-02 personalized Calendar behavior: one next drop per watchlisted series.
+- Finalized PREMIERES-01: 14-day window, shared recommendation relevance scoring, and opener-only filtering.
+- Corrected Project Runway genre metadata to `Reality Competition`.
+- Fixed release cache-busting/version metadata so GitHub Pages cannot retain the prior 1.0.9 Calendar/main module references.
+- Added regression coverage for release-version consistency.
