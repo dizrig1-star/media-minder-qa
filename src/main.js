@@ -2,6 +2,7 @@ import {appState,hydrateLocalState} from "./app/state.js";
 import {currentRoute,startRouter,navigate} from "./app/router.js";
 import {loadData} from "./services/dataService.js";
 import {recommendations,mmChoice} from "./services/recommendationService.js";
+import {buildProfileFromInitialWatches} from "./services/onboardingService.js";
 import {Header} from "./components/layout/Header.js";
 import {Navigation} from "./components/navigation/Navigation.js";
 import {Footer} from "./components/layout/Footer.js";
@@ -34,7 +35,8 @@ function render(route){
 function bind(){
  document.querySelectorAll("[data-route]").forEach(el=>el.addEventListener("click",event=>{event.preventDefault();navigate(el.dataset.route)}));
  document.querySelectorAll("[data-watch]").forEach(el=>el.onclick=()=>appState.toggleWatchlist(el.dataset.watch));
- document.querySelectorAll("[data-rate-id]").forEach(el=>el.onclick=()=>appState.rate(el.dataset.rateId,Number(el.dataset.rating))); document.querySelectorAll("[data-progress-id]").forEach(el=>el.onchange=()=>appState.setProgress(el.dataset.progressId,Number(el.value)));
+ document.querySelectorAll("[data-rate-id]").forEach(el=>el.onclick=()=>appState.rate(el.dataset.rateId,Number(el.dataset.rating)));
+ document.querySelectorAll("[data-progress-id]").forEach(el=>el.onchange=()=>appState.setProgress(el.dataset.progressId,Number(el.value)));
  document.querySelectorAll("[data-detail]").forEach(el=>{
    el.onclick=()=>{
      const state=appState.get();
@@ -42,6 +44,20 @@ function bind(){
      if(item) openDetail(item,state.platforms.find(p=>p.id===item.platform)?.name||item.platform);
    };
  });
+ const onboardingButton=document.querySelector("[data-onboarding-complete]");
+ if(onboardingButton) onboardingButton.onclick=()=>{
+   const selected=[...document.querySelectorAll("[data-onboarding-watch]:checked")].map(el=>el.dataset.onboardingWatch);
+   if(!selected.length) return;
+   const ratings={};
+   selected.forEach(id=>{
+     const select=document.querySelector(`[data-onboarding-rating="${id}"]`);
+     ratings[id]=Number(select?.value||0);
+   });
+   const state=appState.get();
+   const items=selected.map(id=>state.shows.find(show=>show.id===id)).filter(Boolean);
+   const profile=buildProfileFromInitialWatches(state.profile,items,ratings);
+   appState.completeOnboarding(selected,ratings,profile);
+ };
  const search=document.getElementById("search-submit");
  if(search) search.onclick=()=>{
    const input=document.getElementById("search-input");
