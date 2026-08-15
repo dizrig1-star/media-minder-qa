@@ -3,20 +3,28 @@ import {ensureProfileModel,addCurrentAffinity} from "./profileModel.js";
 const HIGH_RATING = 4;
 
 /**
- * Convert first-session current watches into current affinities.
- * High ratings influence recommendations without permanently rewriting favorites.
+ * Build first-time profile state without converting current shows into permanent favorites.
+ * Highly-rated current watches become current affinities; explicit existing preferences remain intact.
  */
 export function buildProfileFromInitialWatches(baseProfile, items, ratings={}, observedAt=""){
   let profile=ensureProfileModel(baseProfile);
+  profile={
+    ...profile,
+    behavior:{
+      ...profile.behavior,
+      ratings:{...(profile.behavior?.ratings||{}), ...ratings}
+    },
+    ratings:{...(profile.ratings||{}), ...ratings},
+    onboardingComplete:true
+  };
   for(const item of (items||[])){
     const rating=Number(ratings[item.id]||0);
-    profile=addCurrentAffinity(profile,item,rating,observedAt);
+    if(rating>=HIGH_RATING) profile=addCurrentAffinity(profile,item,rating,observedAt);
   }
-  profile.ratings={...(profile.ratings||{}), ...ratings};
-  profile.onboardingComplete=true;
   return profile;
 }
 
+/** All current series are searchable during first-time setup; the UI filters them client-side. */
 export function getOnboardingCandidates(shows){
   return (shows||[]).filter(item=>item.type==="series");
 }
