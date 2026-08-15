@@ -44,6 +44,13 @@ function bind(){
      if(item) openDetail(item,state.platforms.find(p=>p.id===item.platform)?.name||item.platform);
    };
  });
+ const onboardingSearch=document.getElementById("onboarding-search");
+ if(onboardingSearch) onboardingSearch.oninput=()=>{
+   const needle=onboardingSearch.value.trim().toLowerCase();
+   document.querySelectorAll("[data-onboarding-item]").forEach(row=>{
+     row.hidden=!!needle && !row.dataset.onboardingText.includes(needle);
+   });
+ };
  const onboardingButton=document.querySelector("[data-onboarding-complete]");
  if(onboardingButton) onboardingButton.onclick=()=>{
    const selected=[...document.querySelectorAll("[data-onboarding-watch]:checked")].map(el=>el.dataset.onboardingWatch);
