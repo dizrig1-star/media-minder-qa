@@ -3,12 +3,13 @@ import {MMSelect} from "../components/recommendation/MMSelect.js";
 import {getOnboardingCandidates} from "../services/onboardingService.js";
 
 function onboarding(state){
- const candidates=getOnboardingCandidates(state.shows,6);
+ const candidates=getOnboardingCandidates(state.shows);
  return `<section class="card onboarding-card">
    <div class="page-kicker">FIRST-TIME SETUP</div>
    <h2>Start with what you're already watching.</h2>
-   <p class="muted">Pick a few current shows and rate them. Four or five stars become strong preference signals; the shows are added to your Watchlist so Calendar can follow them.</p>
-   <div class="stack">${candidates.map(item=>`<label class="cluster onboarding-choice">
+   <p class="muted">Search for a few current shows and rate them. Four or five stars become strong preference signals; the shows are added to your Watchlist so Calendar can follow them.</p>
+   <label class="field"><span class="muted">Find a show</span><input id="onboarding-search" type="search" placeholder="Try Lioness or Reacher" autocomplete="off"></label>
+   <div class="stack" id="onboarding-results">${candidates.map(item=>`<label class="cluster onboarding-choice" data-onboarding-item="${item.id}" data-onboarding-text="${[item.title,...(item.genre||[]),...(item.cast||[]),...(item.franchises||[])].join(" ").toLowerCase()}">
      <input type="checkbox" data-onboarding-watch="${item.id}">
      <strong>${item.title}</strong>
      <select data-onboarding-rating="${item.id}" aria-label="Rate ${item.title}">
