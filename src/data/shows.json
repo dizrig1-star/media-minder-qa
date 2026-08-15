@@ -1,285 +1,130 @@
 [
   {
-    "id": "slow-horses-s6",
-    "title": "Slow Horses",
-    "type": "series",
-    "platform": "apple",
-    "genre": [
-      "Mystery",
-      "Crime Thriller"
-    ],
-    "mmSelect": "Gold",
-    "status": "returning",
-    "season": 6,
-    "episodes": 6,
-    "runtime": 50,
-    "cast": [
-      "Gary Oldman",
-      "Jack Lowden",
-      "Kristin Scott Thomas"
-    ],
-    "franchises": [],
-    "premiere": "2026-09-16",
-    "episodeTime": "12:00 AM",
-    "episodeTitle": "Season Premiere",
-    "summary": "The Slough House team returns for another darkly funny espionage case.",
-    "why": "One of the cleanest matches for your mystery and thriller tastes, with a strong ensemble and dry wit.",
-    "releasePattern": "weekly",
-    "episodeDrops": [
-      {
-        "episode": 1,
-        "title": "Season Premiere",
-        "date": "2026-09-16",
-        "time": "12:00 AM"
-      },
-      {
-        "episode": 2,
-        "title": "Episode 2",
-        "date": "2026-09-23",
-        "time": "12:00 AM"
-      },
-      {
-        "episode": 3,
-        "title": "Episode 3",
-        "date": "2026-09-30",
-        "time": "12:00 AM"
-      },
-      {
-        "episode": 4,
-        "title": "Episode 4",
-        "date": "2026-10-07",
-        "time": "12:00 AM"
-      },
-      {
-        "episode": 5,
-        "title": "Episode 5",
-        "date": "2026-10-14",
-        "time": "12:00 AM"
-      },
-      {
-        "episode": 6,
-        "title": "Episode 6",
-        "date": "2026-10-21",
-        "time": "12:00 AM"
-      }
+    "id":"slow-horses-s6",
+    "title":"Slow Horses",
+    "type":"series",
+    "platform":"apple",
+    "genre":["Mystery","Crime Thriller"],
+    "mmSelect":"Gold",
+    "status":"returning",
+    "season":6,
+    "episodes":6,
+    "runtime":50,
+    "cast":["Gary Oldman","Jack Lowden","Kristin Scott Thomas"],
+    "franchises":[],
+    "premiere":"2026-09-16",
+    "episodeTime":"12:00 AM",
+    "episodeTitle":"Season Premiere",
+    "summary":"The Slough House team returns for another darkly funny espionage case.",
+    "why":"One of the cleanest matches for your mystery and thriller tastes, with a strong ensemble and dry wit.",
+    "releasePattern":"weekly",
+    "episodeDrops":[
+      {"episode":1,"title":"Season Premiere","date":"2026-09-16","time":"12:00 AM"},
+      {"episode":2,"title":"Episode 2","date":"2026-09-23","time":"12:00 AM"},
+      {"episode":3,"title":"Episode 3","date":"2026-09-30","time":"12:00 AM"},
+      {"episode":4,"title":"Episode 4","date":"2026-10-07","time":"12:00 AM"},
+      {"episode":5,"title":"Episode 5","date":"2026-10-14","time":"12:00 AM"},
+      {"episode":6,"title":"Episode 6","date":"2026-10-21","time":"12:00 AM"}
     ]
   },
   {
-    "id": "graveyard-s3",
-    "title": "Graveyard",
-    "type": "series",
-    "platform": "netflix",
-    "genre": [
-      "Crime Thriller",
-      "Mystery"
-    ],
-    "mmSelect": "Gold",
-    "status": "returning",
-    "season": 3,
-    "episodes": 8,
-    "runtime": 50,
-    "cast": [],
-    "franchises": [],
-    "premiere": "2026-08-28",
-    "episodeTime": "3:00 AM",
-    "episodeTitle": "Season 3",
-    "summary": "A returning crime drama centered on a determined investigative team.",
-    "why": "A less obvious choice that fits the darker investigative side of your taste.",
-    "releasePattern": "all episodes",
-    "episodeDrops": [
-      {
-        "episode": 1,
-        "title": "Season Premiere",
-        "date": "2026-08-28",
-        "time": "3:00 AM"
-      },
-      {
-        "episode": 2,
-        "title": "Episode 2",
-        "date": "2026-09-04",
-        "time": "3:00 AM"
-      },
-      {
-        "episode": 3,
-        "title": "Episode 3",
-        "date": "2026-09-11",
-        "time": "3:00 AM"
-      },
-      {
-        "episode": 4,
-        "title": "Episode 4",
-        "date": "2026-09-18",
-        "time": "3:00 AM"
-      },
-      {
-        "episode": 5,
-        "title": "Episode 5",
-        "date": "2026-09-25",
-        "time": "3:00 AM"
-      },
-      {
-        "episode": 6,
-        "title": "Episode 6",
-        "date": "2026-10-02",
-        "time": "3:00 AM"
-      },
-      {
-        "episode": 7,
-        "title": "Episode 7",
-        "date": "2026-10-09",
-        "time": "3:00 AM"
-      },
-      {
-        "episode": 8,
-        "title": "Episode 8",
-        "date": "2026-10-16",
-        "time": "3:00 AM"
-      }
+    "id":"graveyard-s3",
+    "title":"Graveyard",
+    "type":"series",
+    "platform":"netflix",
+    "genre":["Crime Thriller","Mystery"],
+    "mmSelect":"Gold",
+    "status":"returning",
+    "season":3,
+    "episodes":8,
+    "runtime":50,
+    "cast":[],
+    "franchises":[],
+    "premiere":"2026-08-28",
+    "episodeTime":"3:00 AM",
+    "episodeTitle":"Season 3",
+    "summary":"A returning crime drama centered on a determined investigative team.",
+    "why":"A less obvious choice that fits the darker investigative side of your taste.",
+    "releasePattern":"all episodes",
+    "episodeDrops":[
+      {"episode":1,"title":"Season Premiere","date":"2026-08-28","time":"3:00 AM"},
+      {"episode":2,"title":"Episode 2","date":"2026-09-04","time":"3:00 AM"},
+      {"episode":3,"title":"Episode 3","date":"2026-09-11","time":"3:00 AM"},
+      {"episode":4,"title":"Episode 4","date":"2026-09-18","time":"3:00 AM"},
+      {"episode":5,"title":"Episode 5","date":"2026-09-25","time":"3:00 AM"},
+      {"episode":6,"title":"Episode 6","date":"2026-10-02","time":"3:00 AM"},
+      {"episode":7,"title":"Episode 7","date":"2026-10-09","time":"3:00 AM"},
+      {"episode":8,"title":"Episode 8","date":"2026-10-16","time":"3:00 AM"}
     ]
   },
   {
-    "id": "project-runway-s22",
-    "title": "Project Runway",
-    "type": "series",
-    "platform": "disney",
-    "genre": [
-      "Reality Competition"
-    ],
-    "mmSelect": "Bronze",
-    "status": "returning",
-    "season": 22,
-    "episodes": 15,
-    "runtime": 60,
-    "cast": [
-      "Heidi Klum",
-      "Nina Garcia",
-      "Law Roach"
-    ],
-    "franchises": [],
-    "premiere": "2026-08-16",
-    "episodeTime": "10:00 PM",
-    "episodeTitle": "Season 22",
-    "summary": "Project Runway returns with Heidi Klum, Nina Garcia and Law Roach.",
-    "why": "A deliberate wildcard: outside your usual mystery lane, but useful when you want something lighter and visually driven.",
-    "releasePattern": "weekly",
-    "episodeDrops": [
-      {
-        "episode": 1,
-        "title": "Season Premiere",
-        "date": "2026-08-16",
-        "time": "10:00 PM"
-      },
-      {
-        "episode": 2,
-        "title": "Episode 2",
-        "date": "2026-08-23",
-        "time": "10:00 PM"
-      },
-      {
-        "episode": 3,
-        "title": "Episode 3",
-        "date": "2026-08-30",
-        "time": "10:00 PM"
-      },
-      {
-        "episode": 4,
-        "title": "Episode 4",
-        "date": "2026-09-06",
-        "time": "10:00 PM"
-      },
-      {
-        "episode": 5,
-        "title": "Episode 5",
-        "date": "2026-09-13",
-        "time": "10:00 PM"
-      },
-      {
-        "episode": 6,
-        "title": "Episode 6",
-        "date": "2026-09-20",
-        "time": "10:00 PM"
-      },
-      {
-        "episode": 7,
-        "title": "Episode 7",
-        "date": "2026-09-27",
-        "time": "10:00 PM"
-      },
-      {
-        "episode": 8,
-        "title": "Episode 8",
-        "date": "2026-10-04",
-        "time": "10:00 PM"
-      },
-      {
-        "episode": 9,
-        "title": "Episode 9",
-        "date": "2026-10-11",
-        "time": "10:00 PM"
-      },
-      {
-        "episode": 10,
-        "title": "Episode 10",
-        "date": "2026-10-18",
-        "time": "10:00 PM"
-      },
-      {
-        "episode": 11,
-        "title": "Episode 11",
-        "date": "2026-10-25",
-        "time": "10:00 PM"
-      },
-      {
-        "episode": 12,
-        "title": "Episode 12",
-        "date": "2026-11-01",
-        "time": "10:00 PM"
-      },
-      {
-        "episode": 13,
-        "title": "Episode 13",
-        "date": "2026-11-08",
-        "time": "10:00 PM"
-      },
-      {
-        "episode": 14,
-        "title": "Episode 14",
-        "date": "2026-11-15",
-        "time": "10:00 PM"
-      },
-      {
-        "episode": 15,
-        "title": "Episode 15",
-        "date": "2026-11-22",
-        "time": "10:00 PM"
-      }
+    "id":"project-runway-s22",
+    "title":"Project Runway",
+    "type":"series",
+    "platform":"disney",
+    "genre":["Reality Competition"],
+    "mmSelect":"Bronze",
+    "status":"returning",
+    "season":22,
+    "episodes":15,
+    "runtime":60,
+    "cast":["Heidi Klum","Nina Garcia","Law Roach"],
+    "franchises":[],
+    "premiere":"2026-08-16",
+    "episodeTime":"10:00 PM",
+    "episodeTitle":"Season 22",
+    "summary":"Project Runway returns with Heidi Klum, Nina Garcia and Law Roach.",
+    "why":"A deliberate wildcard: outside your usual mystery lane, but useful when you want something lighter and visually driven.",
+    "releasePattern":"weekly",
+    "episodeDrops":[
+      {"episode":1,"title":"Season Premiere","date":"2026-08-16","time":"10:00 PM"},
+      {"episode":2,"title":"Episode 2","date":"2026-08-23","time":"10:00 PM"},
+      {"episode":3,"title":"Episode 3","date":"2026-08-30","time":"10:00 PM"},
+      {"episode":4,"title":"Episode 4","date":"2026-09-06","time":"10:00 PM"},
+      {"episode":5,"title":"Episode 5","date":"2026-09-13","time":"10:00 PM"},
+      {"episode":6,"title":"Episode 6","date":"2026-09-20","time":"10:00 PM"},
+      {"episode":7,"title":"Episode 7","date":"2026-09-27","time":"10:00 PM"},
+      {"episode":8,"title":"Episode 8","date":"2026-10-04","time":"10:00 PM"},
+      {"episode":9,"title":"Episode 9","date":"2026-10-11","time":"10:00 PM"},
+      {"episode":10,"title":"Episode 10","date":"2026-10-18","time":"10:00 PM"},
+      {"episode":11,"title":"Episode 11","date":"2026-10-25","time":"10:00 PM"},
+      {"episode":12,"title":"Episode 12","date":"2026-11-01","time":"10:00 PM"},
+      {"episode":13,"title":"Episode 13","date":"2026-11-08","time":"10:00 PM"},
+      {"episode":14,"title":"Episode 14","date":"2026-11-15","time":"10:00 PM"},
+      {"episode":15,"title":"Episode 15","date":"2026-11-22","time":"10:00 PM"}
     ]
   },
   {
-    "id": "the-shards",
-    "title": "The Shards",
-    "type": "series",
-    "platform": "hulu",
-    "genre": [
-      "Mystery",
-      "Crime Thriller"
+    "id":"the-shards",
+    "title":"The Shards",
+    "type":"series",
+    "platform":"hulu",
+    "genre":["Mystery","Crime Thriller"],
+    "mmSelect":"Silver",
+    "status":"returning",
+    "season":1,
+    "episodes":9,
+    "runtime":50,
+    "cast":["Kaia Gerber","Igby Rigney","Homer Gere"],
+    "franchises":[],
+    "premiere":"2026-08-05",
+    "episodeTime":"9:00 PM",
+    "episodeTitle":"Pilot",
+    "summary":"A group of privileged high school seniors navigate obsession, danger and a serial killer in 1980s Los Angeles.",
+    "why":"A mystery-leaning option with a strong thriller hook.",
+    "releasePattern":"weekly after two-episode premiere",
+    "episodeDrops":[
+      {"episode":1,"title":"Pilot","date":"2026-08-05","time":"9:00 PM"},
+      {"episode":2,"title":"Don't You Want Me","date":"2026-08-05","time":"9:00 PM"},
+      {"episode":3,"title":"Help Me! Rhonda!","date":"2026-08-12","time":"9:00 PM"},
+      {"episode":4,"title":"Robert's Party","date":"2026-08-12","time":"9:00 PM"},
+      {"episode":5,"title":"Murder on the Dancefloor","date":"2026-08-19","time":"9:00 PM"},
+      {"episode":6,"title":"Homecoming Part One","date":"2026-08-26","time":"9:00 PM"},
+      {"episode":7,"title":"Episode 7","date":"2026-09-02","time":"9:00 PM"},
+      {"episode":8,"title":"Episode 8","date":"2026-09-09","time":"9:00 PM"},
+      {"episode":9,"title":"Episode 9","date":"2026-09-09","time":"9:00 PM"}
     ],
-    "mmSelect": "Silver",
-    "status": "returning",
-    "season": 1,
-    "episodes": 8,
-    "runtime": 50,
-    "cast": [],
-    "franchises": [],
-    "premiere": null,
-    "episodeTime": "10:00 PM",
-    "episodeTitle": "Episode 4",
-    "summary": "FX's new series arrives on Hulu as part of the August schedule.",
-    "why": "A new mystery-leaning option worth watching before the crowd gets to it.",
-    "releasePattern": "weekly",
-    "episodeDrops": [],
-    "seasonPremiereDate": null,
-    "currentEpisode": 4,
-    "nextEpisode": 5
+    "currentEpisode":4,
+    "nextEpisode":5
   }
 ]
