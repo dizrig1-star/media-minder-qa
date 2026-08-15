@@ -20,7 +20,8 @@ assert.equal(rows.some(row=>row.show.id==="beta"),false);
 
 const profile={favoriteGenres:["Mystery"],platforms:["hulu"],favoriteFranchises:[],favoritePeople:[]};
 const premiereRows=getUpcomingPremiereRows({shows,profile},new Date("2026-08-15T12:00:00"));
-assert.ok(premiereRows.some(row=>row.show.id==="shards"));
+assert.ok(premiereRows.some(row=>row.show.id==="alpha"),"A relevant premiere inside the 14-day window should qualify");
 assert.ok(premiereRows.every(row=>row.episode===1));
 assert.equal(premiereRows.some(row=>row.show.id==="beta"),false);
+assert.equal(premiereRows.some(row=>row.show.id==="shards"),false,"A premiere already past must not reappear");
 console.log("CAL-02 regression passed.");
