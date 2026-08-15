@@ -1,6 +1,6 @@
 # Media Minder
 
-**Version 1.0.8**
+**Version 1.0.9**
 
 Media Minder is an editorial entertainment companion built around curated recommendations across streaming platforms and television.
 

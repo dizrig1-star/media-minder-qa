@@ -1,3 +1,19 @@
+# Media Minder Changelog
+
+## 1.0.10
+- Corrected Project Runway genre metadata from Historical Drama to Reality Competition.
+- Made the 14-day Premiere window explicit.
+- Made the Premiere relevance threshold explicit and reused the shared recommendation scorer.
+- Added regression coverage preventing Project Runway from passing Premieres relevance solely because of the bad genre tag.
+
+
+## 1.0.9
+- Coordinated Calendar and Premieres schedule/state correction.
+- Calendar now emits exactly one next episode per watchlisted series.
+- Premieres now shows only relevant series/season openers within the next two weeks.
+- Excludes ordinary weekly episodes and already-opened seasons from Premieres.
+- Added shared schedule selectors and regression coverage for CAL-02 and PREMIERES-01.
+
 # Changelog
 
 ## 1.0.0-beta.1
@@ -44,10 +60,10 @@
 - Added regression coverage for empty and multi-title watchlists, including next-drop calculation after episode progress.
 
 
-## 1.0.8
+## 1.0.9
 - Corrected CAL-02 at the Calendar data-pipeline level.
 - Calendar now resolves only known watchlist titles before generating events.
 - Calendar now shows only the next relevant episode drop for each watchlisted title.
 - Unknown/stale watchlist IDs are ignored safely.
 - Added explicit regression coverage proving non-watchlisted titles cannot appear.
-- Added GitHub Pages module cache-busting metadata for the 1.0.8 release.
+- Added GitHub Pages module cache-busting metadata for the 1.0.9 release.

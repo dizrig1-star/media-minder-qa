@@ -11,7 +11,7 @@ import {Landing} from "./pages/Landing.js";
 import {Tonight} from "./pages/Tonight.js";
 import {Recommendations} from "./pages/Recommendations.js";
 import {Watchlist} from "./pages/Watchlist.js";
-import {Calendar} from "./pages/Calendar.js?v=1.0.8";
+import {Calendar} from "./pages/Calendar.js?v=1.0.9";
 import {Premieres} from "./pages/Premieres.js";
 import {Movies} from "./pages/Movies.js";
 import {Franchises} from "./pages/Franchises.js";

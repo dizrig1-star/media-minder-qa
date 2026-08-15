@@ -59,3 +59,11 @@ if(premieres.includes("The Shards"))
 console.log("PASS — Premieres excludes The Shards");
 
 console.log("PAGE RENDER QA: PASS — 11/11");
+
+const premiereRowsHtml=Premieres(state);
+if(premiereRowsHtml.includes("Slow Horses")) throw new Error("Premieres incorrectly includes Slow Horses outside the two-week window");
+if(premiereRowsHtml.includes("The Shards")) throw new Error("Premieres incorrectly includes The Shards");
+if(premiereRowsHtml.includes("Episode 2") || premiereRowsHtml.includes("Episode 3")) throw new Error("Premieres contains ordinary weekly episodes");
+if(premiereRowsHtml.includes("Project Runway")) throw new Error("Premieres incorrectly includes Project Runway after relevance metadata correction");
+if(!premiereRowsHtml.includes("Graveyard")) throw new Error("Premieres missing qualifying Graveyard opener");
+console.log("PASS — Premieres shows only qualifying upcoming openers");

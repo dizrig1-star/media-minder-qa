@@ -53,3 +53,18 @@ if(!html.includes("Denzel Washington")) throw new Error("Denzel Washington searc
 console.log("PASS — Cast search resolves Denzel Washington");
 
 console.log("STATE CORRECTION TESTS: PASS");
+
+const {getUpcomingPremiereRows}=await import("../src/services/scheduleService.js");
+const premiereState={...makeState({},"",[])};
+const premiereRows=getUpcomingPremiereRows(premiereState,new Date("2026-08-14T12:00:00"));
+if(premiereRows.length!==1) throw new Error(`PREMIERES-01 expected 1 qualifying opener in next 14 days, got ${premiereRows.length}`);
+if(!premiereRows.some(x=>x.show.title==="Graveyard" && x.episode===1)) throw new Error("PREMIERES-01: Graveyard season opener missing");
+if(premiereRows.some(x=>x.show.title==="Slow Horses")) throw new Error("PREMIERES-01: Slow Horses is outside the two-week premiere window");
+if(premiereRows.some(x=>x.show.title==="Project Runway")) throw new Error("PREMIERES-01: Project Runway should fail profile relevance after genre correction");
+if(!premiereRows.some(x=>x.show.title==="Graveyard" && x.episode===1)) throw new Error("PREMIERES-01: Graveyard season opener missing");
+if(premiereRows.some(x=>x.show.title==="The Shards")) throw new Error("PREMIERES-01: The Shards is already open and must be excluded");
+const premiereHtml=(await import("../src/pages/Premieres.js")).Premieres(premiereState);
+if(premiereHtml.includes("Episode 2") || premiereHtml.includes("Episode 3")) throw new Error("PREMIERES-01: ordinary weekly episodes leaked into Premieres");
+if(shows.find(x=>x.title==="Project Runway")?.genre?.includes("Historical Drama")) throw new Error("DATA-01: Project Runway retains incorrect Historical Drama genre");
+console.log("PASS — DATA-01: Project Runway genre metadata corrected");
+console.log("PASS — PREMIERES-01: only relevant upcoming series/season openers render");
