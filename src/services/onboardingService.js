@@ -23,4 +23,5 @@ export function getOnboardingCandidates(shows, limit=6){
   return (shows||[]).filter(item=>item.type==="series").slice(0,limit);
 }
 
+// Ratings below four stars remain useful user history but do not seed strong taste signals.
 export {HIGH_RATING};
