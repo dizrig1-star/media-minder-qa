@@ -38,10 +38,13 @@ console.log("PASS — Calendar reconciles with episode progress");
 // CAL-02: Calendar is personalized to the user's watchlist.
 const emptyWatchlistCalendar=shows.flatMap(show=>(show.episodeDrops||[]).map(e=>({...e,show})));
 const personalizedWatchlist=[slow.id];
-const calendarForWatchlist=shows.filter(show=>personalizedWatchlist.includes(show.id));
-if(calendarForWatchlist.some(x=>x.title==="Graveyard")) throw new Error("CAL-02 test setup invalid");
-if(calendarForWatchlist.some(x=>x.title!=="Slow Horses")) throw new Error("Calendar watchlist filter failed");
-console.log("PASS — CAL-02: Calendar scope is limited to watchlist titles");
+const {Calendar,getCalendarRows}=await import("../src/pages/Calendar.js");
+const calendarState={...state,watchlist:[slow.id],progress:{[slow.id]:2}};
+const calendarRows=getCalendarRows(calendarState);
+if(calendarRows.length!==1 || calendarRows[0].show.id!==slow.id || Number(calendarRows[0].episode)!==3) throw new Error("CAL-02: personalized Calendar did not isolate Slow Horses Episode 3");
+const renderedCalendar=Calendar(calendarState);
+if(renderedCalendar.includes("Graveyard") || renderedCalendar.includes("Project Runway")) throw new Error("CAL-02: non-watchlisted title leaked into rendered Calendar");
+console.log("PASS — CAL-02: Calendar scope is limited to watchlist titles and next drops");
 
 // Search rule: media plus franchise connections.
 const q="andor";

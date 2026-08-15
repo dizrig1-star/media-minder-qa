@@ -1,5 +1,5 @@
 import fs from "fs";
-import {Calendar} from "../src/pages/Calendar.js";
+import {Calendar,getCalendarRows} from "../src/pages/Calendar.js";
 import {Search} from "../src/pages/Search.js";
 
 const shows=JSON.parse(fs.readFileSync("src/data/shows.json","utf8"));
@@ -34,6 +34,15 @@ if(html.includes("<h3>Graveyard</h3>")) throw new Error("Unwatched Graveyard app
 if(!html.includes("<h3>Project Runway</h3><p>Episode 3")) throw new Error("Project Runway next drop missing from personalized Calendar");
 if(!html.includes("<h3>Slow Horses</h3><p>Episode 3")) throw new Error("Slow Horses next drop missing from personalized Calendar");
 console.log("PASS — Calendar is limited to watchlist titles and next relevant drops");
+
+const mixedState=makeState({"project-runway-s22":2,"slow-horses-s6":2},"",["project-runway-s22","slow-horses-s6"]);
+const mixedRows=getCalendarRows(mixedState);
+if(mixedRows.length!==2) throw new Error(`CAL-02 expected exactly 2 next-drop rows, got ${mixedRows.length}`);
+if(mixedRows.some(x=>x.show.title==="Graveyard")) throw new Error("CAL-02: Graveyard leaked into personalized Calendar");
+if(!mixedRows.some(x=>x.show.title==="Project Runway" && Number(x.episode)===3)) throw new Error("CAL-02: Project Runway Episode 3 missing");
+if(!mixedRows.some(x=>x.show.title==="Slow Horses" && Number(x.episode)===3)) throw new Error("CAL-02: Slow Horses Episode 3 missing");
+if(html=Calendar(mixedState), (html.match(/<article class="card media-row">/g)||[]).length!==2) throw new Error("CAL-02: rendered Calendar contains more than one row per watchlisted title");
+console.log("PASS — CAL-02: only watchlisted titles and their next relevant drops render");
 
 html=Search(makeState({}, "Andor"));
 if(!html.includes("Andor") || !html.includes("Star Wars")) throw new Error("Andor search failed");

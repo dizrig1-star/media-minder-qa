@@ -42,3 +42,12 @@
 ## 1.0.7
 - Fixed CAL-02: Calendar is now limited to titles on the user watchlist.
 - Added regression coverage for empty and multi-title watchlists, including next-drop calculation after episode progress.
+
+
+## 1.0.8
+- Corrected CAL-02 at the Calendar data-pipeline level.
+- Calendar now resolves only known watchlist titles before generating events.
+- Calendar now shows only the next relevant episode drop for each watchlisted title.
+- Unknown/stale watchlist IDs are ignored safely.
+- Added explicit regression coverage proving non-watchlisted titles cannot appear.
+- Added GitHub Pages module cache-busting metadata for the 1.0.8 release.
