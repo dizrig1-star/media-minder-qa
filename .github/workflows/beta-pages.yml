@@ -15,7 +15,22 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  regression-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout QA branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Run full regression before deployment
+        run: npm test
+
   deploy:
+    needs: regression-gate
     runs-on: ubuntu-latest
     environment:
       name: media-minder-beta
@@ -23,15 +38,14 @@ jobs:
     steps:
       - name: Checkout QA branch
         uses: actions/checkout@v4
-
+        with:
+          ref: ${{ github.sha }}
       - name: Configure Pages
         uses: actions/configure-pages@v5
-
       - name: Upload site
         uses: actions/upload-pages-artifact@v3
         with:
           path: .
-
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
