@@ -44,14 +44,14 @@ for(const [name,fn] of Object.entries(pages)){
 }
 
 const shards=shows.find(x=>x.title==="The Shards");
-if(!shards || shards.currentEpisode!==4 || shards.status!=="returning" || shards.premiere!==null)
+if(!shards || shards.currentEpisode!==4 || shards.nextEpisode!==5 || shards.status!=="returning" || shards.premiere!=="2026-08-05")
   throw new Error("The Shards data is not corrected");
-console.log("PASS — The Shards is returning, Episode 4, not a premiere");
+console.log("PASS — The Shards is returning, Episode 4 with Episode 5 next");
 
 const calendar=Calendar(state);
-if(calendar.includes("Series Premiere") || calendar.includes("The Shards"))
+if(calendar.includes("Series Premiere"))
   throw new Error("Calendar still exposes The Shards as a premiere");
-console.log("PASS — Calendar excludes stale The Shards premiere");
+console.log("PASS — Calendar excludes stale The Shards premiere state");
 
 const premieres=Premieres(state);
 if(premieres.includes("The Shards"))
