@@ -1,4 +1,5 @@
-const STORAGE_KEY = "media-minder-state-v2";
+const STORAGE_KEY = "media-minder-state-v3";
+const LEGACY_WATCHLIST_KEY = "media-minder-watchlist-v1";
 
 const initialState = {
   page: "landing",
@@ -11,6 +12,7 @@ const initialState = {
   watched: [],
   progress: {},
   ratings: {},
+  onboardingComplete: false,
   query: "",
   dataReady: false
 };
@@ -43,27 +45,40 @@ export const appState = {
       ? state.watched.filter(x => x !== id)
       : [...state.watched, id];
     this.set({watched: next});
+  },
+  completeOnboarding(watchingIds, ratings, profile){
+    const selected = Array.isArray(watchingIds) ? watchingIds.map(String) : [];
+    const nextWatchlist = [...new Set([...state.watchlist.map(String), ...selected])];
+    this.set({
+      watchlist: nextWatchlist,
+      ratings: {...state.ratings, ...ratings},
+      profile,
+      onboardingComplete: true
+    });
   }
 };
 
 function persist(){
   localStorage.setItem(STORAGE_KEY, JSON.stringify({
+    profile:state.profile,
     watchlist:state.watchlist,
     watched:state.watched,
     progress:state.progress,
-    ratings:state.ratings
+    ratings:state.ratings,
+    onboardingComplete:state.onboardingComplete
   }));
 }
 
 export function hydrateLocalState(){
   try{
+    localStorage.removeItem(LEGACY_WATCHLIST_KEY);
     const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}");
     state = {...state, ...saved};
     state.watchlist = Array.isArray(state.watchlist) ? state.watchlist : [];
     state.watched = Array.isArray(state.watched) ? state.watched : [];
     state.progress = state.progress && typeof state.progress === "object" ? state.progress : {};
     state.ratings = state.ratings && typeof state.ratings === "object" ? state.ratings : {};
-    // Normalize persisted progress so an invalid/legacy value can never render as Episode 0+.
+    state.onboardingComplete = saved.onboardingComplete === true;
     for(const [id,value] of Object.entries(state.progress)){
       const n = Number(value);
       state.progress[id] = Number.isFinite(n) && n >= 0 ? Math.floor(n) : 0;

@@ -17,7 +17,7 @@ const shows=JSON.parse(fs.readFileSync("src/data/shows.json","utf8"));
 const movies=JSON.parse(fs.readFileSync("src/data/movies.json","utf8"));
 const franchises=JSON.parse(fs.readFileSync("src/data/franchises.json","utf8"));
 const platforms=JSON.parse(fs.readFileSync("src/data/platforms.json","utf8"));
-const state={profile,shows,movies,franchises,platforms,watchlist:[],watched:[],progress:{},ratings:{},query:"",dataReady:true};
+const state={profile,shows,movies,franchises,platforms,watchlist:[],watched:[],progress:{},ratings:{},query:"",dataReady:true,onboardingComplete:false};
 const all=[...shows,...movies];
 const recs=recommendations(all,profile,8);
 const choice=mmChoice(all,profile);
@@ -43,15 +43,27 @@ for(const [name,fn] of Object.entries(pages)){
   console.log(`PASS — ${name} renders (${html.length} chars)`);
 }
 
+const landing=pages.landing();
+if(!landing.includes("data-onboarding-complete")) throw new Error("Landing missing onboarding confirm action");
+if(!landing.includes("data-onboarding-star=\"lioness\"")) throw new Error("Onboarding missing functional Lioness star controls");
+if(!landing.includes("data-onboarding-star=\"reacher\"")) throw new Error("Onboarding missing functional Reacher star controls");
+if(landing.includes("<select data-onboarding-rating=")) throw new Error("Onboarding still uses fragile rating dropdown controls");
+console.log("PASS — First-Time Setup renders actionable rating controls and confirm action");
+
+const main=fs.readFileSync("src/main.js","utf8");
+if(!main.includes("data-onboarding-star")) throw new Error("Main binding missing onboarding star handler");
+if(!main.includes("data-onboarding-complete")) throw new Error("Main binding missing onboarding confirm handler");
+console.log("PASS — First-Time Setup interaction bindings are present");
+
 const shards=shows.find(x=>x.title==="The Shards");
-if(!shards || shards.currentEpisode!==4 || shards.status!=="returning" || shards.premiere!==null)
+if(!shards || shards.currentEpisode!==4 || shards.nextEpisode!==5 || shards.status!=="returning" || shards.premiere!=="2026-08-05")
   throw new Error("The Shards data is not corrected");
-console.log("PASS — The Shards is returning, Episode 4, not a premiere");
+console.log("PASS — The Shards is returning, Episode 4 with Episode 5 next");
 
 const calendar=Calendar(state);
-if(calendar.includes("Series Premiere") || calendar.includes("The Shards"))
+if(calendar.includes("Series Premiere"))
   throw new Error("Calendar still exposes The Shards as a premiere");
-console.log("PASS — Calendar excludes stale The Shards premiere");
+console.log("PASS — Calendar excludes stale The Shards premiere state");
 
 const premieres=Premieres(state);
 if(premieres.includes("The Shards"))
