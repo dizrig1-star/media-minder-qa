@@ -12,7 +12,7 @@ import {Landing} from "./pages/Landing.js";
 import {Tonight} from "./pages/Tonight.js";
 import {Recommendations} from "./pages/Recommendations.js";
 import {Watchlist} from "./pages/Watchlist.js";
-import {Calendar} from "./pages/Calendar.js?v=1.0.12";
+import {Calendar} from "./pages/Calendar.js?v=1.1.0";
 import {Premieres} from "./pages/Premieres.js";
 import {Movies} from "./pages/Movies.js";
 import {Franchises} from "./pages/Franchises.js";
@@ -51,14 +51,25 @@ function bind(){
      row.hidden=!!needle && !row.dataset.onboardingText.includes(needle);
    });
  };
+ document.querySelectorAll("[data-onboarding-star]").forEach(el=>el.onclick=()=>{
+   const id=el.dataset.onboardingStar;
+   const rating=Number(el.dataset.rating);
+   const checkbox=document.querySelector(`[data-onboarding-watch="${id}"]`);
+   const hidden=document.querySelector(`[data-onboarding-rating="${id}"]`);
+   const label=document.querySelector(`[data-onboarding-rating-label="${id}"]`);
+   if(checkbox) checkbox.checked=true;
+   if(hidden) hidden.value=String(rating);
+   if(label) label.textContent=`${rating} star${rating===1?"":"s"}`;
+   document.querySelectorAll(`[data-onboarding-star="${id}"]`).forEach(star=>star.classList.toggle("selected",Number(star.dataset.rating)<=rating));
+ });
  const onboardingButton=document.querySelector("[data-onboarding-complete]");
  if(onboardingButton) onboardingButton.onclick=()=>{
    const selected=[...document.querySelectorAll("[data-onboarding-watch]:checked")].map(el=>el.dataset.onboardingWatch);
    if(!selected.length) return;
    const ratings={};
    selected.forEach(id=>{
-     const select=document.querySelector(`[data-onboarding-rating="${id}"]`);
-     ratings[id]=Number(select?.value||0);
+     const input=document.querySelector(`[data-onboarding-rating="${id}"]`);
+     ratings[id]=Number(input?.value||0);
    });
    const state=appState.get();
    const items=selected.map(id=>state.shows.find(show=>show.id===id)).filter(Boolean);
