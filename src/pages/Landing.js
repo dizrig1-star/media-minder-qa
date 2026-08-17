@@ -9,13 +9,14 @@ function onboarding(state){
    <h2>Start with what you're already watching.</h2>
    <p class="muted">Search for a few current shows and rate them. Four or five stars become strong preference signals; the shows are added to your Watchlist so Calendar can follow them.</p>
    <label class="field"><span class="muted">Find a show</span><input id="onboarding-search" type="search" placeholder="Try Lioness or Reacher" autocomplete="off"></label>
-   <div class="stack" id="onboarding-results">${candidates.map(item=>`<label class="cluster onboarding-choice" data-onboarding-item="${item.id}" data-onboarding-text="${[item.title,...(item.genre||[]),...(item.cast||[]),...(item.franchises||[])].join(" ").toLowerCase()}">
-     <input type="checkbox" data-onboarding-watch="${item.id}">
-     <strong>${item.title}</strong>
-     <select data-onboarding-rating="${item.id}" aria-label="Rate ${item.title}">
-       <option value="0">Rate it</option><option value="5">★★★★★</option><option value="4">★★★★</option><option value="3">★★★</option><option value="2">★★</option><option value="1">★</option>
-     </select>
-   </label>`).join("")}</div>
+   <div class="stack" id="onboarding-results">${candidates.map(item=>`<div class="cluster onboarding-choice" data-onboarding-item="${item.id}" data-onboarding-text="${[item.title,...(item.genre||[]),...(item.cast||[]),...(item.franchises||[])].join(" ").toLowerCase()}">
+     <label class="cluster"><input type="checkbox" data-onboarding-watch="${item.id}"><strong>${item.title}</strong></label>
+     <div class="onboarding-rating" role="group" aria-label="Rate ${item.title}">
+       ${[1,2,3,4,5].map(rating=>`<button type="button" class="star-button" data-onboarding-star="${item.id}" data-rating="${rating}" aria-label="${rating} star${rating===1?"":"s"} for ${item.title}">${rating}★</button>`).join("")}
+       <span class="muted" data-onboarding-rating-label="${item.id}">Not rated</span>
+     </div>
+     <input type="hidden" data-onboarding-rating="${item.id}" value="0">
+   </div>`).join("")}</div>
    <button class="btn" data-onboarding-complete>Use these to curate my edition</button>
  </section>`;
 }
