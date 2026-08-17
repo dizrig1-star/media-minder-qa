@@ -1,4 +1,5 @@
 const STORAGE_KEY = "media-minder-state-v3";
+const LEGACY_WATCHLIST_KEY = "media-minder-watchlist-v1";
 
 const initialState = {
   page: "landing",
@@ -70,6 +71,7 @@ function persist(){
 
 export function hydrateLocalState(){
   try{
+    localStorage.removeItem(LEGACY_WATCHLIST_KEY);
     const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}");
     state = {...state, ...saved};
     state.watchlist = Array.isArray(state.watchlist) ? state.watchlist : [];
