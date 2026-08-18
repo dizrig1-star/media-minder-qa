@@ -267,18 +267,73 @@
     "mmSelect": "Silver",
     "status": "returning",
     "season": 1,
-    "episodes": 8,
+    "episodes": 9,
     "runtime": 50,
     "cast": [],
     "franchises": [],
-    "premiere": null,
+    "premiere": "2026-08-05",
     "episodeTime": "10:00 PM",
-    "episodeTitle": "Episode 4",
+    "episodeTitle": "Murder on the Dancefloor",
     "summary": "FX's new series arrives on Hulu as part of the August schedule.",
     "why": "A new mystery-leaning option worth watching before the crowd gets to it.",
-    "releasePattern": "weekly",
-    "episodeDrops": [],
-    "seasonPremiereDate": null,
+    "releasePattern": "weekly (double drops)",
+    "episodeDrops": [
+      {
+        "episode": 1,
+        "title": "Pilot",
+        "date": "2026-08-05",
+        "time": "10:00 PM"
+      },
+      {
+        "episode": 2,
+        "title": "Don't You Want Me",
+        "date": "2026-08-05",
+        "time": "10:00 PM"
+      },
+      {
+        "episode": 3,
+        "title": "Help Me! Rhonda!",
+        "date": "2026-08-12",
+        "time": "10:00 PM"
+      },
+      {
+        "episode": 4,
+        "title": "Robert's Party",
+        "date": "2026-08-12",
+        "time": "10:00 PM"
+      },
+      {
+        "episode": 5,
+        "title": "Murder on the Dancefloor",
+        "date": "2026-08-19",
+        "time": "10:00 PM"
+      },
+      {
+        "episode": 6,
+        "title": "Homecoming Part One",
+        "date": "2026-08-26",
+        "time": "10:00 PM"
+      },
+      {
+        "episode": 7,
+        "title": "Homecoming Part Two",
+        "date": "2026-08-26",
+        "time": "10:00 PM"
+      },
+      {
+        "episode": 8,
+        "title": "Hamlet",
+        "date": "2026-09-02",
+        "time": "10:00 PM"
+      },
+      {
+        "episode": 9,
+        "title": "Stairway to Heaven",
+        "date": "2026-09-09",
+        "time": "10:00 PM"
+      }
+    ],
+    "seasonPremiereDate": "2026-08-05",
     "currentEpisode": 4,
     "nextEpisode": 5
   }
