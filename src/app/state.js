@@ -1,5 +1,10 @@
 const STORAGE_KEY = "media-minder-state-v2";
 
+// Orphaned keys from earlier, pre-consolidation schema versions. Nothing in this
+// app has read or written these since state moved to one consolidated object
+// (media-minder-state-v2) — they only ever survive as leftover browser data.
+const LEGACY_KEYS = ["media-minder-watchlist-v1", "media-minder-ratings-v1"];
+
 const initialState = {
   page: "landing",
   profile: null,
@@ -55,6 +60,12 @@ function persist(){
   }));
 }
 
+function removeLegacyKeys(){
+  for(const key of LEGACY_KEYS){
+    try{ localStorage.removeItem(key); }catch{}
+  }
+}
+
 export function hydrateLocalState(){
   try{
     const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}");
@@ -71,6 +82,7 @@ export function hydrateLocalState(){
   }catch{
     state = {...initialState};
   }
+  removeLegacyKeys();
 }
 
 export function normalizeProgressValue(value,total=Infinity){
