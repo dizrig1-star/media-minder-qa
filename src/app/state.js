@@ -8,6 +8,7 @@ const LEGACY_KEYS = ["media-minder-watchlist-v1", "media-minder-ratings-v1"];
 const initialState = {
   page: "landing",
   profile: null,
+  onboardingComplete: false,
   shows: [],
   movies: [],
   franchises: [],
@@ -53,6 +54,8 @@ export const appState = {
 
 function persist(){
   localStorage.setItem(STORAGE_KEY, JSON.stringify({
+    profile:state.profile,
+    onboardingComplete:state.onboardingComplete,
     watchlist:state.watchlist,
     watched:state.watched,
     progress:state.progress,
@@ -74,6 +77,8 @@ export function hydrateLocalState(){
     state.watched = Array.isArray(state.watched) ? state.watched : [];
     state.progress = state.progress && typeof state.progress === "object" ? state.progress : {};
     state.ratings = state.ratings && typeof state.ratings === "object" ? state.ratings : {};
+    state.onboardingComplete = state.onboardingComplete === true;
+    state.profile = state.profile && typeof state.profile === "object" ? state.profile : null;
     // Normalize persisted progress so an invalid/legacy value can never render as Episode 0+.
     for(const [id,value] of Object.entries(state.progress)){
       const n = Number(value);
