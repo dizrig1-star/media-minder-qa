@@ -48,5 +48,43 @@
     ],
     "summary": "A law student uncovers a conspiracy and finds herself in danger.",
     "why": "Political suspense, a smart protagonist, and exactly the kind of mystery that rewards attention."
+  },
+  {
+    "id": "you-me-tuscany",
+    "title": "You, Me & Tuscany",
+    "platform": "peacock",
+    "genre": [
+      "Romantic Comedy",
+      "Romance"
+    ],
+    "mmSelect": "Silver",
+    "runtime": 100,
+    "cast": [
+      "Halle Bailey",
+      "Rege-Jean Page"
+    ],
+    "summary": "An aspiring chef impersonates a man's fiancee while staying at his Italian villa, only to fall for his cousin instead.",
+    "why": "A warm, funny counterweight if you want a night off from mysteries -- pure feel-good escapism."
+  },
+  {
+    "id": "mandalorian-and-grogu",
+    "title": "Star Wars: The Mandalorian and Grogu",
+    "platform": "disney",
+    "genre": [
+      "Sci-Fi",
+      "Adventure",
+      "Family"
+    ],
+    "mmSelect": "Gold",
+    "runtime": 120,
+    "cast": [
+      "Sigourney Weaver",
+      "Jeremy Allen White"
+    ],
+    "franchises": [
+      "star-wars"
+    ],
+    "summary": "The theatrical Mandalorian film makes its streaming debut, directed by Jon Favreau and continuing Din Djarin and Grogu's story on the big screen.",
+    "why": "The year's biggest Star Wars event, now available to watch at home -- a genuine family-night pick."
   }
 ]
