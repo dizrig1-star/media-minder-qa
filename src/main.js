@@ -3,6 +3,7 @@ import {currentRoute,startRouter,navigate} from "./app/router.js";
 import {loadData} from "./services/dataService.js";
 import {recommendations,mmChoice} from "./services/recommendationService.js";
 import {buildProfileFromInitialWatches} from "./services/onboardingService.js";
+import {isUnlocked, unlock, renderGate} from "./app/accessGate.js";
 import {Header} from "./components/layout/Header.js";
 import {Navigation} from "./components/navigation/Navigation.js";
 import {Footer} from "./components/layout/Footer.js";
@@ -94,5 +95,13 @@ async function init(){
    console.error(error);
  }
 }
-appState.subscribe(()=>render(currentRoute()));
-init();
+if(isUnlocked()){
+ appState.subscribe(()=>render(currentRoute()));
+ init();
+}else{
+ renderGate(()=>{
+   unlock();
+   appState.subscribe(()=>render(currentRoute()));
+   init();
+ });
+}
