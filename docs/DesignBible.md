@@ -5,7 +5,7 @@ Media Minder quietly guides people toward exceptional entertainment.
 
 ## Product principles
 1. Recommendations First.
-2. Editorial Over Algorithm.
+2. Editorial Over Algorithm. *(Beta exception, Aug 2026: "why" copy for the expanded catalog is AI-drafted, not hand-written, to unblock the friends & family beta. Simon reserves the right to revert to hand-written copy if the AI voice reads as generic.)*
 3. Reduce Friction.
 4. Entertainment Takes Center Stage.
 5. Quiet Confidence.
