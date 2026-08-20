@@ -15,9 +15,12 @@ const initialState = {
   platforms: [],
   watchlist: [],
   watched: [],
+  notInterested: [],
   progress: {},
   ratings: {},
   query: "",
+  movieMood: null,
+  reviewsSort: "rating",
   dataReady: false
 };
 
@@ -48,7 +51,34 @@ export const appState = {
     const next = state.watched.includes(id)
       ? state.watched.filter(x => x !== id)
       : [...state.watched, id];
-    this.set({watched: next});
+    // Watching it settles the question either way -- clear any earlier "not for me".
+    const notInterested = state.notInterested.filter(x => x !== id);
+    this.set({watched: next, notInterested});
+  },
+  toggleNotInterested(id){
+    const next = state.notInterested.includes(id)
+      ? state.notInterested.filter(x => x !== id)
+      : [...state.notInterested, id];
+    const watched = state.watched.filter(x => x !== id);
+    this.set({notInterested: next, watched});
+  },
+  toggleFranchiseFavorite(id){
+    const profile = state.profile || {};
+    const current = Array.isArray(profile.favoriteFranchises) ? profile.favoriteFranchises : [];
+    const next = current.includes(id) ? current.filter(x => x !== id) : [...current, id];
+    this.set({profile:{...profile, favoriteFranchises: next}});
+  },
+  toggleFavoriteGenre(genre){
+    const profile = state.profile || {};
+    const current = Array.isArray(profile.favoriteGenres) ? profile.favoriteGenres : [];
+    const next = current.includes(genre) ? current.filter(x => x !== genre) : [...current, genre];
+    this.set({profile:{...profile, favoriteGenres: next}});
+  },
+  toggleFavoritePlatform(id){
+    const profile = state.profile || {};
+    const current = Array.isArray(profile.platforms) ? profile.platforms : [];
+    const next = current.includes(id) ? current.filter(x => x !== id) : [...current, id];
+    this.set({profile:{...profile, platforms: next}});
   }
 };
 
@@ -58,6 +88,7 @@ function persist(){
     onboardingComplete:state.onboardingComplete,
     watchlist:state.watchlist,
     watched:state.watched,
+    notInterested:state.notInterested,
     progress:state.progress,
     ratings:state.ratings
   }));
@@ -75,6 +106,7 @@ export function hydrateLocalState(){
     state = {...state, ...saved};
     state.watchlist = Array.isArray(state.watchlist) ? state.watchlist : [];
     state.watched = Array.isArray(state.watched) ? state.watched : [];
+    state.notInterested = Array.isArray(state.notInterested) ? state.notInterested : [];
     state.progress = state.progress && typeof state.progress === "object" ? state.progress : {};
     state.ratings = state.ratings && typeof state.ratings === "object" ? state.ratings : {};
     state.onboardingComplete = state.onboardingComplete === true;
