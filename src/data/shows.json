@@ -4,6 +4,8 @@
     "title": "Slow Horses",
     "type": "series",
     "platform": "apple",
+    "posterUrl": "https://images.justwatch.com/poster/348412909/s718/season-6.jpg",
+    "link": "https://tv.apple.com/us/show/slow-horses/umc.cmc.2szz3fdt71tl1ulnbp8utgq5o",
     "genre": [
       "Mystery",
       "Crime Thriller"
@@ -69,6 +71,8 @@
     "title": "Graveyard",
     "type": "series",
     "platform": "netflix",
+    "posterUrl": "https://images.justwatch.com/poster/307608705/s718/season-3.jpg",
+    "link": "https://www.netflix.com/",
     "genre": [
       "Crime Thriller",
       "Mystery"
@@ -142,6 +146,8 @@
     "title": "Project Runway",
     "type": "series",
     "platform": "disney",
+    "posterUrl": "https://images.justwatch.com/poster/335023297/s718/season-22.jpg",
+    "link": "https://www.hulu.com/series/project-runway-6fa35fc5-00e4-400e-9529-640c064fc982",
     "genre": [
       "Reality Competition"
     ],
@@ -260,6 +266,8 @@
     "title": "The Shards",
     "type": "series",
     "platform": "hulu",
+    "posterUrl": "https://images.justwatch.com/poster/347382936/s718/the-shards.jpg",
+    "link": "https://www.hulu.com/watch/0fb364ef-bee6-46f1-99ed-c659c3b5b9bb",
     "genre": [
       "Mystery",
       "Crime Thriller"
@@ -342,6 +350,8 @@
     "title": "Resolve to Solve with Miles O'Brien",
     "type": "series",
     "platform": "pbs",
+    "posterUrl": "https://image.pbs.org/contentchannels/cZyhOWG-background-ZZvHD1b.jpg?focalcrop=1200x630x50x10&format=auto",
+    "link": "https://www.pbs.org/show/resolve-to-solve/",
     "genre": [
       "Documentary",
       "Science"
@@ -408,6 +418,8 @@
     "title": "The Varnell Hill Show",
     "type": "series",
     "platform": "paramount",
+    "posterUrl": "https://images.justwatch.com/poster/348014702/s718/the-varnell-hill-show.jpg",
+    "link": "https://www.paramountplus.com/",
     "genre": [
       "Comedy"
     ],
@@ -485,6 +497,8 @@
     "title": "The Undeclared War",
     "type": "series",
     "platform": "peacock",
+    "posterUrl": "https://images.justwatch.com/poster/347851762/s718/season-2.jpg",
+    "link": "https://www.peacocktv.com/",
     "genre": [
       "Thriller",
       "Drama"
@@ -549,6 +563,8 @@
     "title": "Dancing with the Stars",
     "type": "series",
     "platform": "abc",
+    "posterUrl": "https://images.justwatch.com/poster/337727587/s718/season-35.jpg",
+    "link": "https://abc.com/",
     "genre": [
       "Reality Competition"
     ],
@@ -630,6 +646,8 @@
     "title": "Eternally Yours",
     "type": "series",
     "platform": "cbs",
+    "posterUrl": "https://images.justwatch.com/poster/344785859/s718/eternally-yours.jpg",
+    "link": "https://www.paramountplus.com/",
     "genre": [
       "Comedy",
       "Fantasy"
@@ -736,6 +754,8 @@
     "title": "The Traitors: New Blood",
     "type": "series",
     "platform": "nbc",
+    "posterUrl": "https://images.justwatch.com/poster/348314429/s718/season-1.jpg",
+    "link": "https://www.peacocktv.com/",
     "genre": [
       "Reality Competition"
     ],
@@ -823,6 +843,8 @@
     "title": "Doc",
     "type": "series",
     "platform": "fox",
+    "posterUrl": "https://images.justwatch.com/poster/348508672/s718/season-3.jpg",
+    "link": "https://www.hulu.com/",
     "genre": [
       "Medical Drama",
       "Drama"
@@ -902,6 +924,8 @@
     "title": "Last Seen",
     "type": "series",
     "platform": "apple",
+    "posterUrl": "https://images.justwatch.com/poster/348320106/s718/season-1.jpg",
+    "link": "https://tv.apple.com/us/show/last-seen/umc.cmc.4pbw9c936a4pigdvsg23u2bsa",
     "genre": [
       "Thriller",
       "Mystery"
@@ -968,6 +992,8 @@
     "title": "Ricky Gervais: Alley Cats",
     "type": "series",
     "platform": "netflix",
+    "posterUrl": "https://images.justwatch.com/poster/346220606/s718/alley-cats.jpg",
+    "link": "https://www.netflix.com/title/81658840",
     "genre": [
       "Animated Comedy",
       "Comedy"
@@ -1046,6 +1072,8 @@
     "title": "Neagley",
     "type": "series",
     "platform": "prime",
+    "posterUrl": "https://images.justwatch.com/poster/348270705/s718/season-1.jpg",
+    "link": "https://www.primevideo.com/detail/0RZB1U1IL8TB1J9Z2UN3UF7H2C",
     "genre": [
       "Action",
       "Crime Thriller"
@@ -1125,6 +1153,8 @@
     "title": "American Horror Story: 13",
     "type": "series",
     "platform": "hulu",
+    "posterUrl": "https://bleedingcool.com/wp-content/uploads/2026/07/MixCollage-09-Jul-2026-11-31-AM-6789-2000x1125.jpg",
+    "link": "https://www.hulu.com/",
     "genre": [
       "Horror",
       "Anthology"
@@ -1213,6 +1243,8 @@
     "title": "War",
     "type": "series",
     "platform": "max",
+    "posterUrl": "https://hbowatch.com/wp-content/uploads/2026/08/War_FirstPhoto.png",
+    "link": "https://www.max.com/",
     "genre": [
       "War Drama",
       "Drama"
