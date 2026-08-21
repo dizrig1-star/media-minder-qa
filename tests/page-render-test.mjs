@@ -44,9 +44,9 @@ for(const [name,fn] of Object.entries(pages)){
 }
 
 const landing=pages.landing();
+if(!landing.includes("data-onboarding-complete")) throw new Error("Landing missing onboarding confirm action");
 if(!landing.includes("data-onboarding-star=\"lioness-s3\"")) throw new Error("Onboarding missing functional Lioness star controls");
 if(!landing.includes("data-onboarding-star=\"reacher-s4\"")) throw new Error("Onboarding missing functional Reacher star controls");
-if(!landing.includes("data-onboarding-star=\"reacher\"")) throw new Error("Onboarding missing functional Reacher star controls");
 if(landing.includes("<select data-onboarding-rating=")) throw new Error("Onboarding still uses fragile rating dropdown controls");
 console.log("PASS — First-Time Setup renders actionable rating controls and confirm action");
 
