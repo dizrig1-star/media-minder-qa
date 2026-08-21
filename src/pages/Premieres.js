@@ -2,6 +2,7 @@ import {heading,platformName} from "./pageUtils.js";
 import {MMSelect} from "../components/recommendation/MMSelect.js";
 import {Platform} from "../components/media/Platform.js";
 import {Poster} from "../components/media/Poster.js";
+import {ContentBadges} from "../components/media/Badge.js";
 import {getUpcomingPremiereRows} from "../services/scheduleService.js";
 
 export function Premieres(state){
@@ -11,7 +12,7 @@ export function Premieres(state){
   <div class="grid-2"><section class="stack">${items.length?items.map(({show,title,date,time})=>`<article class="card media-row">
     ${Poster(show.title,"small")}
     <div class="details">
-      <div class="cluster">${MMSelect(show.mmSelect)}${Platform(platformName(state,show.platform))}</div>
+      <div class="media-meta"><div class="cluster">${MMSelect(show.mmSelect)}${Platform(platformName(state,show.platform))}</div>${ContentBadges(show)}</div>
       <h3>${show.title}</h3>
       <p class="muted">${show.status==="new"?"Series Premiere":"Season Premiere"} · ${date}</p>
       <p>${show.summary}</p>
