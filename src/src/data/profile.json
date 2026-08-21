@@ -1,0 +1,44 @@
+{
+  "name": "Simon",
+  "favoriteGenres": [
+    "Mystery",
+    "Fantasy",
+    "Historical Drama",
+    "Crime Thriller",
+    "Political Thriller"
+  ],
+  "favoriteFranchises": [
+    "star-wars",
+    "marvel",
+    "game-of-thrones",
+    "masterpiece"
+  ],
+  "favoritePeople": [
+    "Denzel Washington",
+    "Lucy Liu",
+    "Ryan Reynolds",
+    "Samuel L. Jackson",
+    "Jon Hamm",
+    "Emily Blunt"
+  ],
+  "platforms": [
+    "netflix",
+    "prime",
+    "apple",
+    "pbs",
+    "paramount",
+    "max",
+    "disney",
+    "hulu"
+  ],
+  "favoriteCelebrations": [
+    "Halloween",
+    "Christmas",
+    "Birthday"
+  ],
+  "tasteMode": "mostly-me-one-wildcard",
+  "ratings": {},
+  "watched": [],
+  "watchlist": [],
+  "editionLabel": "Simon's Edition"
+}

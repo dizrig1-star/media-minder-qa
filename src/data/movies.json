@@ -1,0 +1,100 @@
+[
+  {
+    "id": "sinners",
+    "title": "Sinners",
+    "platform": "max",
+    "posterUrl": "https://images.justwatch.com/poster/320977032/s718/sinners-2025.jpg",
+    "link": "https://play.hbomax.com/show/2a072173-2bac-43ba-9933-10eba021ed96?utm_source=universal_search",
+    "genre": [
+      "Crime Thriller",
+      "Mystery"
+    ],
+    "mmSelect": "Gold",
+    "runtime": 137,
+    "cast": [
+      "Michael B. Jordan"
+    ],
+    "summary": "A stylish genre thriller with a strong sense of place.",
+    "why": "A good fit for a movie night when you want mystery with atmosphere."
+  },
+  {
+    "id": "the-thomas-crown-affair",
+    "title": "The Thomas Crown Affair",
+    "platform": "prime",
+    "posterUrl": "https://images.justwatch.com/poster/182255868/s718/the-thomas-crown-affair.jpg",
+    "link": "https://watch.amazon.com/detail?gti=amzn1.dv.gti.82a9f7ae-8f89-272c-a98d-39cb3a1214f0",
+    "genre": [
+      "Mystery",
+      "Crime Thriller"
+    ],
+    "mmSelect": "Silver",
+    "runtime": 113,
+    "cast": [
+      "Pierce Brosnan",
+      "Rene Russo"
+    ],
+    "summary": "A sophisticated cat-and-mouse caper.",
+    "why": "Clever, stylish, and built around the pleasure of watching two smart people play a game."
+  },
+  {
+    "id": "the-pelican-brief",
+    "title": "The Pelican Brief",
+    "platform": "hulu",
+    "posterUrl": "https://images.justwatch.com/poster/338868125/s718/the-pelican-brief.jpg",
+    "link": "https://www.primevideo.com/detail/The-Pelican-Brief/0NYTHZ69KUI30AQH1YXESHYMXH",
+    "genre": [
+      "Political Thriller",
+      "Mystery"
+    ],
+    "mmSelect": "Gold",
+    "runtime": 141,
+    "cast": [
+      "Denzel Washington",
+      "Julia Roberts"
+    ],
+    "summary": "A law student uncovers a conspiracy and finds herself in danger.",
+    "why": "Political suspense, a smart protagonist, and exactly the kind of mystery that rewards attention."
+  },
+  {
+    "id": "you-me-tuscany",
+    "title": "You, Me & Tuscany",
+    "platform": "peacock",
+    "posterUrl": "https://images.justwatch.com/poster/338950718/s718/you-me-and-tuscany.jpg",
+    "link": "https://www.peacocktv.com/watch/asset/movies/you-me-and-tuscany/d44046fd-c68a-3683-b34e-154318f5fabc",
+    "genre": [
+      "Romantic Comedy",
+      "Romance"
+    ],
+    "mmSelect": "Silver",
+    "runtime": 100,
+    "cast": [
+      "Halle Bailey",
+      "Rege-Jean Page"
+    ],
+    "summary": "An aspiring chef impersonates a man's fiancee while staying at his Italian villa, only to fall for his cousin instead.",
+    "why": "A warm, funny counterweight if you want a night off from mysteries -- pure feel-good escapism."
+  },
+  {
+    "id": "mandalorian-and-grogu",
+    "title": "Star Wars: The Mandalorian and Grogu",
+    "platform": "disney",
+    "posterUrl": "https://images.justwatch.com/poster/346670161/s718/the-mandalorian-and-grogu.jpg",
+    "link": "https://www.disneyplus.com/browse/entity-d830ec57-499e-498c-b6b3-2b85a18a5f51",
+    "genre": [
+      "Sci-Fi",
+      "Adventure",
+      "Family"
+    ],
+    "mmSelect": "Gold",
+    "runtime": 120,
+    "cast": [
+      "Sigourney Weaver",
+      "Jeremy Allen White"
+    ],
+    "franchises": [
+      "star-wars"
+    ],
+    "summary": "The theatrical Mandalorian film makes its streaming debut, directed by Jon Favreau and continuing Din Djarin and Grogu's story on the big screen.",
+    "why": "The year's biggest Star Wars event, now available to watch at home -- a genuine family-night pick."
+  }
+]

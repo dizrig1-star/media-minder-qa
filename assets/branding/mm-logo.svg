@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 150" role="img" aria-label="Media Minder">
+<defs>
+ <linearGradient id="bg" x1="0" x2="1"><stop stop-color="#173f49"/><stop offset=".58" stop-color="#1f5e69"/><stop offset="1" stop-color="#347f88"/></linearGradient>
+ <linearGradient id="gold" x1="0" x2="1"><stop stop-color="#f4d16d"/><stop offset="1" stop-color="#c79520"/></linearGradient>
+</defs>
+<rect x="3" y="3" width="514" height="144" rx="24" fill="url(#bg)" stroke="#e7b84b" stroke-width="6"/>
+<g fill="none" stroke="#f6f0df" stroke-width="11" stroke-linecap="round" stroke-linejoin="round">
+ <path d="M35 112V40l38 48 38-48v72"/>
+ <path d="M127 112V40l38 48 38-48v72"/>
+</g>
+<!-- negative-space test pattern -->
+<g opacity=".95">
+ <rect x="232" y="33" width="106" height="76" rx="10" fill="#f6f0df"/>
+ <path d="M232 33h53v76h-53z" fill="#d86f62"/>
+ <path d="M285 33h53v76h-53z" fill="#e7b84b"/>
+ <path d="M232 71h106" stroke="#1f5e69" stroke-width="7"/>
+ <path d="M285 33v76" stroke="#1f5e69" stroke-width="7"/>
+ <circle cx="285" cy="71" r="13" fill="#1f5e69"/>
+</g>
+<text x="360" y="72" fill="#f6f0df" font-family="Georgia,serif" font-size="30" font-weight="700">MEDIA</text>
+<text x="360" y="108" fill="url(#gold)" font-family="Georgia,serif" font-size="30" font-weight="700">MINDER</text>
+</svg>
