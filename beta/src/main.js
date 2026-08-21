@@ -10,7 +10,7 @@ import {openDetail} from "./components/media/Modal.js";
 
 import {Landing} from "./pages/Landing.js";
 import {Tonight} from "./pages/Tonight.js";
-import {Recommendations} from "./pages/Recommendations.js";
+import {RecommendationsVisual as Recommendations} from "./pages/RecommendationsVisual.js";
 import {Watchlist} from "./pages/Watchlist.js";
 import {Calendar} from "./pages/Calendar.js?v=1.1.0-qa";
 import {Premieres} from "./pages/Premieres.js";
