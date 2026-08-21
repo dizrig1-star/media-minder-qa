@@ -1,7 +1,7 @@
 import {appState,hydrateLocalState} from "./app/state.js";
 import {currentRoute,startRouter,navigate} from "./app/router.js";
 import {loadData} from "./services/dataService.js";
-import {recommendations,mmChoice} from "./services/recommendationService.js";
+import {recommendations,mmChoice,pickWildcard} from "./services/recommendationService.js";
 import {buildProfileFromInitialWatches} from "./services/onboardingService.js";
 import {isUnlocked, unlock, renderGate} from "./app/accessGate.js";
 import {Header} from "./components/layout/Header.js";
@@ -28,8 +28,9 @@ function render(route){
  const data=[...state.shows,...state.movies];
  const recs=state.onboardingComplete===true?recommendations(data,state.profile,8):[];
  const choice=state.onboardingComplete===true?mmChoice(data,state.profile):null;
+ const wildcard=state.onboardingComplete===true?pickWildcard(data,state.profile):null;
  const Page=pages[route==="landing"?"Landing":route[0].toUpperCase()+route.slice(1)];
- document.getElementById("app").innerHTML=`<div class="app-shell">${Header()}${Navigation(route)}<main class="app-main">${Page(state,choice,recs)}</main>${Footer()}</div>`;
+ document.getElementById("app").innerHTML=`<div class="app-shell">${Header()}${Navigation(route)}<main class="app-main">${Page(state,choice,recs,wildcard)}</main>${Footer()}</div>`;
  bind();
 }
 
@@ -52,6 +53,24 @@ function bind(){
  document.querySelectorAll("[data-query]").forEach(el=>el.onclick=()=>{
    appState.set({query:el.dataset.query});
  });
+
+ document.querySelectorAll("[data-watched]").forEach(el=>el.onclick=()=>appState.toggleWatched(el.dataset.watched));
+ document.querySelectorAll("[data-skip]").forEach(el=>el.onclick=()=>appState.toggleNotInterested(el.dataset.skip));
+ document.querySelectorAll("[data-mood]").forEach(el=>el.onclick=()=>appState.set({movieMood: el.dataset.mood || null}));
+
+ document.querySelectorAll("[data-franchise-toggle]").forEach(el=>el.onclick=()=>appState.toggleFranchiseFavorite(el.dataset.franchiseToggle));
+ const franchiseSearch=document.getElementById("franchise-search");
+ if(franchiseSearch) franchiseSearch.oninput=()=>{
+   const needle=franchiseSearch.value.trim().toLowerCase();
+   document.querySelectorAll("[data-franchise-row]").forEach(row=>{
+     row.hidden=!!needle && !row.dataset.franchiseText.includes(needle);
+   });
+ };
+
+ document.querySelectorAll("[data-genre-toggle]").forEach(el=>el.onclick=()=>appState.toggleFavoriteGenre(el.dataset.genreToggle));
+ document.querySelectorAll("[data-platform-toggle]").forEach(el=>el.onclick=()=>appState.toggleFavoritePlatform(el.dataset.platformToggle));
+
+ document.querySelectorAll("[data-reviews-sort]").forEach(el=>el.onclick=()=>appState.set({reviewsSort: el.dataset.reviewsSort}));
 
  const onboardingSearch=document.getElementById("onboarding-search");
  if(onboardingSearch) onboardingSearch.oninput=()=>{
