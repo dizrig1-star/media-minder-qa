@@ -1,22 +1,19 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 150" role="img" aria-label="Media Minder">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 180" role="img" aria-label="Media Minder">
 <defs>
- <linearGradient id="bg" x1="0" x2="1"><stop stop-color="#173f49"/><stop offset=".58" stop-color="#1f5e69"/><stop offset="1" stop-color="#347f88"/></linearGradient>
- <linearGradient id="gold" x1="0" x2="1"><stop stop-color="#f4d16d"/><stop offset="1" stop-color="#c79520"/></linearGradient>
+ <linearGradient id="metal" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f6f0df"/><stop offset=".55" stop-color="#d7d1c3"/><stop offset="1" stop-color="#9aa3a8"/></linearGradient>
+ <linearGradient id="screen" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#347f88"/><stop offset="1" stop-color="#1f5e69"/></linearGradient>
 </defs>
-<rect x="3" y="3" width="514" height="144" rx="24" fill="url(#bg)" stroke="#e7b84b" stroke-width="6"/>
-<g fill="none" stroke="#f6f0df" stroke-width="11" stroke-linecap="round" stroke-linejoin="round">
- <path d="M35 112V40l38 48 38-48v72"/>
- <path d="M127 112V40l38 48 38-48v72"/>
+<g>
+ <rect x="8" y="12" width="190" height="146" rx="30" fill="url(#metal)" stroke="#c79520" stroke-width="5"/>
+ <rect x="24" y="28" width="132" height="112" rx="20" fill="#202d31" stroke="#f6f0df" stroke-width="5"/>
+ <rect x="31" y="35" width="118" height="98" rx="16" fill="url(#screen)"/>
+ <path d="M90 45l9 27 28 1-22 17 7 28-22-16-23 16 8-28-22-17 28-1z" fill="#f4d16d" stroke="#fff7d7" stroke-width="2"/>
+ <circle cx="176" cy="54" r="8" fill="#1f5e69" stroke="#f6f0df" stroke-width="3"/>
+ <circle cx="176" cy="80" r="8" fill="#d86f62" stroke="#f6f0df" stroke-width="3"/>
+ <circle cx="176" cy="106" r="8" fill="#1f5e69" stroke="#f6f0df" stroke-width="3"/>
+ <path d="M48 158l-7 12M154 158l7 12" stroke="#9b633d" stroke-width="7" stroke-linecap="round"/>
 </g>
-<!-- negative-space test pattern -->
-<g opacity=".95">
- <rect x="232" y="33" width="106" height="76" rx="10" fill="#f6f0df"/>
- <path d="M232 33h53v76h-53z" fill="#d86f62"/>
- <path d="M285 33h53v76h-53z" fill="#e7b84b"/>
- <path d="M232 71h106" stroke="#1f5e69" stroke-width="7"/>
- <path d="M285 33v76" stroke="#1f5e69" stroke-width="7"/>
- <circle cx="285" cy="71" r="13" fill="#1f5e69"/>
-</g>
-<text x="360" y="72" fill="#f6f0df" font-family="Georgia,serif" font-size="30" font-weight="700">MEDIA</text>
-<text x="360" y="108" fill="url(#gold)" font-family="Georgia,serif" font-size="30" font-weight="700">MINDER</text>
+<text x="405" y="72" fill="#d86f62" font-family="Georgia, 'Times New Roman', serif" font-size="48" font-weight="700" text-anchor="middle">Media</text>
+<text x="405" y="116" fill="#d86f62" font-family="Georgia, 'Times New Roman', serif" font-size="48" font-weight="700" text-anchor="middle">Minder</text>
+<text x="405" y="145" fill="#1f5e69" font-family="Arial, sans-serif" font-size="14" font-weight="700" letter-spacing="1.4" text-anchor="middle">YOUR GUIDE TO WHAT'S WORTH WATCHING</text>
 </svg>

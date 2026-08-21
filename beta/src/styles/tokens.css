@@ -12,6 +12,8 @@
   --gold:#c79520;
   --line:#d9d0bc;
   --shadow:0 10px 30px rgba(32,45,49,.10);
+  --shadow-soft:0 6px 18px rgba(32,45,49,.07);
+  --radius-pill:999px;
   --radius-lg:24px;
   --radius-md:16px;
   --radius-sm:10px;
