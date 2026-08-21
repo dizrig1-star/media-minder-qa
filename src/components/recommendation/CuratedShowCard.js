@@ -9,7 +9,7 @@ export function CuratedShowCard(item, platformName, rating=0){
     <div class="curated-show-details">
       <div class="curated-topline">
         <div class="mm-select-art" aria-label="MM Select">
-          <div class="mm-select-starburst"><span>MM</span><strong>SELECT</strong></div>
+          <img src="./assets/branding/mm-select-approved.svg" alt="MM Select" />
         </div>
         <div class="curated-platform">${platformName}</div>
       </div>
