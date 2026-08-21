@@ -1,0 +1,1 @@
+.modal-backdrop{position:fixed;inset:0;background:rgba(32,45,49,.62);display:grid;place-items:center;padding:20px;z-index:50}.modal{max-width:760px;width:min(100%,760px);max-height:90vh;overflow:auto}.modal-close{float:right}

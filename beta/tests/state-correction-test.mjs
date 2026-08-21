@@ -1,0 +1,69 @@
+import fs from "fs";
+import {Calendar,getCalendarRows} from "../src/pages/Calendar.js";
+import {Search} from "../src/pages/Search.js";
+
+const shows=JSON.parse(fs.readFileSync("src/data/shows.json","utf8"));
+const franchises=JSON.parse(fs.readFileSync("src/data/franchises.json","utf8"));
+const platforms=JSON.parse(fs.readFileSync("src/data/platforms.json","utf8"));
+const profile=JSON.parse(fs.readFileSync("src/data/profile.json","utf8"));
+const movies=JSON.parse(fs.readFileSync("src/data/movies.json","utf8"));
+
+const makeState=(progress={},query="",watchlist=[])=>({shows,movies,franchises,platforms,profile,progress,ratings:{},watchlist,query});
+
+let html=Calendar(makeState({"project-runway-s22":2},"",["project-runway-s22"]));
+if(html.includes("<h3>Project Runway</h3><p>Season Premiere")) throw new Error("Stale Project Runway premiere remains after progress 2");
+if(!html.includes("<h3>Project Runway</h3><p>Episode 3")) throw new Error("Project Runway Episode 3 is not the next relevant drop");
+if((html.match(/<article class="card media-row">/g)||[]).length!==1) throw new Error("CAL-02: Project Runway renders more than one calendar row");
+console.log("PASS — Project Runway progress 2 -> next calendar drop Episode 3");
+
+html=Calendar(makeState({"slow-horses-s6":2},"",["slow-horses-s6"]));
+if(html.includes("<h3>Slow Horses</h3><p>Season Premiere")) throw new Error("Stale Slow Horses premiere remains after progress 2");
+if(!html.includes("<h3>Slow Horses</h3><p>Episode 3")) throw new Error("Slow Horses Episode 3 is not the next relevant drop");
+if((html.match(/<article class="card media-row">/g)||[]).length!==1) throw new Error("CAL-02: Slow Horses renders more than one calendar row");
+console.log("PASS — Slow Horses progress 2 -> next calendar drop Episode 3");
+
+html=Calendar(makeState({"the-shards":4},"",["the-shards"]));
+if(!html.includes("<h3>The Shards</h3><p>Murder on the Dancefloor")) throw new Error("The Shards Episode 5 is missing despite being watchlisted at progress 4");
+if((html.match(/<article class="card media-row">/g)||[]).length!==1) throw new Error("CAL-02: The Shards renders more than one calendar row");
+console.log("PASS — The Shards progress 4 -> next calendar drop Episode 5");
+
+html=Calendar(makeState({},"",[]));
+if(html.includes("<h3>Graveyard</h3>") || html.includes("<h3>Project Runway</h3>") || html.includes("<h3>Slow Horses</h3>") || html.includes("<h3>The Shards</h3>"))
+  throw new Error("Calendar displays catalog titles when watchlist is empty");
+console.log("PASS — Empty watchlist produces no personalized calendar entries");
+
+const mixedState=makeState({"project-runway-s22":2,"slow-horses-s6":2,"the-shards":4},"",["project-runway-s22","slow-horses-s6","the-shards"]);
+const mixedRows=getCalendarRows(mixedState);
+if(mixedRows.length!==3) throw new Error(`CAL-02 expected exactly 3 next-drop rows, got ${mixedRows.length}`);
+const expected={"Project Runway":3,"Slow Horses":3,"The Shards":5};
+for(const [title,episode] of Object.entries(expected)){
+  if(!mixedRows.some(x=>x.show.title===title && Number(x.episode)===episode)) throw new Error(`CAL-02: ${title} Episode ${episode} missing`);
+}
+if(mixedRows.some(x=>x.show.title==="Graveyard")) throw new Error("CAL-02: Graveyard leaked into personalized Calendar");
+if(mixedRows.some((x,i,arr)=>arr.findIndex(y=>y.show.id===x.show.id)!==i)) throw new Error("CAL-02: duplicate series rows detected");
+if((html=Calendar(mixedState), (html.match(/<article class="card media-row">/g)||[]).length!==3)) throw new Error("CAL-02: rendered Calendar contains more than one row per watchlisted title");
+console.log("PASS — CAL-02: one next relevant drop per watchlisted title");
+
+html=Search(makeState({}, "Andor"));
+if(!html.includes("Andor") || !html.includes("Star Wars")) throw new Error("Andor search failed");
+console.log("PASS — Andor search resolves through Star Wars connection");
+
+html=Search(makeState({}, "Denzel Washington"));
+if(!html.includes("Denzel Washington")) throw new Error("Denzel Washington search failed");
+console.log("PASS — Cast search resolves Denzel Washington");
+
+console.log("STATE CORRECTION TESTS: PASS");
+
+const {getUpcomingPremiereRows}=await import("../src/services/scheduleService.js");
+const premiereState={...makeState({},"",[])};
+const premiereRows=getUpcomingPremiereRows(premiereState,new Date("2026-08-14T12:00:00"));
+if(premiereRows.length!==1) throw new Error(`PREMIERES-01 expected 1 qualifying opener in next 14 days, got ${premiereRows.length}`);
+if(!premiereRows.some(x=>x.show.title==="Graveyard" && x.episode===1)) throw new Error("PREMIERES-01: Graveyard season opener missing");
+if(premiereRows.some(x=>x.show.title==="Slow Horses")) throw new Error("PREMIERES-01: Slow Horses is outside the two-week premiere window");
+if(premiereRows.some(x=>x.show.title==="Project Runway")) throw new Error("PREMIERES-01: Project Runway should fail profile relevance after genre correction");
+if(premiereRows.some(x=>x.show.title==="The Shards")) throw new Error("PREMIERES-01: The Shards is already open and must be excluded");
+const premiereHtml=(await import("../src/pages/Premieres.js")).Premieres(premiereState);
+if(premiereHtml.includes("Episode 2") || premiereHtml.includes("Episode 3")) throw new Error("PREMIERES-01: ordinary weekly episodes leaked into Premieres");
+if(shows.find(x=>x.title==="Project Runway")?.genre?.includes("Historical Drama")) throw new Error("DATA-01: Project Runway retains incorrect Historical Drama genre");
+console.log("PASS — DATA-01: Project Runway genre metadata corrected");
+console.log("PASS — PREMIERES-01: only relevant upcoming series/season openers render");

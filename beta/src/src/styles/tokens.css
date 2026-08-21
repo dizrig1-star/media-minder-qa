@@ -1,0 +1,29 @@
+:root{
+  --ink:#20353a;
+  --ink-soft:#5d6f73;
+  --cream:#f6f0df;
+  --paper:#fffdf6;
+  --teal:#1f5e69;
+  --teal-2:#347f88;
+  --coral:#d96f63;
+  --mustard:#d9ad45;
+  --bronze:#9b633d;
+  --silver:#9aa3a8;
+  --gold:#c79520;
+  --line:#d8cdb8;
+  --line-strong:#b9a98c;
+  --shadow:0 14px 36px rgba(32,53,58,.10);
+  --shadow-soft:0 6px 18px rgba(32,53,58,.08);
+  --radius-lg:22px;
+  --radius-md:14px;
+  --radius-sm:8px;
+  --radius-pill:999px;
+  --max:1240px;
+  --space-1:.5rem;
+  --space-2:.75rem;
+  --space-3:1rem;
+  --space-4:1.5rem;
+  --space-5:2rem;
+  --space-6:3rem;
+  --space-7:4rem;
+}

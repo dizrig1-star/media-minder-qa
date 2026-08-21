@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 220" role="img" aria-label="MM Select BRONZE">
+<defs><linearGradient id="m" x1="0" x2="1"><stop stop-color="#ffe0c8"/><stop offset=".45" stop-color="#9b633d"/><stop offset="1" stop-color="#ffe0c8"/></linearGradient></defs>
+<path d="M130 14l16 28 31 4-23 22 6 31-30-15-30 15 6-31-23-22 31-4z" fill="url(#m)" stroke="#9b633d" stroke-width="4"/>
+<path d="M48 65h164v92c0 16-12 28-28 28H76c-16 0-28-12-28-28z" fill="#173f49" stroke="url(#m)" stroke-width="8"/>
+<text x="130" y="113" text-anchor="middle" fill="#f6f0df" font-family="Georgia,serif" font-size="42" font-weight="700">MM</text>
+<path d="M72 130h116" stroke="#9b633d" stroke-width="3"/>
+<text x="130" y="153" text-anchor="middle" fill="#f6f0df" font-family="Arial,sans-serif" font-size="18" font-weight="800" letter-spacing="4">SELECT</text>
+<rect x="56" y="177" width="148" height="30" rx="15" fill="url(#m)"/>
+<text x="130" y="198" text-anchor="middle" fill="#173f49" font-family="Arial,sans-serif" font-size="14" font-weight="900" letter-spacing="2">BRONZE</text>
+</svg>
