@@ -1,11 +1,11 @@
 .site-header{background:var(--teal);color:var(--paper);border-bottom:5px solid var(--mustard)}
 .header-inner{width:min(var(--max),calc(100% - 32px));margin:auto;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:14px 0}
-.brand-mark{display:block;width:210px;height:auto}
+.brand-mark{display:block;width:260px;height:auto}
 .header-tagline{font-family:Georgia,serif;font-size:.9rem;text-align:right;max-width:260px}
 .nav-wrap{background:var(--paper);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}
 .nav-inner{width:min(var(--max),calc(100% - 32px));margin:auto;display:flex;overflow:auto;scrollbar-width:none;-ms-overflow-style:none}
 .nav-inner::-webkit-scrollbar{display:none}
-.nav-item{display:block;text-decoration:none;border:0;background:transparent;padding:13px 12px;color:var(--ink-soft);font-weight:700;white-space:nowrap;border-bottom:3px solid transparent}
+.nav-item{display:block;text-decoration:none;border:0;background:transparent;padding:13px 12px;color:var(--ink-soft);font-family:'ADLaM Display',Inter,sans-serif;font-weight:400;letter-spacing:.02em;white-space:nowrap;border-bottom:3px solid transparent}
 .nav-item.active{color:var(--teal);border-bottom-color:var(--coral)}
 @media(hover:hover){.nav-item:hover{color:var(--teal);border-bottom-color:var(--coral)}}
 .site-footer{border-top:1px solid var(--line);padding:24px 0;background:#eee5d2;color:var(--ink-soft)}
@@ -19,14 +19,16 @@
 .hero .eyebrow{color:#ffe9a7}
 .poster{aspect-ratio:2/3;border-radius:12px;background:linear-gradient(160deg,var(--teal),var(--coral));display:grid;place-items:center;color:white;font-family:Georgia,serif;text-align:center;padding:1rem;font-size:1.3rem;font-weight:700;overflow:hidden}
 .poster.small{width:86px;flex:none}
+.poster.has-image{padding:0;background:var(--line)}
+.poster.has-image img{width:100%;height:100%;object-fit:cover;display:block}
 .media-row{display:flex;gap:1rem;align-items:center}
 .media-row .details{min-width:0}
 .media-row h3{margin-bottom:.25rem}
 .badge{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:5px 10px;font-size:.72rem;font-weight:900;letter-spacing:.06em;text-transform:uppercase;color:white}
 .badge:before{content:"✦";font-size:.85rem}
-.badge.gold{background:var(--gold)}.badge.silver{background:var(--silver);color:#182124}.badge.bronze{background:var(--bronze)}
-.platform{display:inline-flex;border:1px solid var(--line);border-radius:999px;padding:4px 9px;font-size:.75rem;font-weight:700;color:var(--ink-soft);background:#f7f1e3}
-.btn{border:1px solid var(--teal);border-radius:999px;padding:9px 15px;background:var(--teal);color:white;font-weight:800}
+.badge.gold{background:var(--gold)}.badge.silver{background:var(--silver);color:#182124}.badge.bronze{background:var(--bronze)}.badge.wildcard{background:var(--coral)}
+.platform{display:inline-flex;border:1px solid var(--line);border-radius:999px;padding:4px 9px;font-size:.75rem;font-family:'ADLaM Display',Inter,sans-serif;font-weight:400;letter-spacing:.02em;color:var(--ink-soft);background:#f7f1e3}
+.btn{border:1px solid var(--teal);border-radius:999px;padding:9px 15px;background:var(--teal);color:white;font-family:'ADLaM Display',Inter,sans-serif;font-weight:400;letter-spacing:.02em}
 .btn.secondary{background:transparent;color:var(--teal)}
 .btn.ghost{border-color:var(--line);background:var(--paper);color:var(--ink)}
 .btn.small{padding:6px 10px;font-size:.8rem}
@@ -42,13 +44,17 @@
 .retro-rule{height:8px;background:repeating-linear-gradient(90deg,var(--coral) 0 20px,var(--mustard) 20px 40px,var(--teal) 40px 60px);border-radius:999px}
 .tv-icon{width:34px;height:34px}
 .callout{background:#f1e7d1;border-left:6px solid var(--mustard);padding:1rem 1.2rem;border-radius:0 var(--radius-sm) var(--radius-sm) 0}
-@media(max-width:650px){.header-tagline{display:none}.header-inner{width:calc(100% - 22px)}.brand-mark{width:175px}.card{padding:1rem}.hero{min-height:300px}}
+@media(max-width:650px){.header-tagline{display:none}.header-inner{width:calc(100% - 22px)}.brand-mark{width:215px}.card{padding:1rem}.hero{min-height:300px}}
 
 .progress-control{display:grid;grid-template-columns:auto 1fr;gap:4px 10px;align-items:center;margin:.75rem 0}
 .progress-control label{font-size:.85rem}.progress-control select{border:1px solid var(--line);border-radius:999px;padding:6px 9px;background:var(--paper)}
 .progress-control .muted{grid-column:1/-1;font-size:.78rem}
 .modal .section-heading{margin:1.25rem 0 .5rem}
 
-.mm-select{display:inline-flex;align-items:center;height:42px;vertical-align:middle}
-.mm-select img{display:block;height:42px;width:auto}
+.mm-select{display:inline-flex;align-items:center;height:56px;vertical-align:middle}
+.mm-select img{display:block;height:56px;width:auto}
 .mm-select .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+.calendar-date{width:64px;flex:none;border-radius:12px;background:linear-gradient(160deg,var(--teal),var(--coral));color:#fff;text-align:center;padding:10px 4px;font-family:Georgia,serif}
+.calendar-date .month{display:block;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;opacity:.85}
+.calendar-date .day{display:block;font-size:1.6rem;font-weight:700;line-height:1.1}
