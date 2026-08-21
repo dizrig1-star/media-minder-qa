@@ -3,7 +3,7 @@ export function Header(){
   return `<header class="site-header">
     <div class="header-inner">
       <a href="#landing" aria-label="Media Minder home"><img class="brand-mark" src="${logo}" alt="Media Minder"></a>
-      <div class="header-tagline">Magical Movies, Mysteries & More</div>
+      <div class="header-tagline">Your guide to what's worth watching</div>
     </div>
   </header>`;
 }
