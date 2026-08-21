@@ -1,17 +1,41 @@
-export function Progress(item, current=0){
-  const total = item.progressTotal || item.episodes || 1;
-  const value = Math.max(0, Math.min(total, Number(current || 0)));
-  const next = Math.min(total, value + 1);
-  const seasonLabel = item.season ? `Season ${item.season}` : "";
-  const label = value === 0
-    ? (seasonLabel ? `Not started · ${seasonLabel}` : "Not started")
-    : (seasonLabel ? `${seasonLabel} · Episode ${value} of ${total}` : `Episode ${value} of ${total}`);
-  return `<div class="progress-control">
-    <label for="progress-${item.id}"><strong>${label}</strong></label>
-    <select id="progress-${item.id}" data-progress-id="${item.id}" aria-label="Episode progress for ${item.title}${seasonLabel?", "+seasonLabel:""}">
-      <option value="0" ${value===0?"selected":""}>Not started</option>
-      ${Array.from({length:total},(_,i)=>{const ep=i+1;return `<option value="${ep}" ${ep===value?"selected":""}>Episode ${ep} of ${total}</option>`}).join("")}
-    </select>
-    <span class="muted">${value >= total ? (seasonLabel?`${seasonLabel} complete`:"Season complete") : `Next: Episode ${next}`}</span>
-  </div>`;
+const SCORE = {
+  genre: 5,
+  platform: 2,
+  franchise: 4,
+  person: 2,
+  mmSelect: 3,
+  wildcard: 1
+};
+
+export function scoreItem(item, profile={}){
+  let score = 0;
+  if(item.genre?.some(g => (profile.favoriteGenres||[]).includes(g))) score += SCORE.genre;
+  if((profile.platforms||[]).includes(item.platform)) score += SCORE.platform;
+  if(item.franchises?.some(f => (profile.favoriteFranchises||[]).includes(f))) score += SCORE.franchise;
+  if(item.cast?.some(p => (profile.favoritePeople||[]).includes(p))) score += SCORE.person;
+  if(item.mmSelect) score += SCORE.mmSelect;
+  return score;
+}
+
+export function recommendations(items, profile, limit=6){
+  return [...items]
+    .map(item => ({...item, recommendationScore:scoreItem(item,profile)}))
+    .sort((a,b)=>b.recommendationScore-a.recommendationScore)
+    .slice(0,limit);
+}
+
+export function mmChoice(items, profile){
+  return recommendations(items,profile,20).find(x=>x.mmSelect==="Gold") || null;
+}
+
+// A real wildcard, not just "whatever wasn't Gold". The expanded catalog's
+// editorial "why" copy already tags genuine departures from the user's usual
+// lane (see shows.json/movies.json -- several entries literally open with
+// "A deliberate wildcard: ..."). We pick the best-scoring item among those,
+// searched across the FULL catalog rather than the already-personalized top
+// recs, since a true wildcard is expected to score low on normal taste-match.
+export function pickWildcard(items, profile={}){
+  const candidates = (items||[]).filter(item => /deliberate wildcard/i.test(item.why || ""));
+  if(!candidates.length) return null;
+  return [...candidates].sort((a,b)=>scoreItem(b,profile)-scoreItem(a,profile))[0];
 }
