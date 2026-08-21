@@ -21,6 +21,9 @@
 .media-row{display:flex;gap:1.25rem;align-items:flex-start}
 .media-row .details{min-width:0;flex:1}
 .media-row h3{margin-bottom:.35rem}
+.media-meta{display:flex;align-items:center;justify-content:space-between;gap:.7rem;flex-wrap:wrap;margin-bottom:.65rem}
+.media-meta>.cluster{min-width:0}
+.content-badges{display:flex;align-items:center;gap:.45rem;flex-wrap:wrap;justify-content:flex-end}
 .badge{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:36px;padding:6px 13px;border:1px solid currentColor;border-radius:12px;font-family:'Bebas Neue',Impact,sans-serif;font-size:.84rem;letter-spacing:.08em;text-transform:uppercase;color:var(--teal);background:var(--cream);box-shadow:0 2px 0 rgba(32,53,58,.08)}
 .badge:before{content:"✦";font-size:.8rem;color:var(--coral)}
 .badge.gold{background:var(--gold);border-color:var(--gold);color:#fff}.badge.silver{background:var(--silver);border-color:var(--silver);color:#182124}.badge.bronze{background:var(--bronze);border-color:var(--bronze);color:#fff}
@@ -58,4 +61,4 @@
 .onboarding-rating{display:flex;align-items:center;gap:4px;flex-wrap:wrap;justify-content:flex-end}
 .star-button{border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:5px 8px;color:var(--ink-soft);font-weight:700;cursor:pointer}
 .star-button:hover,.star-button.selected{border-color:var(--gold);color:var(--gold);background:#fff8df}
-@media(max-width:650px){.header-tagline{display:none}.header-inner{width:calc(100% - 28px)}.nav-inner{width:calc(100% - 28px)}.brand-mark{width:205px}.card{padding:1rem}.hero{min-height:300px}.media-row{gap:1rem}.page-title{max-width:none}.mm-select,.mm-select img{height:44px}.onboarding-choice{align-items:flex-start;flex-direction:column}.onboarding-rating{justify-content:flex-start}}
+@media(max-width:650px){.header-tagline{display:none}.header-inner{width:calc(100% - 28px)}.nav-inner{width:calc(100% - 28px)}.brand-mark{width:205px}.card{padding:1rem}.hero{min-height:300px}.media-row{gap:1rem}.page-title{max-width:none}.mm-select,.mm-select img{height:44px}.onboarding-choice{align-items:flex-start;flex-direction:column}.onboarding-rating{justify-content:flex-start}.media-meta{align-items:flex-start}.content-badges{justify-content:flex-start}}
