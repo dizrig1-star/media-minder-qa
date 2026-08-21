@@ -3,5 +3,6 @@
 @import './layout.css';
 @import './components.css';
 @import '../components/recommendation/CuratedShowCard.css';
+@import '../components/recommendation/CuratedShowCardArtwork.css';
 
 @import '../components/media/Modal.css';
