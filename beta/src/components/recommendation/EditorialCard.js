@@ -1,6 +1,6 @@
 function escapeHtml(value){return String(value??"").replace(/[&<>\"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c]));}
 
-export function EditorialCard(item, platformName, kind="select", state={}){
+export function EditorialCard(item, platformName, kind="select", state={}, tier){
   const title=escapeHtml(item.title);
   const platform=escapeHtml(platformName);
   const id=escapeHtml(item.id);
@@ -12,6 +12,7 @@ export function EditorialCard(item, platformName, kind="select", state={}){
   const isTonight=kind==="tonight";
   const isWatching=kind==="watching";
   const isPremiere=kind==="premiere";
+  const resolvedTier=tier||(isSelect?"hero":isPremiere?"compact":"secondary");
   const label=isSelect?"MM SELECT GOLD":isTonight?"TONIGHT":isWatching?"WATCHING":"COMING SOON";
   const tone=isSelect?"gold":isTonight?"coral":isWatching?"teal":"gold";
   const date=item.episodeDrops?.find(e=>e.date)?.date;
@@ -19,7 +20,7 @@ export function EditorialCard(item, platformName, kind="select", state={}){
   const scheduleText=date?new Date(`${date}T12:00:00`).toLocaleDateString("en-US",{weekday:"long",month:"long",day:"numeric"}):"";
 const timeText=item.episodeTime?` · ${item.episodeTime}`:"";
   const premiereText=isPremiere&&date?`<span>${dateText}</span>`:"";
-  return `<article class="editorial-card editorial-card--${kind} editorial-card--${tone}">
+  return `<article class="editorial-card editorial-card--${kind} editorial-card--${resolvedTier} editorial-card--${tone}">
     <div class="editorial-banner"><span class="editorial-banner-mark">✦</span>${label}<span class="editorial-banner-mark">✦</span></div>
     <div class="editorial-card-inner">
       <div class="editorial-art" aria-label="Artwork placeholder for ${title}">
