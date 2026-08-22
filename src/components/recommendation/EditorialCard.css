@@ -4,8 +4,8 @@
 .editorial-card--gold .editorial-banner{background:var(--gold);color:var(--teal);border-color:var(--teal)}
 .editorial-banner-mark{font-size:.85em}
 .editorial-card-inner{display:grid;grid-template-columns:minmax(180px,31%) 1fr;min-height:360px}
-.editorial-card--select .editorial-card-inner{min-height:420px;grid-template-columns:minmax(260px,38%) 1fr}
-.editorial-card--premiere .editorial-card-inner{min-height:250px;grid-template-columns:minmax(130px,34%) 1fr}
+.editorial-card--hero .editorial-card-inner{min-height:420px;grid-template-columns:minmax(260px,38%) 1fr}
+.editorial-card--compact .editorial-card-inner{min-height:250px;grid-template-columns:minmax(130px,34%) 1fr}
 .editorial-art{position:relative;min-height:100%;overflow:hidden;background:linear-gradient(145deg,#164d56 0%,#286f76 52%,#c96f62 100%);color:var(--paper);display:flex;flex-direction:column;justify-content:flex-end;padding:1.15rem;isolation:isolate}
 .editorial-art:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent 0 18px,rgba(255,255,255,.06) 18px 20px);z-index:-1}
 .editorial-art:after{content:"";position:absolute;inset:10px;border:1px solid rgba(255,255,255,.35);pointer-events:none}
@@ -19,12 +19,12 @@
 .editorial-platform{font-family:'Adlam Display',sans-serif;font-size:.78rem;font-weight:700;border:1px solid var(--line);border-radius:999px;padding:.42rem .72rem;background:#f7f1e3;color:var(--ink-soft);white-space:nowrap}
 .editorial-kicker{font-family:'Adlam Display',sans-serif;font-size:.7rem;font-weight:800;letter-spacing:.14em;color:var(--teal);margin:.25rem 0 .2rem}
 .editorial-card h3{font-family:'Bebas Neue',Impact,sans-serif;color:var(--coral);font-size:clamp(2.1rem,4vw,4rem);line-height:.9;letter-spacing:.035em;margin:.15rem 0 .5rem;text-transform:uppercase}
-.editorial-card--premiere h3{font-size:clamp(1.8rem,3vw,2.8rem)}
+.editorial-card--compact h3{font-size:clamp(1.8rem,3vw,2.8rem)}
 .editorial-meta{font-family:'Adlam Display',sans-serif;color:var(--ink-soft);font-size:.86rem;margin:0 0 .8rem}
 .editorial-summary{font-size:1rem;line-height:1.45;margin:0 0 .9rem;max-width:62ch}
 .editorial-schedule{border-left:4px solid var(--gold);padding:.15rem 0 .15rem .75rem;margin:.1rem 0 1rem;color:var(--ink-soft)}
 .editorial-progress{margin:.2rem 0 1rem}.editorial-progress-label{display:flex;justify-content:space-between;font-family:'Adlam Display',sans-serif;font-size:.76rem;margin-bottom:.3rem}.editorial-progress-track{height:8px;background:#e5dcc8;border-radius:999px;overflow:hidden}.editorial-progress-track span{display:block;height:100%;background:var(--teal);border-radius:inherit}
 .editorial-actions{display:flex;flex-wrap:wrap;gap:.55rem;margin-top:auto;padding-top:.6rem}
-.editorial-card--premiere .editorial-card-content{padding:.9rem 1rem}.editorial-card--premiere .editorial-topline{min-height:48px}.editorial-card--premiere .editorial-meta{margin-bottom:.45rem}.editorial-card--premiere .editorial-summary{font-size:.9rem;line-height:1.35;margin-bottom:.55rem}
+.editorial-card--compact .editorial-card-content{padding:.9rem 1rem}.editorial-card--compact .editorial-topline{min-height:48px}.editorial-card--compact .editorial-meta{margin-bottom:.45rem}.editorial-card--compact .editorial-summary{font-size:.9rem;line-height:1.35;margin-bottom:.55rem}
 .editorial-card--watching .editorial-art{background:linear-gradient(145deg,#164d56,#286f76)}
-@media(max-width:820px){.editorial-card-inner,.editorial-card--select .editorial-card-inner,.editorial-card--premiere .editorial-card-inner{grid-template-columns:1fr}.editorial-art{min-height:260px;aspect-ratio:16/8}.editorial-card--premiere .editorial-art{min-height:170px}.editorial-card--select .editorial-art{min-height:330px}.editorial-card-content{padding:1rem}.editorial-topline{min-height:64px}}
+@media(max-width:820px){.editorial-card-inner,.editorial-card--hero .editorial-card-inner,.editorial-card--compact .editorial-card-inner{grid-template-columns:1fr}.editorial-art{min-height:260px;aspect-ratio:16/8}.editorial-card--compact .editorial-art{min-height:170px}.editorial-card--hero .editorial-art{min-height:330px}.editorial-card-content{padding:1rem}.editorial-topline{min-height:64px}}
