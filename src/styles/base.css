@@ -1,13 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Adlam+Display&family=Bebas+Neue&family=Playfair+Display:wght@500;600;700&display=swap');
 
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--cream);color:var(--ink);font-family:'Adlam Display',ui-sans-serif,system-ui,sans-serif;line-height:1.6;letter-spacing:.01em;position:relative;isolation:isolate}
-body:before,body:after{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1}
-/* Paper grain: subtle, warm, and deliberately beneath all UI layers. */
-body:before{opacity:.075;background-image:radial-gradient(rgba(79,59,34,.32) .65px,transparent .8px),radial-gradient(rgba(255,255,255,.55) .7px,transparent .9px);background-size:5px 5px,7px 7px;background-position:0 0,2px 3px;mix-blend-mode:multiply}
-/* Film grain / broadcast depth: intentionally much lighter than the paper texture. */
-body:after{opacity:.028;background-image:repeating-linear-gradient(0deg,rgba(32,45,49,.28) 0 1px,transparent 1px 3px),repeating-linear-gradient(90deg,rgba(216,111,98,.18) 0 1px,transparent 1px 4px);mix-blend-mode:overlay}
+html{scroll-behavior:smooth;background:var(--cream)}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:'Adlam Display',ui-sans-serif,system-ui,sans-serif;line-height:1.6;letter-spacing:.01em;position:relative;min-height:100vh}
+body:before,body:after{content:"";position:fixed;inset:0;pointer-events:none}
+/* Approved vintage paper/film treatment. Text and UI sit above both texture layers. */
+body:before{z-index:0;opacity:var(--texture-paper);background-image:radial-gradient(rgba(79,59,34,.30) .65px,transparent .8px),radial-gradient(rgba(255,255,255,.52) .7px,transparent .9px);background-size:5px 5px,7px 7px;background-position:0 0,2px 3px;mix-blend-mode:multiply}
+body:after{z-index:0;opacity:var(--texture-film);background-image:repeating-linear-gradient(0deg,rgba(32,45,49,.20) 0 1px,transparent 1px 4px),repeating-linear-gradient(90deg,rgba(216,111,98,.12) 0 1px,transparent 1px 5px);mix-blend-mode:overlay}
+#app{position:relative;z-index:1;min-height:100vh}
 button,input,select{font:inherit}
 button{cursor:pointer}
 a{color:inherit}
