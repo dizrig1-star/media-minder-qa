@@ -6,7 +6,6 @@ export function EditorialCard(item, platformName, kind="select", state={}, tier)
   const id=escapeHtml(item.id);
   const genres=(item.genre||[]).join(" · ");
   const progress=state.progress?.[item.id]||0;
-  const watched=progress>0;
   const inWatchlist=state.watchlist?.includes(item.id);
   const isSelect=kind==="select";
   const isTonight=kind==="tonight";
@@ -18,8 +17,9 @@ export function EditorialCard(item, platformName, kind="select", state={}, tier)
   const date=item.episodeDrops?.find(e=>e.date)?.date;
   const dateText=date?new Date(`${date}T12:00:00`).toLocaleDateString("en-US",{month:"short",day:"numeric"}):"";
   const scheduleText=date?new Date(`${date}T12:00:00`).toLocaleDateString("en-US",{weekday:"long",month:"long",day:"numeric"}):"";
-const timeText=item.episodeTime?` · ${item.episodeTime}`:"";
+  const timeText=item.episodeTime?` · ${item.episodeTime}`:"";
   const premiereText=isPremiere&&date?`<span>${dateText}</span>`:"";
+  const badgeAsset=isTonight?`<img class="editorial-status-art editorial-status-art--tonight" src="./assets/branding/approved/badge-tonight.svg" alt="Tonight" />`:isWatching?`<div class="editorial-status-label editorial-status-label--watching">WATCHING</div>`:isPremiere?`<div class="editorial-status-label editorial-status-label--premiere">PREMIERE</div>`:`<img class="editorial-select-badge" src="./assets/branding/mm-select-approved.svg" alt="MM Select" />`;
   return `<article class="editorial-card editorial-card--${kind} editorial-card--${resolvedTier} editorial-card--${tone}">
     <div class="editorial-banner"><span class="editorial-banner-mark">✦</span>${label}<span class="editorial-banner-mark">✦</span></div>
     <div class="editorial-card-inner">
@@ -30,7 +30,7 @@ const timeText=item.episodeTime?` · ${item.episodeTime}`:"";
       </div>
       <div class="editorial-card-content">
         <div class="editorial-topline">
-          ${isSelect?`<img class="editorial-select-badge" src="./assets/branding/mm-select-approved.svg" alt="MM Select" />`:""}
+          <div class="editorial-badge-wrap">${badgeAsset}</div>
           <span class="editorial-platform">${platform}</span>
         </div>
         <div class="editorial-kicker">${isWatching?"CURRENTLY WATCHING":isPremiere?"PREMIERE":isTonight?"TONIGHT'S DROP":"CURATED FOR YOU"}</div>
