@@ -7,7 +7,6 @@ import {Header} from "./components/layout/Header.js";
 import {Navigation} from "./components/navigation/Navigation.js";
 import {Footer} from "./components/layout/Footer.js";
 import {openDetail} from "./components/media/Modal.js";
-import "./components/recommendation/EditorialCard.css";
 
 import {Landing} from "./pages/Landing.js";
 import {Tonight} from "./pages/Tonight.js";
