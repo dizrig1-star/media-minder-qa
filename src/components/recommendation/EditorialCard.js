@@ -16,6 +16,8 @@ export function EditorialCard(item, platformName, kind="select", state={}){
   const tone=isSelect?"gold":isTonight?"coral":isWatching?"teal":"gold";
   const date=item.episodeDrops?.find(e=>e.date)?.date;
   const dateText=date?new Date(`${date}T12:00:00`).toLocaleDateString("en-US",{month:"short",day:"numeric"}):"";
+  const scheduleText=date?new Date(`${date}T12:00:00`).toLocaleDateString("en-US",{weekday:"long",month:"long",day:"numeric"}):"";
+const timeText=item.episodeTime?` · ${item.episodeTime}`:"";
   const premiereText=isPremiere&&date?`<span>${dateText}</span>`:"";
   return `<article class="editorial-card editorial-card--${kind} editorial-card--${tone}">
     <div class="editorial-banner"><span class="editorial-banner-mark">✦</span>${label}<span class="editorial-banner-mark">✦</span></div>
@@ -35,7 +37,7 @@ export function EditorialCard(item, platformName, kind="select", state={}){
         <p class="editorial-meta">${escapeHtml(genres)}${item.runtime?` · ${item.runtime} min`:""}${premiereText?` · ${premiereText}`:""}</p>
         ${item.summary?`<p class="editorial-summary">${escapeHtml(item.summary)}</p>`:""}
         ${isWatching?`<div class="editorial-progress"><div class="editorial-progress-label"><span>Progress</span><strong>${Math.round(progress)}%</strong></div><div class="editorial-progress-track"><span style="width:${Math.min(100,Math.max(0,progress))}%"></span></div></div>`:""}
-        ${isPremiere?`<p class="editorial-schedule"><strong>${item.status==="new"?"Series Premiere":"Season Premiere"}</strong>${date?` · ${dateText}`:""}</p>`:""}
+        ${isPremiere?`<p class="editorial-schedule"><strong>${item.status==="new"?"Series Premiere":"Season Premiere"}</strong>${date?` · ${scheduleText}${timeText}`:""}</p>`:""}
         <div class="editorial-actions">
           <button class="btn" data-detail="${id}">Details</button>
           <button class="btn secondary" data-watch="${id}">${inWatchlist?"Remove from Watchlist":"Add to Watchlist"}</button>
