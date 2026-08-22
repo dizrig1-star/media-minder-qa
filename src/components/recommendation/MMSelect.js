@@ -1,9 +1,9 @@
 export function MMSelect(level){
   if(!level) return "";
-  const key=level.toLowerCase();
-  const artwork=new URL(`../../../assets/branding/mm-select-${key}.svg`, import.meta.url).href;
-  return `<span class="mm-select mm-select-${key}" title="MM Select ${level}">
-    <img src="${artwork}" alt="MM Select ${level}">
-    <span class="sr-only">MM Select ${level}</span>
+  const label=String(level).trim();
+  const artwork=new URL("../../../assets/branding/approved/mm-select-seal.svg", import.meta.url).href;
+  return `<span class="mm-select mm-select-${label.toLowerCase()}" title="MM Select ${label}">
+    <img src="${artwork}" alt="MM Select ${label}">
+    <span class="sr-only">MM Select ${label}</span>
   </span>`;
 }
