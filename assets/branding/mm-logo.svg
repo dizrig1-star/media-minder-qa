@@ -1,19 +1,20 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 180" role="img" aria-label="Media Minder">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 320" role="img" aria-label="Media Minder">
 <defs>
- <linearGradient id="metal" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f6f0df"/><stop offset=".55" stop-color="#d7d1c3"/><stop offset="1" stop-color="#9aa3a8"/></linearGradient>
- <linearGradient id="screen" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#347f88"/><stop offset="1" stop-color="#1f5e69"/></linearGradient>
+ <linearGradient id="tv" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f6f0df"/><stop offset="1" stop-color="#d9d0bc"/></linearGradient>
+ <linearGradient id="screen" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#347f88"/><stop offset="1" stop-color="#174b55"/></linearGradient>
 </defs>
-<g>
- <rect x="8" y="12" width="190" height="146" rx="30" fill="url(#metal)" stroke="#c79520" stroke-width="5"/>
- <rect x="24" y="28" width="132" height="112" rx="20" fill="#202d31" stroke="#f6f0df" stroke-width="5"/>
- <rect x="31" y="35" width="118" height="98" rx="16" fill="url(#screen)"/>
- <path d="M90 45l9 27 28 1-22 17 7 28-22-16-23 16 8-28-22-17 28-1z" fill="#f4d16d" stroke="#fff7d7" stroke-width="2"/>
- <circle cx="176" cy="54" r="8" fill="#1f5e69" stroke="#f6f0df" stroke-width="3"/>
- <circle cx="176" cy="80" r="8" fill="#d86f62" stroke="#f6f0df" stroke-width="3"/>
- <circle cx="176" cy="106" r="8" fill="#1f5e69" stroke="#f6f0df" stroke-width="3"/>
- <path d="M48 158l-7 12M154 158l7 12" stroke="#9b633d" stroke-width="7" stroke-linecap="round"/>
+<rect x="12" y="12" width="876" height="296" rx="24" fill="#f6f0df" stroke="#c79520" stroke-width="5"/>
+<path d="M40 48H300M600 48H860M40 272H300M600 272H860" stroke="#1f5e69" stroke-width="3" opacity=".72"/>
+<g transform="translate(64 64)">
+ <path d="M70 0L92 22M168 0L146 22" stroke="#c79520" stroke-width="5" stroke-linecap="round"/>
+ <rect x="35" y="24" width="190" height="145" rx="28" fill="url(#tv)" stroke="#c79520" stroke-width="5"/>
+ <rect x="52" y="41" width="135" height="112" rx="18" fill="#202d31" stroke="#c79520" stroke-width="4"/>
+ <rect x="59" y="48" width="121" height="98" rx="14" fill="url(#screen)"/>
+ <path d="M120 58l8 26 28 1-22 17 7 28-21-15-22 15 7-28-22-17 28-1z" fill="#f4d16d"/>
+ <circle cx="207" cy="62" r="8" fill="#1f5e69"/><circle cx="207" cy="89" r="8" fill="#d86f62"/><circle cx="207" cy="116" r="8" fill="#1f5e69"/>
+ <path d="M70 169l-8 14M190 169l8 14" stroke="#9b633d" stroke-width="7" stroke-linecap="round"/>
 </g>
-<text x="405" y="72" fill="#d86f62" font-family="Georgia, 'Times New Roman', serif" font-size="48" font-weight="700" text-anchor="middle">Media</text>
-<text x="405" y="116" fill="#d86f62" font-family="Georgia, 'Times New Roman', serif" font-size="48" font-weight="700" text-anchor="middle">Minder</text>
-<text x="405" y="145" fill="#1f5e69" font-family="Arial, sans-serif" font-size="14" font-weight="700" letter-spacing="1.4" text-anchor="middle">YOUR GUIDE TO WHAT'S WORTH WATCHING</text>
+<text x="565" y="128" text-anchor="middle" font-family="Georgia,'Times New Roman',serif" font-size="64" font-weight="700" fill="#d86f62">Media</text>
+<text x="565" y="190" text-anchor="middle" font-family="Georgia,'Times New Roman',serif" font-size="64" font-weight="700" fill="#d86f62">Minder</text>
+<text x="565" y="226" text-anchor="middle" font-family="Arial,sans-serif" font-size="17" font-weight="700" letter-spacing="2" fill="#1f5e69">YOUR GUIDE TO WHAT'S WORTH WATCHING</text>
 </svg>
