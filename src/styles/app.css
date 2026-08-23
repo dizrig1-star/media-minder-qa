@@ -4,5 +4,5 @@
 @import './components.css';
 @import '../components/recommendation/CuratedShowCard.css';
 @import '../components/recommendation/CuratedShowCardArtwork.css';
-
+@import '../components/recommendation/EditorialCard.css';
 @import '../components/media/Modal.css';
