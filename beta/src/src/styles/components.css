@@ -1,7 +1,8 @@
-.site-header{background:var(--teal);color:var(--paper);border-bottom:4px solid var(--coral)}
-.header-inner{width:min(var(--max),calc(100% - 48px));margin:auto;display:flex;align-items:center;justify-content:flex-start;gap:1.5rem;padding:14px 0}
-.brand-link{display:block;line-height:0}
-.brand-mark{display:block;width:250px;height:auto;filter:drop-shadow(0 5px 10px rgba(0,0,0,.12))}
+.site-header{background:var(--teal);color:var(--paper);border-bottom:4px solid var(--coral);position:relative;overflow:hidden;min-height:160px}
+.site-header:after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.08;background:repeating-linear-gradient(90deg,transparent 0 28px,rgba(246,240,223,.9) 28px 30px)}
+.header-inner{width:min(var(--max),calc(100% - 48px));margin:auto;display:flex;align-items:center;justify-content:flex-start;gap:1.5rem;padding:10px 0;position:relative;z-index:1}
+.brand-mark{display:block;width:auto;height:140px;object-fit:contain;filter:drop-shadow(0 5px 10px rgba(0,0,0,.18))}
+.header-tagline{font-family:"Adlam Display",sans-serif;font-size:1rem;text-align:left;max-width:280px;color:var(--cream);letter-spacing:.025em}
 .nav-wrap{background:var(--paper);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20;box-shadow:0 4px 14px rgba(32,53,58,.05)}
 .nav-inner{width:min(var(--max),calc(100% - 48px));margin:auto;display:flex;overflow:auto;scrollbar-width:thin}
 .nav-item{display:block;text-decoration:none;border:0;background:transparent;padding:14px 14px 12px;color:var(--ink-soft);font-family:'Adlam Display',sans-serif;font-weight:700;white-space:nowrap;border-bottom:3px solid transparent;transition:color .16s ease,border-color .16s ease}
