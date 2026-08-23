@@ -23,7 +23,7 @@ Intelligent, calm, thoughtful, refined, editorial, warm, trustworthy.
 Atomic Age modern; pastel 1950s; classic broadcast television influence; retro without kitsch.
 
 ## MM Select
-Bronze, Silver, Gold. Gold is intentionally scarce.
+Silver, Gold. Gold is intentionally scarce.
 
 ## Navigation
 Landing, Tonight, Recommendations, Watchlist, Calendar, Premieres, Movies, Franchises, My Reviews, Settings, Search. No Discover page.
