@@ -28,7 +28,7 @@ function render(route){
  const recs=recommendations(data,state.profile,8);
  const choice=mmChoice(data,state.profile);
  const Page=pages[route==="landing"?"Landing":route[0].toUpperCase()+route.slice(1)];
- document.getElementById("app").innerHTML=`<div class="app-shell">${Header()}${Navigation(route)}<main class="app-main">${Page(state,choice,recs)}</main>${Footer()}</div>`;
+ document.getElementById("app").innerHTML=`<div class="app-shell"><aside class="sidebar">${Header()}${Navigation(route)}</aside><div class="content-column"><main class="app-main">${Page(state,choice,recs)}</main>${Footer()}</div></div>`;
  bind();
 }
 
