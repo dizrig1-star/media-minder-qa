@@ -1,4 +1,4 @@
-import {heading,mediaCard,platformName} from "./pageUtils.js";
+import {heading,mediaCard,platformName,timeGreeting} from "./pageUtils.js";
 import {MMSelect} from "../components/recommendation/MMSelect.js";
 import {getOnboardingCandidates} from "../services/onboardingService.js";
 
@@ -23,7 +23,7 @@ function onboarding(state){
 
 export function Landing(state,choice,recs){
  const hero=choice;
- return `${heading("Media Minder",`Good evening, ${state.profile?.name||"there"}.`,"A small, well-chosen list is better than a wall of choices.")}
+ return `${heading("Media Minder",`${timeGreeting()}, ${state.profile?.name||"there"}.`,"A small, well-chosen list is better than a wall of choices.")}
  ${state.onboardingComplete===true?"":onboarding(state)}
  ${hero?`<section class="hero card"><div class="hero-content"><div class="eyebrow">MM'S CHOICE · TONIGHT</div><h2>${hero.title}</h2><div class="cluster">${MMSelect(hero.mmSelect)}<span class="platform">${platformName(state,hero.platform)}</span></div><p>${hero.summary}</p><p class="editor-note" style="color:white;border-color:var(--mustard)">${hero.why}</p><button class="btn" data-detail="${hero.id}">See the details</button></div></section>`:"<div class='empty-state'>Nothing rates an MM Select Gold right now.</div>"}
  <div class="section-heading"><h2>Tonight's Watch List</h2></div>
