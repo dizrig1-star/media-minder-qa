@@ -1,4 +1,6 @@
-.app-shell{min-height:100vh;display:flex;flex-direction:column}
+.app-shell{min-height:100vh;display:flex}
+.sidebar{flex:none;width:250px;position:sticky;top:0;align-self:flex-start;height:100vh;overflow-y:auto}
+.content-column{flex:1;min-width:0;display:flex;flex-direction:column;min-height:100vh}
 .app-main{width:min(var(--max),calc(100% - 32px));margin:0 auto;padding:var(--space-5) 0 var(--space-6);flex:1}
 .page-header{display:flex;justify-content:space-between;gap:1rem;align-items:end;margin-bottom:var(--space-4);position:relative;padding-bottom:1rem;border-bottom:1px solid rgba(217,208,188,.8)}
 .page-header:after{content:"";width:58px;height:58px;flex:none;background:url('../assets/icons/tv.svg') center/contain no-repeat;opacity:.09;transform:rotate(-5deg);margin-bottom:-.2rem}
@@ -8,4 +10,4 @@
 .grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--space-3)}
 .stack{display:flex;flex-direction:column;gap:var(--space-3)}
 .cluster{display:flex;flex-wrap:wrap;gap:var(--space-2);align-items:center}
-@media(max-width:850px){.grid-2,.grid-3{grid-template-columns:1fr}.app-main{width:min(var(--max),calc(100% - 22px));padding-top:var(--space-4)}.page-header:after{width:44px;height:44px}}
+@media(max-width:850px){.grid-2,.grid-3{grid-template-columns:1fr}.app-main{width:min(var(--max),calc(100% - 22px));padding-top:var(--space-4)}.page-header:after{width:44px;height:44px}.app-shell{flex-direction:column}.sidebar{position:static;width:100%;height:auto;overflow-y:visible}.sidebar-header{flex-direction:row;justify-content:center;padding:14px 16px}.sidebar-nav{flex-direction:row;overflow-x:auto;padding:0 8px 10px}.nav-item{border-left:0;border-bottom:3px solid transparent;padding:12px 14px}.nav-item:hover,.nav-item.active{border-left-color:transparent;border-bottom-color:var(--coral);background:transparent}}
