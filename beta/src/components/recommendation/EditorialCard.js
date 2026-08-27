@@ -1,4 +1,5 @@
 import { Rating } from '../media/Rating.js';
+import { Progress } from '../media/Progress.js';
 
 function escapeHtml(value){
   return String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -56,7 +57,7 @@ export function EditorialCard(item, platformName, kind='select', state={}, tier)
         <h3>${title}</h3>
         <p class="editorial-meta">${escapeHtml(genres)}${item.runtime ? ` · ${item.runtime} min` : ''}${premiereText ? ` · ${premiereText}` : ''}</p>
         ${item.summary ? `<p class="editorial-summary">${escapeHtml(item.summary)}</p>` : ''}
-        ${isWatching ? `<div class="editorial-progress"><div class="editorial-progress-label"><span>Progress</span><strong>${Math.round(progress)}%</strong></div><div class="editorial-progress-track"><span style="width:${Math.min(100,Math.max(0,progress))}%"></span></div></div>` : ''}
+        ${isWatching && item.episodes ? `<div class="editorial-progress">${Progress(item, progress)}</div>` : ''}
         ${isPremiere ? `<p class="editorial-schedule"><strong>${item.status==='new' ? 'Series Premiere' : 'Season Premiere'}</strong>${date ? ` · ${scheduleText}${timeText}` : ''}</p>` : ''}
         <div class="editorial-actions">
           <button class="btn" data-detail="${id}">Details</button>
