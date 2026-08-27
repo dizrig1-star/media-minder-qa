@@ -12,7 +12,9 @@ export function Calendar(state){
     const d=new Date(x.date+"T12:00:00");
     const month=d.toLocaleDateString("en-US",{month:"short"});
     const day=d.toLocaleDateString("en-US",{day:"numeric"});
-    return `<article class="card media-row">
+    return `<article class="editorial-card editorial-card--compact">
+    <div class="editorial-banner"><span class="editorial-banner-mark">✦</span>EPISODE DROP<span class="editorial-banner-mark">✦</span></div>
+    <div class="media-row curated-row-body">
     <div class="date-tile">
       <img class="date-tile-art" src="${ASSET}date-badge-blank-tile.svg" alt="" aria-hidden="true">
       <span class="date-tile-month">${month}</span>
@@ -20,6 +22,7 @@ export function Calendar(state){
     </div>
     <div class="details"><div class="cluster"><span class="platform">${platformName(state,x.show.platform)}</span><strong>Episode ${x.episode}</strong></div>
     <h3>${x.show.title}</h3><p>${x.title}</p><p class="muted">${d.toLocaleDateString("en-US",{weekday:"long",month:"long",day:"numeric"})} · ${x.time}</p></div>
+    </div>
   </article>`;
   }).join("")}</div>`;
 }

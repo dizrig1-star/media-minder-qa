@@ -18,3 +18,6 @@ img.tv-icon{content:url('../../assets/branding/approved/icon-tv-coral-stripe.svg
 
 /* Wire the imported Playfair Display serif into page headings (was imported in base.css but never applied anywhere). */
 .page-title{font-family:'Playfair Display',Georgia,'Times New Roman',serif;font-weight:700;}
+
+/* Curated banner treatment for Calendar and My Reviews rows: pairs with .editorial-card + .editorial-banner (already used elsewhere) to give plain list rows the padded, flex-row body they need. */
+.curated-row-body{padding:1.35rem 1.5rem 1.2rem;}
