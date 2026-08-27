@@ -1,8 +1,8 @@
 .editorial-card{position:relative;overflow:hidden;background:rgba(255,253,246,.94);border:1px solid var(--cream);border-radius:18px;box-shadow:0 10px 24px rgba(32,53,58,.11);color:var(--ink);background-image:repeating-linear-gradient(135deg,transparent 0 18px,rgba(31,94,105,.03) 18px 19px,transparent 19px 36px)}
 .editorial-card:after{content:"✦";position:absolute;right:12px;bottom:10px;color:var(--gold);opacity:.45;font-size:1.1rem;pointer-events:none}
 .editorial-banner{display:flex;align-items:center;justify-content:center;gap:.7rem;min-height:58px;padding:.55rem 1rem;font-family:'Bebas Neue',Impact,sans-serif;font-size:1.35rem;letter-spacing:.12em;color:var(--paper);background:var(--teal);border-bottom:3px solid var(--gold)}
-.editorial-card--coral .editorial-banner{background:var(--coral);border-color:var(--gold)}
-.editorial-card--gold .editorial-banner{background:var(--gold);color:var(--teal);border-color:var(--teal)}
+.editorial-card--coral .editorial-banner{background:#a8493d;border-color:var(--gold)}
+.editorial-card--gold .editorial-banner{background:#8a6316;color:var(--paper);border-color:var(--teal)}
 .editorial-banner-mark{font-size:.85em}
 .editorial-card-inner{display:grid;grid-template-columns:minmax(220px,34%) 1fr;min-height:380px}
 .editorial-card--hero .editorial-card-inner{min-height:470px;grid-template-columns:minmax(300px,40%) 1fr}
@@ -16,7 +16,7 @@
 .editorial-card-content{padding:1.35rem 1.5rem 1.2rem;display:flex;flex-direction:column;min-width:0}
 .editorial-topline{display:flex;align-items:center;justify-content:space-between;gap:1rem;min-height:100px}
 .editorial-badge-wrap{display:flex;align-items:center;min-height:90px}
-.editorial-select-badge{width:122px;height:90px;object-fit:contain;object-position:left center;filter:drop-shadow(0 5px 7px rgba(32,53,58,.18))}
+.editorial-select-badge{width:366px;height:270px;max-width:100%;object-fit:contain;object-position:left center;filter:drop-shadow(0 5px 7px rgba(32,53,58,.18))}
 .editorial-status-art{display:block;width:185px;height:74px;object-fit:contain;object-position:left center;filter:drop-shadow(0 5px 7px rgba(32,53,58,.16))}
 .editorial-card--compact .editorial-status-art{width:160px;height:64px}
 .editorial-platform{font-family:'Adlam Display',sans-serif;font-size:.82rem;font-weight:700;border:1px solid var(--line);border-radius:999px;padding:.45rem .75rem;background:#f7f1e3;color:var(--ink-soft);white-space:nowrap}
