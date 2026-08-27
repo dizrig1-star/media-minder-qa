@@ -2,7 +2,7 @@ export function Progress(item, current=0){
   const total = item.progressTotal || item.episodes || 1;
   const value = Math.max(0, Math.min(total, Number(current || 0)));
   const next = Math.min(total, value + 1);
-  const label = value === 0 ? "Not started" : `Episode ${value} of ${total}`;
+  const label = value === 0 ? "Not started" : (item.season ? `Season ${item.season} · Episode ${value} of ${total}` : `Episode ${value} of ${total}`);
   return `<div class="progress-control">
     <label for="progress-${item.id}"><strong>${label}</strong></label>
     <select id="progress-${item.id}" data-progress-id="${item.id}" aria-label="Episode progress for ${item.title}">
