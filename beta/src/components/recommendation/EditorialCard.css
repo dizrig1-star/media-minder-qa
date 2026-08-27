@@ -30,3 +30,8 @@
 .editorial-actions{display:flex;flex-wrap:wrap;gap:.55rem;margin-top:auto;padding-top:.6rem}
 .editorial-card--compact .editorial-card-content{padding:1rem}.editorial-card--compact .editorial-topline{min-height:78px}.editorial-card--compact .editorial-badge-wrap{min-height:78px}.editorial-card--compact .editorial-select-badge{width:105px;height:78px}.editorial-card--watching .editorial-art{background:linear-gradient(145deg,#164d56,#286f76)}
 @media(max-width:820px){.editorial-card-inner,.editorial-card--hero .editorial-card-inner,.editorial-card--compact .editorial-card-inner{grid-template-columns:1fr}.editorial-art{min-height:280px;aspect-ratio:16/8}.editorial-card--compact .editorial-art{min-height:190px}.editorial-card--hero .editorial-art{min-height:340px}.editorial-card-content{padding:1rem}.editorial-topline{min-height:86px}.editorial-badge-wrap{min-height:78px}.editorial-select-badge{width:105px;height:78px}.editorial-status-art{width:165px;height:66px}}
+
+/* Compact-tier art panel: remove oversized duplicate title text (title already shows in the h3 below), let the icon art fill the freed space. */
+.editorial-card--compact .editorial-art-title{display:none;}
+.editorial-card--compact .editorial-art-icon{left:10%;right:10%;top:12%;width:80%;height:72%;}
+.editorial-card--compact .editorial-art{padding:.75rem;}
