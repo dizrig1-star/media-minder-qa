@@ -13,18 +13,18 @@ const makeState=(progress={},query="",watchlist=[])=>({shows,movies,franchises,p
 let html=Calendar(makeState({"project-runway-s22":2},"",["project-runway-s22"]));
 if(html.includes("<h3>Project Runway</h3><p>Season Premiere")) throw new Error("Stale Project Runway premiere remains after progress 2");
 if(!html.includes("<h3>Project Runway</h3><p>Episode 3")) throw new Error("Project Runway Episode 3 is not the next relevant drop");
-if((html.match(/<article class="card media-row">/g)||[]).length!==1) throw new Error("CAL-02: Project Runway renders more than one calendar row");
+if((html.match(/<article class="editorial-card editorial-card--compact">/g)||[]).length!==1) throw new Error("CAL-02: Project Runway renders more than one calendar row");
 console.log("PASS — Project Runway progress 2 -> next calendar drop Episode 3");
 
 html=Calendar(makeState({"slow-horses-s6":2},"",["slow-horses-s6"]));
 if(html.includes("<h3>Slow Horses</h3><p>Season Premiere")) throw new Error("Stale Slow Horses premiere remains after progress 2");
 if(!html.includes("<h3>Slow Horses</h3><p>Episode 3")) throw new Error("Slow Horses Episode 3 is not the next relevant drop");
-if((html.match(/<article class="card media-row">/g)||[]).length!==1) throw new Error("CAL-02: Slow Horses renders more than one calendar row");
+if((html.match(/<article class="editorial-card editorial-card--compact">/g)||[]).length!==1) throw new Error("CAL-02: Slow Horses renders more than one calendar row");
 console.log("PASS — Slow Horses progress 2 -> next calendar drop Episode 3");
 
 html=Calendar(makeState({"the-shards":4},"",["the-shards"]));
 if(!html.includes("<h3>The Shards</h3><p>Murder on the Dancefloor")) throw new Error("The Shards Episode 5 is missing despite being watchlisted at progress 4");
-if((html.match(/<article class="card media-row">/g)||[]).length!==1) throw new Error("CAL-02: The Shards renders more than one calendar row");
+if((html.match(/<article class="editorial-card editorial-card--compact">/g)||[]).length!==1) throw new Error("CAL-02: The Shards renders more than one calendar row");
 console.log("PASS — The Shards progress 4 -> next calendar drop Episode 5");
 
 html=Calendar(makeState({},"",[]));
@@ -41,7 +41,7 @@ for(const [title,episode] of Object.entries(expected)){
 }
 if(mixedRows.some(x=>x.show.title==="Graveyard")) throw new Error("CAL-02: Graveyard leaked into personalized Calendar");
 if(mixedRows.some((x,i,arr)=>arr.findIndex(y=>y.show.id===x.show.id)!==i)) throw new Error("CAL-02: duplicate series rows detected");
-if((html=Calendar(mixedState), (html.match(/<article class="card media-row">/g)||[]).length!==3)) throw new Error("CAL-02: rendered Calendar contains more than one row per watchlisted title");
+if((html=Calendar(mixedState), (html.match(/<article class="editorial-card editorial-card--compact">/g)||[]).length!==3)) throw new Error("CAL-02: rendered Calendar contains more than one row per watchlisted title");
 console.log("PASS — CAL-02: one next relevant drop per watchlisted title");
 
 html=Search(makeState({}, "Andor"));
