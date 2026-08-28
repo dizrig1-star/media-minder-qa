@@ -1,4 +1,3 @@
-
 [
   {
     "id": "sinners",
@@ -52,6 +51,47 @@
     ],
     "summary": "A law student uncovers a conspiracy and finds herself in danger.",
     "why": "Political suspense, a smart protagonist, and exactly the kind of mystery that rewards attention."
+  },
+  {
+    "id": "you-me-tuscany",
+    "title": "You, Me & Tuscany",
+    "platform": "peacock",
+    "link": "https://www.peacocktv.com/watch/asset/movies/you-me-and-tuscany/d44046fd-c68a-3683-b34e-154318f5fabc",
+    "genre": [
+      "Romantic Comedy",
+      "Romance"
+    ],
+    "mmSelect": "Silver",
+    "runtime": 100,
+    "cast": [
+      "Halle Bailey",
+      "Rege-Jean Page"
+    ],
+    "summary": "An aspiring chef impersonates a man's fiancee while staying at his Italian villa, only to fall for his cousin instead.",
+    "why": "A warm, funny counterweight if you want a night off from mysteries -- pure feel-good escapism.",
+    "poster": "https://images.justwatch.com/poster/338950718/s718/you-me-and-tuscany.jpg"
+  },
+  {
+    "id": "mandalorian-and-grogu",
+    "title": "Star Wars: The Mandalorian and Grogu",
+    "platform": "disney",
+    "link": "https://www.disneyplus.com/browse/entity-d830ec57-499e-498c-b6b3-2b85a18a5f51",
+    "genre": [
+      "Sci-Fi",
+      "Adventure",
+      "Family"
+    ],
+    "mmSelect": "Gold",
+    "runtime": 120,
+    "cast": [
+      "Sigourney Weaver",
+      "Jeremy Allen White"
+    ],
+    "franchises": [
+      "star-wars"
+    ],
+    "summary": "The theatrical Mandalorian film makes its streaming debut, directed by Jon Favreau and continuing Din Djarin and Grogu's story on the big screen.",
+    "why": "The year's biggest Star Wars event, now available to watch at home -- a genuine family-night pick.",
+    "poster": "https://images.justwatch.com/poster/346670161/s718/the-mandalorian-and-grogu.jpg"
   }
 ]
-
