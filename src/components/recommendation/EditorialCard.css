@@ -1,3 +1,28 @@
+
+
+Skip to content
+Using Gmail with screen readers
+1 of 4
+Media Minder: EditorialCard.css (hero title + poster styling) — file 4 of 4
+Inbox
+Summarize this email
+
+Simon Johnson
+Attachments
+9:28 PM (0 minutes ago)
+to me
+
+Attached: EditorialCard.css, the last of the four files for the poster-art rollout.
+
+What changed on top of the existing file:
+- Poster cards: disables the decorative texture pattern behind real photo art so it doesn't fight the image (.editorial-art--poster rules).
+- Hero card: title moves from the bottom of the art panel to the top, sitting over the darkest part of the gradient/photo — same positioning as the legible hero card you pointed to on production. Font switches from the all-caps Bebas Neue to Playfair Display serif. The "MEDIA MINDER" footer text is repinned to the bottom of the panel so it doesn't get stranded next to the title.
+
+Everything else in the file is untouched. Same process: open src/components/recommendation/EditorialCard.css in the GitHub web editor, select all, delete, paste in the attached file, commit to qa/cal-02-onboarding-lab.
+
+This is the last file — once it's in, all four pieces (shows.json, movies.json, EditorialCard.js, EditorialCard.css) are live together and I'll do a full verification pass on the beta site. Reply "done" when it's committed.
+ One attachment
+  •  Scanned by Gmail
 .editorial-card{position:relative;overflow:hidden;background:rgba(255,253,246,.94);border:1px solid var(--cream);border-radius:18px;box-shadow:0 10px 24px rgba(32,53,58,.11);color:var(--ink);background-image:repeating-linear-gradient(135deg,transparent 0 18px,rgba(31,94,105,.03) 18px 19px,transparent 19px 36px)}
 .editorial-card:after{content:"✦";position:absolute;right:12px;bottom:10px;color:var(--gold);opacity:.45;font-size:1.1rem;pointer-events:none}
 .editorial-banner{display:flex;align-items:center;justify-content:center;gap:.7rem;min-height:58px;padding:.55rem 1rem;font-family:'Bebas Neue',Impact,sans-serif;font-size:1.35rem;letter-spacing:.12em;color:var(--paper);background:var(--teal);border-bottom:3px solid var(--gold)}
@@ -35,3 +60,18 @@
 .editorial-card--compact .editorial-art-title{display:none;}
 .editorial-card--compact .editorial-art-icon{left:10%;right:10%;top:12%;width:80%;height:72%;}
 .editorial-card--compact .editorial-art{padding:.75rem;}
+
+/* Per-title poster artwork: when a card has real poster art (item.poster set), the JS layer applies
+   the photo plus a legibility scrim as an inline background on .editorial-art and adds this class.
+   Disable the decorative texture overlay so it doesn't compete with the photo. */
+.editorial-art--poster:before{display:none;}
+.editorial-art--poster:after{border-color:rgba(246,240,223,.35);}
+
+/* Hero card: reposition the title to the top of the art panel (over the darkest part of the gradient/photo)
+   and switch to a serif treatment, matching the legible hero card on production. Footer stays pinned to
+   the bottom via margin-top:auto now that the title no longer anchors the flex column's end. */
+.editorial-card--hero .editorial-art{justify-content:flex-start;}
+.editorial-card--hero .editorial-art-title{font-family:'Playfair Display',Georgia,'Times New Roman',serif;font-weight:700;text-transform:none;letter-spacing:normal;font-size:clamp(1.8rem,3vw,3rem);line-height:1.05;text-shadow:0 2px 10px rgba(0,0,0,.45);}
+.editorial-card--hero .editorial-art-footer{margin-top:auto;padding-top:.75rem;}
+EditorialCard.css
+Displaying EditorialCard.css.
