@@ -1,28 +1,4 @@
 
-
-Skip to content
-Using Gmail with screen readers
-1 of 4
-Media Minder: EditorialCard.css (hero title + poster styling) — file 4 of 4
-Inbox
-Summarize this email
-
-Simon Johnson
-Attachments
-9:28 PM (0 minutes ago)
-to me
-
-Attached: EditorialCard.css, the last of the four files for the poster-art rollout.
-
-What changed on top of the existing file:
-- Poster cards: disables the decorative texture pattern behind real photo art so it doesn't fight the image (.editorial-art--poster rules).
-- Hero card: title moves from the bottom of the art panel to the top, sitting over the darkest part of the gradient/photo — same positioning as the legible hero card you pointed to on production. Font switches from the all-caps Bebas Neue to Playfair Display serif. The "MEDIA MINDER" footer text is repinned to the bottom of the panel so it doesn't get stranded next to the title.
-
-Everything else in the file is untouched. Same process: open src/components/recommendation/EditorialCard.css in the GitHub web editor, select all, delete, paste in the attached file, commit to qa/cal-02-onboarding-lab.
-
-This is the last file — once it's in, all four pieces (shows.json, movies.json, EditorialCard.js, EditorialCard.css) are live together and I'll do a full verification pass on the beta site. Reply "done" when it's committed.
- One attachment
-  •  Scanned by Gmail
 .editorial-card{position:relative;overflow:hidden;background:rgba(255,253,246,.94);border:1px solid var(--cream);border-radius:18px;box-shadow:0 10px 24px rgba(32,53,58,.11);color:var(--ink);background-image:repeating-linear-gradient(135deg,transparent 0 18px,rgba(31,94,105,.03) 18px 19px,transparent 19px 36px)}
 .editorial-card:after{content:"✦";position:absolute;right:12px;bottom:10px;color:var(--gold);opacity:.45;font-size:1.1rem;pointer-events:none}
 .editorial-banner{display:flex;align-items:center;justify-content:center;gap:.7rem;min-height:58px;padding:.55rem 1rem;font-family:'Bebas Neue',Impact,sans-serif;font-size:1.35rem;letter-spacing:.12em;color:var(--paper);background:var(--teal);border-bottom:3px solid var(--gold)}
