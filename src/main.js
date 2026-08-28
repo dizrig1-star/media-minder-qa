@@ -1,8 +1,9 @@
 import {appState,hydrateLocalState} from "./app/state.js";
 import {currentRoute,startRouter,navigate} from "./app/router.js";
 import {loadData} from "./services/dataService.js";
-import {recommendations,mmChoice} from "./services/recommendationService.js";
+import {recommendations,mmChoice,pickWildcard} from "./services/recommendationService.js";
 import {buildProfileFromInitialWatches} from "./services/onboardingService.js";
+import {isUnlocked,unlock,renderGate} from "./app/accessGate.js";
 import {Header} from "./components/layout/Header.js";
 import {Navigation} from "./components/navigation/Navigation.js";
 import {Footer} from "./components/layout/Footer.js";
@@ -27,8 +28,9 @@ function render(route){
  const data=[...state.shows,...state.movies];
  const recs=recommendations(data,state.profile,8);
  const choice=mmChoice(data,state.profile);
+ const wildcard=pickWildcard(data,state.profile);
  const Page=pages[route==="landing"?"Landing":route[0].toUpperCase()+route.slice(1)];
- document.getElementById("app").innerHTML=`<div class="app-shell"><aside class="sidebar">${Header()}${Navigation(route)}</aside><div class="content-column"><main class="app-main">${Page(state,choice,recs)}</main>${Footer()}</div></div>`;
+ document.getElementById("app").innerHTML=`<div class="app-shell"><aside class="sidebar">${Header()}${Navigation(route)}</aside><div class="content-column"><main class="app-main">${Page(state,choice,recs,wildcard)}</main>${Footer()}</div></div>`;
  bind();
 }
 
@@ -44,6 +46,25 @@ function bind(){
      if(item) openDetail(item,state.platforms.find(p=>p.id===item.platform)?.name||item.platform);
    };
  });
+
+ document.querySelectorAll("[data-watched]").forEach(el=>el.onclick=()=>appState.toggleWatched(el.dataset.watched));
+ document.querySelectorAll("[data-skip]").forEach(el=>el.onclick=()=>appState.toggleNotInterested(el.dataset.skip));
+ document.querySelectorAll("[data-mood]").forEach(el=>el.onclick=()=>appState.set({movieMood: el.dataset.mood || null}));
+
+ document.querySelectorAll("[data-franchise-toggle]").forEach(el=>el.onclick=()=>appState.toggleFranchiseFavorite(el.dataset.franchiseToggle));
+ const franchiseSearch=document.getElementById("franchise-search");
+ if(franchiseSearch) franchiseSearch.oninput=()=>{
+   const needle=franchiseSearch.value.trim().toLowerCase();
+   document.querySelectorAll("[data-franchise-row]").forEach(row=>{
+     row.hidden=!!needle && !row.dataset.franchiseText.includes(needle);
+   });
+ };
+
+ document.querySelectorAll("[data-genre-toggle]").forEach(el=>el.onclick=()=>appState.toggleFavoriteGenre(el.dataset.genreToggle));
+ document.querySelectorAll("[data-platform-toggle]").forEach(el=>el.onclick=()=>appState.toggleFavoritePlatform(el.dataset.platformToggle));
+
+ document.querySelectorAll("[data-reviews-sort]").forEach(el=>el.onclick=()=>appState.set({reviewsSort: el.dataset.reviewsSort}));
+
  const onboardingSearch=document.getElementById("onboarding-search");
  if(onboardingSearch) onboardingSearch.oninput=()=>{
    const needle=onboardingSearch.value.trim().toLowerCase();
@@ -76,6 +97,7 @@ function bind(){
    const profile=buildProfileFromInitialWatches(state.profile,items,ratings);
    appState.completeOnboarding(selected,ratings,profile);
  };
+
  const search=document.getElementById("search-submit");
  if(search) search.onclick=()=>{
    const input=document.getElementById("search-input");
@@ -98,5 +120,13 @@ async function init(){
    console.error(error);
  }
 }
-appState.subscribe(()=>render(currentRoute()));
-init();
+if(isUnlocked()){
+ appState.subscribe(()=>render(currentRoute()));
+ init();
+}else{
+ renderGate(()=>{
+   unlock();
+   appState.subscribe(()=>render(currentRoute()));
+   init();
+ });
+}
