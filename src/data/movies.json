@@ -1,25 +1,3 @@
-You have one new message.
-
-Skip to content
-Using Gmail with screen readers
-1 of 5
-Media Minder: movies.json (with poster art) — file 2 of 4
-Inbox
-
-Simon Johnson
-Attachments
-9:05 PM (1 minute ago)
-to me
-
-Attached: movies.json, updated with a verified JustWatch poster URL for each of the 3 movies (Sinners, The Thomas Crown Affair, The Pelican Brief).
-
-Same process as before: open src/data/movies.json in the GitHub web editor, select all, delete, paste in the attached file's contents, commit to qa/cal-02-onboarding-lab.
-
-Reply "done" and I'll send the EditorialCard.js update next (this is the shared component that actually renders the poster art on the cards).
- One attachment
-  •  Scanned by Gmail
-
-
 
 [
   {
@@ -76,5 +54,4 @@ Reply "done" and I'll send the EditorialCard.js update next (this is the shared 
     "why": "Political suspense, a smart protagonist, and exactly the kind of mystery that rewards attention."
   }
 ]
-movies.json
-Displaying movies.json.
+
