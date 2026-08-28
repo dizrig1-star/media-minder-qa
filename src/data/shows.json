@@ -1,21 +1,1465 @@
-
 [
   {
-    "id":"slow-horses-s6","poster":"https://images.justwatch.com/poster/349367328/s718/season-6.jpg","title":"Slow Horses","type":"series","platform":"apple","genre":["Mystery","Crime Thriller"],"mmSelect":"Gold","status":"returning","season":6,"episodes":6,"runtime":50,"cast":["Gary Oldman","Jack Lowden","Kristin Scott Thomas"],"franchises":[],"premiere":"2026-09-16","episodeTime":"12:00 AM","episodeTitle":"Season Premiere","summary":"The Slough House team returns for another darkly funny espionage case.","why":"One of the cleanest matches for your mystery and thriller tastes, with a strong ensemble and dry wit.","releasePattern":"weekly","episodeDrops":[{"episode":1,"title":"Season Premiere","date":"2026-09-16","time":"12:00 AM"},{"episode":2,"title":"Episode 2","date":"2026-09-23","time":"12:00 AM"},{"episode":3,"title":"Episode 3","date":"2026-09-30","time":"12:00 AM"},{"episode":4,"title":"Episode 4","date":"2026-10-07","time":"12:00 AM"},{"episode":5,"title":"Episode 5","date":"2026-10-14","time":"12:00 AM"},{"episode":6,"title":"Episode 6","date":"2026-10-21","time":"12:00 AM"}]
+    "id": "slow-horses-s6",
+    "poster": "https://images.justwatch.com/poster/349367328/s718/season-6.jpg",
+    "title": "Slow Horses",
+    "type": "series",
+    "platform": "apple",
+    "genre": [
+      "Mystery",
+      "Crime Thriller"
+    ],
+    "mmSelect": "Gold",
+    "status": "returning",
+    "season": 6,
+    "episodes": 6,
+    "runtime": 50,
+    "cast": [
+      "Gary Oldman",
+      "Jack Lowden",
+      "Kristin Scott Thomas"
+    ],
+    "franchises": [],
+    "premiere": "2026-09-16",
+    "episodeTime": "12:00 AM",
+    "episodeTitle": "Season Premiere",
+    "summary": "The Slough House team returns for another darkly funny espionage case.",
+    "why": "One of the cleanest matches for your mystery and thriller tastes, with a strong ensemble and dry wit.",
+    "releasePattern": "weekly",
+    "episodeDrops": [
+      {
+        "episode": 1,
+        "title": "Season Premiere",
+        "date": "2026-09-16",
+        "time": "12:00 AM"
+      },
+      {
+        "episode": 2,
+        "title": "Episode 2",
+        "date": "2026-09-23",
+        "time": "12:00 AM"
+      },
+      {
+        "episode": 3,
+        "title": "Episode 3",
+        "date": "2026-09-30",
+        "time": "12:00 AM"
+      },
+      {
+        "episode": 4,
+        "title": "Episode 4",
+        "date": "2026-10-07",
+        "time": "12:00 AM"
+      },
+      {
+        "episode": 5,
+        "title": "Episode 5",
+        "date": "2026-10-14",
+        "time": "12:00 AM"
+      },
+      {
+        "episode": 6,
+        "title": "Episode 6",
+        "date": "2026-10-21",
+        "time": "12:00 AM"
+      }
+    ]
   },
   {
-    "id":"graveyard-s3","poster":"https://images.justwatch.com/poster/307608705/s718/season-3.jpg","title":"Graveyard","type":"series","platform":"netflix","genre":["Crime Thriller","Mystery"],"mmSelect":"Gold","status":"returning","season":3,"episodes":8,"runtime":50,"cast":[],"franchises":[],"premiere":"2026-08-28","episodeTime":"3:00 AM","episodeTitle":"Season 3","summary":"A returning crime drama centered on a determined investigative team.","why":"A less obvious choice that fits the darker investigative side of your taste.","releasePattern":"all episodes","episodeDrops":[{"episode":1,"title":"Season Premiere","date":"2026-08-28","time":"3:00 AM"},{"episode":2,"title":"Episode 2","date":"2026-09-04","time":"3:00 AM"},{"episode":3,"title":"Episode 3","date":"2026-09-11","time":"3:00 AM"},{"episode":4,"title":"Episode 4","date":"2026-09-18","time":"3:00 AM"},{"episode":5,"title":"Episode 5","date":"2026-09-25","time":"3:00 AM"},{"episode":6,"title":"Episode 6","date":"2026-10-02","time":"3:00 AM"},{"episode":7,"title":"Episode 7","date":"2026-10-09","time":"3:00 AM"},{"episode":8,"title":"Episode 8","date":"2026-10-16","time":"3:00 AM"}]
+    "id": "graveyard-s3",
+    "poster": "https://images.justwatch.com/poster/307608705/s718/season-3.jpg",
+    "title": "Graveyard",
+    "type": "series",
+    "platform": "netflix",
+    "genre": [
+      "Crime Thriller",
+      "Mystery"
+    ],
+    "mmSelect": "Gold",
+    "status": "returning",
+    "season": 3,
+    "episodes": 8,
+    "runtime": 50,
+    "cast": [],
+    "franchises": [],
+    "premiere": "2026-08-28",
+    "episodeTime": "3:00 AM",
+    "episodeTitle": "Season 3",
+    "summary": "A returning crime drama centered on a determined investigative team.",
+    "why": "A less obvious choice that fits the darker investigative side of your taste.",
+    "releasePattern": "all episodes",
+    "episodeDrops": [
+      {
+        "episode": 1,
+        "title": "Season Premiere",
+        "date": "2026-08-28",
+        "time": "3:00 AM"
+      },
+      {
+        "episode": 2,
+        "title": "Episode 2",
+        "date": "2026-09-04",
+        "time": "3:00 AM"
+      },
+      {
+        "episode": 3,
+        "title": "Episode 3",
+        "date": "2026-09-11",
+        "time": "3:00 AM"
+      },
+      {
+        "episode": 4,
+        "title": "Episode 4",
+        "date": "2026-09-18",
+        "time": "3:00 AM"
+      },
+      {
+        "episode": 5,
+        "title": "Episode 5",
+        "date": "2026-09-25",
+        "time": "3:00 AM"
+      },
+      {
+        "episode": 6,
+        "title": "Episode 6",
+        "date": "2026-10-02",
+        "time": "3:00 AM"
+      },
+      {
+        "episode": 7,
+        "title": "Episode 7",
+        "date": "2026-10-09",
+        "time": "3:00 AM"
+      },
+      {
+        "episode": 8,
+        "title": "Episode 8",
+        "date": "2026-10-16",
+        "time": "3:00 AM"
+      }
+    ]
   },
   {
-    "id":"project-runway-s22","poster":"https://images.justwatch.com/poster/335023297/s718/season-22.jpg","title":"Project Runway","type":"series","platform":"disney","genre":["Reality Competition"],"status":"returning","season":22,"episodes":15,"runtime":60,"cast":["Heidi Klum","Nina Garcia","Law Roach"],"franchises":[],"premiere":"2026-08-16","episodeTime":"10:00 PM","episodeTitle":"Season 22","summary":"Project Runway returns with Heidi Klum, Nina Garcia and Law Roach.","why":"A deliberate wildcard: outside your usual mystery lane, but useful when you want something lighter and visually driven.","releasePattern":"weekly","episodeDrops":[{"episode":1,"title":"Season Premiere","date":"2026-08-16","time":"10:00 PM"},{"episode":2,"title":"Episode 2","date":"2026-08-23","time":"10:00 PM"},{"episode":3,"title":"Episode 3","date":"2026-08-30","time":"10:00 PM"},{"episode":4,"title":"Episode 4","date":"2026-09-06","time":"10:00 PM"},{"episode":5,"title":"Episode 5","date":"2026-09-13","time":"10:00 PM"},{"episode":6,"title":"Episode 6","date":"2026-09-20","time":"10:00 PM"},{"episode":7,"title":"Episode 7","date":"2026-09-27","time":"10:00 PM"},{"episode":8,"title":"Episode 8","date":"2026-10-04","time":"10:00 PM"},{"episode":9,"title":"Episode 9","date":"2026-10-11","time":"10:00 PM"},{"episode":10,"title":"Episode 10","date":"2026-10-18","time":"10:00 PM"},{"episode":11,"title":"Episode 11","date":"2026-10-25","time":"10:00 PM"},{"episode":12,"title":"Episode 12","date":"2026-11-01","time":"10:00 PM"},{"episode":13,"title":"Episode 13","date":"2026-11-08","time":"10:00 PM"},{"episode":14,"title":"Episode 14","date":"2026-11-15","time":"10:00 PM"},{"episode":15,"title":"Episode 15","date":"2026-11-22","time":"10:00 PM"}]
+    "id": "project-runway-s22",
+    "poster": "https://images.justwatch.com/poster/335023297/s718/season-22.jpg",
+    "title": "Project Runway",
+    "type": "series",
+    "platform": "disney",
+    "genre": [
+      "Reality Competition"
+    ],
+    "status": "returning",
+    "season": 22,
+    "episodes": 15,
+    "runtime": 60,
+    "cast": [
+      "Heidi Klum",
+      "Nina Garcia",
+      "Law Roach"
+    ],
+    "franchises": [],
+    "premiere": "2026-08-16",
+    "episodeTime": "10:00 PM",
+    "episodeTitle": "Season 22",
+    "summary": "Project Runway returns with Heidi Klum, Nina Garcia and Law Roach.",
+    "why": "A deliberate wildcard: outside your usual mystery lane, but useful when you want something lighter and visually driven.",
+    "releasePattern": "weekly",
+    "episodeDrops": [
+      {
+        "episode": 1,
+        "title": "Season Premiere",
+        "date": "2026-08-16",
+        "time": "10:00 PM"
+      },
+      {
+        "episode": 2,
+        "title": "Episode 2",
+        "date": "2026-08-23",
+        "time": "10:00 PM"
+      },
+      {
+        "episode": 3,
+        "title": "Episode 3",
+        "date": "2026-08-30",
+        "time": "10:00 PM"
+      },
+      {
+        "episode": 4,
+        "title": "Episode 4",
+        "date": "2026-09-06",
+        "time": "10:00 PM"
+      },
+      {
+        "episode": 5,
+        "title": "Episode 5",
+        "date": "2026-09-13",
+        "time": "10:00 PM"
+      },
+      {
+        "episode": 6,
+        "title": "Episode 6",
+        "date": "2026-09-20",
+        "time": "10:00 PM"
+      },
+      {
+        "episode": 7,
+        "title": "Episode 7",
+        "date": "2026-09-27",
+        "time": "10:00 PM"
+      },
+      {
+        "episode": 8,
+        "title": "Episode 8",
+        "date": "2026-10-04",
+        "time": "10:00 PM"
+      },
+      {
+        "episode": 9,
+        "title": "Episode 9",
+        "date": "2026-10-11",
+        "time": "10:00 PM"
+      },
+      {
+        "episode": 10,
+        "title": "Episode 10",
+        "date": "2026-10-18",
+        "time": "10:00 PM"
+      },
+      {
+        "episode": 11,
+        "title": "Episode 11",
+        "date": "2026-10-25",
+        "time": "10:00 PM"
+      },
+      {
+        "episode": 12,
+        "title": "Episode 12",
+        "date": "2026-11-01",
+        "time": "10:00 PM"
+      },
+      {
+        "episode": 13,
+        "title": "Episode 13",
+        "date": "2026-11-08",
+        "time": "10:00 PM"
+      },
+      {
+        "episode": 14,
+        "title": "Episode 14",
+        "date": "2026-11-15",
+        "time": "10:00 PM"
+      },
+      {
+        "episode": 15,
+        "title": "Episode 15",
+        "date": "2026-11-22",
+        "time": "10:00 PM"
+      }
+    ]
   },
   {
-    "id":"the-shards","poster":"https://images.justwatch.com/poster/347382936/s718/season-1.jpg","title":"The Shards","type":"series","platform":"hulu","genre":["Mystery","Crime Thriller"],"mmSelect":"Silver","status":"returning","season":1,"episodes":9,"runtime":50,"cast":["Kaia Gerber","Igby Rigney","Homer Gere"],"franchises":[],"premiere":"2026-08-05","episodeTime":"9:00 PM","episodeTitle":"Pilot","summary":"A group of privileged high school seniors navigate obsession, danger and a serial killer in 1980s Los Angeles.","why":"A mystery-leaning option with a strong thriller hook.","releasePattern":"weekly after two-episode premiere","episodeDrops":[{"episode":1,"title":"Pilot","date":"2026-08-05","time":"9:00 PM"},{"episode":2,"title":"Don't You Want Me","date":"2026-08-05","time":"9:00 PM"},{"episode":3,"title":"Help Me! Rhonda!","date":"2026-08-12","time":"9:00 PM"},{"episode":4,"title":"Robert's Party","date":"2026-08-12","time":"9:00 PM"},{"episode":5,"title":"Murder on the Dancefloor","date":"2026-08-19","time":"9:00 PM"},{"episode":6,"title":"Homecoming Part One","date":"2026-08-26","time":"9:00 PM"},{"episode":7,"title":"Episode 7","date":"2026-09-02","time":"9:00 PM"},{"episode":8,"title":"Episode 8","date":"2026-09-09","time":"9:00 PM"},{"episode":9,"title":"Episode 9","date":"2026-09-09","time":"9:00 PM"}],"currentEpisode":4,"nextEpisode":5
+    "id": "the-shards",
+    "poster": "https://images.justwatch.com/poster/347382936/s718/season-1.jpg",
+    "title": "The Shards",
+    "type": "series",
+    "platform": "hulu",
+    "genre": [
+      "Mystery",
+      "Crime Thriller"
+    ],
+    "mmSelect": "Silver",
+    "status": "returning",
+    "season": 1,
+    "episodes": 9,
+    "runtime": 50,
+    "cast": [
+      "Kaia Gerber",
+      "Igby Rigney",
+      "Homer Gere"
+    ],
+    "franchises": [],
+    "premiere": "2026-08-05",
+    "episodeTime": "9:00 PM",
+    "episodeTitle": "Pilot",
+    "summary": "A group of privileged high school seniors navigate obsession, danger and a serial killer in 1980s Los Angeles.",
+    "why": "A mystery-leaning option with a strong thriller hook.",
+    "releasePattern": "weekly after two-episode premiere",
+    "episodeDrops": [
+      {
+        "episode": 1,
+        "title": "Pilot",
+        "date": "2026-08-05",
+        "time": "9:00 PM"
+      },
+      {
+        "episode": 2,
+        "title": "Don't You Want Me",
+        "date": "2026-08-05",
+        "time": "9:00 PM"
+      },
+      {
+        "episode": 3,
+        "title": "Help Me! Rhonda!",
+        "date": "2026-08-12",
+        "time": "9:00 PM"
+      },
+      {
+        "episode": 4,
+        "title": "Robert's Party",
+        "date": "2026-08-12",
+        "time": "9:00 PM"
+      },
+      {
+        "episode": 5,
+        "title": "Murder on the Dancefloor",
+        "date": "2026-08-19",
+        "time": "9:00 PM"
+      },
+      {
+        "episode": 6,
+        "title": "Homecoming Part One",
+        "date": "2026-08-26",
+        "time": "9:00 PM"
+      },
+      {
+        "episode": 7,
+        "title": "Episode 7",
+        "date": "2026-09-02",
+        "time": "9:00 PM"
+      },
+      {
+        "episode": 8,
+        "title": "Episode 8",
+        "date": "2026-09-09",
+        "time": "9:00 PM"
+      },
+      {
+        "episode": 9,
+        "title": "Episode 9",
+        "date": "2026-09-09",
+        "time": "9:00 PM"
+      }
+    ],
+    "currentEpisode": 4,
+    "nextEpisode": 5
   },
   {
-    "id":"lioness-s3","poster":"https://images.justwatch.com/poster/335840135/s718/season-2.jpg","title":"Lioness","type":"series","platform":"paramount","genre":["Espionage Thriller","Action Drama"],"mmSelect":"Gold","status":"returning","season":3,"episodes":8,"runtime":50,"cast":["Zoe Saldaña","Nicole Kidman","Morgan Freeman","Michael Kelly"],"franchises":[],"premiere":"2026-08-02","episodeTime":"9:00 PM","episodeTitle":"Season 3","summary":"Joe, Kaitlyn and Cruz return for another dangerous undercover mission.","why":"A strong espionage/action match for viewers who respond to high-stakes thriller storytelling.","releasePattern":"weekly","episodeDrops":[{"episode":1,"title":"Season Premiere","date":"2026-08-02","time":"9:00 PM"},{"episode":2,"title":"Episode 2","date":"2026-08-09","time":"9:00 PM"},{"episode":3,"title":"Episode 3","date":"2026-08-16","time":"9:00 PM"},{"episode":4,"title":"Episode 4","date":"2026-08-23","time":"9:00 PM"},{"episode":5,"title":"Episode 5","date":"2026-08-30","time":"9:00 PM"},{"episode":6,"title":"Episode 6","date":"2026-09-06","time":"9:00 PM"},{"episode":7,"title":"Episode 7","date":"2026-09-13","time":"9:00 PM"},{"episode":8,"title":"Episode 8","date":"2026-09-20","time":"9:00 PM"}]
+    "id": "lioness-s3",
+    "poster": "https://images.justwatch.com/poster/335840135/s718/season-2.jpg",
+    "title": "Lioness",
+    "type": "series",
+    "platform": "paramount",
+    "genre": [
+      "Espionage Thriller",
+      "Action Drama"
+    ],
+    "mmSelect": "Gold",
+    "status": "returning",
+    "season": 3,
+    "episodes": 8,
+    "runtime": 50,
+    "cast": [
+      "Zoe Saldaña",
+      "Nicole Kidman",
+      "Morgan Freeman",
+      "Michael Kelly"
+    ],
+    "franchises": [],
+    "premiere": "2026-08-02",
+    "episodeTime": "9:00 PM",
+    "episodeTitle": "Season 3",
+    "summary": "Joe, Kaitlyn and Cruz return for another dangerous undercover mission.",
+    "why": "A strong espionage/action match for viewers who respond to high-stakes thriller storytelling.",
+    "releasePattern": "weekly",
+    "episodeDrops": [
+      {
+        "episode": 1,
+        "title": "Season Premiere",
+        "date": "2026-08-02",
+        "time": "9:00 PM"
+      },
+      {
+        "episode": 2,
+        "title": "Episode 2",
+        "date": "2026-08-09",
+        "time": "9:00 PM"
+      },
+      {
+        "episode": 3,
+        "title": "Episode 3",
+        "date": "2026-08-16",
+        "time": "9:00 PM"
+      },
+      {
+        "episode": 4,
+        "title": "Episode 4",
+        "date": "2026-08-23",
+        "time": "9:00 PM"
+      },
+      {
+        "episode": 5,
+        "title": "Episode 5",
+        "date": "2026-08-30",
+        "time": "9:00 PM"
+      },
+      {
+        "episode": 6,
+        "title": "Episode 6",
+        "date": "2026-09-06",
+        "time": "9:00 PM"
+      },
+      {
+        "episode": 7,
+        "title": "Episode 7",
+        "date": "2026-09-13",
+        "time": "9:00 PM"
+      },
+      {
+        "episode": 8,
+        "title": "Episode 8",
+        "date": "2026-09-20",
+        "time": "9:00 PM"
+      }
+    ]
   },
   {
-    "id":"reacher-s4","poster":"https://images.justwatch.com/poster/348774470/s718/season-4.jpg","title":"Reacher","type":"series","platform":"prime","genre":["Action","Drama","Suspense"],"mmSelect":"Gold","status":"returning","season":4,"episodes":8,"runtime":55,"cast":["Alan Ritchson","Sydelle Noel","Agnez Mo"],"franchises":["Reacher"],"premiere":"2026-08-12","episodeTime":"12:00 AM","episodeTitle":"Season 4","summary":"Jack Reacher is pulled into a deadly mystery after a chance encounter on a Philadelphia subway.","why":"A high-confidence action/thriller signal for viewers who enjoy muscular investigative suspense.","releasePattern":"weekly after three-episode premiere","episodeDrops":[{"episode":1,"title":"Season Premiere","date":"2026-08-12","time":"12:00 AM"},{"episode":2,"title":"Episode 2","date":"2026-08-12","time":"12:00 AM"},{"episode":3,"title":"Episode 3","date":"2026-08-12","time":"12:00 AM"},{"episode":4,"title":"Episode 4","date":"2026-08-19","time":"12:00 AM"},{"episode":5,"title":"Episode 5","date":"2026-08-26","time":"12:00 AM"},{"episode":6,"title":"Episode 6","date":"2026-09-02","time":"12:00 AM"},{"episode":7,"title":"Episode 7","date":"2026-09-09","time":"12:00 AM"},{"episode":8,"title":"Episode 8","date":"2026-09-16","time":"12:00 AM"}]
+    "id": "reacher-s4",
+    "poster": "https://images.justwatch.com/poster/348774470/s718/season-4.jpg",
+    "title": "Reacher",
+    "type": "series",
+    "platform": "prime",
+    "genre": [
+      "Action",
+      "Drama",
+      "Suspense"
+    ],
+    "mmSelect": "Gold",
+    "status": "returning",
+    "season": 4,
+    "episodes": 8,
+    "runtime": 55,
+    "cast": [
+      "Alan Ritchson",
+      "Sydelle Noel",
+      "Agnez Mo"
+    ],
+    "franchises": [
+      "Reacher"
+    ],
+    "premiere": "2026-08-12",
+    "episodeTime": "12:00 AM",
+    "episodeTitle": "Season 4",
+    "summary": "Jack Reacher is pulled into a deadly mystery after a chance encounter on a Philadelphia subway.",
+    "why": "A high-confidence action/thriller signal for viewers who enjoy muscular investigative suspense.",
+    "releasePattern": "weekly after three-episode premiere",
+    "episodeDrops": [
+      {
+        "episode": 1,
+        "title": "Season Premiere",
+        "date": "2026-08-12",
+        "time": "12:00 AM"
+      },
+      {
+        "episode": 2,
+        "title": "Episode 2",
+        "date": "2026-08-12",
+        "time": "12:00 AM"
+      },
+      {
+        "episode": 3,
+        "title": "Episode 3",
+        "date": "2026-08-12",
+        "time": "12:00 AM"
+      },
+      {
+        "episode": 4,
+        "title": "Episode 4",
+        "date": "2026-08-19",
+        "time": "12:00 AM"
+      },
+      {
+        "episode": 5,
+        "title": "Episode 5",
+        "date": "2026-08-26",
+        "time": "12:00 AM"
+      },
+      {
+        "episode": 6,
+        "title": "Episode 6",
+        "date": "2026-09-02",
+        "time": "12:00 AM"
+      },
+      {
+        "episode": 7,
+        "title": "Episode 7",
+        "date": "2026-09-09",
+        "time": "12:00 AM"
+      },
+      {
+        "episode": 8,
+        "title": "Episode 8",
+        "date": "2026-09-16",
+        "time": "12:00 AM"
+      }
+    ]
+  },
+  {
+    "id": "resolve-to-solve",
+    "title": "Resolve to Solve with Miles O'Brien",
+    "type": "series",
+    "platform": "pbs",
+    "link": "https://www.pbs.org/show/resolve-to-solve/",
+    "genre": [
+      "Documentary",
+      "Science"
+    ],
+    "mmSelect": "Silver",
+    "status": "new",
+    "season": 1,
+    "episodes": 6,
+    "runtime": 30,
+    "cast": [
+      "Miles O'Brien"
+    ],
+    "franchises": [],
+    "premiere": "2026-08-19",
+    "episodeTime": "8:00 PM",
+    "episodeTitle": "Series Premiere",
+    "summary": "A new PBS docuseries following veteran science journalist Miles O'Brien as he investigates real solutions to pressing scientific and environmental challenges.",
+    "why": "A grounded, optimistic change of pace if you want something that isn't a thriller for once -- and it premieres tonight.",
+    "releasePattern": "weekly",
+    "episodeDrops": [
+      {
+        "episode": 1,
+        "title": "Season Premiere",
+        "date": "2026-08-19",
+        "time": "8:00 PM"
+      },
+      {
+        "episode": 2,
+        "title": "Episode 2",
+        "date": "2026-08-26",
+        "time": "8:00 PM"
+      },
+      {
+        "episode": 3,
+        "title": "Episode 3",
+        "date": "2026-09-02",
+        "time": "8:00 PM"
+      },
+      {
+        "episode": 4,
+        "title": "Episode 4",
+        "date": "2026-09-09",
+        "time": "8:00 PM"
+      },
+      {
+        "episode": 5,
+        "title": "Episode 5",
+        "date": "2026-09-16",
+        "time": "8:00 PM"
+      },
+      {
+        "episode": 6,
+        "title": "Episode 6",
+        "date": "2026-09-23",
+        "time": "8:00 PM"
+      }
+    ],
+    "seasonPremiereDate": "2026-08-19",
+    "currentEpisode": 0,
+    "nextEpisode": 1,
+    "poster": "https://image.pbs.org/contentchannels/cZyhOWG-background-ZZvHD1b.jpg?focalcrop=1200x630x50x10&format=auto"
+  },
+  {
+    "id": "the-varnell-hill-show",
+    "title": "The Varnell Hill Show",
+    "type": "series",
+    "platform": "paramount",
+    "link": "https://www.paramountplus.com/",
+    "genre": [
+      "Comedy"
+    ],
+    "mmSelect": "Silver",
+    "status": "new",
+    "season": 1,
+    "episodes": 8,
+    "runtime": 30,
+    "cast": [
+      "Tommy Davidson"
+    ],
+    "franchises": [],
+    "premiere": "2026-09-01",
+    "episodeTime": "9:00 PM",
+    "episodeTitle": "Series Premiere",
+    "summary": "Tommy Davidson reprises his beloved Martin-verse character in a new sketch-and-sitcom hybrid comedy, executive produced by Martin Lawrence.",
+    "why": "A nostalgia-driven laugh if the mystery lineup has gotten heavy -- good company for a lighter night in.",
+    "releasePattern": "weekly",
+    "episodeDrops": [
+      {
+        "episode": 1,
+        "title": "Season Premiere",
+        "date": "2026-09-01",
+        "time": "9:00 PM"
+      },
+      {
+        "episode": 2,
+        "title": "Episode 2",
+        "date": "2026-09-08",
+        "time": "9:00 PM"
+      },
+      {
+        "episode": 3,
+        "title": "Episode 3",
+        "date": "2026-09-15",
+        "time": "9:00 PM"
+      },
+      {
+        "episode": 4,
+        "title": "Episode 4",
+        "date": "2026-09-22",
+        "time": "9:00 PM"
+      },
+      {
+        "episode": 5,
+        "title": "Episode 5",
+        "date": "2026-09-29",
+        "time": "9:00 PM"
+      },
+      {
+        "episode": 6,
+        "title": "Episode 6",
+        "date": "2026-10-06",
+        "time": "9:00 PM"
+      },
+      {
+        "episode": 7,
+        "title": "Episode 7",
+        "date": "2026-10-13",
+        "time": "9:00 PM"
+      },
+      {
+        "episode": 8,
+        "title": "Episode 8",
+        "date": "2026-10-20",
+        "time": "9:00 PM"
+      }
+    ],
+    "seasonPremiereDate": "2026-09-01",
+    "currentEpisode": 0,
+    "nextEpisode": 1,
+    "poster": "https://images.justwatch.com/poster/348014702/s718/the-varnell-hill-show.jpg"
+  },
+  {
+    "id": "undeclared-war-s2",
+    "title": "The Undeclared War",
+    "type": "series",
+    "platform": "peacock",
+    "link": "https://www.peacocktv.com/",
+    "genre": [
+      "Thriller",
+      "Drama"
+    ],
+    "mmSelect": "Silver",
+    "status": "returning",
+    "season": 2,
+    "episodes": 6,
+    "runtime": 50,
+    "cast": [],
+    "franchises": [],
+    "premiere": "2026-08-27",
+    "episodeTime": "3:00 AM",
+    "episodeTitle": "Season 2",
+    "summary": "The British cyberterrorism thriller returns, following a counter-cyberterrorist unit as a new digital threat targets the UK.",
+    "why": "A tense, modern thriller that trades murder mysteries for cyberwarfare -- same tension, different flavor.",
+    "releasePattern": "all episodes",
+    "episodeDrops": [
+      {
+        "episode": 1,
+        "title": "Season Premiere",
+        "date": "2026-08-27",
+        "time": "3:00 AM"
+      },
+      {
+        "episode": 2,
+        "title": "Episode 2",
+        "date": "2026-08-27",
+        "time": "3:00 AM"
+      },
+      {
+        "episode": 3,
+        "title": "Episode 3",
+        "date": "2026-08-27",
+        "time": "3:00 AM"
+      },
+      {
+        "episode": 4,
+        "title": "Episode 4",
+        "date": "2026-08-27",
+        "time": "3:00 AM"
+      },
+      {
+        "episode": 5,
+        "title": "Episode 5",
+        "date": "2026-08-27",
+        "time": "3:00 AM"
+      },
+      {
+        "episode": 6,
+        "title": "Episode 6",
+        "date": "2026-08-27",
+        "time": "3:00 AM"
+      }
+    ],
+    "seasonPremiereDate": "2026-08-27",
+    "currentEpisode": 0,
+    "nextEpisode": 1,
+    "poster": "https://images.justwatch.com/poster/347851762/s718/season-2.jpg"
+  },
+  {
+    "id": "dwts-s35",
+    "title": "Dancing with the Stars",
+    "type": "series",
+    "platform": "abc",
+    "link": "https://abc.com/",
+    "genre": [
+      "Reality Competition"
+    ],
+    "mmSelect": "Silver",
+    "status": "returning",
+    "season": 35,
+    "episodes": 9,
+    "runtime": 90,
+    "cast": [],
+    "franchises": [],
+    "premiere": "2026-09-15",
+    "episodeTime": "8:00 PM",
+    "episodeTitle": "Season Premiere, Night One",
+    "summary": "The ballroom competition returns for Season 35 with a special two-night premiere event.",
+    "why": "A deliberate wildcard: bright, live, and communal in a way the rest of your list isn't.",
+    "releasePattern": "weekly (two-night premiere)",
+    "episodeDrops": [
+      {
+        "episode": 1,
+        "title": "Season Premiere, Night One",
+        "date": "2026-09-15",
+        "time": "8:00 PM"
+      },
+      {
+        "episode": 2,
+        "title": "Season Premiere, Night Two",
+        "date": "2026-09-16",
+        "time": "8:00 PM"
+      },
+      {
+        "episode": 3,
+        "title": "Week 2",
+        "date": "2026-09-22",
+        "time": "8:00 PM"
+      },
+      {
+        "episode": 4,
+        "title": "Week 3",
+        "date": "2026-09-29",
+        "time": "8:00 PM"
+      },
+      {
+        "episode": 5,
+        "title": "Week 4",
+        "date": "2026-10-06",
+        "time": "8:00 PM"
+      },
+      {
+        "episode": 6,
+        "title": "Week 5",
+        "date": "2026-10-13",
+        "time": "8:00 PM"
+      },
+      {
+        "episode": 7,
+        "title": "Week 6",
+        "date": "2026-10-20",
+        "time": "8:00 PM"
+      },
+      {
+        "episode": 8,
+        "title": "Week 7",
+        "date": "2026-10-27",
+        "time": "8:00 PM"
+      },
+      {
+        "episode": 9,
+        "title": "Week 8",
+        "date": "2026-11-03",
+        "time": "8:00 PM"
+      }
+    ],
+    "seasonPremiereDate": "2026-09-15",
+    "currentEpisode": 0,
+    "nextEpisode": 1,
+    "poster": "https://images.justwatch.com/poster/337727587/s718/season-35.jpg"
+  },
+  {
+    "id": "eternally-yours",
+    "title": "Eternally Yours",
+    "type": "series",
+    "platform": "cbs",
+    "link": "https://www.paramountplus.com/",
+    "genre": [
+      "Comedy",
+      "Fantasy"
+    ],
+    "mmSelect": "Silver",
+    "status": "new",
+    "season": 1,
+    "episodes": 13,
+    "runtime": 30,
+    "cast": [],
+    "franchises": [],
+    "premiere": "2026-10-08",
+    "episodeTime": "8:30 PM",
+    "episodeTitle": "Series Premiere",
+    "summary": "A new CBS vampire comedy debuting alongside legal drama Cupertino as part of the network's October premiere week.",
+    "why": "Genuinely different from everything else on your list -- a comedy that happens to be about immortality.",
+    "releasePattern": "weekly",
+    "episodeDrops": [
+      {
+        "episode": 1,
+        "title": "Season Premiere",
+        "date": "2026-10-08",
+        "time": "8:30 PM"
+      },
+      {
+        "episode": 2,
+        "title": "Episode 2",
+        "date": "2026-10-15",
+        "time": "8:30 PM"
+      },
+      {
+        "episode": 3,
+        "title": "Episode 3",
+        "date": "2026-10-22",
+        "time": "8:30 PM"
+      },
+      {
+        "episode": 4,
+        "title": "Episode 4",
+        "date": "2026-10-29",
+        "time": "8:30 PM"
+      },
+      {
+        "episode": 5,
+        "title": "Episode 5",
+        "date": "2026-11-05",
+        "time": "8:30 PM"
+      },
+      {
+        "episode": 6,
+        "title": "Episode 6",
+        "date": "2026-11-12",
+        "time": "8:30 PM"
+      },
+      {
+        "episode": 7,
+        "title": "Episode 7",
+        "date": "2026-11-19",
+        "time": "8:30 PM"
+      },
+      {
+        "episode": 8,
+        "title": "Episode 8",
+        "date": "2026-11-26",
+        "time": "8:30 PM"
+      },
+      {
+        "episode": 9,
+        "title": "Episode 9",
+        "date": "2026-12-03",
+        "time": "8:30 PM"
+      },
+      {
+        "episode": 10,
+        "title": "Episode 10",
+        "date": "2026-12-10",
+        "time": "8:30 PM"
+      },
+      {
+        "episode": 11,
+        "title": "Episode 11",
+        "date": "2026-12-17",
+        "time": "8:30 PM"
+      },
+      {
+        "episode": 12,
+        "title": "Episode 12",
+        "date": "2026-12-24",
+        "time": "8:30 PM"
+      },
+      {
+        "episode": 13,
+        "title": "Episode 13",
+        "date": "2026-12-31",
+        "time": "8:30 PM"
+      }
+    ],
+    "seasonPremiereDate": "2026-10-08",
+    "currentEpisode": 0,
+    "nextEpisode": 1,
+    "poster": "https://images.justwatch.com/poster/344785859/s718/eternally-yours.jpg"
+  },
+  {
+    "id": "traitors-new-blood",
+    "title": "The Traitors: New Blood",
+    "type": "series",
+    "platform": "nbc",
+    "link": "https://www.peacocktv.com/",
+    "genre": [
+      "Reality Competition"
+    ],
+    "mmSelect": "Gold",
+    "status": "new",
+    "season": 1,
+    "episodes": 10,
+    "runtime": 60,
+    "cast": [],
+    "franchises": [],
+    "premiere": "2026-09-17",
+    "episodeTime": "8:00 PM",
+    "episodeTitle": "New Blood, Part One",
+    "summary": "NBC's hit social deduction competition relaunches with an all-new cast in a special two-night premiere event.",
+    "why": "The mystery-solving instinct you already have, aimed at real people instead of a script.",
+    "releasePattern": "weekly (double premiere)",
+    "episodeDrops": [
+      {
+        "episode": 1,
+        "title": "New Blood, Part One",
+        "date": "2026-09-17",
+        "time": "8:00 PM"
+      },
+      {
+        "episode": 2,
+        "title": "New Blood, Part Two",
+        "date": "2026-09-17",
+        "time": "9:00 PM"
+      },
+      {
+        "episode": 3,
+        "title": "New Blood, Part Three",
+        "date": "2026-09-24",
+        "time": "8:00 PM"
+      },
+      {
+        "episode": 4,
+        "title": "New Blood, Part Four",
+        "date": "2026-09-24",
+        "time": "9:00 PM"
+      },
+      {
+        "episode": 5,
+        "title": "Episode 5",
+        "date": "2026-10-08",
+        "time": "9:00 PM"
+      },
+      {
+        "episode": 6,
+        "title": "Episode 6",
+        "date": "2026-10-15",
+        "time": "9:00 PM"
+      },
+      {
+        "episode": 7,
+        "title": "Episode 7",
+        "date": "2026-10-22",
+        "time": "9:00 PM"
+      },
+      {
+        "episode": 8,
+        "title": "Episode 8",
+        "date": "2026-10-29",
+        "time": "9:00 PM"
+      },
+      {
+        "episode": 9,
+        "title": "Episode 9",
+        "date": "2026-11-05",
+        "time": "9:00 PM"
+      },
+      {
+        "episode": 10,
+        "title": "Episode 10",
+        "date": "2026-11-12",
+        "time": "9:00 PM"
+      }
+    ],
+    "seasonPremiereDate": "2026-09-17",
+    "currentEpisode": 0,
+    "nextEpisode": 1,
+    "poster": "https://images.justwatch.com/poster/348314429/s718/season-1.jpg"
+  },
+  {
+    "id": "doc-s3",
+    "title": "Doc",
+    "type": "series",
+    "platform": "fox",
+    "link": "https://www.hulu.com/",
+    "genre": [
+      "Medical Drama",
+      "Drama"
+    ],
+    "mmSelect": "Silver",
+    "status": "returning",
+    "season": 3,
+    "episodes": 8,
+    "runtime": 45,
+    "cast": [
+      "Molly Parker",
+      "Blair Underwood"
+    ],
+    "franchises": [],
+    "premiere": "2026-09-22",
+    "episodeTime": "9:00 PM",
+    "episodeTitle": "Season 3",
+    "summary": "Molly Parker's amnesiac doctor drama returns, with Blair Underwood joining full-time after his Season 2 finale debut.",
+    "why": "A well-reviewed medical drama with a genuine mystery engine -- the patient's own memory.",
+    "releasePattern": "weekly",
+    "episodeDrops": [
+      {
+        "episode": 1,
+        "title": "Season Premiere",
+        "date": "2026-09-22",
+        "time": "9:00 PM"
+      },
+      {
+        "episode": 2,
+        "title": "Episode 2",
+        "date": "2026-09-29",
+        "time": "9:00 PM"
+      },
+      {
+        "episode": 3,
+        "title": "Episode 3",
+        "date": "2026-10-06",
+        "time": "9:00 PM"
+      },
+      {
+        "episode": 4,
+        "title": "Episode 4",
+        "date": "2026-10-13",
+        "time": "9:00 PM"
+      },
+      {
+        "episode": 5,
+        "title": "Episode 5",
+        "date": "2026-10-20",
+        "time": "9:00 PM"
+      },
+      {
+        "episode": 6,
+        "title": "Episode 6",
+        "date": "2026-10-27",
+        "time": "9:00 PM"
+      },
+      {
+        "episode": 7,
+        "title": "Episode 7",
+        "date": "2026-11-03",
+        "time": "9:00 PM"
+      },
+      {
+        "episode": 8,
+        "title": "Episode 8",
+        "date": "2026-11-10",
+        "time": "9:00 PM"
+      }
+    ],
+    "seasonPremiereDate": "2026-09-22",
+    "currentEpisode": 0,
+    "nextEpisode": 1,
+    "poster": "https://images.justwatch.com/poster/348508672/s718/season-3.jpg"
+  },
+  {
+    "id": "last-seen",
+    "title": "Last Seen",
+    "type": "series",
+    "platform": "apple",
+    "link": "https://tv.apple.com/us/show/last-seen/umc.cmc.4pbw9c936a4pigdvsg23u2bsa",
+    "genre": [
+      "Thriller",
+      "Mystery"
+    ],
+    "mmSelect": "Gold",
+    "status": "new",
+    "season": 1,
+    "episodes": 6,
+    "runtime": 50,
+    "cast": [
+      "Patrick Brammall"
+    ],
+    "franchises": [],
+    "premiere": "2026-09-09",
+    "episodeTime": "3:00 AM",
+    "episodeTitle": "Season Premiere",
+    "summary": "An Australian thriller about a police dispatcher who receives a distress call from the daughter who vanished eleven years earlier.",
+    "why": "Squarely in your lane: a missing-persons mystery with a real emotional hook, from the team behind your other Apple pick.",
+    "releasePattern": "weekly (double premiere)",
+    "episodeDrops": [
+      {
+        "episode": 1,
+        "title": "Season Premiere",
+        "date": "2026-09-09",
+        "time": "3:00 AM"
+      },
+      {
+        "episode": 2,
+        "title": "Episode 2",
+        "date": "2026-09-09",
+        "time": "3:00 AM"
+      },
+      {
+        "episode": 3,
+        "title": "Episode 3",
+        "date": "2026-09-16",
+        "time": "3:00 AM"
+      },
+      {
+        "episode": 4,
+        "title": "Episode 4",
+        "date": "2026-09-23",
+        "time": "3:00 AM"
+      },
+      {
+        "episode": 5,
+        "title": "Episode 5",
+        "date": "2026-09-30",
+        "time": "3:00 AM"
+      },
+      {
+        "episode": 6,
+        "title": "Episode 6",
+        "date": "2026-10-07",
+        "time": "3:00 AM"
+      }
+    ],
+    "seasonPremiereDate": "2026-09-09",
+    "currentEpisode": 0,
+    "nextEpisode": 1,
+    "poster": "https://images.justwatch.com/poster/348320106/s718/season-1.jpg"
+  },
+  {
+    "id": "alley-cats",
+    "title": "Ricky Gervais: Alley Cats",
+    "type": "series",
+    "platform": "netflix",
+    "link": "https://www.netflix.com/title/81658840",
+    "genre": [
+      "Animated Comedy",
+      "Comedy"
+    ],
+    "mmSelect": "Silver",
+    "status": "new",
+    "season": 1,
+    "episodes": 8,
+    "runtime": 25,
+    "cast": [
+      "Ricky Gervais"
+    ],
+    "franchises": [],
+    "premiere": "2026-08-07",
+    "episodeTime": "3:00 AM",
+    "episodeTitle": "Season Premiere",
+    "summary": "Ricky Gervais's new adult animated comedy about feral cats causing chaos on the streets.",
+    "why": "A deliberate wildcard: sharp, animated, and nothing like a procedural.",
+    "releasePattern": "all episodes",
+    "episodeDrops": [
+      {
+        "episode": 1,
+        "title": "Season Premiere",
+        "date": "2026-08-07",
+        "time": "3:00 AM"
+      },
+      {
+        "episode": 2,
+        "title": "Episode 2",
+        "date": "2026-08-07",
+        "time": "3:00 AM"
+      },
+      {
+        "episode": 3,
+        "title": "Episode 3",
+        "date": "2026-08-07",
+        "time": "3:00 AM"
+      },
+      {
+        "episode": 4,
+        "title": "Episode 4",
+        "date": "2026-08-07",
+        "time": "3:00 AM"
+      },
+      {
+        "episode": 5,
+        "title": "Episode 5",
+        "date": "2026-08-07",
+        "time": "3:00 AM"
+      },
+      {
+        "episode": 6,
+        "title": "Episode 6",
+        "date": "2026-08-07",
+        "time": "3:00 AM"
+      },
+      {
+        "episode": 7,
+        "title": "Episode 7",
+        "date": "2026-08-07",
+        "time": "3:00 AM"
+      },
+      {
+        "episode": 8,
+        "title": "Episode 8",
+        "date": "2026-08-07",
+        "time": "3:00 AM"
+      }
+    ],
+    "seasonPremiereDate": "2026-08-07",
+    "currentEpisode": 0,
+    "nextEpisode": 1,
+    "poster": "https://images.justwatch.com/poster/346220606/s718/alley-cats.jpg"
+  },
+  {
+    "id": "neagley",
+    "title": "Neagley",
+    "type": "series",
+    "platform": "prime",
+    "link": "https://www.primevideo.com/detail/0RZB1U1IL8TB1J9Z2UN3UF7H2C",
+    "genre": [
+      "Action",
+      "Crime Thriller"
+    ],
+    "mmSelect": "Gold",
+    "status": "new",
+    "season": 1,
+    "episodes": 8,
+    "runtime": 50,
+    "cast": [
+      "Maria Sten",
+      "Alan Ritchson"
+    ],
+    "franchises": [],
+    "premiere": "2026-09-16",
+    "episodeTime": "3:00 AM",
+    "episodeTitle": "Season Premiere",
+    "summary": "A Reacher spinoff following Frances Neagley, Jack Reacher's former military protegee, now working as a Chicago private investigator. Alan Ritchson guest-stars as Reacher.",
+    "why": "Same procedural backbone as your favorites, with a new lead worth getting to know.",
+    "releasePattern": "all episodes",
+    "episodeDrops": [
+      {
+        "episode": 1,
+        "title": "Season Premiere",
+        "date": "2026-09-16",
+        "time": "3:00 AM"
+      },
+      {
+        "episode": 2,
+        "title": "Episode 2",
+        "date": "2026-09-16",
+        "time": "3:00 AM"
+      },
+      {
+        "episode": 3,
+        "title": "Episode 3",
+        "date": "2026-09-16",
+        "time": "3:00 AM"
+      },
+      {
+        "episode": 4,
+        "title": "Episode 4",
+        "date": "2026-09-16",
+        "time": "3:00 AM"
+      },
+      {
+        "episode": 5,
+        "title": "Episode 5",
+        "date": "2026-09-16",
+        "time": "3:00 AM"
+      },
+      {
+        "episode": 6,
+        "title": "Episode 6",
+        "date": "2026-09-16",
+        "time": "3:00 AM"
+      },
+      {
+        "episode": 7,
+        "title": "Episode 7",
+        "date": "2026-09-16",
+        "time": "3:00 AM"
+      },
+      {
+        "episode": 8,
+        "title": "Episode 8",
+        "date": "2026-09-16",
+        "time": "3:00 AM"
+      }
+    ],
+    "seasonPremiereDate": "2026-09-16",
+    "currentEpisode": 0,
+    "nextEpisode": 1,
+    "poster": "https://images.justwatch.com/poster/348270705/s718/season-1.jpg"
+  },
+  {
+    "id": "ahs-13",
+    "title": "American Horror Story: 13",
+    "type": "series",
+    "platform": "hulu",
+    "link": "https://www.hulu.com/",
+    "genre": [
+      "Horror",
+      "Anthology"
+    ],
+    "mmSelect": "Silver",
+    "status": "returning",
+    "season": 13,
+    "episodes": 10,
+    "runtime": 55,
+    "cast": [],
+    "franchises": [],
+    "premiere": "2026-09-24",
+    "episodeTime": "10:00 PM",
+    "episodeTitle": "Season 13 Premiere",
+    "summary": "FX's long-running horror anthology returns for its 13th cycle.",
+    "why": "A genre swap if you want something unsettling instead of just suspenseful -- a real change of pace.",
+    "releasePattern": "weekly",
+    "episodeDrops": [
+      {
+        "episode": 1,
+        "title": "Season Premiere",
+        "date": "2026-09-24",
+        "time": "10:00 PM"
+      },
+      {
+        "episode": 2,
+        "title": "Episode 2",
+        "date": "2026-10-01",
+        "time": "10:00 PM"
+      },
+      {
+        "episode": 3,
+        "title": "Episode 3",
+        "date": "2026-10-08",
+        "time": "10:00 PM"
+      },
+      {
+        "episode": 4,
+        "title": "Episode 4",
+        "date": "2026-10-15",
+        "time": "10:00 PM"
+      },
+      {
+        "episode": 5,
+        "title": "Episode 5",
+        "date": "2026-10-22",
+        "time": "10:00 PM"
+      },
+      {
+        "episode": 6,
+        "title": "Episode 6",
+        "date": "2026-10-29",
+        "time": "10:00 PM"
+      },
+      {
+        "episode": 7,
+        "title": "Episode 7",
+        "date": "2026-11-05",
+        "time": "10:00 PM"
+      },
+      {
+        "episode": 8,
+        "title": "Episode 8",
+        "date": "2026-11-12",
+        "time": "10:00 PM"
+      },
+      {
+        "episode": 9,
+        "title": "Episode 9",
+        "date": "2026-11-19",
+        "time": "10:00 PM"
+      },
+      {
+        "episode": 10,
+        "title": "Episode 10",
+        "date": "2026-11-26",
+        "time": "10:00 PM"
+      }
+    ],
+    "seasonPremiereDate": "2026-09-24",
+    "currentEpisode": 0,
+    "nextEpisode": 1,
+    "poster": "https://bleedingcool.com/wp-content/uploads/2026/07/MixCollage-09-Jul-2026-11-31-AM-6789-2000x1125.jpg"
+  },
+  {
+    "id": "war",
+    "title": "War",
+    "type": "series",
+    "platform": "max",
+    "link": "https://www.max.com/",
+    "genre": [
+      "War Drama",
+      "Drama"
+    ],
+    "mmSelect": "Gold",
+    "status": "new",
+    "season": 1,
+    "episodes": 6,
+    "runtime": 55,
+    "cast": [],
+    "franchises": [],
+    "premiere": "2026-10-01",
+    "episodeTime": "9:00 PM",
+    "episodeTitle": "Series Premiere",
+    "summary": "A new HBO limited drama series, part of Max's marquee fall 2026 slate.",
+    "why": "A prestige pick for when you want something weightier than a whodunit.",
+    "releasePattern": "weekly",
+    "episodeDrops": [
+      {
+        "episode": 1,
+        "title": "Season Premiere",
+        "date": "2026-10-01",
+        "time": "9:00 PM"
+      },
+      {
+        "episode": 2,
+        "title": "Episode 2",
+        "date": "2026-10-08",
+        "time": "9:00 PM"
+      },
+      {
+        "episode": 3,
+        "title": "Episode 3",
+        "date": "2026-10-15",
+        "time": "9:00 PM"
+      },
+      {
+        "episode": 4,
+        "title": "Episode 4",
+        "date": "2026-10-22",
+        "time": "9:00 PM"
+      },
+      {
+        "episode": 5,
+        "title": "Episode 5",
+        "date": "2026-10-29",
+        "time": "9:00 PM"
+      },
+      {
+        "episode": 6,
+        "title": "Episode 6",
+        "date": "2026-11-05",
+        "time": "9:00 PM"
+      }
+    ],
+    "seasonPremiereDate": "2026-10-01",
+    "currentEpisode": 0,
+    "nextEpisode": 1,
+    "poster": "https://hbowatch.com/wp-content/uploads/2026/08/War_FirstPhoto.png"
   }
 ]
