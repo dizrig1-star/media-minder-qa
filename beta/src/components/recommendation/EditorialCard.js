@@ -1,4 +1,3 @@
-
 import { Rating } from '../media/Rating.js';
 import { Progress } from '../media/Progress.js';
 
@@ -25,6 +24,9 @@ export function EditorialCard(item, platformName, kind='select', state={}, tier)
   const isWatching = kind === 'watching';
   const isPremiere = kind === 'premiere';
   const isLibrary = kind === 'library';
+  const isMovie = item.type !== 'series';
+  const isWatched = (state.watched||[]).includes(item.id);
+  const isSkipped = (state.notInterested||[]).includes(item.id);
   const resolvedTier = tier || (isSelect ? 'hero' : (isPremiere || isLibrary) ? 'compact' : 'secondary');
   const label = isLibrary ? '' : isSelect ? 'MM SELECT GOLD' : isTonight ? 'TONIGHT' : isWatching ? 'WATCHING' : 'COMING SOON';
   const tone = isLibrary ? 'teal' : isSelect ? 'gold' : isTonight ? 'coral' : isWatching ? 'teal' : 'gold';
@@ -65,6 +67,7 @@ export function EditorialCard(item, platformName, kind='select', state={}, tier)
         <div class="editorial-actions">
           <button class="btn" data-detail="${id}">Details</button>
           <button class="btn secondary" data-watch="${id}">${inWatchlist ? 'Remove from Watchlist' : 'Add to Watchlist'}</button>
+          ${isLibrary && isMovie ? `<button class="btn small ${isWatched ? 'secondary' : 'ghost'}" data-watched="${id}">${isWatched ? 'Watched ✓' : 'Mark watched'}</button><button class="btn small ${isSkipped ? 'secondary' : 'ghost'}" data-skip="${id}">${isSkipped ? 'Not for me ✓' : 'Not for me'}</button>` : ''}
           ${Rating(rating, true, item.id)}
         </div>
       </div>
