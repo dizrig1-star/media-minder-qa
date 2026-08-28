@@ -1,25 +1,4 @@
 
-
-Skip to content
-Using Gmail with screen readers
-1 of 5
-Media Minder: shows.json (with poster art) — file 1 of 4
-Inbox
-
-Simon Johnson
-Attachments
-8:56 PM (3 minutes ago)
-to me
-
-Attached: shows.json, updated with a verified JustWatch poster URL for each of the 6 shows.
-
-To commit: open src/data/shows.json in the GitHub web editor, select all, delete, then open the attached file, copy its full contents, and paste. Commit to qa/cal-02-onboarding-lab.
-
-One flag: Lioness Season 3 poster art isn't published on JustWatch yet, so that entry uses the Season 2 poster as a stand-in.
-
-Once this is committed, reply "done" and I'll send movies.json next.
- One attachment
-  •  Scanned by Gmail
 [
   {
     "id":"slow-horses-s6","poster":"https://images.justwatch.com/poster/349367328/s718/season-6.jpg","title":"Slow Horses","type":"series","platform":"apple","genre":["Mystery","Crime Thriller"],"mmSelect":"Gold","status":"returning","season":6,"episodes":6,"runtime":50,"cast":["Gary Oldman","Jack Lowden","Kristin Scott Thomas"],"franchises":[],"premiere":"2026-09-16","episodeTime":"12:00 AM","episodeTitle":"Season Premiere","summary":"The Slough House team returns for another darkly funny espionage case.","why":"One of the cleanest matches for your mystery and thriller tastes, with a strong ensemble and dry wit.","releasePattern":"weekly","episodeDrops":[{"episode":1,"title":"Season Premiere","date":"2026-09-16","time":"12:00 AM"},{"episode":2,"title":"Episode 2","date":"2026-09-23","time":"12:00 AM"},{"episode":3,"title":"Episode 3","date":"2026-09-30","time":"12:00 AM"},{"episode":4,"title":"Episode 4","date":"2026-10-07","time":"12:00 AM"},{"episode":5,"title":"Episode 5","date":"2026-10-14","time":"12:00 AM"},{"episode":6,"title":"Episode 6","date":"2026-10-21","time":"12:00 AM"}]
@@ -40,5 +19,3 @@ Once this is committed, reply "done" and I'll send movies.json next.
     "id":"reacher-s4","poster":"https://images.justwatch.com/poster/348774470/s718/season-4.jpg","title":"Reacher","type":"series","platform":"prime","genre":["Action","Drama","Suspense"],"mmSelect":"Gold","status":"returning","season":4,"episodes":8,"runtime":55,"cast":["Alan Ritchson","Sydelle Noel","Agnez Mo"],"franchises":["Reacher"],"premiere":"2026-08-12","episodeTime":"12:00 AM","episodeTitle":"Season 4","summary":"Jack Reacher is pulled into a deadly mystery after a chance encounter on a Philadelphia subway.","why":"A high-confidence action/thriller signal for viewers who enjoy muscular investigative suspense.","releasePattern":"weekly after three-episode premiere","episodeDrops":[{"episode":1,"title":"Season Premiere","date":"2026-08-12","time":"12:00 AM"},{"episode":2,"title":"Episode 2","date":"2026-08-12","time":"12:00 AM"},{"episode":3,"title":"Episode 3","date":"2026-08-12","time":"12:00 AM"},{"episode":4,"title":"Episode 4","date":"2026-08-19","time":"12:00 AM"},{"episode":5,"title":"Episode 5","date":"2026-08-26","time":"12:00 AM"},{"episode":6,"title":"Episode 6","date":"2026-09-02","time":"12:00 AM"},{"episode":7,"title":"Episode 7","date":"2026-09-09","time":"12:00 AM"},{"episode":8,"title":"Episode 8","date":"2026-09-16","time":"12:00 AM"}]
   }
 ]
-shows.json
-Displaying shows.json.
