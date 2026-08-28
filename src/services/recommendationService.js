@@ -42,5 +42,12 @@ export function recommendations(items, profile, limit=6){
 }
 
 export function mmChoice(items, profile){
-  return recommendations(items,profile,20).find(x=>x.mmSelect==="Gold") || null;
+  const ranked = recommendations(items,profile,20);
+  return ranked.find(x=>x.mmSelect==="Select") || ranked.find(x=>x.mmSelect==="Gold") || null;
+}
+
+export function pickWildcard(items, profile={}){
+  const candidates = (items||[]).filter(item => /deliberate wildcard/i.test(item.why || ""));
+  if(!candidates.length) return null;
+  return [...candidates].sort((a,b)=>scoreItem(b,profile)-scoreItem(a,profile))[0];
 }
