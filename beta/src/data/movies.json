@@ -1,6 +1,8 @@
+
 [
   {
     "id": "sinners",
+    "poster": "https://images.justwatch.com/poster/320977032/s718/sinners-2025.jpg",
     "title": "Sinners",
     "platform": "max",
     "genre": [
@@ -17,6 +19,7 @@
   },
   {
     "id": "the-thomas-crown-affair",
+    "poster": "https://images.justwatch.com/poster/320954702/s718/the-thomas-crown-affair.jpg",
     "title": "The Thomas Crown Affair",
     "platform": "prime",
     "genre": [
@@ -34,6 +37,7 @@
   },
   {
     "id": "the-pelican-brief",
+    "poster": "https://images.justwatch.com/poster/338868125/s718/the-pelican-brief.jpg",
     "title": "The Pelican Brief",
     "platform": "hulu",
     "genre": [
@@ -50,3 +54,4 @@
     "why": "Political suspense, a smart protagonist, and exactly the kind of mystery that rewards attention."
   }
 ]
+

@@ -1,3 +1,4 @@
+
 import { Rating } from '../media/Rating.js';
 import { Progress } from '../media/Progress.js';
 
@@ -40,11 +41,13 @@ export function EditorialCard(item, platformName, kind='select', state={}, tier)
     : imageAsset('badge-new.svg','New','editorial-status-art editorial-status-art--new');
   const artAsset = isSelect ? 'Icon-mainframe.svg' : isTonight ? 'Icon-transmission-tower.svg' : isWatching ? 'Icon-test-pattern.svg' : 'Icon-countdown.svg';
   const kicker = isLibrary ? '' : isWatching ? 'CURRENTLY WATCHING' : isPremiere ? 'PREMIERE' : isTonight ? "TONIGHT'S DROP" : 'CURATED FOR YOU';
+  const hasPoster = !!item.poster;
+  const artStyle = hasPoster ? ` style="background-image:linear-gradient(180deg, rgba(15,45,51,.15) 0%, rgba(15,45,51,.55) 55%, rgba(10,10,10,.72) 100%), url('${escapeHtml(item.poster)}');background-size:cover;background-position:center;"` : '';
   return `<article class="editorial-card editorial-card--${kind} editorial-card--${resolvedTier} editorial-card--${tone}">
     ${label ? `<div class="editorial-banner"><span class="editorial-banner-mark">✦</span>${label}<span class="editorial-banner-mark">✦</span></div>` : ''}
     <div class="editorial-card-inner">
-      <div class="editorial-art" aria-label="${title} visual">
-        <img class="editorial-art-icon" src="${ASSET}${artAsset}" alt="" aria-hidden="true" />
+      <div class="editorial-art${hasPoster ? ' editorial-art--poster' : ''}" aria-label="${title} visual"${artStyle}>
+        ${hasPoster ? '' : `<img class="editorial-art-icon" src="${ASSET}${artAsset}" alt="" aria-hidden="true" />`}
         <div class="editorial-art-title">${title}</div>
         <div class="editorial-art-footer">MEDIA MINDER</div>
       </div>
