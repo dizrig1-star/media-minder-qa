@@ -6,5 +6,6 @@ export async function loadData(){
     if(!response.ok) throw new Error(`Unable to load ${name}.json`);
     return [name, await response.json()];
   }));
-  return Object.fromEntries(entries);
+  const data=Object.fromEntries(entries);
+  return data;
 }

@@ -1,11 +1,11 @@
 {
   "name": "media-minder",
-  "version": "1.0.11",
+  "version": "1.1.0-qa",
   "private": true,
-  "description": "Media Minder \u2014 curated entertainment companion.",
+  "description": "Media Minder — curated entertainment companion.",
   "scripts": {
     "start": "python -m http.server 4173",
-    "test": "node tests/smoke-test.mjs && node tests/interaction-suite.mjs && node tests/state-correction-test.mjs && node tests/page-render-test.mjs && node tests/release-version-test.mjs"
+    "test": "node tests/smoke-test.mjs && node tests/interaction-suite.mjs && node tests/state-correction-test.mjs && node tests/synthetic-lab-test.mjs && node tests/onboarding-test.mjs && node tests/profile-model-v11.mjs && node tests/profile-model-v11-synthetic.mjs && node tests/feedback-test.mjs && node tests/page-render-test.mjs && node tests/release-version-test.mjs"
   },
   "type": "module"
 }

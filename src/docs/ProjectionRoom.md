@@ -12,5 +12,13 @@ Ideas intentionally deferred from the beta/1.0 scope:
 
 These are catalogued only; they are not part of the current build.
 
-## User Feedback
-A dedicated area for users to provide feedback on the Media Minder app. Deferred beyond Version 1; no UI or data model is added in the release candidate.
+## Retired from Projection Room
+
+**User Feedback** moved into Media Minder v1.1. The initial implementation is intentionally small and calm:
+
+> **Was this useful?**
+> 👍 Yes   👎 Not really
+>
+> **Tell me why.** (optional)
+
+Feedback is attached to the recommendation/item and surface so it can become useful editorial and recommendation evidence without introducing gamification or engagement mechanics.

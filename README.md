@@ -1,6 +1,6 @@
 # Media Minder
 
-**Version 1.0.11**
+**Version 1.1.0-qa**
 
 Media Minder is an editorial entertainment companion built around curated recommendations across streaming platforms and television.
 
@@ -14,7 +14,7 @@ python -m http.server 4173
 
 Then open:
 
-`http://localhost:4173/src/`
+`http://localhost:4173/`
 
 The application is a static ES-module application and requires an HTTP server for JSON loading.
 

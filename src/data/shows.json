@@ -1,11 +1,10 @@
 [
   {
     "id": "slow-horses-s6",
+    "poster": "https://images.justwatch.com/poster/349367328/s718/season-6.jpg",
     "title": "Slow Horses",
     "type": "series",
     "platform": "apple",
-    "posterUrl": "https://images.justwatch.com/poster/348412909/s718/season-6.jpg",
-    "link": "https://tv.apple.com/us/show/slow-horses/umc.cmc.2szz3fdt71tl1ulnbp8utgq5o",
     "genre": [
       "Mystery",
       "Crime Thriller"
@@ -68,11 +67,10 @@
   },
   {
     "id": "graveyard-s3",
+    "poster": "https://images.justwatch.com/poster/307608705/s718/season-3.jpg",
     "title": "Graveyard",
     "type": "series",
     "platform": "netflix",
-    "posterUrl": "https://images.justwatch.com/poster/307608705/s718/season-3.jpg",
-    "link": "https://www.netflix.com/",
     "genre": [
       "Crime Thriller",
       "Mystery"
@@ -143,15 +141,13 @@
   },
   {
     "id": "project-runway-s22",
+    "poster": "https://images.justwatch.com/poster/335023297/s718/season-22.jpg",
     "title": "Project Runway",
     "type": "series",
     "platform": "disney",
-    "posterUrl": "https://images.justwatch.com/poster/335023297/s718/season-22.jpg",
-    "link": "https://www.hulu.com/series/project-runway-6fa35fc5-00e4-400e-9529-640c064fc982",
     "genre": [
       "Reality Competition"
     ],
-    "mmSelect": "Bronze",
     "status": "returning",
     "season": 22,
     "episodes": 15,
@@ -263,11 +259,10 @@
   },
   {
     "id": "the-shards",
+    "poster": "https://images.justwatch.com/poster/347382936/s718/season-1.jpg",
     "title": "The Shards",
     "type": "series",
     "platform": "hulu",
-    "posterUrl": "https://images.justwatch.com/poster/347382936/s718/the-shards.jpg",
-    "link": "https://www.hulu.com/watch/0fb364ef-bee6-46f1-99ed-c659c3b5b9bb",
     "genre": [
       "Mystery",
       "Crime Thriller"
@@ -277,86 +272,248 @@
     "season": 1,
     "episodes": 9,
     "runtime": 50,
-    "cast": [],
+    "cast": [
+      "Kaia Gerber",
+      "Igby Rigney",
+      "Homer Gere"
+    ],
     "franchises": [],
-    "premiere": null,
-    "episodeTime": "10:00 PM",
-    "episodeTitle": "Murder on the Dancefloor",
-    "summary": "FX's new series arrives on Hulu as part of the August schedule.",
-    "why": "A new mystery-leaning option worth watching before the crowd gets to it.",
-    "releasePattern": "weekly (double drops)",
+    "premiere": "2026-08-05",
+    "episodeTime": "9:00 PM",
+    "episodeTitle": "Pilot",
+    "summary": "A group of privileged high school seniors navigate obsession, danger and a serial killer in 1980s Los Angeles.",
+    "why": "A mystery-leaning option with a strong thriller hook.",
+    "releasePattern": "weekly after two-episode premiere",
     "episodeDrops": [
       {
         "episode": 1,
         "title": "Pilot",
         "date": "2026-08-05",
-        "time": "10:00 PM"
+        "time": "9:00 PM"
       },
       {
         "episode": 2,
         "title": "Don't You Want Me",
         "date": "2026-08-05",
-        "time": "10:00 PM"
+        "time": "9:00 PM"
       },
       {
         "episode": 3,
         "title": "Help Me! Rhonda!",
         "date": "2026-08-12",
-        "time": "10:00 PM"
+        "time": "9:00 PM"
       },
       {
         "episode": 4,
         "title": "Robert's Party",
         "date": "2026-08-12",
-        "time": "10:00 PM"
+        "time": "9:00 PM"
       },
       {
         "episode": 5,
         "title": "Murder on the Dancefloor",
         "date": "2026-08-19",
-        "time": "10:00 PM"
+        "time": "9:00 PM"
       },
       {
         "episode": 6,
         "title": "Homecoming Part One",
         "date": "2026-08-26",
-        "time": "10:00 PM"
+        "time": "9:00 PM"
       },
       {
         "episode": 7,
-        "title": "Homecoming Part Two",
-        "date": "2026-08-26",
-        "time": "10:00 PM"
+        "title": "Episode 7",
+        "date": "2026-09-02",
+        "time": "9:00 PM"
       },
       {
         "episode": 8,
-        "title": "Hamlet",
-        "date": "2026-09-02",
-        "time": "10:00 PM"
+        "title": "Episode 8",
+        "date": "2026-09-09",
+        "time": "9:00 PM"
       },
       {
         "episode": 9,
-        "title": "Stairway to Heaven",
+        "title": "Episode 9",
         "date": "2026-09-09",
-        "time": "10:00 PM"
+        "time": "9:00 PM"
       }
     ],
-    "seasonPremiereDate": "2026-08-05",
     "currentEpisode": 4,
     "nextEpisode": 5
+  },
+  {
+    "id": "lioness-s3",
+    "poster": "https://images.justwatch.com/poster/335840135/s718/season-2.jpg",
+    "title": "Lioness",
+    "type": "series",
+    "platform": "paramount",
+    "genre": [
+      "Espionage Thriller",
+      "Action Drama"
+    ],
+    "mmSelect": "Gold",
+    "status": "returning",
+    "season": 3,
+    "episodes": 8,
+    "runtime": 50,
+    "cast": [
+      "Zoe Saldaña",
+      "Nicole Kidman",
+      "Morgan Freeman",
+      "Michael Kelly"
+    ],
+    "franchises": [],
+    "premiere": "2026-08-02",
+    "episodeTime": "9:00 PM",
+    "episodeTitle": "Season 3",
+    "summary": "Joe, Kaitlyn and Cruz return for another dangerous undercover mission.",
+    "why": "A strong espionage/action match for viewers who respond to high-stakes thriller storytelling.",
+    "releasePattern": "weekly",
+    "episodeDrops": [
+      {
+        "episode": 1,
+        "title": "Season Premiere",
+        "date": "2026-08-02",
+        "time": "9:00 PM"
+      },
+      {
+        "episode": 2,
+        "title": "Episode 2",
+        "date": "2026-08-09",
+        "time": "9:00 PM"
+      },
+      {
+        "episode": 3,
+        "title": "Episode 3",
+        "date": "2026-08-16",
+        "time": "9:00 PM"
+      },
+      {
+        "episode": 4,
+        "title": "Episode 4",
+        "date": "2026-08-23",
+        "time": "9:00 PM"
+      },
+      {
+        "episode": 5,
+        "title": "Episode 5",
+        "date": "2026-08-30",
+        "time": "9:00 PM"
+      },
+      {
+        "episode": 6,
+        "title": "Episode 6",
+        "date": "2026-09-06",
+        "time": "9:00 PM"
+      },
+      {
+        "episode": 7,
+        "title": "Episode 7",
+        "date": "2026-09-13",
+        "time": "9:00 PM"
+      },
+      {
+        "episode": 8,
+        "title": "Episode 8",
+        "date": "2026-09-20",
+        "time": "9:00 PM"
+      }
+    ]
+  },
+  {
+    "id": "reacher-s4",
+    "poster": "https://images.justwatch.com/poster/348774470/s718/season-4.jpg",
+    "title": "Reacher",
+    "type": "series",
+    "platform": "prime",
+    "genre": [
+      "Action",
+      "Drama",
+      "Suspense"
+    ],
+    "mmSelect": "Gold",
+    "status": "returning",
+    "season": 4,
+    "episodes": 8,
+    "runtime": 55,
+    "cast": [
+      "Alan Ritchson",
+      "Sydelle Noel",
+      "Agnez Mo"
+    ],
+    "franchises": [
+      "Reacher"
+    ],
+    "premiere": "2026-08-12",
+    "episodeTime": "12:00 AM",
+    "episodeTitle": "Season 4",
+    "summary": "Jack Reacher is pulled into a deadly mystery after a chance encounter on a Philadelphia subway.",
+    "why": "A high-confidence action/thriller signal for viewers who enjoy muscular investigative suspense.",
+    "releasePattern": "weekly after three-episode premiere",
+    "episodeDrops": [
+      {
+        "episode": 1,
+        "title": "Season Premiere",
+        "date": "2026-08-12",
+        "time": "12:00 AM"
+      },
+      {
+        "episode": 2,
+        "title": "Episode 2",
+        "date": "2026-08-12",
+        "time": "12:00 AM"
+      },
+      {
+        "episode": 3,
+        "title": "Episode 3",
+        "date": "2026-08-12",
+        "time": "12:00 AM"
+      },
+      {
+        "episode": 4,
+        "title": "Episode 4",
+        "date": "2026-08-19",
+        "time": "12:00 AM"
+      },
+      {
+        "episode": 5,
+        "title": "Episode 5",
+        "date": "2026-08-26",
+        "time": "12:00 AM"
+      },
+      {
+        "episode": 6,
+        "title": "Episode 6",
+        "date": "2026-09-02",
+        "time": "12:00 AM"
+      },
+      {
+        "episode": 7,
+        "title": "Episode 7",
+        "date": "2026-09-09",
+        "time": "12:00 AM"
+      },
+      {
+        "episode": 8,
+        "title": "Episode 8",
+        "date": "2026-09-16",
+        "time": "12:00 AM"
+      }
+    ]
   },
   {
     "id": "resolve-to-solve",
     "title": "Resolve to Solve with Miles O'Brien",
     "type": "series",
     "platform": "pbs",
-    "posterUrl": "https://image.pbs.org/contentchannels/cZyhOWG-background-ZZvHD1b.jpg?focalcrop=1200x630x50x10&format=auto",
     "link": "https://www.pbs.org/show/resolve-to-solve/",
     "genre": [
       "Documentary",
       "Science"
     ],
-    "mmSelect": "Bronze",
+    "mmSelect": "Silver",
     "status": "new",
     "season": 1,
     "episodes": 6,
@@ -411,14 +568,14 @@
     ],
     "seasonPremiereDate": "2026-08-19",
     "currentEpisode": 0,
-    "nextEpisode": 1
+    "nextEpisode": 1,
+    "poster": "https://image.pbs.org/contentchannels/cZyhOWG-background-ZZvHD1b.jpg?focalcrop=1200x630x50x10&format=auto"
   },
   {
     "id": "the-varnell-hill-show",
     "title": "The Varnell Hill Show",
     "type": "series",
     "platform": "paramount",
-    "posterUrl": "https://images.justwatch.com/poster/348014702/s718/the-varnell-hill-show.jpg",
     "link": "https://www.paramountplus.com/",
     "genre": [
       "Comedy"
@@ -490,14 +647,14 @@
     ],
     "seasonPremiereDate": "2026-09-01",
     "currentEpisode": 0,
-    "nextEpisode": 1
+    "nextEpisode": 1,
+    "poster": "https://images.justwatch.com/poster/348014702/s718/the-varnell-hill-show.jpg"
   },
   {
     "id": "undeclared-war-s2",
     "title": "The Undeclared War",
     "type": "series",
     "platform": "peacock",
-    "posterUrl": "https://images.justwatch.com/poster/347851762/s718/season-2.jpg",
     "link": "https://www.peacocktv.com/",
     "genre": [
       "Thriller",
@@ -556,19 +713,19 @@
     ],
     "seasonPremiereDate": "2026-08-27",
     "currentEpisode": 0,
-    "nextEpisode": 1
+    "nextEpisode": 1,
+    "poster": "https://images.justwatch.com/poster/347851762/s718/season-2.jpg"
   },
   {
     "id": "dwts-s35",
     "title": "Dancing with the Stars",
     "type": "series",
     "platform": "abc",
-    "posterUrl": "https://images.justwatch.com/poster/337727587/s718/season-35.jpg",
     "link": "https://abc.com/",
     "genre": [
       "Reality Competition"
     ],
-    "mmSelect": "Bronze",
+    "mmSelect": "Silver",
     "status": "returning",
     "season": 35,
     "episodes": 9,
@@ -639,14 +796,14 @@
     ],
     "seasonPremiereDate": "2026-09-15",
     "currentEpisode": 0,
-    "nextEpisode": 1
+    "nextEpisode": 1,
+    "poster": "https://images.justwatch.com/poster/337727587/s718/season-35.jpg"
   },
   {
     "id": "eternally-yours",
     "title": "Eternally Yours",
     "type": "series",
     "platform": "cbs",
-    "posterUrl": "https://images.justwatch.com/poster/344785859/s718/eternally-yours.jpg",
     "link": "https://www.paramountplus.com/",
     "genre": [
       "Comedy",
@@ -747,14 +904,14 @@
     ],
     "seasonPremiereDate": "2026-10-08",
     "currentEpisode": 0,
-    "nextEpisode": 1
+    "nextEpisode": 1,
+    "poster": "https://images.justwatch.com/poster/344785859/s718/eternally-yours.jpg"
   },
   {
     "id": "traitors-new-blood",
     "title": "The Traitors: New Blood",
     "type": "series",
     "platform": "nbc",
-    "posterUrl": "https://images.justwatch.com/poster/348314429/s718/season-1.jpg",
     "link": "https://www.peacocktv.com/",
     "genre": [
       "Reality Competition"
@@ -836,14 +993,14 @@
     ],
     "seasonPremiereDate": "2026-09-17",
     "currentEpisode": 0,
-    "nextEpisode": 1
+    "nextEpisode": 1,
+    "poster": "https://images.justwatch.com/poster/348314429/s718/season-1.jpg"
   },
   {
     "id": "doc-s3",
     "title": "Doc",
     "type": "series",
     "platform": "fox",
-    "posterUrl": "https://images.justwatch.com/poster/348508672/s718/season-3.jpg",
     "link": "https://www.hulu.com/",
     "genre": [
       "Medical Drama",
@@ -917,14 +1074,14 @@
     ],
     "seasonPremiereDate": "2026-09-22",
     "currentEpisode": 0,
-    "nextEpisode": 1
+    "nextEpisode": 1,
+    "poster": "https://images.justwatch.com/poster/348508672/s718/season-3.jpg"
   },
   {
     "id": "last-seen",
     "title": "Last Seen",
     "type": "series",
     "platform": "apple",
-    "posterUrl": "https://images.justwatch.com/poster/348320106/s718/season-1.jpg",
     "link": "https://tv.apple.com/us/show/last-seen/umc.cmc.4pbw9c936a4pigdvsg23u2bsa",
     "genre": [
       "Thriller",
@@ -985,20 +1142,20 @@
     ],
     "seasonPremiereDate": "2026-09-09",
     "currentEpisode": 0,
-    "nextEpisode": 1
+    "nextEpisode": 1,
+    "poster": "https://images.justwatch.com/poster/348320106/s718/season-1.jpg"
   },
   {
     "id": "alley-cats",
     "title": "Ricky Gervais: Alley Cats",
     "type": "series",
     "platform": "netflix",
-    "posterUrl": "https://images.justwatch.com/poster/346220606/s718/alley-cats.jpg",
     "link": "https://www.netflix.com/title/81658840",
     "genre": [
       "Animated Comedy",
       "Comedy"
     ],
-    "mmSelect": "Bronze",
+    "mmSelect": "Silver",
     "status": "new",
     "season": 1,
     "episodes": 8,
@@ -1065,14 +1222,14 @@
     ],
     "seasonPremiereDate": "2026-08-07",
     "currentEpisode": 0,
-    "nextEpisode": 1
+    "nextEpisode": 1,
+    "poster": "https://images.justwatch.com/poster/346220606/s718/alley-cats.jpg"
   },
   {
     "id": "neagley",
     "title": "Neagley",
     "type": "series",
     "platform": "prime",
-    "posterUrl": "https://images.justwatch.com/poster/348270705/s718/season-1.jpg",
     "link": "https://www.primevideo.com/detail/0RZB1U1IL8TB1J9Z2UN3UF7H2C",
     "genre": [
       "Action",
@@ -1146,14 +1303,14 @@
     ],
     "seasonPremiereDate": "2026-09-16",
     "currentEpisode": 0,
-    "nextEpisode": 1
+    "nextEpisode": 1,
+    "poster": "https://images.justwatch.com/poster/348270705/s718/season-1.jpg"
   },
   {
     "id": "ahs-13",
     "title": "American Horror Story: 13",
     "type": "series",
     "platform": "hulu",
-    "posterUrl": "https://bleedingcool.com/wp-content/uploads/2026/07/MixCollage-09-Jul-2026-11-31-AM-6789-2000x1125.jpg",
     "link": "https://www.hulu.com/",
     "genre": [
       "Horror",
@@ -1236,14 +1393,14 @@
     ],
     "seasonPremiereDate": "2026-09-24",
     "currentEpisode": 0,
-    "nextEpisode": 1
+    "nextEpisode": 1,
+    "poster": "https://bleedingcool.com/wp-content/uploads/2026/07/MixCollage-09-Jul-2026-11-31-AM-6789-2000x1125.jpg"
   },
   {
     "id": "war",
     "title": "War",
     "type": "series",
     "platform": "max",
-    "posterUrl": "https://hbowatch.com/wp-content/uploads/2026/08/War_FirstPhoto.png",
     "link": "https://www.max.com/",
     "genre": [
       "War Drama",
@@ -1302,6 +1459,7 @@
     ],
     "seasonPremiereDate": "2026-10-01",
     "currentEpisode": 0,
-    "nextEpisode": 1
+    "nextEpisode": 1,
+    "poster": "https://hbowatch.com/wp-content/uploads/2026/08/War_FirstPhoto.png"
   }
 ]

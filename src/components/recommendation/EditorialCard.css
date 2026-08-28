@@ -1,0 +1,51 @@
+
+.editorial-card{position:relative;overflow:hidden;background:rgba(255,253,246,.94);border:1px solid var(--cream);border-radius:18px;box-shadow:0 10px 24px rgba(32,53,58,.11);color:var(--ink);background-image:repeating-linear-gradient(135deg,transparent 0 18px,rgba(31,94,105,.03) 18px 19px,transparent 19px 36px)}
+.editorial-card:after{content:"✦";position:absolute;right:12px;bottom:10px;color:var(--gold);opacity:.45;font-size:1.1rem;pointer-events:none}
+.editorial-banner{display:flex;align-items:center;justify-content:center;gap:.7rem;min-height:58px;padding:.55rem 1rem;font-family:'Bebas Neue',Impact,sans-serif;font-size:1.35rem;letter-spacing:.12em;color:var(--paper);background:var(--teal);border-bottom:3px solid var(--gold)}
+.editorial-card--coral .editorial-banner{background:#a8493d;border-color:var(--gold)}
+.editorial-card--gold .editorial-banner{background:#8a6316;color:var(--paper);border-color:var(--teal)}
+.editorial-banner-mark{font-size:.85em}
+.editorial-card-inner{display:grid;grid-template-columns:minmax(220px,34%) 1fr;min-height:380px}
+.editorial-card--hero .editorial-card-inner{min-height:470px;grid-template-columns:minmax(300px,40%) 1fr}
+.editorial-card--compact .editorial-card-inner{min-height:280px;grid-template-columns:minmax(150px,32%) 1fr}
+.editorial-art{position:relative;min-height:100%;overflow:hidden;background:linear-gradient(145deg,#164d56 0%,#286f76 52%,#c96f62 100%);color:var(--paper);display:flex;flex-direction:column;justify-content:flex-end;padding:1.35rem;isolation:isolate}
+.editorial-art:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent 0 18px,rgba(255,255,255,.06) 18px 20px);z-index:-1}
+.editorial-art:after{content:"";position:absolute;inset:12px;border:1px solid rgba(246,240,223,.55);pointer-events:none}
+.editorial-art-icon{position:absolute;left:12%;right:12%;top:8%;width:76%;height:56%;object-fit:contain;object-position:center;filter:drop-shadow(0 7px 12px rgba(0,0,0,.22));opacity:.98}
+.editorial-art-title{font-family:'Bebas Neue',Impact,sans-serif;font-size:clamp(2rem,3.5vw,3.5rem);line-height:.92;text-transform:uppercase;letter-spacing:.045em;position:relative;z-index:1;max-width:95%;text-shadow:0 2px 6px rgba(0,0,0,.28)}
+.editorial-art-footer{font-family:'Adlam Display',sans-serif;font-size:.62rem;letter-spacing:.16em;margin-top:.55rem;position:relative;z-index:1}
+.editorial-card-content{padding:1.35rem 1.5rem 1.2rem;display:flex;flex-direction:column;min-width:0}
+.editorial-topline{display:flex;align-items:center;justify-content:space-between;gap:1rem;min-height:100px}
+.editorial-badge-wrap{display:flex;align-items:center;min-height:90px}
+.editorial-select-badge{width:366px;height:270px;max-width:100%;object-fit:contain;object-position:left center;filter:drop-shadow(0 5px 7px rgba(32,53,58,.18))}
+.editorial-status-art{display:block;width:185px;height:74px;object-fit:contain;object-position:left center;filter:drop-shadow(0 5px 7px rgba(32,53,58,.16))}
+.editorial-card--compact .editorial-status-art{width:160px;height:64px}
+.editorial-platform{font-family:'Adlam Display',sans-serif;font-size:.82rem;font-weight:700;border:1px solid var(--line);border-radius:999px;padding:.45rem .75rem;background:#f7f1e3;color:var(--ink-soft);white-space:nowrap}
+.editorial-kicker{font-family:'Adlam Display',sans-serif;font-size:.75rem;font-weight:800;letter-spacing:.14em;color:var(--teal);margin:.25rem 0 .2rem}
+.editorial-card h3{font-family:'Bebas Neue',Impact,sans-serif;color:var(--coral);font-size:clamp(2.4rem,4.2vw,4.4rem);line-height:.9;letter-spacing:.035em;margin:.15rem 0 .5rem;text-transform:uppercase}
+.editorial-card--compact h3{font-size:clamp(1.9rem,3.2vw,3rem)}
+.editorial-meta{font-family:'Adlam Display',sans-serif;color:var(--ink-soft);font-size:.88rem;margin:0 0 .8rem}
+.editorial-summary{font-size:1rem;line-height:1.45;margin:0 0 .9rem;max-width:62ch}
+.editorial-schedule{border-left:4px solid var(--gold);padding:.15rem 0 .15rem .75rem;margin:.1rem 0 1rem;color:var(--ink-soft)}
+.editorial-progress{margin:.2rem 0 1rem}.editorial-progress-label{display:flex;justify-content:space-between;font-family:'Adlam Display',sans-serif;font-size:.76rem;margin-bottom:.3rem}.editorial-progress-track{height:8px;background:#e5dcc8;border-radius:999px;overflow:hidden}.editorial-progress-track span{display:block;height:100%;background:var(--teal);border-radius:inherit}
+.editorial-actions{display:flex;flex-wrap:wrap;gap:.55rem;margin-top:auto;padding-top:.6rem}
+.editorial-card--compact .editorial-card-content{padding:1rem}.editorial-card--compact .editorial-topline{min-height:78px}.editorial-card--compact .editorial-badge-wrap{min-height:78px}.editorial-card--compact .editorial-select-badge{width:105px;height:78px}.editorial-card--watching .editorial-art{background:linear-gradient(145deg,#164d56,#286f76)}
+@media(max-width:820px){.editorial-card-inner,.editorial-card--hero .editorial-card-inner,.editorial-card--compact .editorial-card-inner{grid-template-columns:1fr}.editorial-art{min-height:280px;aspect-ratio:16/8}.editorial-card--compact .editorial-art{min-height:190px}.editorial-card--hero .editorial-art{min-height:340px}.editorial-card-content{padding:1rem}.editorial-topline{min-height:86px}.editorial-badge-wrap{min-height:78px}.editorial-select-badge{width:105px;height:78px}.editorial-status-art{width:165px;height:66px}}
+
+/* Compact-tier art panel: remove oversized duplicate title text (title already shows in the h3 below), let the icon art fill the freed space. */
+.editorial-card--compact .editorial-art-title{display:none;}
+.editorial-card--compact .editorial-art-icon{left:10%;right:10%;top:12%;width:80%;height:72%;}
+.editorial-card--compact .editorial-art{padding:.75rem;}
+
+/* Per-title poster artwork: when a card has real poster art (item.poster set), the JS layer applies
+   the photo plus a legibility scrim as an inline background on .editorial-art and adds this class.
+   Disable the decorative texture overlay so it doesn't compete with the photo. */
+.editorial-art--poster:before{display:none;}
+.editorial-art--poster:after{border-color:rgba(246,240,223,.35);}
+
+/* Hero card: reposition the title to the top of the art panel (over the darkest part of the gradient/photo)
+   and switch to a serif treatment, matching the legible hero card on production. Footer stays pinned to
+   the bottom via margin-top:auto now that the title no longer anchors the flex column's end. */
+.editorial-card--hero .editorial-art{justify-content:flex-start;}
+.editorial-card--hero .editorial-art-title{font-family:'Playfair Display',Georgia,'Times New Roman',serif;font-weight:700;text-transform:none;letter-spacing:normal;font-size:clamp(1.8rem,3vw,3rem);line-height:1.05;text-shadow:0 2px 10px rgba(0,0,0,.45);}
+.editorial-card--hero .editorial-art-footer{margin-top:auto;padding-top:.75rem;}

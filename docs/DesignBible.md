@@ -23,7 +23,7 @@ Intelligent, calm, thoughtful, refined, editorial, warm, trustworthy.
 Atomic Age modern; pastel 1950s; classic broadcast television influence; retro without kitsch.
 
 ## MM Select
-Bronze, Silver, Gold. Gold is intentionally scarce.
+Select, Gold, Silver. Select is the top tier, reserved for a standout movie pick (the star badge); Gold is intentionally scarce.
 
 ## Navigation
 Landing, Tonight, Recommendations, Watchlist, Calendar, Premieres, Movies, Franchises, My Reviews, Settings, Search. No Discover page.
@@ -38,7 +38,7 @@ Landing, Tonight, Recommendations, Watchlist, Calendar, Premieres, Movies, Franc
 
 \n## Brand Art
 - The MM logo uses a strong MM monogram with a broadcast test-pattern motif in negative space.
-- MM Select badges use one entertainment/broadcast visual language across Bronze, Silver and Gold.
+- MM Select badges use one entertainment/broadcast visual language across Select, Gold and Silver.
 - Badge artwork must remain compact so recommendation cards do not become cluttered.
 ## Card Hierarchy (Hero → Secondary → Compact → Wildcard)
 On any page presenting a ranked list of recommendations, exactly one item receives full emphasis. Every item after it steps down in visual weight. This keeps a page feeling calm and directional instead of repeating the same loud treatment down the length of the screen.
