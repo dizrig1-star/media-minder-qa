@@ -4,7 +4,7 @@
    broadcast bar as its rule; grids get Organic's air. */
 
 .app-shell{min-height:100vh;display:flex}
-.sidebar{flex:none;width:250px;position:sticky;top:0;align-self:flex-start;height:100vh;overflow-y:auto}
+.sidebar{flex:none;width:325px;position:sticky;top:0;align-self:flex-start;height:100vh;overflow-y:auto}
 .content-column{flex:1;min-width:0;display:flex;flex-direction:column;min-height:100vh}
 .app-main{width:min(var(--max),calc(100% - 40px));margin:0 auto;padding:var(--space-5) 0 var(--space-6);flex:1}
 
