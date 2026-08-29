@@ -1,3 +1,6 @@
+/* Media Minder — design tokens
+   Console direction. Additions are grouped at the bottom; every original
+   token keeps its name and value so nothing downstream breaks. */
 :root{
   --ink:#202d31;
   --ink-soft:#53656a;
@@ -27,4 +30,46 @@
   --texture-paper:.08;
   --texture-film:.03;
   --micro-pattern:.03;
+
+  /* ---- Console direction ---- */
+
+  /* Ground: one step warmer and deeper than --cream, so cards read as
+     lifted paper rather than the same sheet. */
+  --ground:#e9dfc6;
+  --ground-2:#f1e7d1;      /* quiet fill: callouts, footer strips, tinted rows */
+  --rule:#ddd0b2;          /* 2px section rules */
+  --pip-off:#ded2b6;       /* unwatched episode pip */
+
+  /* The set: walnut cabinet, cream bezel, dark screen. */
+  --walnut:#9b633d;
+  --walnut-grain:repeating-linear-gradient(90deg,rgba(0,0,0,.10) 0 3px,transparent 3px 9px);
+  --bezel:var(--cream);
+  --screen:#173f49;
+  --screen-scrim:linear-gradient(90deg,rgba(15,38,44,.93) 0%,rgba(15,38,44,.70) 46%,rgba(15,38,44,0) 80%);
+  --scanline:repeating-linear-gradient(0deg,rgba(0,0,0,.14) 0 1px,transparent 1px 4px);
+
+  /* Pastel band — used sparingly, for the wildcard slot and tinted panels. */
+  --pastel-teal:#cfe0dd;
+  --pastel-sage:#d9e4c9;
+  --pastel-clay:#eed4c6;
+
+  /* Broadcast bar. The only rule this system draws. */
+  --broadcast-bar:repeating-linear-gradient(90deg,
+    var(--teal) 0 16%, var(--mustard) 16% 32%, var(--coral) 32% 48%,
+    var(--teal-2) 48% 64%, var(--gold) 64% 80%, var(--silver) 80% 100%);
+
+  /* Organic rounding: containers over-round, controls go pill. */
+  --radius-console:36px;
+  --radius-card:28px;
+  --radius-panel:24px;
+  --radius-art:20px;
+
+  --shadow-card:0 8px 20px rgba(32,45,49,.09);
+  --shadow-card-soft:0 5px 14px rgba(32,45,49,.06);
+  --shadow-console:0 16px 36px rgba(32,45,49,.20);
+
+  /* Decorative icon accents sit between a quarter and a half dollar. */
+  --accent-sm:26px;
+  --accent-md:32px;
+  --accent-lg:44px;
 }

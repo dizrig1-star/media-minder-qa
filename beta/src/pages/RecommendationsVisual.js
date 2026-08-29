@@ -10,5 +10,5 @@ export function RecommendationsVisual(state,choice,recs,wildcard){
  ${prototype?`<div class="curated-prototype">${EditorialCard(prototype,platformName(state,prototype.platform),'select',state)}</div>`:`<div class="empty-state">Nothing rates an MM Select Gold right now.</div>`}
  ${remaining.length?`<div class="prototype-following-grid">${remaining.map(x=>mediaCard(state,x,'select','secondary')).join('')}</div>`:''}
  <div class="section-heading"><h2>One Wildcard</h2></div>
- ${wildcardPick?mediaCard(state,wildcardPick,'select','secondary'):''}`;
+ ${wildcardPick?mediaCard(state,wildcardPick,'select','wildcard'):''}`;
 }

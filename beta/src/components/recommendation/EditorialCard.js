@@ -11,6 +11,12 @@ function imageAsset(file, alt, className){
   return `<img class="${className}" src="${ASSET}${file}" alt="${alt}" />`;
 }
 
+const SELECT_TIER_ART = {
+  select: 'mm-select-star.svg',
+  gold: 'mm-select-gold-seal.svg',
+  silver: 'mm-select-silver-seal.svg'
+};
+
 export function EditorialCard(item, platformName, kind='select', state={}, tier){
   const title = escapeHtml(item.title);
   const platform = escapeHtml(platformName);
@@ -20,6 +26,7 @@ export function EditorialCard(item, platformName, kind='select', state={}, tier)
   const rating = (state.ratings||{})[item.id] || 0;
   const inWatchlist = (state.watchlist||[]).includes(item.id);
   const isSelect = kind === 'select';
+  const selectTier = (item.mmSelect || 'Gold').toLowerCase();
   const isTonight = kind === 'tonight';
   const isWatching = kind === 'watching';
   const isPremiere = kind === 'premiere';
@@ -28,7 +35,7 @@ export function EditorialCard(item, platformName, kind='select', state={}, tier)
   const isWatched = (state.watched||[]).includes(item.id);
   const isSkipped = (state.notInterested||[]).includes(item.id);
   const resolvedTier = tier || (isSelect ? 'hero' : (isPremiere || isLibrary) ? 'compact' : 'secondary');
-  const label = isLibrary ? '' : isSelect ? 'MM SELECT GOLD' : isTonight ? 'TONIGHT' : isWatching ? 'WATCHING' : 'COMING SOON';
+  const label = isLibrary ? '' : isSelect ? (selectTier === 'select' ? 'MM SELECT' : `MM SELECT ${selectTier.toUpperCase()}`) : isTonight ? 'TONIGHT' : isWatching ? 'WATCHING' : 'COMING SOON';
   const tone = isLibrary ? 'teal' : isSelect ? 'gold' : isTonight ? 'coral' : isWatching ? 'teal' : 'gold';
   const date = (item.episodeDrops||[]).find(e=>e.date)?.date;
   const dateText = date ? new Date(`${date}T12:00:00`).toLocaleDateString('en-US',{month:'short',day:'numeric'}) : '';
@@ -36,7 +43,7 @@ export function EditorialCard(item, platformName, kind='select', state={}, tier)
   const timeText = item.episodeTime ? ` · ${item.episodeTime}` : '';
   const premiereText = isPremiere && date ? `<span>${dateText}</span>` : '';
   const badgeAsset = isLibrary ? ''
-    : isSelect ? imageAsset('mm-select-seal.svg','MM Select','editorial-select-badge')
+    : isSelect ? imageAsset(SELECT_TIER_ART[selectTier] || 'mm-select-seal.svg', `MM Select ${item.mmSelect || 'Gold'}`, 'editorial-select-badge')
     : isTonight ? imageAsset('badge-tonight.svg','Tonight','editorial-status-art editorial-status-art--tonight')
     : isWatching ? imageAsset('badge-watching.svg','Watching','editorial-status-art editorial-status-art--watching')
     : isPremiere ? imageAsset('badge-premiere.svg','Premiere','editorial-status-art editorial-status-art--premiere')
