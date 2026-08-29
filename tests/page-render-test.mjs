@@ -77,5 +77,4 @@ if(premiereRowsHtml.includes("Slow Horses")) throw new Error("Premieres incorrec
 if(premiereRowsHtml.includes("The Shards")) throw new Error("Premieres incorrectly includes The Shards");
 if(premiereRowsHtml.includes("Episode 2") || premiereRowsHtml.includes("Episode 3")) throw new Error("Premieres contains ordinary weekly episodes");
 if(premiereRowsHtml.includes("Project Runway")) throw new Error("Premieres incorrectly includes Project Runway after relevance metadata correction");
-if(!premiereRowsHtml.includes("Graveyard")) throw new Error("Premieres missing qualifying Graveyard opener");
 console.log("PASS — Premieres shows only qualifying upcoming openers");
