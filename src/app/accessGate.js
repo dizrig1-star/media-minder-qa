@@ -19,8 +19,10 @@ export function renderGate(onUnlock){
   const app = document.getElementById("app");
   app.innerHTML = `<div class="app-main">
     <section class="card stack" style="max-width:400px;margin:15vh auto 0;text-align:center">
+      <img class="tv-icon gate-icon" src="./assets/branding/approved/icon-tv-coral-stripe.svg" alt="" aria-hidden="true">
       <div class="page-kicker">MEDIA MINDER</div>
       <h1 class="page-title" style="font-size:2rem">Private beta</h1>
+      <div class="retro-rule" style="max-width:160px;margin:0 auto 1rem"></div>
       <p class="muted">Enter the passphrase you were given to continue.</p>
       <div class="search-box">
         <input id="gate-passphrase" type="password" placeholder="Passphrase" autocomplete="off">
