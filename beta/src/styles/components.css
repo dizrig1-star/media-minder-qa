@@ -210,16 +210,35 @@ button.star:hover{background:#c05d51}
 .search-box .btn{flex:none}
 
 /* ----------------------------------------------------------- date tiles
-   Calendar rows drop the SVG tile art for a solid dial tile; the month and
-   day spans already exist in the markup and are simply re-placed. */
+   Calendar rows show the approved date-badge artwork with month and day
+   overlaid on top of it. */
 
-.date-tile{position:relative;flex:none;width:88px;height:88px;aspect-ratio:auto;
-  border-radius:var(--radius-panel);background:var(--teal);color:var(--paper);
-  box-shadow:inset 0 0 0 4px rgba(246,240,223,.75);
-  display:flex;flex-direction:column;align-items:center;justify-content:center}
-.date-tile-art{display:none}
-.date-tile-month{position:static;height:auto;font-family:'Baloo 2',sans-serif;font-size:.66rem;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:#f4d98b}
-.date-tile-day{position:static;height:auto;font-family:'Bebas Neue',Impact,sans-serif;font-size:2.1rem;font-weight:400;color:var(--paper);margin-top:2px}
+.date-tile{position:relative;flex:none;width:110px;aspect-ratio:700/636;}
+.date-tile-art{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:block;}
+.date-tile-month{position:absolute;top:10%;left:8%;right:8%;height:26%;display:flex;align-items:center;justify-content:center;font-family:'Baloo 2',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:#f4ead2;}
+.date-tile-day{position:absolute;top:44%;left:8%;right:8%;height:40%;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',Impact,sans-serif;font-size:1.8rem;font-weight:400;color:#2b2013;}
+
+/* ------------------------------------------------------------- cal-art
+   Calendar rows carry their own small art panel (poster, or the gradient
+   ground when one isn't set) with the title placed on it, same convention
+   as the Hero/Secondary art tiers. */
+
+.cal-art{position:relative;flex:none;width:84px;aspect-ratio:2/3;overflow:hidden;
+  border-radius:var(--radius-art);background:linear-gradient(150deg,#164d56 0%,#286f76 55%,#c96f62 115%);
+  background-size:cover;background-position:center;box-shadow:inset 0 0 0 4px var(--ground-2);
+  display:flex;align-items:flex-end;padding:.5rem}
+.cal-art-title{font-family:'Playfair Display',Georgia,serif;font-weight:700;font-size:.82rem;
+  line-height:1.05;color:var(--paper);text-shadow:0 2px 8px rgba(0,0,0,.6)}
+
+/* --------------------------------------------------------- countdown
+   A large icon with the day count (or "Showing") laid over it. */
+
+.countdown-badge{position:relative;flex:none;width:96px;height:96px;
+  display:flex;align-items:center;justify-content:center}
+.countdown-badge-art{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:.92}
+.countdown-badge-value{position:relative;z-index:1;font-family:'Bebas Neue',Impact,sans-serif;
+  font-size:1.5rem;font-weight:400;color:var(--teal);text-align:center;line-height:1;
+  text-shadow:0 1px 0 rgba(255,255,255,.6)}
 
 /* -------------------------------------------------------- broadcast rule */
 
@@ -283,7 +302,11 @@ img.tv-icon{content:url('../../assets/branding/approved/icon-tv-coral-stripe.svg
   .badge.badge-image{width:130px;height:48px}
   .search-box{flex-wrap:wrap}
   .search-box:before{width:44px;height:44px}
-  .date-tile{width:70px;height:70px}
-  .date-tile-day{font-size:1.7rem}
+  .date-tile{width:84px;height:auto}
+  .date-tile-day{font-size:1.4rem}
+  .cal-art{width:64px}
+  .cal-art-title{font-size:.7rem}
+  .countdown-badge{width:72px;height:72px}
+  .countdown-badge-value{font-size:1.15rem}
   .section-heading:after{width:var(--accent-sm);height:var(--accent-sm)}
 }
