@@ -37,7 +37,7 @@ body{background:var(--ground)}
 
 /* ----------------------------------------------------------------- cards */
 
-.card{position:relative;overflow:hidden;background:var(--paper);border:0;border-radius:var(--radius-card);box-shadow:var(--shadow-card);padding:var(--space-4);min-width:0}
+.card{position:relative;overflow:hidden;background:var(--paper);background-image:var(--paper-grain);background-size:5px 5px,7px 7px;background-position:0 0,2px 3px;border:0;border-radius:var(--radius-card);box-shadow:var(--shadow-card);padding:var(--space-4);min-width:0}
 .card:before,.card:after{content:none}
 .card.flat{box-shadow:none;background:var(--ground-2)}
 .card h3{font-family:'Playfair Display',Georgia,serif;font-weight:600;letter-spacing:normal;text-transform:none;font-size:1.5rem;color:var(--ink);line-height:1.12}
@@ -123,7 +123,8 @@ body{background:var(--ground)}
 .badge.badge-image--tonight,.badge.badge-image--watching,.badge.badge-image--premiere{width:170px;height:58px}
 .badge.badge-image--new{width:140px;height:56px}
 
-.platform{display:inline-flex;border:1px solid var(--line);border-radius:var(--radius-pill);padding:5px 12px;font-size:.76rem;font-weight:700;color:var(--ink-soft);background:#f7f1e3}
+.platform{display:inline-flex;align-items:center;border:1px solid var(--teal);border-radius:var(--radius-pill);padding:5px 12px;font-size:.76rem;font-weight:800;color:var(--teal);background:var(--paper);box-shadow:0 2px 5px rgba(32,45,49,.10);transition:background-color .14s ease,color .14s ease}
+.platform:hover{background:var(--teal);color:var(--paper)}
 
 /* --------------------------------------------------------------- buttons */
 
@@ -171,16 +172,19 @@ body{background:var(--ground)}
 .callout:before{inset:8px}
 
 /* --------------------------------------------------------------- ratings
-   Coral roundels rather than glyph stars. The ★ character is scaled down
-   and centred inside the dot so the shape does the reading. */
+   Real ★ glyphs, gold when selected. A small label precedes the control
+   wherever it is interactive, asking the question directly. */
 
-.rating{display:inline-flex;gap:5px;align-items:center}
-.star{border:0;padding:0;width:26px;height:26px;border-radius:50%;
-  background:var(--pip-off);color:transparent;font-size:0;line-height:0;
-  transition:background-color .14s ease}
-.star.on{background:var(--coral)}
+.rating{display:inline-flex;gap:4px;align-items:center;flex-wrap:wrap}
+.rating-label{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:.7rem;
+  letter-spacing:.08em;text-transform:uppercase;color:var(--bronze);margin-right:.5rem}
+.star{border:0;padding:0;width:28px;height:28px;background:transparent;
+  color:var(--pip-off);font-size:1.5rem;line-height:1;display:inline-flex;
+  align-items:center;justify-content:center;
+  transition:color .14s ease,transform .14s ease}
+.star.on{color:var(--gold)}
 button.star{cursor:pointer}
-button.star:hover{background:#c05d51}
+button.star:hover{color:var(--coral);transform:scale(1.12)}
 .star-button{border:1px solid var(--line);background:var(--paper);border-radius:var(--radius-pill);padding:6px 11px;color:var(--ink-soft);font-weight:700;cursor:pointer}
 .star-button:hover,.star-button.selected{border-color:var(--gold);color:var(--gold);background:#fff8df}
 
