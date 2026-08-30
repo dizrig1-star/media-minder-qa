@@ -1,5 +1,7 @@
 import {heading} from "./pageUtils.js";
 
+const ASSET = './assets/branding/approved/';
+
 function nextDatedEntry(state, franchise){
   const media = [...state.shows, ...state.movies];
   const match = media.find(x => x.franchises?.includes(franchise.id) && x.premiere);
@@ -22,17 +24,25 @@ export function Franchises(state){
     });
 
   return `${heading("Your worlds","Franchises","Stay immersed in the universes you actually care about.")}
-  <section class="hero card"><div class="hero-content"><div class="eyebrow">FEATURED FRANCHISE</div><h2>${featured.title}</h2><p>${featured.description}</p><p><strong>Next:</strong> ${featured.next}</p></div></section>
+  <section class="hero card"><div class="hero-inner">
+    <div class="hero-art"><img class="hero-art-icon" src="${ASSET}Icon-transmission-tower.svg" alt="" aria-hidden="true"><span class="hero-art-title">${featured.title}</span><span class="hero-art-footer">MEDIA MINDER</span></div>
+    <div class="hero-content"><div class="eyebrow">FEATURED FRANCHISE</div><h2>${featured.title}</h2><p>${featured.description}</p><p><strong>Next:</strong> ${featured.next}</p></div>
+  </div></section>
 
   <div class="section-heading"><h2>My Worlds</h2></div>
   <div class="search-box"><input id="franchise-search" placeholder="Find a franchise to follow" aria-label="Find a franchise"></div>
   <div class="grid-2" style="margin-top:var(--space-3)">${all.map(f=>`
     <article class="card" data-franchise-row data-franchise-text="${(f.title+" "+f.description).toLowerCase()}">
-      <div class="cluster" style="justify-content:space-between">
-        <div class="page-kicker">${favorites.has(f.id)?"IN MY WORLDS":"NOT FOLLOWED"}</div>
-        <button class="btn small ${favorites.has(f.id)?"secondary":"ghost"}" data-franchise-toggle="${f.id}">${favorites.has(f.id)?"Remove":"Add"}</button>
+      <div class="franchise-card">
+        <div class="franchise-art"><img class="franchise-art-icon" src="${ASSET}Icon-transmission-tower.svg" alt="" aria-hidden="true"><span class="franchise-art-title">${f.title}</span></div>
+        <div class="details">
+          <div class="cluster" style="justify-content:space-between">
+            <div class="page-kicker">${favorites.has(f.id)?"IN MY WORLDS":"NOT FOLLOWED"}</div>
+            <button class="btn small ${favorites.has(f.id)?"secondary":"ghost"}" data-franchise-toggle="${f.id}">${favorites.has(f.id)?"Remove":"Add"}</button>
+          </div>
+          <h3>${f.title}</h3><p>${f.description}</p><p><strong>Next:</strong> ${f.next}</p>
+        </div>
       </div>
-      <h3>${f.title}</h3><p>${f.description}</p><p><strong>Next:</strong> ${f.next}</p>
     </article>`).join("")}</div>
 
   <div class="section-heading"><h2>Prepare for What's Next</h2></div>
