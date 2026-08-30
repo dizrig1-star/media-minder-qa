@@ -30,6 +30,7 @@
   --texture-paper:.08;
   --texture-film:.03;
   --micro-pattern:.03;
+  --paper-grain:radial-gradient(rgba(79,59,34,.12) .65px,transparent .8px),radial-gradient(rgba(255,255,255,.4) .7px,transparent .9px);
 
   /* ---- Console direction ---- */
 
