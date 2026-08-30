@@ -113,7 +113,14 @@ async function init(){
  document.getElementById("app").innerHTML="<div class='app-main'><div class='card'><h1>Media Minder</h1><p>Setting the table...</p></div></div>";
  try{
    const data=await loadData();
-   appState.set({...data,dataReady:true});
+   // A profile hydrated from localStorage represents real, saved user edits
+   // (Settings, franchise favorites, taste mode, etc.). profile.json is only
+   // the seed/demo profile for first-time users -- once someone has their own
+   // saved profile, loadData()'s fresh copy of profile.json must not clobber it.
+   const hydratedProfile = appState.get().profile;
+   const patch = {...data, dataReady:true};
+   if(hydratedProfile) patch.profile = hydratedProfile;
+   appState.set(patch);
    startRouter(render);
  }catch(error){
    document.getElementById("app").innerHTML=`<main class="app-main"><div class="empty-state"><h1>Media Minder couldn't load.</h1><p>Please run the application through a local web server.</p></div></main>`;
