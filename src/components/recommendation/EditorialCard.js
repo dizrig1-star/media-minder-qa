@@ -35,7 +35,8 @@ export function EditorialCard(item, platformName, kind='select', state={}, tier)
   const isWatched = (state.watched||[]).includes(item.id);
   const isSkipped = (state.notInterested||[]).includes(item.id);
   const resolvedTier = tier || (isSelect ? 'hero' : (isPremiere || isLibrary) ? 'compact' : 'secondary');
-  const label = isLibrary ? '' : isSelect ? (selectTier === 'select' ? 'MM SELECT' : `MM SELECT ${selectTier.toUpperCase()}`) : isTonight ? 'TONIGHT' : isWatching ? 'WATCHING' : 'COMING SOON';
+  const isWildcard = resolvedTier === 'wildcard';
+  const label = isWildcard ? 'One Wildcard Pick, we think you will love' : isLibrary ? '' : isSelect ? (selectTier === 'select' ? 'MM SELECT' : `MM SELECT ${selectTier.toUpperCase()}`) : isTonight ? 'TONIGHT' : isWatching ? 'WATCHING' : 'COMING SOON';
   const tone = isLibrary ? 'teal' : isSelect ? 'gold' : isTonight ? 'coral' : isWatching ? 'teal' : 'gold';
   const date = (item.episodeDrops||[]).find(e=>e.date)?.date;
   const dateText = date ? new Date(`${date}T12:00:00`).toLocaleDateString('en-US',{month:'short',day:'numeric'}) : '';
