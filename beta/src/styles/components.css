@@ -207,11 +207,13 @@ button.star:hover{color:var(--coral);transform:scale(1.12)}
 .search-box:before{content:"";width:56px;height:56px;flex:none;border-radius:50%;
   background:var(--mustard);
   box-shadow:inset 0 -5px 0 rgba(0,0,0,.16),0 4px 8px rgba(0,0,0,.22)}
-.search-box input{flex:1;border:0;background:var(--cream);border-radius:var(--radius-pill);
+.search-box input{flex:1;min-width:0;border:0;background:var(--cream);border-radius:var(--radius-pill);
   padding:14px 22px;color:var(--ink);font-weight:600;
   box-shadow:inset 0 2px 6px rgba(32,45,49,.14)}
 .search-box input::placeholder{color:#9aa3a8}
 .search-box .btn{flex:none}
+
+.gate-icon{width:72px;height:72px;margin:0 auto 4px;display:block;filter:drop-shadow(0 5px 9px rgba(32,45,49,.18))}
 
 /* ----------------------------------------------------------- date tiles
    Calendar rows show the approved date-badge artwork with month and day
