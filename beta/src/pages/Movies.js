@@ -13,7 +13,7 @@ export function Movies(state){
  const visible=mood && MOOD_GENRES[mood] ? base.filter(x=>x.genre?.some(g=>MOOD_GENRES[mood].includes(g))) : base;
  return `${heading("Feature Presentation","Movie Night Picks","Recommendations for the mood you're in.")}
  <div class="grid-2"><section class="stack">${visible.length?visible.map(x=>mediaCard(state,x)).join(""):"<div class='empty-state'>Nothing left to show for that pick -- clear a mood filter or check back soon.</div>"}</section>
- <aside class="card"><div class="page-kicker">MM's Movie Desk</div><h2>Pick a mood.</h2>
+ <aside class="card icon-corner icon-corner--woodgrain"><div class="page-kicker">MM's Movie Desk</div><h2>Pick a mood.</h2>
  <div class="cluster">
  ${Object.entries(MOOD_LABEL).map(([key,label])=>`<button class="btn small ${mood===key?"":"secondary"}" data-mood="${key}">${label}</button>`).join("")}
  ${mood?`<button class="btn small ghost" data-mood="">Clear</button>`:""}
