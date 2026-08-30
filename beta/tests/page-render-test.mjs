@@ -1,7 +1,7 @@
 import fs from "fs";
 import {Landing} from "../src/pages/Landing.js";
 import {Tonight} from "../src/pages/Tonight.js";
-import {Recommendations} from "../src/pages/Recommendations.js";
+import {RecommendationsVisual as Recommendations} from "../src/pages/RecommendationsVisual.js";
 import {Watchlist} from "../src/pages/Watchlist.js";
 import {Calendar} from "../src/pages/Calendar.js";
 import {Premieres} from "../src/pages/Premieres.js";
