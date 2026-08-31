@@ -1334,8 +1334,8 @@
     "mmSelect": "Silver",
     "status": "returning",
     "season": 13,
-    "episodes": 10,
-    "runtime": 55,
+    "episodes": 13,
+    "runtime": 30,
     "cast": [
       "Sarah Paulson",
       "Evan Peters",
@@ -1347,66 +1347,84 @@
     "episodeTitle": "Season 13 Premiere",
     "summary": "FX's long-running horror anthology returns for its 13th cycle.",
     "why": "A genre swap if you want something unsettling instead of just suspenseful -- a real change of pace.",
-    "releasePattern": "weekly",
+    "releasePattern": "three-episode premiere, then weekly (final episode solo)",
     "episodeDrops": [
       {
         "episode": 1,
-        "title": "Season Premiere",
+        "title": "Episode 1",
         "date": "2026-09-24",
         "time": "10:00 PM"
       },
       {
         "episode": 2,
         "title": "Episode 2",
-        "date": "2026-10-01",
+        "date": "2026-09-24",
         "time": "10:00 PM"
       },
       {
         "episode": 3,
         "title": "Episode 3",
-        "date": "2026-10-08",
+        "date": "2026-09-24",
         "time": "10:00 PM"
       },
       {
         "episode": 4,
         "title": "Episode 4",
-        "date": "2026-10-15",
+        "date": "2026-10-01",
         "time": "10:00 PM"
       },
       {
         "episode": 5,
         "title": "Episode 5",
-        "date": "2026-10-22",
+        "date": "2026-10-01",
         "time": "10:00 PM"
       },
       {
         "episode": 6,
         "title": "Episode 6",
-        "date": "2026-10-29",
+        "date": "2026-10-01",
         "time": "10:00 PM"
       },
       {
         "episode": 7,
         "title": "Episode 7",
-        "date": "2026-11-05",
+        "date": "2026-10-08",
         "time": "10:00 PM"
       },
       {
         "episode": 8,
         "title": "Episode 8",
-        "date": "2026-11-12",
+        "date": "2026-10-08",
         "time": "10:00 PM"
       },
       {
         "episode": 9,
         "title": "Episode 9",
-        "date": "2026-11-19",
+        "date": "2026-10-15",
         "time": "10:00 PM"
       },
       {
         "episode": 10,
         "title": "Episode 10",
-        "date": "2026-11-26",
+        "date": "2026-10-15",
+        "time": "10:00 PM"
+      },
+      {
+        "episode": 11,
+        "title": "Episode 11",
+        "date": "2026-10-22",
+        "time": "10:00 PM"
+      },
+      {
+        "episode": 12,
+        "title": "Episode 12",
+        "date": "2026-10-22",
+        "time": "10:00 PM"
+      },
+      {
+        "episode": 13,
+        "title": "Series Finale",
+        "date": "2026-10-29",
         "time": "10:00 PM"
       }
     ],
@@ -1422,13 +1440,13 @@
     "platform": "max",
     "link": "https://www.max.com/",
     "genre": [
-      "War Drama",
+      "Legal Drama",
       "Drama"
     ],
     "mmSelect": "Gold",
     "status": "new",
     "season": 1,
-    "episodes": 6,
+    "episodes": 8,
     "runtime": 55,
     "cast": [
       "Dominic West",
@@ -1438,8 +1456,8 @@
     "premiere": "2026-10-01",
     "episodeTime": "9:00 PM",
     "episodeTitle": "Series Premiere",
-    "summary": "A new HBO limited drama series, part of Max's marquee fall 2026 slate.",
-    "why": "A prestige pick for when you want something weightier than a whodunit.",
+    "summary": "Tech mogul Morgan Henderson and film star Carla Duval wage an explosive celebrity divorce, as rival law firms Cathcarts & Sons and Taylor & Byrne fight to win at any cost.",
+    "why": "A prestige pick for when you want something weightier than a whodunit -- a legal and marital battle with real teeth.",
     "releasePattern": "weekly",
     "episodeDrops": [
       {
@@ -1476,6 +1494,18 @@
         "episode": 6,
         "title": "Episode 6",
         "date": "2026-11-05",
+        "time": "9:00 PM"
+      },
+      {
+        "episode": 7,
+        "title": "Episode 7",
+        "date": "2026-11-12",
+        "time": "9:00 PM"
+      },
+      {
+        "episode": 8,
+        "title": "Episode 8",
+        "date": "2026-11-19",
         "time": "9:00 PM"
       }
     ],
