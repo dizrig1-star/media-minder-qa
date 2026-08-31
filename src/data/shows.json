@@ -80,7 +80,10 @@
     "season": 3,
     "episodes": 8,
     "runtime": 50,
-    "cast": [],
+    "cast": [
+      "Birce Akalay",
+      "Olgun Toker"
+    ],
     "franchises": [],
     "premiere": "2026-08-28",
     "episodeTime": "3:00 AM",
@@ -359,7 +362,7 @@
     "episodes": 8,
     "runtime": 50,
     "cast": [
-      "Zoe Saldaña",
+      "Zoe Salda\u00f1a",
       "Nicole Kidman",
       "Morgan Freeman",
       "Michael Kelly"
@@ -665,7 +668,11 @@
     "season": 2,
     "episodes": 6,
     "runtime": 50,
-    "cast": [],
+    "cast": [
+      "Simon Pegg",
+      "Si\u00e2n Brooke",
+      "Hannah Khalique-Brown"
+    ],
     "franchises": [],
     "premiere": "2026-08-27",
     "episodeTime": "3:00 AM",
@@ -730,7 +737,10 @@
     "season": 35,
     "episodes": 9,
     "runtime": 90,
-    "cast": [],
+    "cast": [
+      "Alfonso Ribeiro",
+      "Julianne Hough"
+    ],
     "franchises": [],
     "premiere": "2026-09-15",
     "episodeTime": "8:00 PM",
@@ -814,7 +824,10 @@
     "season": 1,
     "episodes": 13,
     "runtime": 30,
-    "cast": [],
+    "cast": [
+      "Ed Weeks",
+      "Allegra Edwards"
+    ],
     "franchises": [],
     "premiere": "2026-10-08",
     "episodeTime": "8:30 PM",
@@ -921,7 +934,9 @@
     "season": 1,
     "episodes": 10,
     "runtime": 60,
-    "cast": [],
+    "cast": [
+      "Alan Cumming"
+    ],
     "franchises": [],
     "premiere": "2026-09-17",
     "episodeTime": "8:00 PM",
@@ -1321,7 +1336,11 @@
     "season": 13,
     "episodes": 10,
     "runtime": 55,
-    "cast": [],
+    "cast": [
+      "Sarah Paulson",
+      "Evan Peters",
+      "Jessica Lange"
+    ],
     "franchises": [],
     "premiere": "2026-09-24",
     "episodeTime": "10:00 PM",
@@ -1411,7 +1430,10 @@
     "season": 1,
     "episodes": 6,
     "runtime": 55,
-    "cast": [],
+    "cast": [
+      "Dominic West",
+      "Sienna Miller"
+    ],
     "franchises": [],
     "premiere": "2026-10-01",
     "episodeTime": "9:00 PM",
