@@ -72,10 +72,20 @@ console.log("PASS — Premieres excludes The Shards");
 
 console.log("PAGE RENDER QA: PASS — 11/11");
 
+// The exact set of "upcoming" premieres depends on the wall-clock date at the
+// moment this suite runs, and the catalog's premiere dates are fixed values --
+// so any assertion tied to real time (e.g. "Graveyard must currently be
+// upcoming") eventually goes stale as the calendar moves past it, even though
+// nothing is actually broken. Anchoring to a fixed reference date (matching
+// the convention already used in state-correction-test.mjs's PREMIERES-01
+// check) makes this assertion permanent and immune to calendar drift.
+const {getUpcomingPremiereRows}=await import("../src/services/scheduleService.js");
+const PREMIERE_TEST_ANCHOR=new Date("2026-08-14T12:00:00");
+const anchoredPremiereRows=getUpcomingPremiereRows(state,PREMIERE_TEST_ANCHOR);
+if(anchoredPremiereRows.some(x=>x.show.title==="Slow Horses")) throw new Error("Premieres incorrectly includes Slow Horses outside the two-week window");
+if(anchoredPremiereRows.some(x=>x.show.title==="The Shards")) throw new Error("Premieres incorrectly includes The Shards");
+if(anchoredPremiereRows.some(x=>x.show.title==="Project Runway")) throw new Error("Premieres incorrectly includes Project Runway after relevance metadata correction");
+if(!anchoredPremiereRows.some(x=>x.show.title==="Graveyard" && x.episode===1)) throw new Error("Premieres missing qualifying Graveyard opener");
 const premiereRowsHtml=Premieres(state);
-if(premiereRowsHtml.includes("Slow Horses")) throw new Error("Premieres incorrectly includes Slow Horses outside the two-week window");
-if(premiereRowsHtml.includes("The Shards")) throw new Error("Premieres incorrectly includes The Shards");
 if(premiereRowsHtml.includes("Episode 2") || premiereRowsHtml.includes("Episode 3")) throw new Error("Premieres contains ordinary weekly episodes");
-if(premiereRowsHtml.includes("Project Runway")) throw new Error("Premieres incorrectly includes Project Runway after relevance metadata correction");
-if(!premiereRowsHtml.includes("Graveyard")) throw new Error("Premieres missing qualifying Graveyard opener");
 console.log("PASS — Premieres shows only qualifying upcoming openers");
