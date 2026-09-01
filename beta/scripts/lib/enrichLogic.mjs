@@ -97,9 +97,19 @@ export function mergeEnrichment(existingEntry, { tmdbDetails, tmdbProviders, omd
     updated.poster = `https://image.tmdb.org/t/p/w780${tmdbDetails.poster_path}`;
   }
 
+  // Only fill in platform/link when we don't already have a curated value --
+  // never overwrite one. TMDB's flatrate list doesn't distinguish a title's
+  // native home from an add-on "channel" subscription resold through another
+  // platform (e.g. Paramount+ sold via Amazon Channels can surface as plain
+  // "Prime Video" with no way to tell the two apart), so a confirmed match
+  // here is not reliable enough to override data we already verified by
+  // hand. This was found and fixed after the first live run reassigned
+  // Lioness and Project Runway to "prime" -- both wrong.
   const providerInfo = buildProviderInfo(tmdbProviders, region);
   if(providerInfo){
-    updated.platform = providerInfo.platform;
+    if(!existingEntry.platform){
+      updated.platform = providerInfo.platform;
+    }
     if(!existingEntry.link && providerInfo.link){
       updated.link = providerInfo.link;
     }
