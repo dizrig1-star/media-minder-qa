@@ -15,7 +15,7 @@ import fs from "fs";
 import {
   pickBestTmdbMatch,
   mergeEnrichment
-} from "./lib/enrichLogic.mjs";
+} from "../src/lib/enrichLogic.mjs";
 
 const REGION = process.env.MM_REGION || "US";
 const TMDB_API_KEY = process.env.TMDB_API_KEY;

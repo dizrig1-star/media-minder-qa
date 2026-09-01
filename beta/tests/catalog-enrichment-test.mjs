@@ -6,7 +6,7 @@ import {
   extractImdbRating,
   computeMMRating,
   mergeEnrichment
-} from "../scripts/lib/enrichLogic.mjs";
+} from "../src/lib/enrichLogic.mjs";
 
 // This test exercises the enrichment pipeline's merge/rating logic against
 // canned TMDB/OMDb-shaped fixtures. It makes no network calls and needs no
