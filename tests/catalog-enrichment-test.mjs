@@ -106,7 +106,7 @@ console.log("PASS -- computeMMRating blends both sources and degrades gracefully
   const merged = mergeEnrichment(existingEntry, fixture, "US");
 
   assert.equal(merged.poster, "https://image.tmdb.org/t/p/w780/newposter.jpg", "poster should refresh from TMDB");
-  assert.equal(merged.platform, "hulu", "platform should be set from a confirmed flatrate match");
+  assert.equal(merged.platform, "hulu", "platform is unchanged -- it was already curated as hulu");
   assert.equal(merged.link, "https://tmdb.example/watch", "link should fill in since the entry had none");
   assert.equal(merged.mmRating, Math.round(((7.5 + 8.8) / 2) * 10) / 10, "mmRating should blend IMDb and RT");
   assert.deepEqual(merged.ratingSources, { imdb: 7.5, rottenTomatoes: 88 });
@@ -132,6 +132,29 @@ console.log("PASS -- computeMMRating blends both sources and degrades gracefully
   const merged = mergeEnrichment(existingEntry, fixture, "US");
   assert.equal(merged.platform, "abc", "platform must be preserved when TMDB has no confirmed match");
 }
-console.log("PASS -- mergeEnrichment only refreshes artwork/platform/link/rating and never blanks curated data");
+{
+  // Even a *confirmed* flatrate match must never override a curated platform.
+  // Found via a real run: TMDB listed "Prime Video" for Lioness and Project
+  // Runway, both of which are actually exclusive to Paramount+/other homes --
+  // TMDB can't tell a native listing apart from a resold add-on channel, so a
+  // match here is not trustworthy enough to overwrite verified data.
+  const existingEntry = { id: "lioness-s3", platform: "paramount" };
+  const fixture = {
+    tmdbProviders: { results: { US: { link: "https://tmdb.example/watch", flatrate: [{ provider_name: "Prime Video" }] } } }
+  };
+  const merged = mergeEnrichment(existingEntry, fixture, "US");
+  assert.equal(merged.platform, "paramount", "a confirmed TMDB match must not override an already-curated platform");
+}
+{
+  // Platform SHOULD be filled in when the entry doesn't have one yet at all
+  // (e.g. a brand-new title the pipeline discovers with no curated platform).
+  const existingEntry = { id: "brand-new-title" };
+  const fixture = {
+    tmdbProviders: { results: { US: { link: "https://tmdb.example/watch", flatrate: [{ provider_name: "Netflix" }] } } }
+  };
+  const merged = mergeEnrichment(existingEntry, fixture, "US");
+  assert.equal(merged.platform, "netflix", "platform should be filled in when there was no curated value at all");
+}
+console.log("PASS -- mergeEnrichment only refreshes artwork/rating always, and platform/link only when not already curated");
 
 console.log("CATALOG ENRICHMENT LOGIC: PASS");
