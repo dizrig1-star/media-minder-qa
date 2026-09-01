@@ -1,0 +1,54 @@
+name: Media Minder Catalog Refresh
+
+on:
+  schedule:
+    - cron: "0 13 * * 1" # Every Monday 13:00 UTC
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout beta branch
+        uses: actions/checkout@v4
+        with:
+          ref: qa/cal-02-onboarding-lab
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Refresh catalog from TMDB + OMDb
+        env:
+          TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
+          OMDB_API_KEY: ${{ secrets.OMDB_API_KEY }}
+        run: node scripts/enrich-catalog.mjs
+
+      - name: Run full regression against the refreshed data
+        run: npm test
+
+      - name: Open a PR with the refreshed catalog
+        uses: peter-evans/create-pull-request@v6
+        with:
+          commit-message: "Weekly catalog refresh: TMDB + OMDb data"
+          title: "Weekly catalog refresh (automated)"
+          body: |
+            Automated refresh of artwork, platform, and rating data in
+            src/data/shows.json and src/data/movies.json from TMDB and OMDb.
+
+            Title, genre, cast, summary, "why" copy, episodes, and franchises
+            are untouched -- only artwork, platform/link, and the new mmRating
+            fields are updated.
+
+            Review the diff before merging. If a title's match looks wrong,
+            add a "tmdbId": <id> field to that entry to pin it for future runs.
+          branch: automated/catalog-refresh
+          base: qa/cal-02-onboarding-lab
+          add-paths: |
+            src/data/shows.json
+            src/data/movies.json
