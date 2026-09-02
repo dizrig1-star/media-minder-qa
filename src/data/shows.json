@@ -1,7 +1,7 @@
 [
   {
     "id": "slow-horses-s6",
-    "poster": "https://images.justwatch.com/poster/349367328/s718/season-6.jpg",
+    "poster": "https://image.tmdb.org/t/p/w780/w2jauz2PeSjFQifDObI3qDen4f7.jpg",
     "title": "Slow Horses",
     "type": "series",
     "platform": "apple",
@@ -63,11 +63,16 @@
         "date": "2026-10-21",
         "time": "12:00 AM"
       }
-    ]
+    ],
+    "mmRating": 8.3,
+    "ratingSources": {
+      "imdb": 8.3,
+      "rottenTomatoes": null
+    }
   },
   {
     "id": "graveyard-s3",
-    "poster": "https://images.justwatch.com/poster/307608705/s718/season-3.jpg",
+    "poster": "https://image.tmdb.org/t/p/w780/ye6n3GdSaiSy81hiIRvf3vjVv1N.jpg",
     "title": "Graveyard",
     "type": "series",
     "platform": "netflix",
@@ -140,11 +145,17 @@
         "date": "2026-10-16",
         "time": "3:00 AM"
       }
-    ]
+    ],
+    "link": "https://www.themoviedb.org/tv/204255-mezarlik/watch?locale=US",
+    "mmRating": 7.7,
+    "ratingSources": {
+      "imdb": 7.7,
+      "rottenTomatoes": null
+    }
   },
   {
     "id": "project-runway-s22",
-    "poster": "https://images.justwatch.com/poster/335023297/s718/season-22.jpg",
+    "poster": "https://image.tmdb.org/t/p/w780/586pDee4pRZpGP6sL1l0hDA9Srw.jpg",
     "title": "Project Runway",
     "type": "series",
     "platform": "disney",
@@ -258,11 +269,17 @@
         "date": "2026-11-22",
         "time": "10:00 PM"
       }
-    ]
+    ],
+    "link": "https://www.themoviedb.org/tv/1685-project-runway/watch?locale=US",
+    "mmRating": 7.4,
+    "ratingSources": {
+      "imdb": 7.4,
+      "rottenTomatoes": null
+    }
   },
   {
     "id": "the-shards",
-    "poster": "https://images.justwatch.com/poster/347382936/s718/season-1.jpg",
+    "poster": "https://image.tmdb.org/t/p/w780/wP0GdqwVu2g1y3q1KzBXuSrdTvX.jpg",
     "title": "The Shards",
     "type": "series",
     "platform": "hulu",
@@ -344,11 +361,17 @@
       }
     ],
     "currentEpisode": 4,
-    "nextEpisode": 5
+    "nextEpisode": 5,
+    "link": "https://www.themoviedb.org/tv/298168-the-shards/watch?locale=US",
+    "mmRating": 5.8,
+    "ratingSources": {
+      "imdb": 5.8,
+      "rottenTomatoes": null
+    }
   },
   {
     "id": "lioness-s3",
-    "poster": "https://images.justwatch.com/poster/335840135/s718/season-2.jpg",
+    "poster": "https://image.tmdb.org/t/p/w780/rzpHPSEgPTpRs8EHbygwsOw7jC0.jpg",
     "title": "Lioness",
     "type": "series",
     "platform": "paramount",
@@ -362,7 +385,7 @@
     "episodes": 8,
     "runtime": 50,
     "cast": [
-      "Zoe Salda\u00f1a",
+      "Zoe Saldaña",
       "Nicole Kidman",
       "Morgan Freeman",
       "Michael Kelly"
@@ -423,11 +446,17 @@
         "date": "2026-09-20",
         "time": "9:00 PM"
       }
-    ]
+    ],
+    "link": "https://www.themoviedb.org/tv/113962-lioness/watch?locale=US",
+    "mmRating": 7.8,
+    "ratingSources": {
+      "imdb": 7.8,
+      "rottenTomatoes": null
+    }
   },
   {
     "id": "reacher-s4",
-    "poster": "https://images.justwatch.com/poster/348774470/s718/season-4.jpg",
+    "poster": "https://image.tmdb.org/t/p/w780/f1VCQIG2iCyOookdgOzwtUpwWC0.jpg",
     "title": "Reacher",
     "type": "series",
     "platform": "prime",
@@ -504,7 +533,13 @@
         "date": "2026-09-16",
         "time": "12:00 AM"
       }
-    ]
+    ],
+    "link": "https://www.themoviedb.org/tv/108978-reacher/watch?locale=US",
+    "mmRating": 8,
+    "ratingSources": {
+      "imdb": 8,
+      "rottenTomatoes": null
+    }
   },
   {
     "id": "resolve-to-solve",
@@ -572,7 +607,7 @@
     "seasonPremiereDate": "2026-08-19",
     "currentEpisode": 0,
     "nextEpisode": 1,
-    "poster": "https://image.pbs.org/contentchannels/cZyhOWG-background-ZZvHD1b.jpg?focalcrop=1200x630x50x10&format=auto"
+    "poster": "https://image.tmdb.org/t/p/w780/kkoUbraffQcfy0EU6P3xfuTI2Q3.jpg"
   },
   {
     "id": "the-varnell-hill-show",
@@ -651,7 +686,7 @@
     "seasonPremiereDate": "2026-09-01",
     "currentEpisode": 0,
     "nextEpisode": 1,
-    "poster": "https://images.justwatch.com/poster/348014702/s718/the-varnell-hill-show.jpg"
+    "poster": "https://image.tmdb.org/t/p/w780/nZbQHs1WCf2H8NJ8hzR0n5LoeT6.jpg"
   },
   {
     "id": "undeclared-war-s2",
@@ -670,7 +705,7 @@
     "runtime": 50,
     "cast": [
       "Simon Pegg",
-      "Si\u00e2n Brooke",
+      "Siân Brooke",
       "Hannah Khalique-Brown"
     ],
     "franchises": [],
@@ -721,7 +756,12 @@
     "seasonPremiereDate": "2026-08-27",
     "currentEpisode": 0,
     "nextEpisode": 1,
-    "poster": "https://images.justwatch.com/poster/347851762/s718/season-2.jpg"
+    "poster": "https://image.tmdb.org/t/p/w780/3jBI62Gtl18CbMHSq4LRGilxxdC.jpg",
+    "mmRating": 7,
+    "ratingSources": {
+      "imdb": 7,
+      "rottenTomatoes": null
+    }
   },
   {
     "id": "dwts-s35",
@@ -807,7 +847,12 @@
     "seasonPremiereDate": "2026-09-15",
     "currentEpisode": 0,
     "nextEpisode": 1,
-    "poster": "https://images.justwatch.com/poster/337727587/s718/season-35.jpg"
+    "poster": "https://image.tmdb.org/t/p/w780/5ropLAggzraCNoT6QPltb9lxeP3.jpg",
+    "mmRating": 4.9,
+    "ratingSources": {
+      "imdb": 4.9,
+      "rottenTomatoes": null
+    }
   },
   {
     "id": "eternally-yours",
@@ -918,7 +963,7 @@
     "seasonPremiereDate": "2026-10-08",
     "currentEpisode": 0,
     "nextEpisode": 1,
-    "poster": "https://images.justwatch.com/poster/344785859/s718/eternally-yours.jpg"
+    "poster": "https://image.tmdb.org/t/p/w780/9UvViG3aXy8aik9dJHQKaVEVsZm.jpg"
   },
   {
     "id": "traitors-new-blood",
@@ -1009,7 +1054,7 @@
     "seasonPremiereDate": "2026-09-17",
     "currentEpisode": 0,
     "nextEpisode": 1,
-    "poster": "https://images.justwatch.com/poster/348314429/s718/season-1.jpg"
+    "poster": "https://image.tmdb.org/t/p/w780/gIXRmBU4H64MUMr8AP9JhflyNwJ.jpg"
   },
   {
     "id": "doc-s3",
@@ -1090,7 +1135,12 @@
     "seasonPremiereDate": "2026-09-22",
     "currentEpisode": 0,
     "nextEpisode": 1,
-    "poster": "https://images.justwatch.com/poster/348508672/s718/season-3.jpg"
+    "poster": "https://image.tmdb.org/t/p/w780/4hNOf5ulemoI7EqYg8fDVIclFzq.jpg",
+    "mmRating": 5.9,
+    "ratingSources": {
+      "imdb": 5.9,
+      "rottenTomatoes": null
+    }
   },
   {
     "id": "last-seen",
@@ -1158,7 +1208,7 @@
     "seasonPremiereDate": "2026-09-09",
     "currentEpisode": 0,
     "nextEpisode": 1,
-    "poster": "https://images.justwatch.com/poster/348320106/s718/season-1.jpg"
+    "poster": "https://image.tmdb.org/t/p/w780/vozJZjHv0Yyv4PjoOxF5tVMUGFI.jpg"
   },
   {
     "id": "alley-cats",
@@ -1238,7 +1288,7 @@
     "seasonPremiereDate": "2026-08-07",
     "currentEpisode": 0,
     "nextEpisode": 1,
-    "poster": "https://images.justwatch.com/poster/346220606/s718/alley-cats.jpg"
+    "poster": "https://image.tmdb.org/t/p/w780/jhee1jS4AGZ7C5mZoN2czLt4BKk.jpg"
   },
   {
     "id": "neagley",
@@ -1319,7 +1369,7 @@
     "seasonPremiereDate": "2026-09-16",
     "currentEpisode": 0,
     "nextEpisode": 1,
-    "poster": "https://images.justwatch.com/poster/348270705/s718/season-1.jpg"
+    "poster": "https://image.tmdb.org/t/p/w780/1m6CxPAuGv2oHc1ahERrcVWnk2J.jpg"
   },
   {
     "id": "ahs-13",
@@ -1431,7 +1481,12 @@
     "seasonPremiereDate": "2026-09-24",
     "currentEpisode": 0,
     "nextEpisode": 1,
-    "poster": "https://bleedingcool.com/wp-content/uploads/2026/07/MixCollage-09-Jul-2026-11-31-AM-6789-2000x1125.jpg"
+    "poster": "https://image.tmdb.org/t/p/w780/x2c3AvZeTyNehRZXabTojAxfDuR.jpg",
+    "mmRating": 7.9,
+    "ratingSources": {
+      "imdb": 7.9,
+      "rottenTomatoes": null
+    }
   },
   {
     "id": "war",
@@ -1512,6 +1567,6 @@
     "seasonPremiereDate": "2026-10-01",
     "currentEpisode": 0,
     "nextEpisode": 1,
-    "poster": "https://hbowatch.com/wp-content/uploads/2026/08/War_FirstPhoto.png"
+    "poster": "https://image.tmdb.org/t/p/w780/qw9YVGyZaUpSmKHlPVhLn33lEPH.jpg"
   }
 ]

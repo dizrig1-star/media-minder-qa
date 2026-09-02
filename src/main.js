@@ -8,6 +8,7 @@ import {Header} from "./components/layout/Header.js";
 import {Navigation} from "./components/navigation/Navigation.js";
 import {Footer} from "./components/layout/Footer.js";
 import {openDetail} from "./components/media/Modal.js";
+import {liveSearch} from "./lib/liveSearch.mjs";
 
 import {Landing} from "./pages/Landing.js";
 import {Tonight} from "./pages/Tonight.js";
@@ -32,6 +33,28 @@ function render(route){
  const Page=pages[route==="landing"?"Landing":route[0].toUpperCase()+route.slice(1)];
  document.getElementById("app").innerHTML=`<div class="app-shell"><aside class="sidebar">${Header()}${Navigation(route)}</aside><div class="content-column"><main class="app-main">${Page(state,choice,recs,wildcard)}</main>${Footer()}</div></div>`;
  bind();
+}
+
+// Runs a search: shows local catalog results instantly (via the query state
+// change), and separately kicks off a live TMDB/OMDb search in the
+// background if the person has entered a TMDB key in Settings. liveSearchQuery
+// doubles as a guard against stale results -- if the person searches again
+// before this resolves, Search.js will simply ignore whichever response
+// lands with an outdated liveSearchQuery.
+function triggerSearch(rawQuery){
+ const trimmed=(rawQuery||"").trim();
+ const state=appState.get();
+ const hasTmdbKey=!!(state.apiKeys && state.apiKeys.tmdb && trimmed);
+ appState.set({
+   query: rawQuery,
+   liveSearchQuery: trimmed,
+   liveSearchLoading: hasTmdbKey,
+   liveSearchResults: []
+ });
+ if(!hasTmdbKey) return;
+ liveSearch(trimmed, {tmdbApiKey: state.apiKeys.tmdb, omdbApiKey: state.apiKeys.omdb})
+   .then(results => appState.set({liveSearchResults: results, liveSearchLoading: false}))
+   .catch(() => appState.set({liveSearchResults: [], liveSearchLoading: false}));
 }
 
 function bind(){
@@ -101,11 +124,23 @@ function bind(){
  const search=document.getElementById("search-submit");
  if(search) search.onclick=()=>{
    const input=document.getElementById("search-input");
-   appState.set({query:input.value});
+   triggerSearch(input.value);
  };
  document.querySelectorAll("[data-query]").forEach(el=>el.onclick=()=>{
-   appState.set({query:el.dataset.query});
+   triggerSearch(el.dataset.query);
  });
+
+ const saveApiKeys=document.getElementById("settings-save-api-keys");
+ if(saveApiKeys) saveApiKeys.onclick=()=>{
+   const tmdbInput=document.getElementById("settings-tmdb-key");
+   const omdbInput=document.getElementById("settings-omdb-key");
+   appState.setApiKeys(tmdbInput?.value, omdbInput?.value);
+   const savedLabel=document.getElementById("settings-api-keys-saved");
+   if(savedLabel){
+     savedLabel.hidden=false;
+     setTimeout(()=>{savedLabel.hidden=true;}, 2000);
+   }
+ };
 }
 
 async function init(){
@@ -113,7 +148,14 @@ async function init(){
  document.getElementById("app").innerHTML="<div class='app-main'><div class='card'><h1>Media Minder</h1><p>Setting the table...</p></div></div>";
  try{
    const data=await loadData();
-   appState.set({...data,dataReady:true});
+   // A profile hydrated from localStorage represents real, saved user edits
+   // (Settings, franchise favorites, taste mode, etc.). profile.json is only
+   // the seed/demo profile for first-time users -- once someone has their own
+   // saved profile, loadData()'s fresh copy of profile.json must not clobber it.
+   const hydratedProfile = appState.get().profile;
+   const patch = {...data, dataReady:true};
+   if(hydratedProfile) patch.profile = hydratedProfile;
+   appState.set(patch);
    startRouter(render);
  }catch(error){
    document.getElementById("app").innerHTML=`<main class="app-main"><div class="empty-state"><h1>Media Minder couldn't load.</h1><p>Please run the application through a local web server.</p></div></main>`;

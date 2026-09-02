@@ -1,13 +1,36 @@
+/* Media Minder — layout, Console direction.
+   Full replacement for src/styles/layout.css.
+   Changes: the page header loses its rotated TV watermark and gains the
+   broadcast bar as its rule; grids get Organic's air. */
+
 .app-shell{min-height:100vh;display:flex}
-.sidebar{flex:none;width:250px;position:sticky;top:0;align-self:flex-start;height:100vh;overflow-y:auto}
+.sidebar{flex:none;width:325px;position:sticky;top:0;align-self:flex-start;height:100vh;overflow-y:auto}
 .content-column{flex:1;min-width:0;display:flex;flex-direction:column;min-height:100vh}
-.app-main{width:min(var(--max),calc(100% - 32px));margin:0 auto;padding:var(--space-5) 0 var(--space-6);flex:1}
-.page-header{display:flex;justify-content:space-between;gap:1rem;align-items:end;margin-bottom:var(--space-4);position:relative;padding-bottom:1rem;border-bottom:1px solid rgba(217,208,188,.8)}
-.page-header:after{content:"";width:58px;height:58px;flex:none;background:url('../assets/icons/tv.svg') center/contain no-repeat;opacity:.09;transform:rotate(-5deg);margin-bottom:-.2rem}
-.page-kicker{text-transform:uppercase;letter-spacing:.14em;font-size:.75rem;font-weight:800;color:var(--teal)}
-.page-title{font-size:clamp(2.15rem,4vw,3.6rem)}
-.grid-2{display:grid;grid-template-columns:minmax(0,1.8fr) minmax(280px,1fr);gap:var(--space-4)}
-.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--space-3)}
+.app-main{width:min(var(--max),calc(100% - 40px));margin:0 auto;padding:var(--space-5) 0 var(--space-6);flex:1}
+
+.page-header{display:flex;justify-content:space-between;gap:1.5rem;align-items:flex-end;
+  margin-bottom:var(--space-5);position:relative;padding-bottom:var(--space-4);border-bottom:0}
+/* The rule is the broadcast bar, drawn full width under the header. */
+.page-header:after{content:"";position:absolute;left:0;right:0;bottom:0;
+  width:auto;height:5px;flex:none;background:var(--broadcast-bar);background-image:var(--broadcast-bar);
+  border-radius:var(--radius-pill);opacity:.75;transform:none;margin:0}
+.page-kicker{text-transform:uppercase;letter-spacing:.18em;font-size:.72rem;font-weight:800;color:var(--teal)}
+.page-title{font-size:clamp(2rem,3.4vw,2.9rem);margin-bottom:.4rem}
+.page-header .muted{max-width:60ch}
+
+.grid-2{display:grid;grid-template-columns:minmax(0,1.75fr) minmax(280px,1fr);gap:var(--space-4)}
+.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--space-4)}
 .stack{display:flex;flex-direction:column;gap:var(--space-3)}
+.editorial-stack{gap:var(--space-4)}
 .cluster{display:flex;flex-wrap:wrap;gap:var(--space-2);align-items:center}
-@media(max-width:850px){.grid-2,.grid-3{grid-template-columns:1fr}.app-main{width:min(var(--max),calc(100% - 22px));padding-top:var(--space-4)}.page-header:after{width:44px;height:44px}.app-shell{flex-direction:column}.sidebar{position:static;width:100%;height:auto;overflow-y:visible}.sidebar-header{flex-direction:row;justify-content:center;padding:14px 16px}.sidebar-nav{flex-direction:row;overflow-x:auto;padding:0 8px 10px}.nav-item{border-left:0;border-bottom:3px solid transparent;padding:12px 14px}.nav-item:hover,.nav-item.active{border-left-color:transparent;border-bottom-color:var(--coral);background:transparent}}
+
+@media(max-width:850px){
+  .grid-2,.grid-3{grid-template-columns:1fr}
+  .app-main{width:min(var(--max),calc(100% - 24px));padding-top:var(--space-4)}
+  .app-shell{flex-direction:column}
+  .sidebar{position:static;width:100%;height:auto;overflow-y:visible}
+  .sidebar-header{flex-direction:row;justify-content:center;padding:14px 16px}
+  .sidebar-nav{flex-direction:row;overflow-x:auto;padding:0 10px 12px}
+  .nav-item{padding:10px 16px}
+  .nav-item:hover,.nav-item.active{border-left-color:transparent}
+}

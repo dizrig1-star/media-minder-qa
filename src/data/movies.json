@@ -1,7 +1,7 @@
 [
   {
     "id": "sinners",
-    "poster": "https://images.justwatch.com/poster/320977032/s718/sinners-2025.jpg",
+    "poster": "https://image.tmdb.org/t/p/w780/fWPgbnt2LSqkQ6cdQc0SZN9CpLm.jpg",
     "title": "Sinners",
     "platform": "max",
     "genre": [
@@ -14,11 +14,16 @@
       "Michael B. Jordan"
     ],
     "summary": "A stylish genre thriller with a strong sense of place.",
-    "why": "A good fit for a movie night when you want mystery with atmosphere."
+    "why": "A good fit for a movie night when you want mystery with atmosphere.",
+    "mmRating": 8.6,
+    "ratingSources": {
+      "imdb": 7.5,
+      "rottenTomatoes": 97
+    }
   },
   {
     "id": "the-thomas-crown-affair",
-    "poster": "https://images.justwatch.com/poster/320954702/s718/the-thomas-crown-affair.jpg",
+    "poster": "https://image.tmdb.org/t/p/w780/5yqs1MVlqdIg1DY5adC5jFx3d7j.jpg",
     "title": "The Thomas Crown Affair",
     "platform": "prime",
     "genre": [
@@ -32,11 +37,17 @@
       "Rene Russo"
     ],
     "summary": "A sophisticated cat-and-mouse caper.",
-    "why": "Clever, stylish, and built around the pleasure of watching two smart people play a game."
+    "why": "Clever, stylish, and built around the pleasure of watching two smart people play a game.",
+    "link": "https://www.themoviedb.org/movie/913-the-thomas-crown-affair/watch?locale=US",
+    "mmRating": 6.9,
+    "ratingSources": {
+      "imdb": 6.9,
+      "rottenTomatoes": 68
+    }
   },
   {
     "id": "the-secret-agent",
-    "poster": "https://images.justwatch.com/poster/340469536/s718/the-secret-agent-2025.jpg",
+    "poster": "https://image.tmdb.org/t/p/w780/iLE2YOmeboeTDC7GlOp1dzh1VFo.jpg",
     "title": "The Secret Agent",
     "platform": "hulu",
     "link": "https://www.hulu.com/watch/48ef3c24-0884-4f7a-9a98-a682ad028564",
@@ -51,7 +62,12 @@
       "Alice Carvalho"
     ],
     "summary": "During Brazil's military dictatorship, a man on the run is hunted by assassins while trying to reach his son.",
-    "why": "A tense, critically acclaimed political thriller with real stakes and a lead performance worth the two-plus hours."
+    "why": "A tense, critically acclaimed political thriller with real stakes and a lead performance worth the two-plus hours.",
+    "mmRating": 7.2,
+    "ratingSources": {
+      "imdb": 7.2,
+      "rottenTomatoes": null
+    }
   },
   {
     "id": "you-me-tuscany",
@@ -70,7 +86,12 @@
     ],
     "summary": "An aspiring chef impersonates a man's fiancee while staying at his Italian villa, only to fall for his cousin instead.",
     "why": "A warm, funny counterweight if you want a night off from mysteries -- pure feel-good escapism.",
-    "poster": "https://images.justwatch.com/poster/338950718/s718/you-me-and-tuscany.jpg"
+    "poster": "https://image.tmdb.org/t/p/w780/mJS0IF7Af3WpPRhSTDT6rGpiLzw.jpg",
+    "mmRating": 6.1,
+    "ratingSources": {
+      "imdb": 6.1,
+      "rottenTomatoes": null
+    }
   },
   {
     "id": "mandalorian-and-grogu",
@@ -93,6 +114,11 @@
     ],
     "summary": "The theatrical Mandalorian film makes its streaming debut, directed by Jon Favreau and continuing Din Djarin and Grogu's story on the big screen.",
     "why": "The year's biggest Star Wars event, now available to watch at home -- a genuine family-night pick.",
-    "poster": "https://images.justwatch.com/poster/346670161/s718/the-mandalorian-and-grogu.jpg"
+    "poster": "https://image.tmdb.org/t/p/w780/7GV5rrUJf0BRUhoh2cyFoeNthlQ.jpg",
+    "mmRating": 6.4,
+    "ratingSources": {
+      "imdb": 6.8,
+      "rottenTomatoes": 60
+    }
   }
 ]

@@ -27,7 +27,15 @@ query: "",
 movieMood: null,
 reviewsSort: "rating",
 dataReady: false,
-viewingEvents: []
+viewingEvents: [],
+// Live search (TMDB + OMDb) keys, entered once in Settings. These are only
+// ever persisted to localStorage below -- never written to a committed file.
+// This repo is public, so a key baked into any file in it would be visible
+// to anyone on the internet, not just people with the site passphrase.
+apiKeys: { tmdb: "", omdb: "" },
+liveSearchQuery: "",
+liveSearchLoading: false,
+liveSearchResults: []
 };
 
 function makeEvent(type, itemId, value){
@@ -108,6 +116,9 @@ const current = Array.isArray(profile.platforms) ? profile.platforms : [];
 const next = current.includes(id) ? current.filter(x => x !== id) : [...current, id];
 this.set({profile:{...profile, platforms: next}});
 },
+setApiKeys(tmdb, omdb){
+this.set({apiKeys: { tmdb: (tmdb||"").trim(), omdb: (omdb||"").trim() }});
+},
 completeOnboarding(watchingIds, ratings, profile){
 const selected = Array.isArray(watchingIds) ? watchingIds.map(String) : [];
 const nextWatchlist = [...new Set([...state.watchlist.map(String), ...selected])];
@@ -135,7 +146,8 @@ notInterested:state.notInterested,
 progress:state.progress,
 ratings:state.ratings,
 onboardingComplete:state.onboardingComplete,
-viewingEvents:state.viewingEvents
+viewingEvents:state.viewingEvents,
+apiKeys:state.apiKeys
 }));
 }
 
@@ -157,6 +169,9 @@ state.ratings = state.ratings && typeof state.ratings === "object" ? state.ratin
 state.onboardingComplete = saved.onboardingComplete === true;
 state.profile = state.profile && typeof state.profile === "object" ? state.profile : null;
 state.viewingEvents = Array.isArray(state.viewingEvents) ? pruneEvents(state.viewingEvents) : [];
+state.apiKeys = state.apiKeys && typeof state.apiKeys === "object"
+? { tmdb: state.apiKeys.tmdb || "", omdb: state.apiKeys.omdb || "" }
+: { tmdb: "", omdb: "" };
 for(const [id,value] of Object.entries(state.progress)){
 const n = Number(value);
 state.progress[id] = Number.isFinite(n) && n >= 0 ? Math.floor(n) : 0;

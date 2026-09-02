@@ -19,7 +19,7 @@ export function Reviews(state){
      <button class="btn small ${sort==="title"?"":"secondary"}" data-reviews-sort="title">Sort by title</button>
    </div>
  </div>
- ${sorted.length?`<div class="stack">${sorted.map(x=>`<article class="editorial-card editorial-card--compact">
+ ${sorted.length?`<div class="stack">${sorted.map(x=>`<article class="editorial-card editorial-card--compact review-row">
    <div class="editorial-banner"><span class="editorial-banner-mark">✦</span>YOUR RATING<span class="editorial-banner-mark">✦</span></div>
    <div class="media-row curated-row-body">${reviewPoster(x.item)}<div class="details"><h3>${x.item.link?`<a href="${x.item.link}" target="_blank" rel="noopener">${x.item.title}</a>`:x.item.title}</h3>${Rating(x.rating,false)}<p class="muted">Your rating is saved locally in this beta.</p></div></div>
  </article>`).join("")}</div>`:`<div class="empty-state">Rate something and it will appear here.</div>`}`;

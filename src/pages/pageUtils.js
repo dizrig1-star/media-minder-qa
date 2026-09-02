@@ -9,7 +9,8 @@ export function mediaCard(state, item, kindOverride, tierOverride){
   const inWatchlist = state.watchlist.includes(item.id);
   const kind = kindOverride || (inWatchlist ? 'watching' : 'library');
   const tier = tierOverride || (kind === 'library' ? 'compact' : undefined);
-  return EditorialCard(item, platform, kind, state, tier);
+  const extraBadges = (kind !== 'select' && item.mmSelect) ? ['select'] : [];
+  return EditorialCard(item, platform, kind, state, tier, extraBadges);
 }
 
 export function heading(kicker,title,desc=''){return `<div class="page-header"><div><div class="page-kicker">${kicker}</div><h1 class="page-title">${title}</h1>${desc?`<p class="muted">${desc}</p>`:''}</div></div>`;}
