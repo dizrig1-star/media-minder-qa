@@ -1,129 +1,384 @@
+/* Media Minder — components, Console direction.
+   Full replacement for src/styles/components.css.
 
-.sidebar{background:var(--teal);color:var(--paper);border-right:4px solid var(--coral);display:flex;flex-direction:column}
-.sidebar:after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.08;background:repeating-linear-gradient(90deg,transparent 0 28px,rgba(246,240,223,.9) 28px 30px)}
-.sidebar-header{width:100%;display:flex;flex-direction:column;align-items:center;gap:.85rem;padding:28px 20px 20px;position:relative;z-index:1}
-.brand-mark{display:block;width:auto;height:92px;object-fit:contain;border-radius:16px;filter:drop-shadow(0 5px 10px rgba(0,0,0,.18))}
-.header-tagline{display:flex;align-items:center;gap:10px;background:var(--coral);color:var(--paper);font-family:'Baloo 2',sans-serif;font-weight:700;font-size:.95rem;text-align:left;padding:9px 16px;border-radius:999px;box-shadow:0 6px 14px rgba(0,0,0,.22);max-width:100%}
- .header-tagline-icon{width:24px;height:24px;object-fit:contain;flex:none;filter:drop-shadow(0 2px 3px rgba(0,0,0,.25))}
-.sidebar-nav{display:flex;flex-direction:column;padding:6px 0 20px;position:relative;z-index:1}
-.nav-item{display:flex;align-items:center;gap:10px;text-decoration:none;border:0;border-left:4px solid transparent;background:transparent;padding:13px 20px;color:var(--paper);font-family:'Baloo 2',sans-serif;font-weight:700;white-space:nowrap;transition:background-color .16s ease,border-color .16s ease}
-.nav-item:hover,.nav-item.active{background:rgba(0,0,0,.12);border-left-color:var(--coral)}
-.nav-icon{width:22px;height:22px;object-fit:contain;flex:none}
-.site-footer{border-top:1px solid var(--line);padding:28px 0;background:#ece3d1;color:var(--ink-soft);position:relative;overflow:hidden}
-.site-footer:after{content:"✦ TV ✦ MM ✦";position:absolute;right:4%;bottom:10px;font-family:'Bebas Neue',sans-serif;letter-spacing:.2em;font-size:2.2rem;color:var(--teal);opacity:.08;pointer-events:none}
+   Rules this file holds to:
+   - One hero per page, and only the hero wears the walnut console frame.
+   - Containers over-round; every control is a pill.
+   - The broadcast bar is the only rule. No ✦ dingbats, no TV watermarks
+     bleeding out of card corners.
+   - Decorative icons are placed deliberately at 26-44px, never tiled.
+   No markup changes are required by this file. */
+
+/* ---------------------------------------------------------------- ground */
+
+body{background:var(--ground)}
+
+/* --------------------------------------------------------------- sidebar */
+
+.sidebar{background:var(--teal);color:var(--paper);border-right:0;display:flex;flex-direction:column;box-shadow:6px 0 22px rgba(32,45,49,.14)}
+.sidebar:after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.06;background:repeating-linear-gradient(90deg,transparent 0 28px,rgba(246,240,223,.9) 28px 30px)}
+.sidebar-header{width:100%;display:flex;flex-direction:column;align-items:center;gap:.85rem;padding:28px 18px 18px;position:relative;z-index:1}
+.brand-mark{display:block;width:auto;height:138px;object-fit:contain;border-radius:var(--radius-md);filter:drop-shadow(0 5px 10px rgba(0,0,0,.18))}
+.header-tagline{display:flex;align-items:center;gap:10px;background:var(--coral);color:var(--paper);font-family:'Baloo 2',sans-serif;font-weight:700;font-size:.92rem;padding:9px 16px;border-radius:var(--radius-pill);box-shadow:0 6px 14px rgba(0,0,0,.22);max-width:100%}
+.header-tagline-icon{width:24px;height:24px;object-fit:contain;flex:none}
+.sidebar-nav{display:flex;flex-direction:column;gap:2px;padding:8px 12px 22px;position:relative;z-index:1}
+.nav-item{display:flex;align-items:center;gap:10px;text-decoration:none;border:0;border-radius:var(--radius-pill);background:transparent;padding:11px 16px;color:var(--paper);font-family:'Baloo 2',sans-serif;font-weight:700;font-size:2rem;text-shadow:0 2px 4px rgba(0,0,0,.35);white-space:nowrap;transition:background-color .16s ease,color .16s ease}
+.nav-item:hover{background:rgba(0,0,0,.14)}
+.nav-item.active{background:var(--cream);color:var(--teal)}
+.nav-icon{width:66px;height:66px;object-fit:contain;flex:none;border-radius:var(--radius-sm)}
+.nav-item.active .nav-icon{filter:none}
+
+/* ---------------------------------------------------------------- footer */
+
+.site-footer{border-top:0;padding:26px 0;background:var(--ground-2);color:var(--ink-soft);position:relative;overflow:hidden}
+.site-footer:before{content:"";position:absolute;left:0;right:0;top:0;height:5px;background:var(--broadcast-bar);opacity:.7}
+.site-footer:after{content:none}
 .footer-inner{width:min(var(--max),calc(100% - 48px));margin:auto;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
-.card{position:relative;overflow:hidden;background:rgba(255,253,246,.92);border:1px solid var(--cream);border-radius:18px;box-shadow:0 7px 18px rgba(32,45,49,.075),inset 0 0 0 1px rgba(217,208,188,.55);padding:var(--space-4);min-width:0}
-.card:after{content:"";position:absolute;right:10px;bottom:8px;width:72px;height:72px;background:url('../assets/icons/tv.svg') center/contain no-repeat;opacity:.055;transform:rotate(-5deg);pointer-events:none}
-.card:before{content:"✦";position:absolute;top:7px;right:9px;font-family:Georgia,serif;font-size:1.1rem;color:var(--gold);opacity:.5;pointer-events:none}
-.card.flat{box-shadow:none}
-.card h3{font-family:'Bebas Neue',Impact,sans-serif;letter-spacing:.045em;font-size:1.85rem;color:var(--coral);line-height:1.05}
-.hero{position:relative;overflow:hidden;min-height:330px;display:flex;align-items:flex-start;background:linear-gradient(135deg,#173f49 0%,#2e717a 62%,#d86f62 100%);color:white;border-radius:22px;box-shadow:0 12px 30px rgba(32,45,49,.14),inset 0 0 0 1px rgba(246,240,223,.6)}
-.hero:after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent 0 24px,rgba(255,255,255,.045) 24px 26px);pointer-events:none}
-.hero-content{position:relative;z-index:1;max-width:720px;padding:clamp(1.5rem,4vw,3rem)}
-.hero h2{font-family:'Bebas Neue',Impact,sans-serif;font-size:clamp(3rem,6vw,5.2rem);letter-spacing:.025em;line-height:.95;color:var(--paper);margin-bottom:var(--space-3)}
-.hero .eyebrow{color:#f4d98b;font-family:'Baloo 2',sans-serif;font-weight:800;letter-spacing:.08em}
-.poster{aspect-ratio:2/3;border-radius:12px;background:linear-gradient(160deg,var(--teal),var(--coral));display:grid;place-items:center;color:white;font-family:'Bebas Neue',Impact,sans-serif;text-align:center;padding:1rem;font-size:1.45rem;letter-spacing:.04em;overflow:hidden;position:relative;box-shadow:inset 0 0 0 1px rgba(246,240,223,.7),0 5px 12px rgba(32,45,49,.12)}
-.poster:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent 0 17px,rgba(246,240,223,.055) 17px 19px);pointer-events:none}
-.poster:after{content:"✦";position:absolute;top:12px;right:14px;font-size:1.6rem;color:var(--gold);opacity:.85}
+
+/* ----------------------------------------------------------------- cards */
+
+.card{position:relative;overflow:hidden;background:var(--paper);background-image:var(--paper-grain);background-size:5px 5px,7px 7px;background-position:0 0,2px 3px;border:0;border-radius:var(--radius-card);box-shadow:var(--shadow-card);padding:var(--space-4);min-width:0}
+.card:before,.card:after{content:none}
+.card.flat{box-shadow:none;background:var(--ground-2)}
+.card h3{font-family:'Playfair Display',Georgia,serif;font-weight:600;letter-spacing:normal;text-transform:none;font-size:1.5rem;color:var(--ink);line-height:1.12}
+
+/* A card whose whole job is a quiet aside reads as tinted paper. */
+.card.aside-tint{background:var(--ground-2);box-shadow:none}
+
+/* ------------------------------------------------------------ the console
+   The one hero module per page. Walnut cabinet, cream bezel, dark screen.
+   .hero already wraps its copy in .hero-content, so the frame is drawn on
+   .hero and the screen on .hero-content's backdrop. */
+
+.hero{position:relative;overflow:hidden;min-height:0;display:block;
+  background:var(--walnut);background-image:var(--walnut-grain);
+  color:var(--paper);border-radius:var(--radius-console);
+  padding:24px;
+  box-shadow:var(--shadow-console),inset 0 0 0 2px rgba(246,240,223,.35)}
+.hero:after{content:none}
+.hero-content{position:relative;z-index:1;max-width:none;
+  border-radius:26px;overflow:hidden;
+  background:var(--screen);
+  background-image:var(--screen-scrim);
+  box-shadow:inset 0 0 0 8px var(--bezel),inset 0 0 0 10px rgba(0,0,0,.25);
+  padding:clamp(2rem,4vw,3.25rem) clamp(2rem,4vw,3.5rem)}
+/* Scanlines ride above the picture, below the copy. */
+.hero-content:before{content:"";position:absolute;inset:10px;border-radius:18px;pointer-events:none;background:var(--scanline);opacity:.55;z-index:0}
+.hero-content>*{position:relative;z-index:1}
+.hero h2{font-family:'Playfair Display',Georgia,serif;font-weight:700;
+  font-size:clamp(2.4rem,5vw,3.6rem);letter-spacing:normal;line-height:1;
+  color:var(--paper);margin-bottom:var(--space-3);text-shadow:0 2px 12px rgba(0,0,0,.4)}
+.hero .eyebrow{color:#f4d98b;font-family:'Baloo 2',sans-serif;font-weight:800;
+  font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;margin-bottom:.75rem;display:block}
+.hero p{color:rgba(255,253,246,.9);max-width:46ch}
+.hero .editor-note{border:1px solid rgba(231,184,75,.55);border-left-width:1px;
+  background:rgba(0,0,0,.2);border-radius:18px;padding:14px 18px;
+  font-family:'Playfair Display',Georgia,serif;font-style:italic;font-weight:500;
+  color:#f8ecd0;max-width:46ch}
+.hero .btn{background:var(--mustard);border-color:var(--mustard);color:#3a2a06}
+.hero .btn.secondary{background:transparent;border-color:rgba(246,240,223,.6);color:var(--paper)}
+.hero .platform{background:transparent;border-color:rgba(246,240,223,.5);color:var(--paper)}
+
+/* ---------------------------------------------------------------- poster */
+
+.poster{aspect-ratio:2/3;border-radius:var(--radius-art);
+  background:linear-gradient(160deg,var(--teal),var(--coral));
+  display:grid;place-items:center;color:var(--paper);
+  font-family:'Playfair Display',Georgia,serif;font-weight:600;text-align:center;
+  padding:1rem;font-size:1.15rem;letter-spacing:normal;overflow:hidden;position:relative;
+  box-shadow:inset 0 0 0 5px var(--ground-2)}
+.poster:before,.poster:after{content:none}
+.poster.has-image{background:none;box-shadow:inset 0 0 0 5px var(--ground-2);font-size:0}
+.poster.has-image img{width:100%;height:100%;object-fit:cover;display:block}
 .poster.small{width:110px;flex:none}
-.media-row{display:flex;gap:1.15rem;align-items:flex-start}
+
+/* ------------------------------------------------------------------ rows */
+
+.media-row{display:flex;gap:1.25rem;align-items:center}
 .media-row .details{min-width:0;flex:1}
 .media-row h3{margin-bottom:.35rem}
 .media-meta{display:flex;align-items:center;justify-content:space-between;gap:.7rem;flex-wrap:wrap;margin-bottom:.65rem}
 .media-meta>.cluster{min-width:0}
-.content-badges{display:flex;align-items:center;gap:.8rem;flex-wrap:wrap;justify-content:flex-end}
-.badge{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:74px;padding:10px 24px;border:1px solid currentColor;border-radius:10px 20px 10px 20px;font-family:'Bebas Neue',Impact,sans-serif;font-size:1.55rem;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);background:var(--cream);box-shadow:0 4px 0 rgba(32,53,58,.08),inset 0 0 0 1px rgba(255,255,255,.55)}
-.badge:before{content:"✦";font-size:1.1rem;color:var(--coral)}
-.badge.gold{background:var(--gold);border-color:var(--gold);color:#fff}
+.content-badges{display:flex;align-items:center;gap:.6rem;flex-wrap:wrap;justify-content:flex-end}
+.curated-row-body{padding:1.15rem 1.35rem}
+
+/* ---------------------------------------------------------------- badges
+   Tier and status read as pills, not plaques. The approved badge artwork is
+   kept for the image badges but brought down to a size that lets the title
+   stay the loudest thing on the card. */
+
+.badge{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:7px;
+  min-height:0;padding:6px 14px;border:1px solid var(--line);border-radius:var(--radius-pill);
+  font-family:'Baloo 2',sans-serif;font-weight:800;font-size:.7rem;letter-spacing:.11em;
+  text-transform:uppercase;color:var(--teal);background:var(--ground-2);box-shadow:none}
+.badge:before{content:none}
+.badge.gold{background:var(--gold);border-color:var(--gold);color:var(--paper)}
 .badge.silver{background:var(--silver);border-color:var(--silver);color:#182124}
-.badge.bronze{background:var(--bronze);border-color:var(--bronze);color:#fff}
-.badge.tonight,.badge.watching,.badge.premiere{min-width:220px;min-height:78px;padding:0;border:0;border-radius:0;background-repeat:no-repeat;background-position:center;background-size:contain;clip-path:none;box-shadow:none;font-size:0;color:transparent}
-.badge.tonight{background-image:url('../../assets/branding/approved/badge-tonight.svg')}
-.badge.tonight:before,.badge.watching:before,.badge.premiere:before{display:none}
-.badge.watching{background-color:var(--paper);background-image:linear-gradient(transparent,transparent)}
-.badge.watching{color:var(--teal);font-size:1.55rem;border:1px solid var(--gold);border-radius:12px 26px 12px 26px}
-.badge.premiere{background-color:var(--paper);background-image:linear-gradient(transparent,transparent);color:var(--coral);font-size:1.55rem;border:1px solid var(--gold);border-radius:12px 26px 12px 26px}
-.badge.new{min-width:180px;min-height:78px;border-radius:22px 7px 22px 7px;border:3px solid var(--coral);background:var(--teal);color:var(--paper);box-shadow:inset 0 0 0 2px rgba(216,111,98,.2),0 4px 0 rgba(32,53,58,.08);font-size:1.6rem}
-.badge.new:before{content:"✦";color:var(--gold)}
-.platform{display:inline-flex;border:1px solid var(--line);border-radius:var(--radius-pill);padding:6px 11px;font-size:.76rem;font-weight:700;color:var(--ink-soft);background:#f7f1e3}
-.btn{border:1px solid var(--teal);border-radius:var(--radius-pill);padding:10px 16px;background:var(--teal);color:white;font-family:'Baloo 2',sans-serif;font-weight:800;transition:transform .16s ease,box-shadow .16s ease,background .16s ease}
-.btn:hover{transform:translateY(-1px);box-shadow:0 4px 10px rgba(32,53,58,.12)}
+.badge.bronze{background:var(--bronze);border-color:var(--bronze);color:var(--paper)}
+.badge.new{background:var(--coral);border-color:var(--coral);color:var(--paper);min-width:0;min-height:0;border-radius:var(--radius-pill);box-shadow:none;font-size:.7rem}
+.badge.tonight,.badge.watching,.badge.premiere{min-width:0;min-height:0;padding:6px 14px;border:1px solid var(--line);border-radius:var(--radius-pill);background:var(--ground-2);background-image:none;font-size:.7rem;color:var(--teal)}
+.badge.premiere{color:var(--coral);border-color:#e6c9c4}
+.badge.badge-image{display:block;min-width:0;min-height:0;width:150px;height:56px;padding:0;border:0;border-radius:0;background:none;box-shadow:none;object-fit:contain;object-position:left center;font-size:0}
+.badge.badge-image:before{content:none}
+.badge.badge-image--tonight,.badge.badge-image--watching,.badge.badge-image--premiere{width:170px;height:58px}
+.badge.badge-image--new{width:140px;height:56px}
+
+.platform{display:inline-flex;align-items:center;border:1px solid var(--teal);border-radius:var(--radius-pill);padding:5px 12px;font-size:.76rem;font-weight:800;color:var(--teal);background:var(--paper);box-shadow:0 2px 5px rgba(32,45,49,.10);transition:background-color .14s ease,color .14s ease}
+.platform:hover{background:var(--teal);color:var(--paper)}
+
+/* --------------------------------------------------------------- buttons */
+
+.btn{border:1px solid var(--teal);border-radius:var(--radius-pill);padding:11px 20px;
+  background:var(--teal);color:var(--paper);font-family:'Baloo 2',sans-serif;font-weight:800;font-size:.88rem;
+  transition:background-color .16s ease,color .16s ease,transform .16s ease}
+.btn:hover{background:#184c55;transform:none}
+.btn:active{background:#123a41}
 .btn.secondary{background:transparent;color:var(--teal)}
-.btn.ghost{border-color:var(--line);background:var(--paper);color:var(--ink)}
-.btn.small{padding:7px 11px;font-size:.78rem}
-.editor-note{border-left:4px solid var(--coral);padding-left:14px;color:var(--ink-soft);font-style:italic}
-.section-heading{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;margin:var(--space-5) 0 var(--space-3);position:relative}
-.section-heading:after{content:"✦";font-family:Georgia,serif;color:var(--gold);opacity:.6;font-size:1.1rem;margin-left:auto}
-.section-heading h2{font-size:2rem;color:var(--teal)}
+.btn.secondary:hover{background:rgba(31,94,105,.09)}
+.btn.ghost{border-color:var(--line);background:var(--paper);color:var(--ink-soft)}
+.btn.ghost:hover{background:var(--ground-2)}
+.btn.small{padding:8px 15px;font-size:.8rem}
+:focus-visible{outline:3px solid var(--coral);outline-offset:3px}
+
+/* ------------------------------------------------------------- typography */
+
+.editor-note{border-left:4px solid var(--coral);padding-left:14px;color:var(--ink-soft);
+  font-family:'Playfair Display',Georgia,serif;font-style:italic;font-weight:500}
 .muted{color:var(--ink-soft)}
-.empty-state{text-align:center;padding:2rem 1.25rem;border:1px dashed var(--line);border-radius:14px;background:rgba(255,253,246,.65);position:relative}
+
+.section-heading{display:flex;justify-content:flex-start;align-items:center;gap:14px;
+  margin:var(--space-5) 0 var(--space-3);position:relative}
+.section-heading h2{font-family:'Playfair Display',Georgia,serif;font-weight:600;font-size:1.5rem;color:var(--teal);margin:0}
+/* The rule, then the accent. Replaces the ✦. */
+.section-heading:before{content:"";flex:1;order:2;height:2px;background:var(--rule)}
+.section-heading:after{content:"";order:3;width:var(--accent-md);height:var(--accent-md);flex:none;
+  background:url('../../assets/branding/approved/icon-tv-teal-pod.svg') center/contain no-repeat;opacity:.55}
+.section-heading .cluster{order:4}
+
+/* ------------------------------------------------------------------ misc */
+
+.empty-state{text-align:center;padding:2.25rem 1.5rem;border:2px dashed var(--rule);
+  border-radius:var(--radius-card);background:var(--ground-2);position:relative;color:var(--ink-soft)}
 .list{display:flex;flex-direction:column;gap:14px}
-.rating{display:inline-flex;gap:2px}
-.star{border:0;background:transparent;padding:2px;color:#c5bca7;font-size:1.15rem}
-.star.on{color:var(--coral)}
-.search-box{display:flex;gap:8px}
-.search-box input{flex:1;border:1px solid var(--line);background:var(--paper);border-radius:var(--radius-pill);padding:12px 16px;color:var(--ink)}
-.retro-rule{height:6px;background:repeating-linear-gradient(90deg,var(--coral) 0 18px,var(--gold) 18px 36px,var(--teal) 36px 54px);border-radius:var(--radius-pill);opacity:.9}
-.tv-icon{width:34px;height:34px}
-.callout{background:#f1e7d1;border-left:6px solid var(--gold);padding:1rem 1.2rem;border-radius:0 var(--radius-sm) var(--radius-sm) 0;position:relative}
-.progress-control{display:grid;grid-template-columns:auto 1fr;gap:4px 10px;align-items:center;margin:.75rem 0}
-.progress-control label{font-size:.85rem}
-.progress-control select{border:1px solid var(--line);border-radius:var(--radius-pill);padding:6px 9px;background:var(--paper)}
-.progress-control .muted{grid-column:1/-1;font-size:.78rem}
-.modal .section-heading{margin:1.25rem 0 .5rem}
-.mm-select{display:inline-flex;align-items:center;height:450px;max-height:60vw;vertical-align:middle;flex:none;filter:drop-shadow(0 6px 8px rgba(32,45,49,.18))}
-.mm-select img{display:block;height:450px;max-height:60vw;width:auto}
-.mm-select .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px 0 -1px 0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-.onboarding-choice{align-items:center;justify-content:space-between;gap:1rem;padding:.7rem 0;border-bottom:1px solid var(--line)}
-.onboarding-choice>label{min-width:170px}
-.onboarding-rating{display:flex;align-items:center;gap:4px;flex-wrap:wrap;justify-content:flex-end}
-.star-button{border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:5px 8px;color:var(--ink-soft);font-weight:700;cursor:pointer}
+
+.callout{position:relative;background:var(--walnut);background-image:var(--walnut-grain);
+  border-left:0;padding:16px;border-radius:var(--radius-panel);box-shadow:var(--shadow-card)}
+.callout>*{position:relative}
+.callout:before{content:"";position:absolute;inset:16px;border-radius:16px;background:var(--cream)}
+.callout{color:var(--ink);font-family:'Playfair Display',Georgia,serif;font-style:italic;font-weight:500;font-size:1.05rem;line-height:1.45}
+.callout strong{font-family:'Baloo 2',sans-serif;font-style:normal;font-weight:800;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--bronze);display:inline-block;margin-right:.4rem}
+/* the inner sheet needs its own padding, applied to the text flow */
+.callout{padding:32px 34px}
+.callout:before{inset:8px}
+
+/* --------------------------------------------------------------- ratings
+   Real ★ glyphs, gold when selected. A small label precedes the control
+   wherever it is interactive, asking the question directly. */
+
+.rating{display:inline-flex;gap:4px;align-items:center;flex-wrap:wrap}
+.rating-label{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:.7rem;
+  letter-spacing:.08em;text-transform:uppercase;color:var(--bronze);margin-right:.5rem}
+.star{border:0;padding:0;width:28px;height:28px;background:transparent;
+  color:var(--pip-off);font-size:1.5rem;line-height:1;display:inline-flex;
+  align-items:center;justify-content:center;
+  transition:color .14s ease,transform .14s ease}
+.star.on{color:var(--gold)}
+button.star{cursor:pointer}
+button.star:hover{color:var(--coral);transform:scale(1.12)}
+.star-button{border:1px solid var(--line);background:var(--paper);border-radius:var(--radius-pill);padding:6px 11px;color:var(--ink-soft);font-weight:700;cursor:pointer}
 .star-button:hover,.star-button.selected{border-color:var(--gold);color:var(--gold);background:#fff8df}
- /* Updated visual system: dense editorial composition, micro-patterns, and restrained iconography. */ .app-main{background:transparent}
+
+/* -------------------------------------------------------------- progress
+   Episode counts, never percentages. The select stays for input; the label
+   carries the count and the track renders as pips. */
+
+.progress-control{display:grid;grid-template-columns:auto auto;gap:6px 12px;align-items:center;margin:.75rem 0;justify-content:start}
+.progress-control label{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:.8rem;letter-spacing:.05em;text-transform:uppercase;color:var(--bronze)}
+.progress-control select{border:1px solid var(--line);border-radius:var(--radius-pill);padding:8px 14px;background:var(--paper);color:var(--ink)}
+.progress-control .muted{grid-column:1/-1;font-size:.8rem}
+
+/* --------------------------------------------------------------- tuner
+   Search is a utility. It reads as the set's tuning bar: a dial, then a
+   recessed pill, then the action. */
+
+.search-box{display:flex;align-items:center;gap:14px;
+  background:var(--walnut);background-image:var(--walnut-grain);
+  border-radius:var(--radius-console);padding:16px 18px;box-shadow:var(--shadow-card)}
+.search-box:before{content:"";width:56px;height:56px;flex:none;border-radius:50%;
+  background:var(--mustard);
+  box-shadow:inset 0 -5px 0 rgba(0,0,0,.16),0 4px 8px rgba(0,0,0,.22)}
+.search-box input{flex:1;min-width:0;border:0;background:var(--cream);border-radius:var(--radius-pill);
+  padding:14px 22px;color:var(--ink);font-weight:600;
+  box-shadow:inset 0 2px 6px rgba(32,45,49,.14)}
+.search-box input::placeholder{color:#9aa3a8}
+.search-box .btn{flex:none}
+
+.gate-icon{width:72px;height:72px;margin:0 auto 4px;display:block;filter:drop-shadow(0 5px 9px rgba(32,45,49,.18))}
+
+/* ----------------------------------------------------------- date tiles
+   Calendar rows show the approved date-badge artwork with month and day
+   overlaid on top of it. */
+
+.date-tile{position:relative;flex:none;width:110px;aspect-ratio:700/636;}
+.date-tile-art{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:block;}
+.date-tile-month{position:absolute;top:10%;left:8%;right:8%;height:26%;display:flex;align-items:center;justify-content:center;font-family:'Baloo 2',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:#f4ead2;}
+.date-tile-day{position:absolute;top:44%;left:8%;right:8%;height:40%;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',Impact,sans-serif;font-size:1.8rem;font-weight:400;color:#2b2013;}
+
+/* ------------------------------------------------------------- cal-art
+   Calendar rows carry their own small art panel (poster, or the gradient
+   ground when one isn't set) with the title placed on it, same convention
+   as the Hero/Secondary art tiers. */
+
+.cal-art{position:relative;flex:none;width:84px;aspect-ratio:2/3;overflow:hidden;
+  border-radius:var(--radius-art);background:linear-gradient(150deg,#164d56 0%,#286f76 55%,#c96f62 115%);
+  background-size:cover;background-position:center;box-shadow:inset 0 0 0 4px var(--ground-2);
+  display:flex;align-items:flex-end;padding:.5rem}
+.cal-art-title{font-family:'Playfair Display',Georgia,serif;font-weight:700;font-size:.82rem;
+  line-height:1.05;color:var(--paper);text-shadow:0 2px 8px rgba(0,0,0,.6)}
+
+/* --------------------------------------------------------- countdown
+   A large icon with the day count (or "Showing") laid over it. */
+
+.countdown-badge{position:relative;flex:none;width:96px;height:96px;
+  display:flex;align-items:center;justify-content:center}
+.countdown-badge-art{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:.92}
+.countdown-badge-value{position:relative;z-index:1;font-family:'Bebas Neue',Impact,sans-serif;
+  font-size:1.5rem;font-weight:400;color:var(--teal);text-align:center;line-height:1;
+  text-shadow:0 1px 0 rgba(255,255,255,.6)}
+
+/* -------------------------------------------------------- broadcast rule */
+
+.retro-rule{height:5px;background:var(--broadcast-bar);border-radius:var(--radius-pill);opacity:.75}
+.tv-icon{width:var(--accent-md);height:var(--accent-md)}
+img.tv-icon{content:url('../../assets/branding/approved/icon-tv-coral-stripe.svg');object-fit:contain}
+
+/* ---------------------------------------------------------- page chrome */
+
+.app-main{background:transparent}
 .page-title,.page-intro{position:relative}
-.page-title:after,.page-intro:after{content:"";position:absolute;right:0;bottom:.2rem;width:62px;height:62px;background:url('../../assets/branding/approved/icon-tv-teal-pod.svg') center/contain no-repeat;opacity:.055;pointer-events:none}
-.card,.hero,.editorial-card,.empty-state{background-image:repeating-linear-gradient(135deg,transparent 0 18px,rgba(31,94,105,var(--micro-pattern)) 18px 19px,transparent 19px 36px)}
-.card,.editorial-card{border:1px solid var(--cream)}
-.card:before,.editorial-card:before{content:"✦"}
-.card:after,.editorial-card:after{opacity:.055}
-.content-badges .badge{flex:none}
-.editorial-card{border-radius:18px}
-.editorial-card .editorial-banner{font-size:1.35rem;min-height:58px}
-.editorial-select-badge{width:150px;height:150px}
-.editorial-card--compact .editorial-select-badge{width:110px;height:110px}
- /* Approved asset wiring. Keep legacy badge rules above for non-image badges; image badges win here. */ .card:after{background-image:url('../../assets/branding/approved/icon-tv-cream-trim.svg')}
- .page-title:after,.page-intro:after{background-image:url('../../assets/branding/approved/icon-tv-teal-pod.svg')}
- img.tv-icon{content:url('../../assets/branding/approved/icon-tv-coral-stripe.svg');object-fit:contain}
- .badge.badge-image{display:block;min-width:0;min-height:0;width:180px;height:78px;padding:0;border:0;border-radius:0;background:none;box-shadow:none;object-fit:contain;object-position:center;clip-path:none;color:transparent;font-size:0;line-height:0}
- .badge.badge-image:before{display:none}
- .badge.badge-image--tonight{width:220px;height:78px}
-.badge.badge-image--watching{width:220px;height:78px}
-.badge.badge-image--premiere{width:220px;height:78px}
-.badge.badge-image--new{width:180px;height:78px}
- @media(max-width:650px){.header-tagline{display:none}
-.sidebar-header{width:100%}
-.brand-mark{width:auto;height:76px}
-.card{padding:1rem}
-.hero{min-height:300px}
-.media-row{gap:1rem}
-.page-title{max-width:none}
-.mm-select,.mm-select img{height:288px}
-.onboarding-choice{align-items:flex-start;flex-direction:column}
-.onboarding-rating{justify-content:flex-start}
-.media-meta{align-items:flex-start}
-.content-badges{justify-content:flex-start}
-.badge{min-height:62px;font-size:1.25rem}
-.badge.tonight,.badge.watching,.badge.premiere{min-width:180px;min-height:64px}
-.badge.new{min-width:150px;min-height:62px}
-.badge.badge-image{width:160px;height:64px}
-.badge.badge-image--tonight,.badge.badge-image--watching,.badge.badge-image--premiere{width:180px;height:64px}
-.badge.badge-image--new{width:150px;height:62px}
+.page-title:after,.page-intro:after{content:none}
+.page-title{font-family:'Playfair Display',Georgia,serif;font-weight:700}
+
+/* --------------------------------------------------------- MM Select seal
+   Was 450px tall and dominated every card it appeared on. The seal is an
+   endorsement, not the artwork. */
+
+.mm-select{display:inline-flex;align-items:center;height:auto;max-height:none;vertical-align:middle;flex:none;filter:drop-shadow(0 5px 9px rgba(32,45,49,.18))}
+.mm-select img{display:block;height:104px;max-height:none;width:auto}
+.mm-select .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+/* ------------------------------------------------------------ onboarding */
+
+.onboarding-card{background:var(--paper)}
+.onboarding-choice{align-items:center;justify-content:space-between;gap:1rem;padding:.75rem 0;border-bottom:1px solid var(--rule)}
+.onboarding-choice>label{min-width:170px}
+.onboarding-rating{display:flex;align-items:center;gap:5px;flex-wrap:wrap;justify-content:flex-end}
+.field{display:flex;flex-direction:column;gap:.4rem;margin:.75rem 0}
+.field input{border:1px solid var(--line);background:var(--paper);border-radius:var(--radius-pill);padding:12px 18px;color:var(--ink)}
+
+/* ------------------------------------------------------- decorative icons
+   Placed, not tiled. Quarter to half-dollar, low opacity, one per module. */
+
+.coming-soon-aside{background:var(--teal);color:var(--paper);position:relative;overflow:hidden}
+.coming-soon-aside h2,.coming-soon-aside h3{color:var(--paper)}
+.coming-soon-aside .page-kicker{color:#f4d98b}
+.coming-soon-aside p{color:rgba(255,253,246,.86)}
+.coming-soon-aside:after{content:"";position:absolute;right:-14px;bottom:-12px;width:110px;height:110px;
+  background:url('../../assets/branding/approved/Icon-transmission-tower.svg') center/contain no-repeat;opacity:.2;pointer-events:none}
+
+/* ------------------------------------------------------ hero art panel
+   Batch 6: gives the Home and Franchises hero sections a title-art screen,
+   matching the console language already used by EditorialCard's hero tier. */
+
+.hero-inner{display:grid;grid-template-columns:minmax(220px,34%) 1fr;gap:24px;align-items:stretch}
+.hero-art{position:relative;overflow:hidden;min-height:360px;border-radius:26px;
+  background:linear-gradient(150deg,#164d56 0%,#286f76 55%,#c96f62 115%);
+  color:var(--paper);display:flex;flex-direction:column;justify-content:flex-end;
+  padding:1.35rem;isolation:isolate;
+  box-shadow:inset 0 0 0 8px var(--bezel),inset 0 0 0 10px rgba(0,0,0,.25)}
+.hero-art:before{content:"";position:absolute;inset:0;background:var(--scanline);opacity:.35;z-index:-1}
+.hero-art-icon{position:absolute;left:14%;right:14%;top:12%;width:72%;height:52%;
+  object-fit:contain;filter:drop-shadow(0 7px 12px rgba(0,0,0,.22));opacity:.95}
+.hero-art-title{font-family:'Playfair Display',Georgia,serif;font-weight:700;
+  font-size:clamp(1.8rem,3vw,2.6rem);line-height:1.05;position:relative;z-index:1;
+  max-width:95%;text-shadow:0 2px 10px rgba(0,0,0,.45)}
+.hero-art-footer{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:.6rem;
+  letter-spacing:.2em;text-transform:uppercase;color:rgba(255,253,246,.7);
+  margin-top:.5rem;position:relative;z-index:1}
+
+/* ------------------------------------------------ franchise card art
+   Batch 6: franchises have no poster art, so each row gets a small
+   gradient+icon panel with the franchise name overlaid, in the same
+   family as .cal-art / .editorial-art. */
+
+.franchise-card{display:flex;gap:1.1rem;align-items:flex-start}
+.franchise-card .details{flex:1;min-width:0}
+.franchise-art{flex:none;position:relative;overflow:hidden;width:84px;aspect-ratio:2/3;
+  border-radius:var(--radius-art);color:var(--paper);display:flex;flex-direction:column;
+  justify-content:flex-end;padding:.5rem;
+  background:linear-gradient(150deg,#164d56 0%,#286f76 55%,#c96f62 115%);
+  box-shadow:inset 0 0 0 4px var(--ground-2)}
+.franchise-art:before{content:"";position:absolute;inset:0;background:var(--scanline);opacity:.35}
+.franchise-art-icon{position:absolute;left:14%;right:14%;top:12%;width:72%;height:52%;object-fit:contain;opacity:.9}
+.franchise-art-title{position:relative;z-index:1;font-family:'Playfair Display',Georgia,serif;
+  font-weight:700;font-size:.76rem;line-height:1.12;text-shadow:0 2px 6px rgba(0,0,0,.5)}
+
+/* --------------------------------------------------------- seal legend
+   Batch 6: explains what the MM Select seals mean, used on the Tonight
+   "Start here" aside. */
+
+.seal-legend{margin-top:1rem;display:flex;flex-direction:column;gap:.5rem}
+.seal-legend-row{display:flex;align-items:center;gap:.6rem}
+.seal-legend-row img{width:30px;height:30px;object-fit:contain;flex:none}
+.seal-legend-row span{font-size:.82rem;color:rgba(255,253,246,.86)}
+
+/* --------------------------------------------------- generic icon corner
+   Batch 6: a lightweight decorative-icon modifier for plain .card asides
+   that need brand iconography without the coming-soon-aside color change. */
+
+.icon-corner{position:relative;overflow:hidden}
+.icon-corner:after{content:"";position:absolute;right:-14px;bottom:-12px;width:100px;height:100px;
+  opacity:.14;pointer-events:none;background-size:contain;background-position:center;background-repeat:no-repeat}
+.icon-corner--woodgrain:after{background-image:url('../../assets/branding/approved/icon-tv-woodgrain.svg')}
+.icon-corner--tower:after{background-image:url('../../assets/branding/approved/Icon-transmission-tower.svg')}
+
+/* ------------------------------------------------------- title sizing
+   Batch 6: bigger card titles on My Reviews and Watchlist. */
+
+.review-row h3{font-size:1.7rem}
+.watchlist-grid h3{font-size:2.1rem}
+
+/* --------------------------------------------------------------- modal */
+
+.modal .section-heading{margin:1.25rem 0 .5rem}
+
+/* -------------------------------------------------------------- responsive */
+
+@media(max-width:650px){
+  .header-tagline{display:none}
+  .brand-mark{height:114px}
+  .card{padding:1rem}
+  .hero{padding:14px;border-radius:28px}
+  .hero-content{padding:1.5rem}
+  .media-row{gap:1rem;align-items:flex-start}
+  .page-title{max-width:none}
+  .mm-select img{height:76px}
+  .onboarding-choice{align-items:flex-start;flex-direction:column}
+  .onboarding-rating{justify-content:flex-start}
+  .media-meta{align-items:flex-start}
+  .content-badges{justify-content:flex-start}
+  .badge.badge-image{width:130px;height:48px}
+  .search-box{flex-wrap:wrap}
+  .search-box:before{width:44px;height:44px}
+  .date-tile{width:84px;height:auto}
+  .date-tile-day{font-size:1.4rem}
+  .cal-art{width:64px}
+  .cal-art-title{font-size:.7rem}
+  .countdown-badge{width:72px;height:72px}
+  .countdown-badge-value{font-size:1.15rem}
+  .section-heading:after{width:var(--accent-sm);height:var(--accent-sm)}
+  .hero-inner{grid-template-columns:1fr}
+  .hero-art{min-height:220px}
+  .franchise-card{flex-direction:column}
+  .franchise-art{width:100%;aspect-ratio:16/9}
 }
- .date-tile{position:relative;flex:none;width:110px;aspect-ratio:700/636;}
- .date-tile-art{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:block;}
- .date-tile-month{position:absolute;top:10%;left:8%;right:8%;height:26%;display:flex;align-items:center;justify-content:center;font-size:0.72rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:#f4ead2;}
- .date-tile-day{position:absolute;top:44%;left:8%;right:8%;height:40%;display:flex;align-items:center;justify-content:center;font-size:1.6rem;font-weight:800;color:#2b2013;}
- /* Wire the imported Playfair Display serif into page headings (was imported in base.css but never applied anywhere). */ .page-title{font-family:'Playfair Display',Georgia,'Times New Roman',serif;font-weight:700;}
- /* Curated banner treatment for Calendar and My Reviews rows: pairs with .editorial-card + .editorial-banner (already used elsewhere) to give plain list rows the padded, flex-row body they need. */ .curated-row-body{padding:1.35rem 1.5rem 1.2rem;}
- /* Restore the hero's intended dark gradient: the shared .card,.hero,.editorial-card,.empty-state texture rule above sets background-image again and was silently clobbering this element's solid gradient (equal specificity, later in source order wins). Re-declare both layers together here so the hero keeps its dark-to-coral backdrop AND the subtle diagonal texture. When Landing.js supplies real poster art for the hero pick, it sets its own inline background-image (photo + legibility scrim) which fully overrides this rule, exactly like EditorialCard's poster treatment. */ .hero{background-image:repeating-linear-gradient(135deg,transparent 0 18px,rgba(31,94,105,var(--micro-pattern)) 18px 19px,transparent 19px 36px),linear-gradient(135deg,#173f49 0%,#2e717a 62%,#d86f62 100%);}
- /* Hero title: serif treatment matching the legible hero card on production, replacing the all-caps Bebas Neue look. Positioned via .hero's align-items:flex-start above so it sits over the darkest part of the gradient/photo instead of the lighter coral zone at the bottom. */ .hero h2{font-family:'Playfair Display',Georgia,'Times New Roman',serif;font-weight:700;text-transform:none;letter-spacing:normal;text-shadow:0 2px 10px rgba(0,0,0,.45);}

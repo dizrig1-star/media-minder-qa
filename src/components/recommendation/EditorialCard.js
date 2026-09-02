@@ -11,7 +11,13 @@ function imageAsset(file, alt, className){
   return `<img class="${className}" src="${ASSET}${file}" alt="${alt}" />`;
 }
 
-export function EditorialCard(item, platformName, kind='select', state={}, tier){
+const SELECT_TIER_ART = {
+  select: 'mm-select-star.svg',
+  gold: 'mm-select-gold-seal.svg',
+  silver: 'mm-select-silver-seal.svg'
+};
+
+export function EditorialCard(item, platformName, kind='select', state={}, tier, extraBadges=[], labelOverride){
   const title = escapeHtml(item.title);
   const platform = escapeHtml(platformName);
   const id = escapeHtml(item.id);
@@ -20,6 +26,7 @@ export function EditorialCard(item, platformName, kind='select', state={}, tier)
   const rating = (state.ratings||{})[item.id] || 0;
   const inWatchlist = (state.watchlist||[]).includes(item.id);
   const isSelect = kind === 'select';
+  const selectTier = (item.mmSelect || 'Gold').toLowerCase();
   const isTonight = kind === 'tonight';
   const isWatching = kind === 'watching';
   const isPremiere = kind === 'premiere';
@@ -28,19 +35,24 @@ export function EditorialCard(item, platformName, kind='select', state={}, tier)
   const isWatched = (state.watched||[]).includes(item.id);
   const isSkipped = (state.notInterested||[]).includes(item.id);
   const resolvedTier = tier || (isSelect ? 'hero' : (isPremiere || isLibrary) ? 'compact' : 'secondary');
-  const label = isLibrary ? '' : isSelect ? 'MM SELECT GOLD' : isTonight ? 'TONIGHT' : isWatching ? 'WATCHING' : 'COMING SOON';
+  const isWildcard = resolvedTier === 'wildcard';
+  const label = labelOverride || (isWildcard ? 'One Wildcard Pick, we think you will love' : isLibrary ? '' : isSelect ? (selectTier === 'select' ? 'MM SELECT' : `MM SELECT ${selectTier.toUpperCase()}`) : isTonight ? 'TONIGHT' : isWatching ? 'WATCHING' : 'COMING SOON');
   const tone = isLibrary ? 'teal' : isSelect ? 'gold' : isTonight ? 'coral' : isWatching ? 'teal' : 'gold';
   const date = (item.episodeDrops||[]).find(e=>e.date)?.date;
   const dateText = date ? new Date(`${date}T12:00:00`).toLocaleDateString('en-US',{month:'short',day:'numeric'}) : '';
   const scheduleText = date ? new Date(`${date}T12:00:00`).toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric'}) : '';
   const timeText = item.episodeTime ? ` · ${item.episodeTime}` : '';
   const premiereText = isPremiere && date ? `<span>${dateText}</span>` : '';
-  const badgeAsset = isLibrary ? ''
-    : isSelect ? imageAsset('mm-select-seal.svg','MM Select','editorial-select-badge')
-    : isTonight ? imageAsset('badge-tonight.svg','Tonight','editorial-status-art editorial-status-art--tonight')
-    : isWatching ? imageAsset('badge-watching.svg','Watching','editorial-status-art editorial-status-art--watching')
-    : isPremiere ? imageAsset('badge-premiere.svg','Premiere','editorial-status-art editorial-status-art--premiere')
-    : imageAsset('badge-new.svg','New','editorial-status-art editorial-status-art--new');
+  function badgeFor(k){
+    if(k === 'library') return '';
+    if(k === 'select') return imageAsset(SELECT_TIER_ART[selectTier] || 'mm-select-seal.svg', `MM Select ${item.mmSelect || 'Gold'}`, 'editorial-select-badge');
+    if(k === 'tonight') return imageAsset('badge-tonight.svg','Tonight','editorial-status-art editorial-status-art--tonight');
+    if(k === 'watching') return imageAsset('badge-watching.svg','Watching','editorial-status-art editorial-status-art--watching');
+    if(k === 'premiere') return imageAsset('badge-premiere.svg','Premiere','editorial-status-art editorial-status-art--premiere');
+    return imageAsset('badge-new.svg','New','editorial-status-art editorial-status-art--new');
+  }
+  const badgeKinds = [kind, ...extraBadges].filter((k,i,arr) => arr.indexOf(k) === i);
+  const badgeAssets = badgeKinds.map(badgeFor).filter(Boolean);
   const artAsset = isSelect ? 'Icon-mainframe.svg' : isTonight ? 'Icon-transmission-tower.svg' : isWatching ? 'Icon-test-pattern.svg' : 'Icon-countdown.svg';
   const kicker = isLibrary ? '' : isWatching ? 'CURRENTLY WATCHING' : isPremiere ? 'PREMIERE' : isTonight ? "TONIGHT'S DROP" : 'CURATED FOR YOU';
   const hasPoster = !!item.poster;
@@ -55,7 +67,7 @@ export function EditorialCard(item, platformName, kind='select', state={}, tier)
       </div>
       <div class="editorial-card-content">
         <div class="editorial-topline">
-          ${badgeAsset ? `<div class="editorial-badge-wrap">${badgeAsset}</div>` : ''}
+          ${badgeAssets.length ? `<div class="editorial-badge-wrap">${badgeAssets.join('')}</div>` : ''}
           <span class="editorial-platform">${platform}</span>
         </div>
         ${kicker ? `<div class="editorial-kicker">${kicker}</div>` : ''}
