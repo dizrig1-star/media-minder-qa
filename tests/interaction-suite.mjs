@@ -46,13 +46,19 @@ const renderedCalendar=Calendar(calendarState);
 if(renderedCalendar.includes("Graveyard") || renderedCalendar.includes("Project Runway")) throw new Error("CAL-02: non-watchlisted title leaked into rendered Calendar");
 console.log("PASS — CAL-02: Calendar scope is limited to watchlist titles and next drops");
 
-// Search rule: media plus franchise connections.
-const q="andor";
+// Search rule: media plus franchise connections. This is intentionally
+// anchored to whatever franchises.json currently names as the Star Wars
+// franchise's "next" release, rather than a hardcoded title -- that value is
+// expected to change over time as shows air and new ones are announced
+// (previously "Andor", now "Ahsoka"), and hardcoding it here just makes this
+// test go stale the next time the catalog is legitimately updated.
+const starWars=franchises.find(f=>f.id==="star-wars");
+const q=starWars.next.toLowerCase();
 const media=[...shows,...movies];
 const mediaHits=media.filter(x=>[x.title,...(x.cast||[]),...(x.genre||[]),...(x.franchises||[])].join(" ").toLowerCase().includes(q));
 const franchiseHits=franchises.filter(f=>[f.title,f.next,f.description].join(" ").toLowerCase().includes(q));
-if(!franchiseHits.some(f=>f.next.toLowerCase()==="andor")) throw new Error("Andor franchise search failed");
-console.log("PASS — Search finds Andor through Star Wars franchise connection");
+if(!franchiseHits.some(f=>f.id==="star-wars")) throw new Error(`${starWars.next} franchise search failed`);
+console.log(`PASS — Search finds ${starWars.next} through Star Wars franchise connection`);
 
 // Progress presentation rule: zero is a state, not an episode.
 const progressSource=fs.readFileSync("src/components/media/Progress.js","utf8");
