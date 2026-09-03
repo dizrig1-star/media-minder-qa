@@ -89,4 +89,20 @@ for(const m of movies){
 }
 console.log("PASS — every show and movie has real runtime, genre, and editorial copy");
 
+// 5. Every franchise's headline "next" release must point at something that
+//    actually exists in the catalog. This is the exact bug Simon found: two
+//    franchises (Game of Thrones, Star Wars) had "next" values naming shows
+//    that had already aired and concluded, with no catalog entry backing them
+//    at all -- so the Franchises page either showed stale info or silently
+//    fell back to "No confirmed date yet" for a title nobody could search for.
+//    A franchise's "next" is allowed to have no premiere date yet (a genuinely
+//    unannounced date is honest, not a bug) -- but the title itself must be a
+//    real catalog entry, not just text sitting in franchises.json.
+const allMedia = [...shows, ...movies];
+for(const f of franchises){
+  const hasMatch = allMedia.some(x => x.title.toLowerCase().includes(f.next.toLowerCase()));
+  assert(hasMatch, `${f.title}'s "next" ("${f.next}") has no matching entry in shows.json or movies.json -- the Franchises page is pointing at a title that doesn't exist in the catalog`);
+}
+console.log("PASS — every franchise's \"next\" title has a real, matching catalog entry");
+
 console.log("CATALOG INTEGRITY QA: PASS");

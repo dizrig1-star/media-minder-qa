@@ -2,14 +2,14 @@
   {
     "id": "game-of-thrones",
     "title": "Game of Thrones",
-    "next": "House of the Dragon",
+    "next": "A Knight of the Seven Kingdoms",
     "description": "The world of Westeros and the Targaryen history surrounding it.",
     "priority": 10
   },
   {
     "id": "star-wars",
     "title": "Star Wars",
-    "next": "Andor",
+    "next": "Ahsoka",
     "description": "A sprawling universe with a particularly strong espionage corner.",
     "priority": 9
   },
