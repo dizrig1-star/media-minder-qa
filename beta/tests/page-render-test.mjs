@@ -89,3 +89,20 @@ if(!anchoredPremiereRows.some(x=>x.show.title==="Graveyard" && x.episode===1)) t
 const premiereRowsHtml=Premieres(state);
 if(premiereRowsHtml.includes("Episode 2") || premiereRowsHtml.includes("Episode 3")) throw new Error("Premieres contains ordinary weekly episodes");
 console.log("PASS — Premieres shows only qualifying upcoming openers");
+
+// Regression for a real bug: the Franchises search box only indexed each
+// franchise's title + description, not its "next" field (the actual
+// upcoming show/movie title, e.g. "VisionQuest"). Searching for the name of
+// an upcoming release -- the single most likely thing someone would type --
+// returned nothing, even though the franchise itself was right there.
+const franchisesHtml=Franchises(state);
+for(const f of franchises){
+  const marker=`data-franchise-text="`;
+  const start=franchisesHtml.indexOf(marker+f.title.toLowerCase());
+  if(start===-1) throw new Error(`Franchises: could not find data-franchise-text block for ${f.title}`);
+  const end=franchisesHtml.indexOf(`"`, start+marker.length);
+  const indexedText=franchisesHtml.slice(start+marker.length, end);
+  if(!indexedText.includes(f.next.toLowerCase()))
+    throw new Error(`Franchises search index for ${f.title} is missing its "next" title (${f.next}) -- searching for an upcoming release by name would return nothing`);
+}
+console.log("PASS — Franchises search index includes each franchise's upcoming title, not just name/description");
