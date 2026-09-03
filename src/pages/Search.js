@@ -1,4 +1,4 @@
-import {heading,mediaCard,getLiveSearchState,liveSearchSection} from "./pageUtils.js";
+import {heading,mediaCard,getLiveSearchState,liveSearchSection} from "./pageUtils.js?v=1.1.0-qa";
 
 function haystack(item){
   return [
