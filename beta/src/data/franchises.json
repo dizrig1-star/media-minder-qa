@@ -4,7 +4,8 @@
     "title": "Game of Thrones",
     "next": "A Knight of the Seven Kingdoms",
     "description": "The world of Westeros and the Targaryen history surrounding it.",
-    "priority": 10
+    "priority": 10,
+    "poster": "https://image.tmdb.org/t/p/w780/1XS1oqL89opfnbLl8WnZY1O1uJx.jpg"
   },
   {
     "id": "star-wars",
