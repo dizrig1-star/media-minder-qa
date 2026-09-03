@@ -78,9 +78,16 @@ function bind(){
  const franchiseSearch=document.getElementById("franchise-search");
  if(franchiseSearch) franchiseSearch.oninput=()=>{
    const needle=franchiseSearch.value.trim().toLowerCase();
+   let anyVisible=false;
    document.querySelectorAll("[data-franchise-row]").forEach(row=>{
-     row.hidden=!!needle && !row.dataset.franchiseText.includes(needle);
+     const matches=!needle || row.dataset.franchiseText.includes(needle);
+     row.hidden=!matches;
+     if(matches) anyVisible=true;
    });
+   // Mirrors Search.js: only show the "nothing found" message once there's an
+   // actual query with zero matches, not on page load with an empty box.
+   const emptyState=document.getElementById("franchise-search-empty");
+   if(emptyState) emptyState.hidden=!needle || anyVisible;
  };
 
  document.querySelectorAll("[data-genre-toggle]").forEach(el=>el.onclick=()=>appState.toggleFavoriteGenre(el.dataset.genreToggle));
@@ -129,6 +136,17 @@ function bind(){
  document.querySelectorAll("[data-query]").forEach(el=>el.onclick=()=>{
    triggerSearch(el.dataset.query);
  });
+
+ // "Find a franchise to follow" mirrors the main Search page: the instant
+ // oninput filter above only ever covers the handful of curated franchises,
+ // so this button runs the same TMDB/OMDb live search Search.js uses, via
+ // the same triggerSearch/query state -- a franchise like Doctor Who that
+ // isn't in franchises.json can still turn up under "Beyond your worlds."
+ const franchiseSearchSubmit=document.getElementById("franchise-search-submit");
+ if(franchiseSearchSubmit) franchiseSearchSubmit.onclick=()=>{
+   const input=document.getElementById("franchise-search");
+   triggerSearch(input.value);
+ };
 
  const saveApiKeys=document.getElementById("settings-save-api-keys");
  if(saveApiKeys) saveApiKeys.onclick=()=>{
