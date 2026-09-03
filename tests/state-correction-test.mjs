@@ -44,9 +44,14 @@ if(mixedRows.some((x,i,arr)=>arr.findIndex(y=>y.show.id===x.show.id)!==i)) throw
 if((html=Calendar(mixedState), (html.match(/<article class="editorial-card editorial-card--compact">/g)||[]).length!==3)) throw new Error("CAL-02: rendered Calendar contains more than one row per watchlisted title");
 console.log("PASS — CAL-02: one next relevant drop per watchlisted title");
 
-html=Search(makeState({}, "Andor"));
-if(!html.includes("Andor") || !html.includes("Star Wars")) throw new Error("Andor search failed");
-console.log("PASS — Andor search resolves through Star Wars connection");
+// Anchored to franchises.json's current Star Wars "next" value rather than a
+// hardcoded title -- that value legitimately changes as shows air (previously
+// "Andor", now "Ahsoka"), so hardcoding it here just makes the test stale the
+// next time the catalog is correctly updated.
+const starWarsNext=franchises.find(f=>f.id==="star-wars").next;
+html=Search(makeState({}, starWarsNext));
+if(!html.includes(starWarsNext) || !html.includes("Star Wars")) throw new Error(`${starWarsNext} search failed`);
+console.log(`PASS — ${starWarsNext} search resolves through Star Wars connection`);
 
 html=Search(makeState({}, "Denzel Washington"));
 if(!html.includes("Denzel Washington")) throw new Error("Denzel Washington search failed");
