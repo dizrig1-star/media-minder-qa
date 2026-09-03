@@ -323,6 +323,24 @@ img.tv-icon{content:url('../../assets/branding/approved/icon-tv-coral-stripe.svg
 .franchise-art-title{position:relative;z-index:1;font-family:'Playfair Display',Georgia,serif;
   font-weight:700;font-size:.76rem;line-height:1.12;text-shadow:0 2px 6px rgba(0,0,0,.5)}
 
+/* Real poster art (Batch 8): once a franchise has real key art, this drops
+   the texture and keeps just the bezel -- the same "real poster art" tier
+   EditorialCard already uses for shows/movies, so franchises with art match
+   the rest of the app instead of looking like an unfinished placeholder. */
+.hero-art--poster:before,.franchise-art--poster:before{display:none}
+.hero-art--poster{box-shadow:inset 0 0 0 8px var(--bezel),inset 0 0 0 10px rgba(0,0,0,.25)}
+.franchise-art--poster{box-shadow:inset 0 0 0 4px var(--ground-2)}
+.hero-art--poster .hero-art-title,.franchise-art--poster .franchise-art-title{text-shadow:0 2px 12px rgba(0,0,0,.6)}
+
+/* The transmission-tower mark now appears on every franchise card -- with or
+   without real art -- as a small placed accent rather than the dominant
+   image. Same idiom as .coming-soon-aside's corner mark: quarter-to-half-
+   dollar, low opacity, one per module, never tiled. */
+.hero-art-accent{position:absolute;right:12px;bottom:12px;width:56px;height:56px;
+  opacity:.28;object-fit:contain;pointer-events:none;filter:drop-shadow(0 2px 4px rgba(0,0,0,.4))}
+.franchise-art-accent{position:absolute;right:6px;bottom:6px;width:26px;height:26px;
+  opacity:.3;object-fit:contain;pointer-events:none;filter:drop-shadow(0 1px 3px rgba(0,0,0,.4))}
+
 /* --------------------------------------------------------- seal legend
    Batch 6: explains what the MM Select seals mean, used on the Tonight
    "Start here" aside. */
