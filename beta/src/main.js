@@ -17,10 +17,10 @@ import {Watchlist} from "./pages/Watchlist.js";
 import {Calendar} from "./pages/Calendar.js?v=1.1.0-qa";
 import {Premieres} from "./pages/Premieres.js";
 import {Movies} from "./pages/Movies.js";
-import {Franchises} from "./pages/Franchises.js";
+import {Franchises} from "./pages/Franchises.js?v=1.1.0-qa";
 import {Reviews} from "./pages/Reviews.js";
 import {Settings} from "./pages/Settings.js";
-import {Search} from "./pages/Search.js";
+import {Search} from "./pages/Search.js?v=1.1.0-qa";
 
 const pages={Landing,Tonight,Recommendations,Watchlist,Calendar,Premieres,Movies,Franchises,Reviews,Settings,Search};
 
