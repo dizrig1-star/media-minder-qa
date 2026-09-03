@@ -1,4 +1,4 @@
-import {heading,liveSearchSection} from "./pageUtils.js";
+import {heading,liveSearchSection} from "./pageUtils.js?v=1.1.0-qa";
 
 const ASSET = './assets/branding/approved/';
 
