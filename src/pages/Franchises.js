@@ -32,7 +32,7 @@ export function Franchises(state){
   <div class="section-heading"><h2>My Worlds</h2></div>
   <div class="search-box"><input id="franchise-search" placeholder="Find a franchise to follow" aria-label="Find a franchise"></div>
   <div class="grid-2" style="margin-top:var(--space-3)">${all.map(f=>`
-    <article class="card" data-franchise-row data-franchise-text="${(f.title+" "+f.description).toLowerCase()}">
+    <article class="card" data-franchise-row data-franchise-text="${(f.title+" "+f.description+" "+f.next).toLowerCase()}">
       <div class="franchise-card">
         <div class="franchise-art"><img class="franchise-art-icon" src="${ASSET}Icon-transmission-tower.svg" alt="" aria-hidden="true"><span class="franchise-art-title">${f.title}</span></div>
         <div class="details">
