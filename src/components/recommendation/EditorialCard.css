@@ -63,7 +63,7 @@
 .editorial-card-content{padding:1.4rem 1.6rem 1.3rem;display:flex;flex-direction:column;min-width:0;gap:.15rem}
 .editorial-topline{display:flex;align-items:center;justify-content:flex-start;gap:.6rem;min-height:0;flex-wrap:wrap;margin-bottom:.55rem}
 .editorial-badge-wrap{display:flex;align-items:center;min-height:0;gap:.5rem;flex-wrap:wrap}
-.editorial-select-badge{width:auto;height:64px;max-width:100%;object-fit:contain;object-position:left center;
+.editorial-select-badge{width:auto;height:84px;max-width:100%;object-fit:contain;object-position:left center;
   filter:drop-shadow(0 4px 7px rgba(32,53,58,.18))}
 .editorial-status-art{display:block;width:auto;height:52px;object-fit:contain;object-position:left center;
   filter:drop-shadow(0 4px 7px rgba(32,53,58,.16))}
@@ -112,7 +112,7 @@
 
 .editorial-card--secondary .editorial-art{min-height:280px}
 .editorial-card--secondary h3{font-size:clamp(1.5rem,2.3vw,2rem)}
-.editorial-card--secondary .editorial-select-badge{height:56px}
+.editorial-card--secondary .editorial-select-badge{height:112px}
 
 /* ---------------------------------------------------------------- COMPACT
    A row. Poster at a fixed 132px, tightened spacing, smaller everything. */
@@ -127,7 +127,7 @@
 .editorial-card--compact .editorial-card-content{padding:1.1rem 1.3rem}
 .editorial-card--compact h3{font-size:1.3rem}
 .editorial-card--compact .editorial-summary{font-size:.92rem;margin-bottom:.6rem}
-.editorial-card--compact .editorial-select-badge{height:48px}
+.editorial-card--compact .editorial-select-badge{height:64px}
 .editorial-card--compact .editorial-status-art{height:44px}
 .editorial-card--compact .btn{padding:8px 15px;font-size:.8rem}
 
@@ -162,6 +162,6 @@
   .editorial-card--hero .editorial-card-content{padding:1.25rem}
   .editorial-card--wildcard .editorial-art{width:100%;height:auto;aspect-ratio:16/9;border-radius:24px}
   .editorial-card-content{padding:1.1rem}
-  .editorial-select-badge{height:52px}
+  .editorial-select-badge{height:64px}
   .editorial-status-art{height:44px}
 }
