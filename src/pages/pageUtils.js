@@ -76,3 +76,19 @@ export function liveSearchSection(state, label){
   if(liveEnabled) return '';
   return `<div class="section-heading"><h2>${label}</h2></div><p class="muted">Add a free TMDB API key in Settings to also search titles you haven't added yet.</p>`;
 }
+
+// Movie Desk mood discovery: same shape as the search-page "beyond your
+// library" section above, but keyed by movieMoodLiveKey (which mood the
+// results belong to) instead of a free-text query, since a mood pick has no
+// query string to match against.
+export function movieMoodLiveSection(state, label){
+  const mood = state.movieMood;
+  const liveEnabled = !!(state.apiKeys && state.apiKeys.tmdb);
+  if(!mood || !liveEnabled) return '';
+  const matchesCurrentMood = state.movieMoodLiveKey === mood;
+  const showLoading = !!(state.movieMoodLiveLoading && matchesCurrentMood);
+  const results = (matchesCurrentMood && !state.movieMoodLiveLoading) ? (state.movieMoodLiveResults||[]) : [];
+  if(showLoading) return `<div class="section-heading"><h2>Seeking out the best of this mood&hellip;</h2></div><p class="muted">Checking TMDB for exceptional titles beyond your library.</p>`;
+  if(results.length) return `<div class="section-heading"><h2>${label}</h2></div><div class="stack">${results.map(x=>liveResultCard(state,x)).join("")}</div>`;
+  return '';
+}
