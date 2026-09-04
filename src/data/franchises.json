@@ -2,29 +2,33 @@
   {
     "id": "game-of-thrones",
     "title": "Game of Thrones",
-    "next": "House of the Dragon",
+    "next": "A Knight of the Seven Kingdoms",
     "description": "The world of Westeros and the Targaryen history surrounding it.",
-    "priority": 10
+    "priority": 10,
+    "poster": "https://image.tmdb.org/t/p/w780/1XS1oqL89opfnbLl8WnZY1O1uJx.jpg"
   },
   {
     "id": "star-wars",
     "title": "Star Wars",
-    "next": "Andor",
+    "next": "Ahsoka",
     "description": "A sprawling universe with a particularly strong espionage corner.",
-    "priority": 9
+    "priority": 9,
+    "poster": "https://lumiere-a.akamaihd.net/v1/images/star-wars-ahsoka-season-2-key-art-teaser-poster_3ed97c36.jpeg?region=0,0,864,1280"
   },
   {
     "id": "marvel",
     "title": "Marvel",
     "next": "VisionQuest",
     "description": "The shared universe of heroes, villains and interconnected stories.",
-    "priority": 7
+    "priority": 7,
+    "poster": "https://cdn.marvel.com/content/1x/visionquest_lob_crd_02.webp"
   },
   {
     "id": "masterpiece",
     "title": "Masterpiece",
     "next": "Marble Hall Murders",
     "description": "British and international drama, mysteries and literary adaptations.",
-    "priority": 8
+    "priority": 8,
+    "poster": "https://www.pbs.org/wgbh/masterpiece/media/original_images/marble-hall-murders-mp-key-art-1920x1080-logo.jpg"
   }
 ]

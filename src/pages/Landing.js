@@ -62,5 +62,5 @@ export function Landing(state,choice,recs){
  <aside class="stack"><div class="card"><div class="page-kicker">Coming Soon</div><h3>Two Weeks</h3><p>New and returning series worth having on the radar.</p><a class="btn secondary" href="#premieres" data-route="premieres">See premieres</a></div>
  <div class="card"><div class="page-kicker">Because You Liked...</div><h3>A little more of what works.</h3><p>Curated from your genres, franchises, favorite people and platforms.</p><a class="btn secondary" href="#recommendations" data-route="recommendations">See recommendations</a></div></aside></div>
  <div class="section-heading"><h2>Editor's Note</h2></div>
- <div class="callout">${editorNote(state)}</div>`;
+ <div class="callout"><span>${editorNote(state)}</span></div>`;
 }

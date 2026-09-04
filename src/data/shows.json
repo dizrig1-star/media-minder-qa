@@ -385,7 +385,7 @@
     "episodes": 8,
     "runtime": 50,
     "cast": [
-      "Zoe Saldaña",
+      "Zoe Salda\u00f1a",
       "Nicole Kidman",
       "Morgan Freeman",
       "Michael Kelly"
@@ -705,7 +705,7 @@
     "runtime": 50,
     "cast": [
       "Simon Pegg",
-      "Siân Brooke",
+      "Si\u00e2n Brooke",
       "Hannah Khalique-Brown"
     ],
     "franchises": [],
@@ -1568,5 +1568,167 @@
     "currentEpisode": 0,
     "nextEpisode": 1,
     "poster": "https://image.tmdb.org/t/p/w780/qw9YVGyZaUpSmKHlPVhLn33lEPH.jpg"
+  },
+  {
+    "id": "visionquest",
+    "poster": "https://cdn.marvel.com/content/1x/visionquest_lob_crd_02.webp",
+    "title": "VisionQuest",
+    "type": "series",
+    "platform": "disney",
+    "genre": [
+      "Sci-Fi",
+      "Drama",
+      "Superhero"
+    ],
+    "mmSelect": "Gold",
+    "status": "new",
+    "season": 1,
+    "runtime": 45,
+    "cast": [
+      "Paul Bettany",
+      "James Spader",
+      "Ruaridh Mollica",
+      "Todd Stashwick"
+    ],
+    "franchises": [
+      "marvel"
+    ],
+    "premiere": "2026-10-14",
+    "episodeTime": "12:00 AM",
+    "episodeTitle": "Series Premiere",
+    "summary": "A rebuilt Vision goes into hiding after breaking free of those who'd weaponize him, consulting the AI personalities layered into his own code while a bounty on his head pulls him into the open alongside a mysterious boy who may carry an old soul.",
+    "why": "The closing chapter of the WandaVision/Agatha All Along story, and the most emotionally driven corner of the MCU on television.",
+    "releasePattern": "weekly",
+    "mmRating": null,
+    "ratingSources": null
+  },
+  {
+    "id": "marble-hall-murders",
+    "poster": "https://www.pbs.org/wgbh/masterpiece/media/original_images/marble-hall-murders-mp-key-art-1920x1080-logo.jpg",
+    "title": "Marble Hall Murders",
+    "type": "series",
+    "platform": "pbs",
+    "genre": [
+      "Mystery",
+      "Drama"
+    ],
+    "mmSelect": "Gold",
+    "status": "new",
+    "season": 1,
+    "episodes": 6,
+    "runtime": 60,
+    "cast": [
+      "Lesley Manville",
+      "Tim McMullan"
+    ],
+    "franchises": [
+      "masterpiece"
+    ],
+    "premiere": "2026-09-06",
+    "episodeTime": "9:00 PM",
+    "episodeTitle": "Series Premiere",
+    "summary": "The third and final case in Anthony Horowitz's Susan Ryeland mystery trilogy, following the editor-turned-sleuth into one last literary puzzle alongside fictional detective Atticus Pund.",
+    "why": "A satisfying close to the Magpie Murders/Moonflower Murders trilogy -- ideal for anyone who loves a literate whodunit.",
+    "releasePattern": "weekly",
+    "episodeDrops": [
+      {
+        "episode": 1,
+        "title": "Series Premiere",
+        "date": "2026-09-06",
+        "time": "9:00 PM"
+      },
+      {
+        "episode": 2,
+        "title": "Episode 2",
+        "date": "2026-09-13",
+        "time": "9:00 PM"
+      },
+      {
+        "episode": 3,
+        "title": "Episode 3",
+        "date": "2026-09-20",
+        "time": "9:00 PM"
+      },
+      {
+        "episode": 4,
+        "title": "Episode 4",
+        "date": "2026-09-27",
+        "time": "9:00 PM"
+      },
+      {
+        "episode": 5,
+        "title": "Episode 5",
+        "date": "2026-10-04",
+        "time": "9:00 PM"
+      },
+      {
+        "episode": 6,
+        "title": "Season Finale",
+        "date": "2026-10-11",
+        "time": "9:00 PM"
+      }
+    ],
+    "mmRating": null,
+    "ratingSources": null
+  },
+  {
+    "id": "ahsoka-s2",
+    "poster": "https://lumiere-a.akamaihd.net/v1/images/star-wars-ahsoka-season-2-key-art-teaser-poster_3ed97c36.jpeg?region=0,0,864,1280",
+    "title": "Star Wars: Ahsoka Season 2",
+    "type": "series",
+    "platform": "disney",
+    "genre": [
+      "Sci-Fi",
+      "Adventure"
+    ],
+    "mmSelect": "Gold",
+    "status": "new",
+    "season": 2,
+    "runtime": 45,
+    "cast": [
+      "Rosario Dawson",
+      "Hayden Christensen",
+      "Eman Esfandi",
+      "Lars Mikkelsen"
+    ],
+    "franchises": [
+      "star-wars"
+    ],
+    "premiere": "2027-01-20",
+    "episodeTime": "12:00 AM",
+    "episodeTitle": "Series Premiere",
+    "summary": "Ahsoka Tano confronts the fallout of Grand Admiral Thrawn's return alongside Sabine Wren and Ezra Bridger, with a haunting reappearance from Anakin Skywalker's past.",
+    "why": "The direct continuation of Season 1's cliffhanger, and the next major thread of the current Star Wars TV era.",
+    "releasePattern": "weekly",
+    "mmRating": null,
+    "ratingSources": null
+  },
+  {
+    "id": "a-knight-of-the-seven-kingdoms-s2",
+    "title": "A Knight of the Seven Kingdoms: Season 2",
+    "type": "series",
+    "platform": "max",
+    "genre": [
+      "Fantasy",
+      "Drama"
+    ],
+    "mmSelect": "Silver",
+    "status": "new",
+    "season": 2,
+    "episodes": 6,
+    "runtime": 55,
+    "cast": [
+      "Peter Claffey",
+      "Dexter Sol Ansell",
+      "Lucy Boynton"
+    ],
+    "franchises": [
+      "game-of-thrones"
+    ],
+    "premiere": null,
+    "summary": "Ser Duncan the Tall and his young squire Egg continue their travels through the Seven Kingdoms a century before the events of Game of Thrones, adapting the next of George R.R. Martin's Dunk and Egg novellas.",
+    "why": "The next chapter of the Dunk and Egg saga, expanding the Thrones universe with a lighter, more intimate story.",
+    "mmRating": null,
+    "ratingSources": null
   }
 ]

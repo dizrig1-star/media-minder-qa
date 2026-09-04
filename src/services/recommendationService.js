@@ -9,6 +9,26 @@ const SCORE = {
   currentAffinity: 3
 };
 
+// A show can carry a future "premiere" date for its next season while
+// earlier seasons remain in the catalog (e.g. "returning" status) -- but the
+// episodeDrops list is the actual ground truth for what has aired. If the
+// earliest episode on record hasn't dropped yet, there is nothing released
+// to recommend as tonight's watch, regardless of taste score. Movies and any
+// item without episodeDrops/premiere data have nothing to gate on, so they
+// stay eligible.
+export function hasReleasedContent(item, now=new Date()){
+  const today = new Date(now);
+  today.setHours(0,0,0,0);
+  const drops = item.episodeDrops || [];
+  const earliest = drops.length
+    ? drops.map(d=>d.date).sort()[0]
+    : item.premiere;
+  if(!earliest) return true;
+  const earliestDate = new Date(`${earliest}T12:00:00`);
+  earliestDate.setHours(0,0,0,0);
+  return earliestDate <= today;
+}
+
 function sharesAffinity(item, affinity){
   if(item.id===affinity.itemId) return true;
   if((item.genre||[]).some(g=>(affinity.genres||[]).includes(g))) return true;
@@ -34,8 +54,9 @@ export function scoreItem(item, profile){
   return score;
 }
 
-export function recommendations(items, profile, limit=6){
+export function recommendations(items, profile, limit=6, now=new Date()){
   return [...items]
+    .filter(item => hasReleasedContent(item, now))
     .map(item => ({...item, recommendationScore:scoreItem(item,profile)}))
     .sort((a,b)=>b.recommendationScore-a.recommendationScore)
     .slice(0,limit);

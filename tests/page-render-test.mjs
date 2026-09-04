@@ -89,3 +89,43 @@ if(!anchoredPremiereRows.some(x=>x.show.title==="Graveyard" && x.episode===1)) t
 const premiereRowsHtml=Premieres(state);
 if(premiereRowsHtml.includes("Episode 2") || premiereRowsHtml.includes("Episode 3")) throw new Error("Premieres contains ordinary weekly episodes");
 console.log("PASS — Premieres shows only qualifying upcoming openers");
+
+// Regression for a real bug: the Franchises search box only indexed each
+// franchise's title + description, not its "next" field (the actual
+// upcoming show/movie title, e.g. "VisionQuest"). Searching for the name of
+// an upcoming release -- the single most likely thing someone would type --
+// returned nothing, even though the franchise itself was right there.
+const franchisesHtml=Franchises(state);
+for(const f of franchises){
+  const marker=`data-franchise-text="`;
+  const start=franchisesHtml.indexOf(marker+f.title.toLowerCase());
+  if(start===-1) throw new Error(`Franchises: could not find data-franchise-text block for ${f.title}`);
+  const end=franchisesHtml.indexOf(`"`, start+marker.length);
+  const indexedText=franchisesHtml.slice(start+marker.length, end);
+  if(!indexedText.includes(f.next.toLowerCase()))
+    throw new Error(`Franchises search index for ${f.title} is missing its "next" title (${f.next}) -- searching for an upcoming release by name would return nothing`);
+}
+console.log("PASS — Franchises search index includes each franchise's upcoming title, not just name/description");
+
+// Regression for a real bug: the Franchises "Find a franchise to follow" box
+// only ever filtered the handful of curated franchises already in
+// franchises.json -- typing a title that isn't a followed franchise (e.g.
+// "Doctor Who") silently produced nothing, because there was no path to the
+// TMDB/OMDb live search Search.js already has. This proves that path exists:
+// the same query/liveSearchQuery/liveSearchResults state that drives
+// Search.js's "Beyond your library" section also renders a "Beyond your
+// worlds" section on Franchises, in the same three states (needs a key,
+// loading, has results).
+const noKeyState={...state, apiKeys:{tmdb:"",omdb:""}, query:"Doctor Who", liveSearchQuery:"", liveSearchLoading:false, liveSearchResults:[]};
+if(!Franchises(noKeyState).includes("Add a free TMDB API key in Settings"))
+  throw new Error("Franchises: missing the 'add a TMDB key' prompt when no key is configured");
+const loadingState={...noKeyState, apiKeys:{tmdb:"abc",omdb:""}, liveSearchLoading:true, liveSearchQuery:"Doctor Who"};
+if(!Franchises(loadingState).includes("Searching further afield"))
+  throw new Error("Franchises: missing the live-search loading state");
+const resultState={...loadingState, liveSearchLoading:false, liveSearchResults:[{id:"tmdb-tv-57243",title:"Doctor Who",genre:["Sci-Fi","Drama"],cast:["Ncuti Gatwa"],summary:"A time-traveling alien.",mmRating:8.1,ratingSources:{imdb:8.1,rottenTomatoes:null}}]};
+const resultHtml=Franchises(resultState);
+if(!resultHtml.includes("Doctor Who") || !resultHtml.includes("Beyond your worlds"))
+  throw new Error("Franchises: live search results for a title outside the curated franchise list did not render");
+if(!resultHtml.includes('value="Doctor Who"'))
+  throw new Error("Franchises: search box does not retain the typed query after a live search runs");
+console.log("PASS — Franchises \"Find a franchise to follow\" box runs a full TMDB/OMDb search, same as the Search page");
