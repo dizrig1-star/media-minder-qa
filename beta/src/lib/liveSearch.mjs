@@ -116,3 +116,70 @@ export async function liveSearch(query, { tmdbApiKey, omdbApiKey, region = "US",
   }
   return results;
 }
+
+// TMDB's own official movie genre ids (from /genre/movie/list -- these are
+// stable, published constants, not something this app invents), used so the
+// Movie Desk's mood buttons can discover beyond the curated catalog without
+// a free-text query, which TMDB's search endpoint requires and discover does
+// not.
+export const TMDB_MOVIE_GENRE_IDS = {
+  Drama: 18,
+  Fantasy: 14,
+  Documentary: 99,
+  Romance: 10749,
+  Mystery: 9648,
+  Comedy: 35,
+  "Sci-Fi": 878,
+  Adventure: 12,
+  Family: 10751,
+  War: 10752
+};
+
+// "Only exceptional recommendations" beyond the local library: TMDB's
+// /discover/movie can browse by genre without a search term, so a mood pick
+// with no free-text query can still reach past the curated catalog. The bar
+// for "exceptional" is a vote_average of 7.5+ on at least 200 votes -- high
+// enough to filter out obscure or poorly-reviewed titles, but not so narrow
+// that a genre with a thinner catalog on TMDB comes back empty. Deliberately
+// lighter-weight than liveSearch()'s per-title detail/provider/OMDb calls:
+// this is a "few more worth seeking out" aside, not a full result list, so it
+// works directly off discover's own vote_average rather than fetching full
+// detail for every candidate.
+export async function discoverExceptional(genreIds, { tmdbApiKey, region = "US", limit = 3, excludeTitles = [] } = {}){
+  if(!tmdbApiKey || !genreIds?.length) return [];
+
+  let data;
+  try {
+    data = await tmdbFetch("/discover/movie", {
+      with_genres: genreIds.join(","),
+      sort_by: "vote_average.desc",
+      "vote_count.gte": "200",
+      "vote_average.gte": "7.5",
+      include_adult: "false",
+      watch_region: region
+    }, tmdbApiKey);
+  } catch(err){
+    console.warn("Mood discovery: TMDB discover failed", err);
+    return [];
+  }
+
+  const exclude = new Set(excludeTitles.map(t => t.toLowerCase()));
+  return (data.results || [])
+    .filter(r => !exclude.has((r.title || "").toLowerCase()))
+    .slice(0, limit)
+    .map(r => ({
+      id: `live-movie-${r.id}`,
+      title: r.title || "Untitled",
+      type: "movie",
+      poster: r.poster_path ? `https://image.tmdb.org/t/p/w780${r.poster_path}` : null,
+      platform: null,
+      link: null,
+      genre: (r.genre_ids || []).map(id => Object.keys(TMDB_MOVIE_GENRE_IDS).find(name => TMDB_MOVIE_GENRE_IDS[name] === id)).filter(Boolean),
+      cast: [],
+      summary: r.overview || "",
+      why: "Found via TMDB discovery -- not yet part of your curated library.",
+      mmRating: Math.round(r.vote_average * 10) / 10,
+      ratingSources: null,
+      isLiveResult: true
+    }));
+}
