@@ -92,6 +92,16 @@ body{background:var(--ground)}
 .poster.has-image img{width:100%;height:100%;object-fit:cover;display:block}
 .poster.small{width:110px;flex:none}
 
+/* Live search's "beyond your library" cards (Search.js liveResultCard) use
+   a raw <img class="poster-img"> for TMDB artwork rather than the .poster
+   wrapper, since there's no placeholder-state to draw. Left unstyled, a
+   TMDB w780 image renders at its native ~780px width inside the media-row,
+   dominating the card and pushing the title/summary/platform text out of
+   view -- reads as "just a poster, nothing else". Sized to match
+   .poster.small so live results look like any other media-row entry. */
+.poster-img{width:110px;height:165px;object-fit:cover;border-radius:var(--radius-art);
+  flex:none;box-shadow:inset 0 0 0 5px var(--ground-2);display:block}
+
 /* ------------------------------------------------------------------ rows */
 
 .media-row{display:flex;gap:1.25rem;align-items:center}
