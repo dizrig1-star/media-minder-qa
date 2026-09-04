@@ -8,7 +8,7 @@ import {Header} from "./components/layout/Header.js";
 import {Navigation} from "./components/navigation/Navigation.js";
 import {Footer} from "./components/layout/Footer.js";
 import {openDetail} from "./components/media/Modal.js";
-import {liveSearch} from "./lib/liveSearch.mjs";
+import {liveSearch, discoverExceptional, TMDB_MOVIE_GENRE_IDS} from "./lib/liveSearch.mjs";
 
 import {Landing} from "./pages/Landing.js";
 import {Tonight} from "./pages/Tonight.js";
@@ -57,6 +57,42 @@ function triggerSearch(rawQuery){
    .catch(() => appState.set({liveSearchResults: [], liveSearchLoading: false}));
 }
 
+// Maps a Movie Desk mood to TMDB's own genre ids so "beyond your library"
+// can browse by genre (discoverExceptional) without a free-text query.
+// Moods that don't map cleanly to any real TMDB genre (light/epic mix
+// several loosely) fall back to the closest single genre rather than
+// guessing at a combination that might return nothing.
+const MOOD_TMDB_GENRES = {
+  mystery: [TMDB_MOVIE_GENRE_IDS.Mystery],
+  light: [TMDB_MOVIE_GENRE_IDS.Comedy],
+  epic: [TMDB_MOVIE_GENRE_IDS.Adventure],
+  drama: [TMDB_MOVIE_GENRE_IDS.Drama],
+  fantasy: [TMDB_MOVIE_GENRE_IDS.Fantasy],
+  documentary: [TMDB_MOVIE_GENRE_IDS.Documentary],
+  romance: [TMDB_MOVIE_GENRE_IDS.Romance]
+};
+
+// Runs when a Movie Desk mood is picked: shows the local catalog match
+// instantly (via the movieMood state change), and separately asks TMDB for
+// a small number of exceptional (high-rated, well-voted) titles in that
+// genre that aren't already part of the curated library -- same
+// stale-response guard pattern as triggerSearch above, keyed on mood instead
+// of query text.
+function triggerMoodDiscovery(mood){
+ const state=appState.get();
+ if(!mood || !MOOD_TMDB_GENRES[mood]){
+   appState.set({movieMoodLiveKey: null, movieMoodLiveLoading: false, movieMoodLiveResults: []});
+   return;
+ }
+ const hasTmdbKey=!!(state.apiKeys && state.apiKeys.tmdb);
+ appState.set({movieMoodLiveKey: mood, movieMoodLiveLoading: hasTmdbKey, movieMoodLiveResults: []});
+ if(!hasTmdbKey) return;
+ const excludeTitles = state.movies.map(m=>m.title);
+ discoverExceptional(MOOD_TMDB_GENRES[mood], {tmdbApiKey: state.apiKeys.tmdb, excludeTitles})
+   .then(results => appState.set({movieMoodLiveResults: results, movieMoodLiveLoading: false}))
+   .catch(() => appState.set({movieMoodLiveResults: [], movieMoodLiveLoading: false}));
+}
+
 function bind(){
  document.querySelectorAll("[data-route]").forEach(el=>el.addEventListener("click",event=>{event.preventDefault();navigate(el.dataset.route)}));
  document.querySelectorAll("[data-watch]").forEach(el=>el.onclick=()=>appState.toggleWatchlist(el.dataset.watch));
@@ -72,7 +108,11 @@ function bind(){
 
  document.querySelectorAll("[data-watched]").forEach(el=>el.onclick=()=>appState.toggleWatched(el.dataset.watched));
  document.querySelectorAll("[data-skip]").forEach(el=>el.onclick=()=>appState.toggleNotInterested(el.dataset.skip));
- document.querySelectorAll("[data-mood]").forEach(el=>el.onclick=()=>appState.set({movieMood: el.dataset.mood || null}));
+ document.querySelectorAll("[data-mood]").forEach(el=>el.onclick=()=>{
+   const mood=el.dataset.mood || null;
+   appState.set({movieMood: mood});
+   triggerMoodDiscovery(mood);
+ });
 
  document.querySelectorAll("[data-franchise-toggle]").forEach(el=>el.onclick=()=>appState.toggleFranchiseFavorite(el.dataset.franchiseToggle));
  const franchiseSearch=document.getElementById("franchise-search");
