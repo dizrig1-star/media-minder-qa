@@ -35,7 +35,14 @@ viewingEvents: [],
 apiKeys: { tmdb: "", omdb: "" },
 liveSearchQuery: "",
 liveSearchLoading: false,
-liveSearchResults: []
+liveSearchResults: [],
+// Movie Desk mood discovery (TMDB only -- see liveSearch.mjs's
+// discoverExceptional): movieMoodLiveKey guards against a stale response
+// landing after the person has already switched or cleared moods, same
+// pattern liveSearchQuery uses for the text search above.
+movieMoodLiveKey: null,
+movieMoodLiveLoading: false,
+movieMoodLiveResults: []
 };
 
 function makeEvent(type, itemId, value){
