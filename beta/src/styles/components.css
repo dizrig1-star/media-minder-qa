@@ -1,10 +1,10 @@
-/* Media Minder ? components, Console direction.
+/* Media Minder — components, Console direction.
    Full replacement for src/styles/components.css.
 
    Rules this file holds to:
    - One hero per page, and only the hero wears the walnut console frame.
    - Containers over-round; every control is a pill.
-   - The broadcast bar is the only rule. No ? dingbats, no TV watermarks
+   - The broadcast bar is the only rule. No ✦ dingbats, no TV watermarks
      bleeding out of card corners.
    - Decorative icons are placed deliberately at 26-44px, never tiled.
    No markup changes are required by this file. */
@@ -22,7 +22,7 @@ body{background:var(--ground)}
 .header-tagline{display:flex;align-items:center;gap:10px;background:var(--coral);color:var(--paper);font-family:'Baloo 2',sans-serif;font-weight:700;font-size:.92rem;padding:9px 16px;border-radius:var(--radius-pill);box-shadow:0 6px 14px rgba(0,0,0,.22);max-width:100%}
 .header-tagline-icon{width:24px;height:24px;object-fit:contain;flex:none}
 .sidebar-nav{display:flex;flex-direction:column;gap:2px;padding:8px 12px 22px;position:relative;z-index:1}
-.nav-item{display:flex;align-items:center;gap:8px;text-decoration:none;border:0;border-radius:var(--radius-pill);background:transparent;padding:11px 14px;color:var(--paper);font-family:'Baloo 2',sans-serif;font-weight:700;font-size:1.15rem;text-shadow:0 2px 4px rgba(0,0,0,.35);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;transition:background-color .16s ease,color .16s ease}
+.nav-item{display:flex;align-items:center;gap:10px;text-decoration:none;border:0;border-radius:var(--radius-pill);background:transparent;padding:11px 16px;color:var(--paper);font-family:'Baloo 2',sans-serif;font-weight:700;font-size:2rem;text-shadow:0 2px 4px rgba(0,0,0,.35);white-space:nowrap;transition:background-color .16s ease,color .16s ease}
 .nav-item:hover{background:rgba(0,0,0,.14)}
 .nav-item.active{background:var(--cream);color:var(--teal)}
 .nav-icon{width:66px;height:66px;object-fit:contain;flex:none;border-radius:var(--radius-sm)}
@@ -92,6 +92,16 @@ body{background:var(--ground)}
 .poster.has-image img{width:100%;height:100%;object-fit:cover;display:block}
 .poster.small{width:110px;flex:none}
 
+/* Live search's "beyond your library" cards (Search.js liveResultCard) use
+   a raw <img class="poster-img"> for TMDB artwork rather than the .poster
+   wrapper, since there's no placeholder-state to draw. Left unstyled, a
+   TMDB w780 image renders at its native ~780px width inside the media-row,
+   dominating the card and pushing the title/summary/platform text out of
+   view -- reads as "just a poster, nothing else". Sized to match
+   .poster.small so live results look like any other media-row entry. */
+.poster-img{width:110px;height:165px;object-fit:cover;border-radius:var(--radius-art);
+  flex:none;box-shadow:inset 0 0 0 5px var(--ground-2);display:block}
+
 /* ------------------------------------------------------------------ rows */
 
 .media-row{display:flex;gap:1.25rem;align-items:center}
@@ -149,7 +159,7 @@ body{background:var(--ground)}
 .section-heading{display:flex;justify-content:flex-start;align-items:center;gap:14px;
   margin:var(--space-5) 0 var(--space-3);position:relative}
 .section-heading h2{font-family:'Playfair Display',Georgia,serif;font-weight:600;font-size:1.5rem;color:var(--teal);margin:0}
-/* The rule, then the accent. Replaces the ?. */
+/* The rule, then the accent. Replaces the ✦. */
 .section-heading:before{content:"";flex:1;order:2;height:2px;background:var(--rule)}
 .section-heading:after{content:"";order:3;width:var(--accent-md);height:var(--accent-md);flex:none;
   background:url('../../assets/branding/approved/icon-tv-teal-pod.svg') center/contain no-repeat;opacity:.55}
@@ -160,12 +170,6 @@ body{background:var(--ground)}
 .empty-state{text-align:center;padding:2.25rem 1.5rem;border:2px dashed var(--rule);
   border-radius:var(--radius-card);background:var(--ground-2);position:relative;color:var(--ink-soft)}
 .list{display:flex;flex-direction:column;gap:14px}
-
-/* Recommendations page: the three secondary Gold cards had no container
-   layout at all, so they sat with zero space between them and their
-   drop-shadows visually bled into one another -- reads as "overlapping". */
-.prototype-following-grid{display:flex;flex-direction:column;gap:16px;margin-top:16px}
-.curated-prototype{margin-bottom:16px}
 
 .callout{position:relative;background:var(--walnut);background-image:var(--walnut-grain);
   border-left:0;padding:16px;border-radius:var(--radius-panel);box-shadow:var(--shadow-card)}
@@ -178,7 +182,7 @@ body{background:var(--ground)}
 .callout:before{inset:8px}
 
 /* --------------------------------------------------------------- ratings
-   Real ? glyphs, gold when selected. A small label precedes the control
+   Real ★ glyphs, gold when selected. A small label precedes the control
    wherever it is interactive, asking the question directly. */
 
 .rating{display:inline-flex;gap:4px;align-items:center;flex-wrap:wrap}
@@ -285,21 +289,14 @@ img.tv-icon{content:url('../../assets/branding/approved/icon-tv-coral-stripe.svg
 /* ------------------------------------------------------- decorative icons
    Placed, not tiled. Quarter to half-dollar, low opacity, one per module. */
 
-.coming-soon-aside{background:var(--teal);
-  background-image:repeating-linear-gradient(45deg,rgba(255,255,255,.05) 0 1px,transparent 1px 4px),
-    repeating-linear-gradient(-45deg,rgba(0,0,0,.06) 0 1px,transparent 1px 4px);
-  background-size:8px 8px,8px 8px;
-  color:var(--paper);position:relative;overflow:hidden}
-.coming-soon-aside .page-kicker{color:#f4d98b;font-size:2.16rem}
-.coming-soon-aside h2{font-size:4.5rem;line-height:1.05}
+.coming-soon-aside{background:var(--teal);color:var(--paper);position:relative;overflow:hidden}
 .coming-soon-aside h2,.coming-soon-aside h3{color:var(--paper)}
-.coming-soon-aside p{color:rgba(255,253,246,.86);font-size:3rem;line-height:1.3}
+.coming-soon-aside .page-kicker{color:#f4d98b}
+.coming-soon-aside p{color:rgba(255,253,246,.86)}
 .coming-soon-aside:after{content:"";position:absolute;right:-14px;bottom:-12px;width:110px;height:110px;
   background:url('../../assets/branding/approved/Icon-transmission-tower.svg') center/contain no-repeat;opacity:.2;pointer-events:none}
-.coming-soon-aside .seal-legend-row img{width:120px;height:120px}
-.coming-soon-aside .seal-legend-row span{font-size:3.28rem;line-height:1.2}
 
-/* --------------------------------------------------------- hero art panel
+/* ------------------------------------------------------ hero art panel
    Batch 6: gives the Home and Franchises hero sections a title-art screen,
    matching the console language already used by EditorialCard's hero tier. */
 
@@ -319,31 +316,22 @@ img.tv-icon{content:url('../../assets/branding/approved/icon-tv-coral-stripe.svg
   letter-spacing:.2em;text-transform:uppercase;color:rgba(255,253,246,.7);
   margin-top:.5rem;position:relative;z-index:1}
 
-/* Real poster art (Batch 8): once a franchise has real key art, this drops
-   the texture and keeps just the bezel -- the same "real poster art" tier
-   EditorialCard already uses for shows/movies, so franchises with art match
-   the rest of the app instead of looking like an unfinished placeholder. */
-.hero-art--poster:before{display:none}
-.hero-art--poster{box-shadow:inset 0 0 0 8px var(--bezel),inset 0 0 0 10px rgba(0,0,0,.25)}
-.hero-art--poster .hero-art-title{text-shadow:0 2px 12px rgba(0,0,0,.6)}
+/* ------------------------------------------------ franchise card art
+   Batch 6: franchises have no poster art, so each row gets a small
+   gradient+icon panel with the franchise name overlaid, in the same
+   family as .cal-art / .editorial-art. */
 
-/* The transmission-tower mark is a small placed accent on the Featured
-   Franchise hero -- with or without real art -- rather than the dominant
-   image. Same idiom as .coming-soon-aside's corner mark: quarter-to-half-
-   dollar, low opacity, one per module, never tiled. The "My Worlds" cards
-   below (Batch 9) reuse EditorialCard's own .editorial-art panel instead of
-   a bespoke one, so they get the identical accent treatment there. */
-.hero-art-accent{position:absolute;right:12px;bottom:12px;width:56px;height:56px;
-  opacity:.28;object-fit:contain;pointer-events:none;filter:drop-shadow(0 2px 4px rgba(0,0,0,.4))}
-.editorial-art-accent{position:absolute;right:12px;bottom:12px;width:40px;height:40px;
-  opacity:.28;object-fit:contain;pointer-events:none;filter:drop-shadow(0 2px 4px rgba(0,0,0,.4))}
-
-/* Batch 9: "My Worlds" franchise cards now use EditorialCard's own markup
-   (.editorial-card/.editorial-banner/.editorial-art) instead of the bespoke
-   small-thumbnail .franchise-card layout, so they carry the same banner
-   strip, art-panel proportions and MEDIA MINDER footer branding that
-   Tonight's cards already use -- one card language across the app instead
-   of a second, thinner one just for franchises. */
+.franchise-card{display:flex;gap:1.1rem;align-items:flex-start}
+.franchise-card .details{flex:1;min-width:0}
+.franchise-art{flex:none;position:relative;overflow:hidden;width:84px;aspect-ratio:2/3;
+  border-radius:var(--radius-art);color:var(--paper);display:flex;flex-direction:column;
+  justify-content:flex-end;padding:.5rem;
+  background:linear-gradient(150deg,#164d56 0%,#286f76 55%,#c96f62 115%);
+  box-shadow:inset 0 0 0 4px var(--ground-2)}
+.franchise-art:before{content:"";position:absolute;inset:0;background:var(--scanline);opacity:.35}
+.franchise-art-icon{position:absolute;left:14%;right:14%;top:12%;width:72%;height:52%;object-fit:contain;opacity:.9}
+.franchise-art-title{position:relative;z-index:1;font-family:'Playfair Display',Georgia,serif;
+  font-weight:700;font-size:.76rem;line-height:1.12;text-shadow:0 2px 6px rgba(0,0,0,.5)}
 
 /* --------------------------------------------------------- seal legend
    Batch 6: explains what the MM Select seals mean, used on the Tonight
@@ -351,8 +339,6 @@ img.tv-icon{content:url('../../assets/branding/approved/icon-tv-coral-stripe.svg
 
 .seal-legend{margin-top:1rem;display:flex;flex-direction:column;gap:.5rem}
 .seal-legend-row{display:flex;align-items:center;gap:.6rem}
-.coming-soon-aside .seal-legend{gap:1.25rem}
-.coming-soon-aside .seal-legend-row{gap:1rem}
 .seal-legend-row img{width:30px;height:30px;object-fit:contain;flex:none}
 .seal-legend-row span{font-size:.82rem;color:rgba(255,253,246,.86)}
 
@@ -403,4 +389,6 @@ img.tv-icon{content:url('../../assets/branding/approved/icon-tv-coral-stripe.svg
   .section-heading:after{width:var(--accent-sm);height:var(--accent-sm)}
   .hero-inner{grid-template-columns:1fr}
   .hero-art{min-height:220px}
+  .franchise-card{flex-direction:column}
+  .franchise-art{width:100%;aspect-ratio:16/9}
 }
