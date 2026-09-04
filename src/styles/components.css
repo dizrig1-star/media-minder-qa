@@ -1,10 +1,10 @@
-/* Media Minder — components, Console direction.
+/* Media Minder ? components, Console direction.
    Full replacement for src/styles/components.css.
 
    Rules this file holds to:
    - One hero per page, and only the hero wears the walnut console frame.
    - Containers over-round; every control is a pill.
-   - The broadcast bar is the only rule. No ✦ dingbats, no TV watermarks
+   - The broadcast bar is the only rule. No ? dingbats, no TV watermarks
      bleeding out of card corners.
    - Decorative icons are placed deliberately at 26-44px, never tiled.
    No markup changes are required by this file. */
@@ -22,7 +22,7 @@ body{background:var(--ground)}
 .header-tagline{display:flex;align-items:center;gap:10px;background:var(--coral);color:var(--paper);font-family:'Baloo 2',sans-serif;font-weight:700;font-size:.92rem;padding:9px 16px;border-radius:var(--radius-pill);box-shadow:0 6px 14px rgba(0,0,0,.22);max-width:100%}
 .header-tagline-icon{width:24px;height:24px;object-fit:contain;flex:none}
 .sidebar-nav{display:flex;flex-direction:column;gap:2px;padding:8px 12px 22px;position:relative;z-index:1}
-.nav-item{display:flex;align-items:center;gap:10px;text-decoration:none;border:0;border-radius:var(--radius-pill);background:transparent;padding:11px 16px;color:var(--paper);font-family:'Baloo 2',sans-serif;font-weight:700;font-size:2rem;text-shadow:0 2px 4px rgba(0,0,0,.35);white-space:nowrap;transition:background-color .16s ease,color .16s ease}
+.nav-item{display:flex;align-items:center;gap:8px;text-decoration:none;border:0;border-radius:var(--radius-pill);background:transparent;padding:11px 14px;color:var(--paper);font-family:'Baloo 2',sans-serif;font-weight:700;font-size:1.15rem;text-shadow:0 2px 4px rgba(0,0,0,.35);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;transition:background-color .16s ease,color .16s ease}
 .nav-item:hover{background:rgba(0,0,0,.14)}
 .nav-item.active{background:var(--cream);color:var(--teal)}
 .nav-icon{width:66px;height:66px;object-fit:contain;flex:none;border-radius:var(--radius-sm)}
@@ -149,7 +149,7 @@ body{background:var(--ground)}
 .section-heading{display:flex;justify-content:flex-start;align-items:center;gap:14px;
   margin:var(--space-5) 0 var(--space-3);position:relative}
 .section-heading h2{font-family:'Playfair Display',Georgia,serif;font-weight:600;font-size:1.5rem;color:var(--teal);margin:0}
-/* The rule, then the accent. Replaces the ✦. */
+/* The rule, then the accent. Replaces the ?. */
 .section-heading:before{content:"";flex:1;order:2;height:2px;background:var(--rule)}
 .section-heading:after{content:"";order:3;width:var(--accent-md);height:var(--accent-md);flex:none;
   background:url('../../assets/branding/approved/icon-tv-teal-pod.svg') center/contain no-repeat;opacity:.55}
@@ -160,6 +160,12 @@ body{background:var(--ground)}
 .empty-state{text-align:center;padding:2.25rem 1.5rem;border:2px dashed var(--rule);
   border-radius:var(--radius-card);background:var(--ground-2);position:relative;color:var(--ink-soft)}
 .list{display:flex;flex-direction:column;gap:14px}
+
+/* Recommendations page: the three secondary Gold cards had no container
+   layout at all, so they sat with zero space between them and their
+   drop-shadows visually bled into one another -- reads as "overlapping". */
+.prototype-following-grid{display:flex;flex-direction:column;gap:16px;margin-top:16px}
+.curated-prototype{margin-bottom:16px}
 
 .callout{position:relative;background:var(--walnut);background-image:var(--walnut-grain);
   border-left:0;padding:16px;border-radius:var(--radius-panel);box-shadow:var(--shadow-card)}
@@ -172,7 +178,7 @@ body{background:var(--ground)}
 .callout:before{inset:8px}
 
 /* --------------------------------------------------------------- ratings
-   Real ★ glyphs, gold when selected. A small label precedes the control
+   Real ? glyphs, gold when selected. A small label precedes the control
    wherever it is interactive, asking the question directly. */
 
 .rating{display:inline-flex;gap:4px;align-items:center;flex-wrap:wrap}
@@ -279,14 +285,21 @@ img.tv-icon{content:url('../../assets/branding/approved/icon-tv-coral-stripe.svg
 /* ------------------------------------------------------- decorative icons
    Placed, not tiled. Quarter to half-dollar, low opacity, one per module. */
 
-.coming-soon-aside{background:var(--teal);color:var(--paper);position:relative;overflow:hidden}
+.coming-soon-aside{background:var(--teal);
+  background-image:repeating-linear-gradient(45deg,rgba(255,255,255,.05) 0 1px,transparent 1px 4px),
+    repeating-linear-gradient(-45deg,rgba(0,0,0,.06) 0 1px,transparent 1px 4px);
+  background-size:8px 8px,8px 8px;
+  color:var(--paper);position:relative;overflow:hidden}
+.coming-soon-aside .page-kicker{color:#f4d98b;font-size:2.16rem}
+.coming-soon-aside h2{font-size:4.5rem;line-height:1.05}
 .coming-soon-aside h2,.coming-soon-aside h3{color:var(--paper)}
-.coming-soon-aside .page-kicker{color:#f4d98b}
-.coming-soon-aside p{color:rgba(255,253,246,.86)}
+.coming-soon-aside p{color:rgba(255,253,246,.86);font-size:3rem;line-height:1.3}
 .coming-soon-aside:after{content:"";position:absolute;right:-14px;bottom:-12px;width:110px;height:110px;
   background:url('../../assets/branding/approved/Icon-transmission-tower.svg') center/contain no-repeat;opacity:.2;pointer-events:none}
+.coming-soon-aside .seal-legend-row img{width:120px;height:120px}
+.coming-soon-aside .seal-legend-row span{font-size:3.28rem;line-height:1.2}
 
-/* ------------------------------------------------------ hero art panel
+/* --------------------------------------------------------- hero art panel
    Batch 6: gives the Home and Franchises hero sections a title-art screen,
    matching the console language already used by EditorialCard's hero tier. */
 
@@ -338,6 +351,8 @@ img.tv-icon{content:url('../../assets/branding/approved/icon-tv-coral-stripe.svg
 
 .seal-legend{margin-top:1rem;display:flex;flex-direction:column;gap:.5rem}
 .seal-legend-row{display:flex;align-items:center;gap:.6rem}
+.coming-soon-aside .seal-legend{gap:1.25rem}
+.coming-soon-aside .seal-legend-row{gap:1rem}
 .seal-legend-row img{width:30px;height:30px;object-fit:contain;flex:none}
 .seal-legend-row span{font-size:.82rem;color:rgba(255,253,246,.86)}
 
