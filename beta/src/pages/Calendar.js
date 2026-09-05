@@ -10,18 +10,40 @@ function countdownText(dateStr){
   const today = new Date();
   today.setHours(0,0,0,0);
   const diffDays = Math.round((drop - today) / 86400000);
-  return diffDays > 0 ? String(diffDays) : "Showing";
+  return diffDays > 0 ? String(diffDays) : "Now Showing";
 }
 
 export function Calendar(state){
   const rows=getPersonalizedCalendarRows(state);
   return `${heading("The calendar","Calendar","Week-by-week episode drops and premieres.")}
   <div class="list">${rows.map(x=>{
+    const countdown=x.nowShowing ? "Now Showing" : countdownText(x.date);
+    const countdownClass=countdown==="Now Showing" ? " countdown-badge-value--label" : "";
+    const artStyle=x.show.poster?` style="background-image:linear-gradient(180deg, rgba(15,45,51,.05) 0%, rgba(15,45,51,.35) 55%, rgba(10,10,10,.72) 100%), url('${x.show.poster}');background-size:cover;background-position:center;"`:"";
+
+    // Movies are evergreen (no premiere/episodeDrops date) -- once
+    // watchlisted they're simply available, so their row skips the dated
+    // tile and episode label entirely and reads as "Now Showing" instead.
+    if(x.nowShowing){
+      return `<article class="editorial-card editorial-card--compact">
+      <div class="editorial-banner"><span class="editorial-banner-mark">✦</span>NOW SHOWING<span class="editorial-banner-mark">✦</span></div>
+      <div class="media-row curated-row-body">
+      <div class="cal-art"${artStyle}>
+        <span class="cal-art-title">${x.show.title}</span>
+      </div>
+      <div class="details"><div class="cluster"><span class="platform">${platformName(state,x.show.platform)}</span></div>
+      <h3>${x.show.title}</h3><p class="muted">Available now on your Watchlist.</p></div>
+      <div class="countdown-badge">
+        <img class="countdown-badge-art" src="${ASSET}Icon-countdown.svg" alt="" aria-hidden="true">
+        <span class="countdown-badge-value${countdownClass}">${countdown}</span>
+      </div>
+      </div>
+    </article>`;
+    }
+
     const d=new Date(x.date+"T12:00:00");
     const month=d.toLocaleDateString("en-US",{month:"short"});
     const day=d.toLocaleDateString("en-US",{day:"numeric"});
-    const countdown=countdownText(x.date);
-    const artStyle=x.show.poster?` style="background-image:linear-gradient(180deg, rgba(15,45,51,.05) 0%, rgba(15,45,51,.35) 55%, rgba(10,10,10,.72) 100%), url('${x.show.poster}');background-size:cover;background-position:center;"`:"";
     return `<article class="editorial-card editorial-card--compact">
     <div class="editorial-banner"><span class="editorial-banner-mark">✦</span>EPISODE DROP<span class="editorial-banner-mark">✦</span></div>
     <div class="media-row curated-row-body">
@@ -37,7 +59,7 @@ export function Calendar(state){
     <h3>${x.show.title}</h3><p>${x.title}</p><p class="muted">${d.toLocaleDateString("en-US",{weekday:"long",month:"long",day:"numeric"})}${x.time ? ` · ${x.time}` : ""}</p></div>
     <div class="countdown-badge">
       <img class="countdown-badge-art" src="${ASSET}Icon-countdown.svg" alt="" aria-hidden="true">
-      <span class="countdown-badge-value">${countdown}</span>
+      <span class="countdown-badge-value${countdownClass}">${countdown}</span>
     </div>
     </div>
   </article>`;
