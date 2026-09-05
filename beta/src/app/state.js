@@ -120,20 +120,30 @@ const viewingEvents = pruneEvents([...(state.viewingEvents||[]), makeEvent("prog
 this.set({progress:{...state.progress,[id]:Number(episode)}, viewingEvents});
 },
 toggleWatched(id){
-const next = state.watched.includes(id)
-? state.watched.filter(x => x !== id)
-: [...state.watched, id];
+const willBeWatched = !state.watched.includes(id);
+const next = willBeWatched
+? [...state.watched, id]
+: state.watched.filter(x => x !== id);
 // Watching it settles the question either way -- clear any earlier "not for me".
 const notInterested = state.notInterested.filter(x => x !== id);
-const viewingEvents = pruneEvents([...(state.viewingEvents||[]), makeEvent("watched", id, next.includes(id))]);
-this.set({watched: next, notInterested, viewingEvents});
+// Acknowledging you've watched it means it no longer belongs on an active
+// Watchlist or in future recommendations -- but only on the way to marking
+// it watched, not on undo (unmarking shouldn't silently re-add it).
+const watchlist = willBeWatched ? state.watchlist.filter(x => x !== id) : state.watchlist;
+const viewingEvents = pruneEvents([...(state.viewingEvents||[]), makeEvent("watched", id, willBeWatched)]);
+this.set({watched: next, notInterested, watchlist, viewingEvents});
 },
 toggleNotInterested(id){
-const next = state.notInterested.includes(id)
-? state.notInterested.filter(x => x !== id)
-: [...state.notInterested, id];
+const willBeSkipped = !state.notInterested.includes(id);
+const next = willBeSkipped
+? [...state.notInterested, id]
+: state.notInterested.filter(x => x !== id);
 const watched = state.watched.filter(x => x !== id);
-this.set({notInterested: next, watched});
+// Same reasoning as toggleWatched above: choosing "not for me" removes it
+// from Watchlist and future recommendations, only on the way to marking it.
+const watchlist = willBeSkipped ? state.watchlist.filter(x => x !== id) : state.watchlist;
+const viewingEvents = pruneEvents([...(state.viewingEvents||[]), makeEvent("notInterested", id, willBeSkipped)]);
+this.set({notInterested: next, watched, watchlist, viewingEvents});
 },
 toggleFranchiseFavorite(id){
 const profile = state.profile || {};
