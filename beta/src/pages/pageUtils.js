@@ -26,14 +26,18 @@ export function timeGreeting(date=new Date()){
   return "Good evening";
 }
 
-// Live results come from TMDB + OMDb, not the curated catalog, so they don't
-// carry watchlist/rating controls -- an "add to watchlist" tap on a title
-// that isn't in state.shows/state.movies would silently do nothing useful.
-// This renders them as read-only discovery cards instead, reusing the same
-// card/media-row classes the rest of the app already uses. Shared between
-// Search.js and Franchises.js so both search boxes behave identically.
+// Live results come from TMDB + OMDb, not the curated catalog. "Add to
+// Watchlist" here goes through the same [data-watch] handler as every other
+// card, but main.js's handler special-cases ids it doesn't recognize from
+// state.shows/state.movies: it looks the id up in liveSearchResults /
+// movieMoodLiveResults and adopts the full item into the catalog + a
+// persisted adoptedTitles list (see adoptLiveResult in state.js) rather than
+// writing a bare id that would resolve to nothing on the next visit. Shared
+// between Search.js and Franchises.js so both search boxes behave
+// identically.
 export function liveResultCard(state, item){
   const platform = item.platform ? platformName(state, item.platform) : null;
+  const inWatchlist = (state.watchlist||[]).includes(item.id);
   const ratingLabel = item.mmRating !== null && item.mmRating !== undefined
     ? `MM Rating ${item.mmRating}/10${item.ratingSources ? ` <span class="muted">(IMDb ${item.ratingSources.imdb ?? '—'}, RT ${item.ratingSources.rottenTomatoes !== null && item.ratingSources.rottenTomatoes !== undefined ? item.ratingSources.rottenTomatoes + '%' : '—'})</span>` : ''}`
     : 'Not yet rated';
@@ -49,6 +53,7 @@ export function liveResultCard(state, item){
       ${item.summary ? `<p>${escapeHtml(item.summary)}</p>` : ''}
       <p class="muted">${platform ? escapeHtml(platform) : 'Platform not confirmed'}${item.link ? ` &middot; <a href="${escapeHtml(item.link)}" target="_blank" rel="noopener">Where to watch</a>` : ''}</p>
       <p>${ratingLabel}</p>
+      <div class="editorial-actions"><button class="btn secondary" data-watch="${escapeHtml(item.id)}">${inWatchlist ? 'Remove from Watchlist' : 'Add to Watchlist'}</button></div>
     </div>
   </article>`;
 }
