@@ -95,6 +95,12 @@ function triggerMoodDiscovery(mood){
 
 function bind(){
  document.querySelectorAll("[data-route]").forEach(el=>el.addEventListener("click",event=>{event.preventDefault();navigate(el.dataset.route)}));
+ // Mobile only (see .return-to-menu in layout.css): on narrow widths the
+ // sidebar nav collapses into a strip pinned to the top of the page, so
+ // after scrolling through a long page there's no way back to it without
+ // this. Smooth-scrolls the whole page back to the top, where the nav lives.
+ const returnToMenu=document.querySelector("[data-return-to-menu]");
+ if(returnToMenu) returnToMenu.onclick=()=>window.scrollTo({top:0,behavior:"smooth"});
  document.querySelectorAll("[data-watch]").forEach(el=>el.onclick=()=>appState.toggleWatchlist(el.dataset.watch));
  document.querySelectorAll("[data-rate-id]").forEach(el=>el.onclick=()=>appState.rate(el.dataset.rateId,Number(el.dataset.rating)));
  document.querySelectorAll("[data-progress-id]").forEach(el=>el.onchange=()=>appState.setProgress(el.dataset.progressId,Number(el.value)));
