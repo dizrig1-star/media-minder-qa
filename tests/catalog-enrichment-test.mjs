@@ -51,6 +51,42 @@ console.log("PASS -- pickBestTmdbMatch picks the closest exact-title match, and 
   const info = buildProviderInfo({ results: {} }, "US");
   assert.equal(info, null, "should return null when the region has no provider data");
 }
+{
+  // Real case found via live search: an Apple TV+ Original ("Dark Matter")
+  // also listed as resold through Amazon's channel add-on. The "<X> Channel"
+  // entry must not shadow the real home platform.
+  const providers = {
+    results: {
+      US: {
+        link: "https://www.themoviedb.org/tv/1/watch?locale=US",
+        flatrate: [
+          { provider_name: "Apple TV Plus Amazon Channel" },
+          { provider_name: "Apple TV Plus" }
+        ]
+      }
+    }
+  };
+  const info = buildProviderInfo(providers, "US");
+  assert.deepEqual(info, { platform: "apple", link: providers.results.US.link },
+    "a resold '<X> Channel' listing must not be picked over the real direct listing");
+}
+{
+  // Genuine ambiguity: two distinct direct (non-channel) platforms both
+  // listed with no signal for which is the actual home -- must not guess.
+  const providers = {
+    results: {
+      US: {
+        link: "https://www.themoviedb.org/tv/2/watch?locale=US",
+        flatrate: [
+          { provider_name: "Apple TV Plus" },
+          { provider_name: "Amazon Prime Video" }
+        ]
+      }
+    }
+  };
+  const info = buildProviderInfo(providers, "US");
+  assert.equal(info, null, "two distinct direct platforms with no way to disambiguate should return null, not a guess");
+}
 console.log("PASS -- buildProviderInfo maps known flatrate providers and returns null when nothing usable is found");
 
 // 3. OMDb rating extraction.
