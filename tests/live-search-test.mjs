@@ -1,5 +1,5 @@
 import assert from "assert";
-import { buildLiveSearchResult } from "../src/lib/liveSearch.mjs";
+import { buildLiveSearchResult, buildEpisodeDropsFromSeason, buildWildcardCandidate } from "../src/lib/liveSearch.mjs";
 
 // Exercises buildLiveSearchResult against canned TMDB/OMDb-shaped fixtures --
 // no network calls, no API keys needed, so this runs in the normal test suite
@@ -100,5 +100,54 @@ console.log("PASS -- buildLiveSearchResult falls back to TMDB details title when
   assert.equal(result.episodes, undefined);
 }
 console.log("PASS -- buildLiveSearchResult carries current season/episode count for series, from data already fetched");
+
+// 5. buildEpisodeDropsFromSeason maps TMDB's /tv/{id}/season/{n} response
+// into the same {episode, title, date, time} shape the curated catalog's
+// episodeDrops use, so an adopted live series can produce real Calendar
+// rows (see fetchSeasonEpisodeDrops, called from main.js at adopt time).
+{
+  const seasonData = {
+    episodes: [
+      { episode_number: 1, name: "Pilot", air_date: "2026-08-28" },
+      { episode_number: 2, name: "", air_date: "2026-09-04" },
+      { episode_number: 3, name: "Not Yet Aired", air_date: null }
+    ]
+  };
+  const drops = buildEpisodeDropsFromSeason(seasonData);
+  assert.deepEqual(drops, [
+    { episode: 1, title: "Pilot", date: "2026-08-28", time: "" },
+    { episode: 2, title: "Episode 2", date: "2026-09-04", time: "" }
+  ], "should drop episodes with no air date yet, and fall back to a generic title when TMDB gives none");
+}
+{
+  // No season data at all (fetch failed, or a malformed response) degrades to no drops.
+  assert.deepEqual(buildEpisodeDropsFromSeason(null), []);
+  assert.deepEqual(buildEpisodeDropsFromSeason({}), []);
+}
+console.log("PASS -- buildEpisodeDropsFromSeason maps TMDB season data into real Calendar-ready episodeDrops");
+
+// 6. buildWildcardCandidate maps one TMDB discover/recommendations-shaped
+// result into our live-item shape, for the Wildcard v2 correlation pool
+// (see discoverWildcardCandidates + resolveWildcard in
+// recommendationService.js).
+{
+  const movieResult = { id: 55, title: "Some Correlated Movie", poster_path: "/p.jpg", overview: "A summary.", vote_average: 8.043 };
+  const candidate = buildWildcardCandidate(movieResult, "movie");
+  assert.equal(candidate.id, "live-movie-55");
+  assert.equal(candidate.title, "Some Correlated Movie");
+  assert.equal(candidate.type, "movie");
+  assert.equal(candidate.poster, "https://image.tmdb.org/t/p/w780/p.jpg");
+  assert.equal(candidate.mmRating, 8.0);
+  assert.ok(/deliberate wildcard/i.test(candidate.why));
+}
+{
+  const tvResult = { id: 77, name: "Some Correlated Show", poster_path: null, overview: "", vote_average: null };
+  const candidate = buildWildcardCandidate(tvResult, "tv");
+  assert.equal(candidate.id, "live-tv-77");
+  assert.equal(candidate.type, "series");
+  assert.equal(candidate.poster, null);
+  assert.equal(candidate.mmRating, null);
+}
+console.log("PASS -- buildWildcardCandidate maps a TMDB recommendations result into the live-item shape");
 
 console.log("LIVE SEARCH LOGIC: PASS");

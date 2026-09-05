@@ -1,14 +1,15 @@
 import {appState,hydrateLocalState} from "./app/state.js";
 import {currentRoute,startRouter,navigate} from "./app/router.js";
 import {loadData} from "./services/dataService.js";
-import {recommendations,mmChoice,pickWildcard} from "./services/recommendationService.js";
+import {recommendations,mmChoice,resolveWildcard} from "./services/recommendationService.js";
 import {buildProfileFromInitialWatches} from "./services/onboardingService.js";
 import {isUnlocked,unlock,renderGate} from "./app/accessGate.js";
 import {Header} from "./components/layout/Header.js";
 import {Navigation} from "./components/navigation/Navigation.js";
 import {Footer} from "./components/layout/Footer.js";
 import {openDetail} from "./components/media/Modal.js";
-import {liveSearch, discoverExceptional, TMDB_MOVIE_GENRE_IDS} from "./lib/liveSearch.mjs";
+import {liveSearch, discoverExceptional, TMDB_MOVIE_GENRE_IDS, fetchSeasonEpisodeDrops, discoverWildcardCandidates} from "./lib/liveSearch.mjs";
+import {activeMedia} from "./pages/pageUtils.js";
 
 import {Landing} from "./pages/Landing.js";
 import {Tonight} from "./pages/Tonight.js";
@@ -26,10 +27,13 @@ const pages={Landing,Tonight,Recommendations,Watchlist,Calendar,Premieres,Movies
 
 function render(route){
  const state=appState.get();
- const data=[...state.shows,...state.movies];
+ // activeMedia() excludes anything already marked watched or "not for me"
+ // -- otherwise a dismissed title could keep resurfacing as a recommendation
+ // or tonight's pick indefinitely.
+ const data=activeMedia(state);
  const recs=recommendations(data,state.profile,8);
  const choice=mmChoice(data,state.profile);
- const wildcard=pickWildcard(data,state.profile);
+ const wildcard=resolveWildcard(state,data);
  const Page=pages[route==="landing"?"Landing":route[0].toUpperCase()+route.slice(1)];
  document.getElementById("app").innerHTML=`<div class="app-shell"><aside class="sidebar">${Header()}${Navigation(route)}</aside><div class="content-column"><main class="app-main">${Page(state,choice,recs,wildcard)}</main>${Footer()}</div></div>`;
  bind();
@@ -101,7 +105,7 @@ function bind(){
  // this. Smooth-scrolls the whole page back to the top, where the nav lives.
  const returnToMenu=document.querySelector("[data-return-to-menu]");
  if(returnToMenu) returnToMenu.onclick=()=>window.scrollTo({top:0,behavior:"smooth"});
- document.querySelectorAll("[data-watch]").forEach(el=>el.onclick=()=>{
+ document.querySelectorAll("[data-watch]").forEach(el=>el.onclick=async ()=>{
    const id=el.dataset.watch;
    const state=appState.get();
    const knownToCatalog=state.shows.some(s=>s.id===id)||state.movies.some(m=>m.id===id);
@@ -111,11 +115,33 @@ function bind(){
      // catalog and watchlist together; plain toggleWatchlist would just
      // write an id nothing resolves to. See adoptLiveResult in state.js.
      const liveItem=[...(state.liveSearchResults||[]),...(state.movieMoodLiveResults||[])].find(x=>x.id===id);
-     if(liveItem){ appState.adoptLiveResult(liveItem); return; }
+     if(liveItem){
+       // A live series has no episodeDrops (TMDB search only gives a season
+       // count, not air dates), so it could never show up on Calendar --
+       // fetch the current season's real air dates now, at adoption time,
+       // rather than for every search result. Best-effort: if there's no
+       // TMDB key, the fetch fails, or nothing comes back, it still adopts
+       // -- just without Calendar support, same as before this existed.
+       let episodeDrops;
+       const tmdbIdMatch = liveItem.type==="series" ? /^live-tv-(\d+)$/.exec(liveItem.id) : null;
+       if(tmdbIdMatch && liveItem.season && state.apiKeys?.tmdb){
+         el.disabled = true;
+         const originalLabel = el.textContent;
+         el.textContent = "Adding…";
+         episodeDrops = await fetchSeasonEpisodeDrops(tmdbIdMatch[1], liveItem.season, state.apiKeys.tmdb);
+         el.disabled = false;
+         el.textContent = originalLabel;
+       }
+       appState.adoptLiveResult(episodeDrops?.length ? {...liveItem, episodeDrops} : liveItem);
+       return;
+     }
    }
    appState.toggleWatchlist(id);
  });
- document.querySelectorAll("[data-rate-id]").forEach(el=>el.onclick=()=>appState.rate(el.dataset.rateId,Number(el.dataset.rating)));
+ document.querySelectorAll("[data-rate-id]").forEach(el=>el.onclick=()=>{
+   appState.rate(el.dataset.rateId,Number(el.dataset.rating));
+   triggerWildcardDiscovery();
+ });
  document.querySelectorAll("[data-progress-id]").forEach(el=>el.onchange=()=>appState.setProgress(el.dataset.progressId,Number(el.value)));
  document.querySelectorAll("[data-detail]").forEach(el=>{
    el.onclick=()=>{
@@ -228,6 +254,36 @@ function bind(){
  };
 }
 
+// The wildcard's own 5-star-correlation pool (see resolveWildcard,
+// recommendationService.js): keyed on the sorted set of 5-star-rated ids so
+// a new (or removed) 5-star rating triggers a fresh pull, but re-rendering
+// or navigating around the app doesn't re-fetch on every render. Runs once
+// at startup (if a TMDB key + 5-star ratings already exist) and again
+// whenever a rating changes. Best-effort: no key, no 5-star ratings yet, or
+// a failed fetch all just leave wildcardCandidates empty, and resolveWildcard
+// falls back to the static curated pool.
+function fiveStarKey(state){
+ return Object.entries(state.ratings||{}).filter(([,r])=>r===5).map(([id])=>id).sort().join(",");
+}
+async function triggerWildcardDiscovery(){
+ const state=appState.get();
+ const key=fiveStarKey(state);
+ if(key===state.wildcardCandidatesKey && !state.wildcardCandidatesLoading) return;
+ if(!key || !state.apiKeys?.tmdb){
+   appState.set({wildcardCandidates:[], wildcardCandidatesKey:key, wildcardCandidatesLoading:false});
+   return;
+ }
+ appState.set({wildcardCandidatesLoading:true});
+ // Most-recent 5 five-star ratings only -- bounds how many TMDB calls one
+ // adoption/rating spree can trigger; a title's own "recommendations" don't
+ // meaningfully improve by also querying a 20th 5-star rating.
+ const fiveStarIds=key.split(",").slice(-5);
+ const fiveStarItems=fiveStarIds.map(id=>[...state.shows,...state.movies].find(x=>x.id===id)).filter(Boolean);
+ const excludeTitles=[...state.shows,...state.movies].map(m=>m.title);
+ const candidates=await discoverWildcardCandidates(fiveStarItems,{tmdbApiKey:state.apiKeys.tmdb,omdbApiKey:state.apiKeys.omdb,excludeTitles});
+ appState.set({wildcardCandidates:candidates, wildcardCandidatesKey:key, wildcardCandidatesLoading:false});
+}
+
 async function init(){
  hydrateLocalState();
  document.getElementById("app").innerHTML="<div class='app-main'><div class='card'><h1>Media Minder</h1><p>Setting the table...</p></div></div>";
@@ -250,6 +306,7 @@ async function init(){
      if(!patch[bucket].some(x=>x.id===item.id)) patch[bucket]=[...patch[bucket], item];
    }
    appState.set(patch);
+   triggerWildcardDiscovery();
    startRouter(render);
  }catch(error){
    document.getElementById("app").innerHTML=`<main class="app-main"><div class="empty-state"><h1>Media Minder couldn't load.</h1><p>Please run the application through a local web server.</p></div></main>`;

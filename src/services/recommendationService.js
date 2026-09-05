@@ -70,8 +70,38 @@ export function mmChoice(items, profile){
   return ranked.find(x=>x.mmSelect==="Select") || ranked.find(x=>x.mmSelect==="Gold") || null;
 }
 
-export function pickWildcard(items, profile={}){
+// Deterministic "rotation": a stable index derived from the seed string
+// (defaults to today's date), so the pick is the same all day but changes
+// day to day -- a real rotation without random flicker on every render/
+// navigation within the same visit. Not cryptographic; just needs to be
+// stable and spread picks out reasonably evenly across a small pool.
+export function selectRotatingWildcard(candidates, seed=new Date().toISOString().slice(0,10)){
+  if(!candidates?.length) return null;
+  let hash = 0;
+  for(let i=0;i<seed.length;i++){ hash = (hash*31 + seed.charCodeAt(i)) >>> 0; }
+  return candidates[hash % candidates.length];
+}
+
+// Static-pool fallback: the hand-curated catalog titles editorially tagged
+// as a "deliberate wildcard" in their "why" copy (see Design Bible). Used
+// when there's no live TMDB-correlation pool yet (no 5-star ratings, no
+// TMDB key, or discovery hasn't run/failed) -- see resolveWildcard below,
+// which is what render() actually calls. Now rotates daily instead of
+// always returning the single highest-scoring candidate.
+export function pickWildcard(items, profile={}, seed=new Date().toISOString().slice(0,10)){
   const candidates = (items||[]).filter(item => /deliberate wildcard/i.test(item.why || ""));
   if(!candidates.length) return null;
-  return [...candidates].sort((a,b)=>scoreItem(b,profile)-scoreItem(a,profile))[0];
+  return selectRotatingWildcard(candidates, seed);
+}
+
+// The actual picker render() uses: prefers the live TMDB-correlation pool
+// (state.wildcardCandidates, populated by triggerWildcardDiscovery in
+// main.js from the person's own 5-star ratings) and falls back to the
+// static curated pool only when that live pool is empty, so a first-time
+// user (or one without a TMDB key) still sees a wildcard rather than
+// nothing. Both pools rotate through the same daily-seeded selection.
+export function resolveWildcard(state, items, seed=new Date().toISOString().slice(0,10)){
+  const live = state.wildcardCandidates || [];
+  if(live.length) return selectRotatingWildcard(live, seed);
+  return pickWildcard(items, state.profile, seed);
 }
