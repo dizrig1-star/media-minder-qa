@@ -9,6 +9,7 @@ import {Navigation} from "./components/navigation/Navigation.js";
 import {Footer} from "./components/layout/Footer.js";
 import {openDetail} from "./components/media/Modal.js";
 import {liveSearch, discoverExceptional, TMDB_MOVIE_GENRE_IDS} from "./lib/liveSearch.mjs";
+import {activeMedia} from "./pages/pageUtils.js";
 
 import {Landing} from "./pages/Landing.js";
 import {Tonight} from "./pages/Tonight.js";
@@ -26,7 +27,10 @@ const pages={Landing,Tonight,Recommendations,Watchlist,Calendar,Premieres,Movies
 
 function render(route){
  const state=appState.get();
- const data=[...state.shows,...state.movies];
+ // activeMedia() excludes anything already marked watched or "not for me"
+ // -- otherwise a dismissed title could keep resurfacing as a recommendation
+ // or tonight's pick indefinitely.
+ const data=activeMedia(state);
  const recs=recommendations(data,state.profile,8);
  const choice=mmChoice(data,state.profile);
  const wildcard=pickWildcard(data,state.profile);
