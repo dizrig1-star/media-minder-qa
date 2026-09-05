@@ -82,3 +82,33 @@ console.log("PASS -- adoptLiveResult still creates a new entry when no curated t
   assert.ok(!appState.get().watchlist.includes("m1"), "un-marking watched should not resurrect the Watchlist entry");
 }
 console.log("PASS -- marking watched/not-for-me removes a title from the Watchlist, without silent undo re-adds");
+
+// 4. Watchlisted movies are evergreen (no premiere/episodeDrops) -- once
+// added to the Watchlist they belong on the Calendar as a "Now Showing"
+// row, not gated behind a date. Found via a real case: "The Secret Agent"
+// (Hulu) was on the Watchlist but never appeared on Calendar because
+// getPersonalizedCalendarRows only ever looked at state.shows.
+{
+  hydrateLocalState();
+  appState.set({
+    shows: [{
+      id: "s1", type: "series", title: "S1", platform: "apple",
+      episodeDrops: [{ episode: 1, title: "Premiere", date: "2026-09-09", time: "3:00 AM" }]
+    }],
+    movies: [
+      { id: "the-secret-agent", type: "movie", title: "The Secret Agent", platform: "hulu" },
+      { id: "unwatchlisted-movie", type: "movie", title: "Not On The List", platform: "max" }
+    ],
+    watchlist: ["s1", "the-secret-agent"]
+  });
+
+  const rows = getPersonalizedCalendarRows(appState.get());
+  const movieRow = rows.find(r => r.show.id === "the-secret-agent");
+  assert.ok(movieRow, "a watchlisted movie should produce a Calendar row");
+  assert.equal(movieRow.nowShowing, true, "a watchlisted movie's row should be flagged Now Showing");
+  assert.ok(!rows.some(r => r.show.id === "unwatchlisted-movie"),
+    "a movie that isn't watchlisted should not appear on the Calendar");
+  assert.ok(rows.some(r => r.show.id === "s1"),
+    "adding movie rows should not crowd out existing watchlisted series rows");
+}
+console.log("PASS -- a watchlisted movie appears on the Calendar as a Now Showing row");
