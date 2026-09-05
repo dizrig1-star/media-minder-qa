@@ -46,14 +46,40 @@ export function pickBestTmdbMatch(searchResults, title, year){
 }
 
 // TMDB watch/providers: { results: { US: { link, flatrate: [{provider_name,...}], ... } } }
-// Returns { platform, link } or null if nothing usable is found for the region.
+// Returns { platform, link } or null if nothing usable is found for the
+// region, or if the result is ambiguous (see below).
 // Note: TMDB's per-region "link" is a single JustWatch page listing every
 // provider for that title, not a deep link into one specific platform -- it's
 // only used as a fallback when we don't already have a curated deep link.
+//
+// Two known-unreliable shapes in TMDB's flatrate list, found from a real
+// live-search "Dark Matter" (Apple TV+ Original) case that surfaced "prime"
+// instead of "apple":
+// 1. Resold/bundled access shows up as its own flatrate entry, named after
+//    the storefront it's resold through -- e.g. "Apple TV Plus Amazon
+//    Channel" for an Apple Original a Prime member can add as a channel.
+//    That's Amazon acting as a storefront, not Amazon being the home
+//    platform, so any "<X> Channel" entry is dropped before matching.
+// 2. Even after dropping those, a title can carry more than one genuinely
+//    direct flatrate listing at once (e.g. a limited-time promotional
+//    window on a second service). With no signal for which one is the
+//    actual home, guessing either one risks being confidently wrong --
+//    same failure mode mergeEnrichment's comment below already documents
+//    for the curated catalog. If more than one distinct platform maps here,
+//    this returns null (unconfirmed) rather than picking one.
 export function buildProviderInfo(watchProvidersResponse, region = "US"){
   const regionData = watchProvidersResponse?.results?.[region];
   if(!regionData) return null;
   const flatrate = regionData.flatrate || [];
+  const direct = flatrate.filter(p => !/channel/i.test(p.provider_name || ""));
+  const mappedIds = [...new Set(
+    direct.map(p => TMDB_PROVIDER_NAME_TO_PLATFORM_ID[p.provider_name]).filter(Boolean)
+  )];
+  if(mappedIds.length === 1) return { platform: mappedIds[0], link: regionData.link || null };
+  if(mappedIds.length > 1) return null;
+  // Nothing usable among direct listings -- fall back to a resold/channel
+  // entry rather than nothing, same as before this fix (still better than
+  // no platform at all, and less likely to be ambiguous in practice).
   for(const provider of flatrate){
     const platformId = TMDB_PROVIDER_NAME_TO_PLATFORM_ID[provider.provider_name];
     if(platformId) return { platform: platformId, link: regionData.link || null };
