@@ -64,4 +64,41 @@ console.log("PASS -- buildLiveSearchResult degrades gracefully with no provider 
 }
 console.log("PASS -- buildLiveSearchResult falls back to TMDB details title when the search hit has none");
 
+// 4. A series result carries the current season number + that season's
+// episode count (from TMDB's already-fetched tv details), so Watchlist's
+// Progress tracker can show "Season X - Episode Y of Z" once adopted --
+// found missing when "Dark Matter" was added to the Watchlist and showed
+// no season info at all.
+{
+  const searchHit = { id: 88, media_type: "tv", name: "Some Returning Show" };
+  const tmdbDetails = {
+    genres: [], credits: { cast: [] },
+    seasons: [
+      { season_number: 0, episode_count: 3 },
+      { season_number: 1, episode_count: 9 },
+      { season_number: 2, episode_count: 8 }
+    ]
+  };
+  const result = buildLiveSearchResult(searchHit, tmdbDetails, { results: {} }, null, "US");
+  assert.equal(result.season, 2, "should use the latest real season, excluding season 0 (Specials)");
+  assert.equal(result.episodes, 8, "should use that season's own episode count, not the series total");
+}
+{
+  // A movie must never carry season/episodes fields.
+  const searchHit = { id: 89, media_type: "movie", title: "Some Movie" };
+  const tmdbDetails = { genres: [], credits: { cast: [] }, seasons: [{ season_number: 1, episode_count: 9 }] };
+  const result = buildLiveSearchResult(searchHit, tmdbDetails, { results: {} }, null, "US");
+  assert.equal(result.season, undefined);
+  assert.equal(result.episodes, undefined);
+}
+{
+  // No seasons data at all (e.g. a brand-new show TMDB hasn't backfilled yet) degrades safely.
+  const searchHit = { id: 90, media_type: "tv", name: "Some Brand New Show" };
+  const tmdbDetails = { genres: [], credits: { cast: [] } };
+  const result = buildLiveSearchResult(searchHit, tmdbDetails, { results: {} }, null, "US");
+  assert.equal(result.season, undefined);
+  assert.equal(result.episodes, undefined);
+}
+console.log("PASS -- buildLiveSearchResult carries current season/episode count for series, from data already fetched");
+
 console.log("LIVE SEARCH LOGIC: PASS");
