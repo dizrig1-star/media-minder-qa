@@ -18,6 +18,15 @@ movies: [],
 franchises: [],
 platforms: [],
 watchlist: [],
+// Titles added to the Watchlist straight from a live TMDB/OMDb search result
+// (see liveResultCard/adoptLiveResult) rather than the curated catalog. The
+// catalog (shows/movies) reloads fresh from JSON on every page load and is
+// never persisted, so a live item can't just have its id pushed onto
+// watchlist -- it would resolve to nothing on the next visit and silently
+// vanish from the Watchlist page while the orphaned id lingered forever.
+// Persisting the adopted item itself lets init() (main.js) re-merge it back
+// into shows/movies on every load, same as any curated entry from then on.
+adoptedTitles: [],
 watched: [],
 notInterested: [],
 progress: {},
@@ -80,6 +89,27 @@ const next = state.watchlist.includes(id)
 : [...state.watchlist, id];
 const viewingEvents = pruneEvents([...(state.viewingEvents||[]), makeEvent("watchlist", id, next.includes(id))]);
 this.set({watchlist: next, viewingEvents});
+},
+// Adds a live search result (see src/lib/liveSearch.mjs's buildLiveSearchResult)
+// to the Watchlist. Unlike toggleWatchlist, this is add-only and also adopts
+// the item into the in-memory catalog (shows/movies) and into the persisted
+// adoptedTitles list, so it behaves like any other watchlisted title from
+// here on -- appears on Watchlist, counts toward the personalized calendar
+// if it's a series, etc. -- instead of just an id with nothing behind it.
+adoptLiveResult(item){
+if(!item || !item.id) return;
+if(state.watchlist.includes(item.id)) return;
+const clean = {...item};
+delete clean.isLiveResult;
+const isMovie = clean.type !== "series";
+const alreadyAdopted = state.adoptedTitles.some(x => x.id === clean.id);
+const adoptedTitles = alreadyAdopted ? state.adoptedTitles : [...state.adoptedTitles, clean];
+const alreadyInCatalog = state.shows.some(x => x.id === clean.id) || state.movies.some(x => x.id === clean.id);
+const shows = (!alreadyInCatalog && !isMovie) ? [...state.shows, clean] : state.shows;
+const movies = (!alreadyInCatalog && isMovie) ? [...state.movies, clean] : state.movies;
+const watchlist = [...state.watchlist, clean.id];
+const viewingEvents = pruneEvents([...(state.viewingEvents||[]), makeEvent("watchlist", clean.id, true)]);
+this.set({adoptedTitles, shows, movies, watchlist, viewingEvents});
 },
 rate(id, rating){
 const viewingEvents = pruneEvents([...(state.viewingEvents||[]), makeEvent("rating", id, rating)]);
@@ -148,6 +178,7 @@ function persist(){
 localStorage.setItem(STORAGE_KEY, JSON.stringify({
 profile:state.profile,
 watchlist:state.watchlist,
+adoptedTitles:state.adoptedTitles,
 watched:state.watched,
 notInterested:state.notInterested,
 progress:state.progress,
@@ -169,6 +200,7 @@ try{
 const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}");
 state = {...state, ...saved};
 state.watchlist = Array.isArray(state.watchlist) ? state.watchlist : [];
+state.adoptedTitles = Array.isArray(state.adoptedTitles) ? state.adoptedTitles : [];
 state.watched = Array.isArray(state.watched) ? state.watched : [];
 state.notInterested = Array.isArray(state.notInterested) ? state.notInterested : [];
 state.progress = state.progress && typeof state.progress === "object" ? state.progress : {};
