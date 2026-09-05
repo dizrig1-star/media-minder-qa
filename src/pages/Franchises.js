@@ -14,14 +14,17 @@ function nextDatedEntry(state, franchise){
 
 // Hero art (Featured Franchise): real key art where we have it, same
 // gradient-overlay treatment EditorialCard uses for posters. The
-// transmission-tower mark is a small placed accent, not the dominant image.
+// transmission-tower mark is a fallback accent for franchises with no key
+// art (mirrors Landing.js/EditorialCard.js) -- it must use the -icon class
+// (sized/positioned in components.css), not -accent, which has no matching
+// rule and rendered at native SVG size, oversized and on top of real posters.
 function heroArt(item){
   const hasPoster = !!item.poster;
   const style = hasPoster
     ? ` style="background-image:linear-gradient(180deg, rgba(15,45,51,.15) 0%, rgba(15,45,51,.55) 55%, rgba(10,10,10,.72) 100%), url('${escapeHtml(item.poster)}');background-size:cover;background-position:center;"`
     : '';
   return `<div class="hero-art${hasPoster ? ' hero-art--poster' : ''}" aria-label="${escapeHtml(item.title)} visual"${style}>
-    <img class="hero-art-accent" src="${ASSET}Icon-transmission-tower.svg" alt="" aria-hidden="true">
+    ${hasPoster ? '' : `<img class="hero-art-icon" src="${ASSET}Icon-transmission-tower.svg" alt="" aria-hidden="true">`}
     <span class="hero-art-title">${escapeHtml(item.title)}</span>
     <span class="hero-art-footer">MEDIA MINDER</span>
   </div>`;
@@ -42,7 +45,7 @@ function franchiseCard(f, isFollowing){
     <div class="editorial-banner"><span class="editorial-banner-mark">✦</span>${isFollowing?"IN MY WORLDS":"NOT FOLLOWED"}<span class="editorial-banner-mark">✦</span></div>
     <div class="editorial-card-inner">
       <div class="editorial-art${hasPoster ? ' editorial-art--poster' : ''}" aria-label="${escapeHtml(f.title)} visual"${style}>
-        <img class="editorial-art-accent" src="${ASSET}Icon-transmission-tower.svg" alt="" aria-hidden="true">
+        ${hasPoster ? '' : `<img class="editorial-art-icon" src="${ASSET}Icon-transmission-tower.svg" alt="" aria-hidden="true">`}
         <div class="editorial-art-title">${escapeHtml(f.title)}</div>
         <div class="editorial-art-footer">MEDIA MINDER</div>
       </div>
