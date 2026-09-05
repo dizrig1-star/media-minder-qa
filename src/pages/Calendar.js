@@ -34,7 +34,7 @@ export function Calendar(state){
       <span class="date-tile-day">${day}</span>
     </div>
     <div class="details"><div class="cluster"><span class="platform">${platformName(state,x.show.platform)}</span><strong>Episode ${x.episode}</strong></div>
-    <h3>${x.show.title}</h3><p>${x.title}</p><p class="muted">${d.toLocaleDateString("en-US",{weekday:"long",month:"long",day:"numeric"})} · ${x.time}</p></div>
+    <h3>${x.show.title}</h3><p>${x.title}</p><p class="muted">${d.toLocaleDateString("en-US",{weekday:"long",month:"long",day:"numeric"})}${x.time ? ` · ${x.time}` : ""}</p></div>
     <div class="countdown-badge">
       <img class="countdown-badge-art" src="${ASSET}Icon-countdown.svg" alt="" aria-hidden="true">
       <span class="countdown-badge-value">${countdown}</span>
