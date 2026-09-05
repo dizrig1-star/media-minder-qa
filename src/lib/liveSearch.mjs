@@ -20,7 +20,8 @@ import {
   buildProviderInfo,
   computeMMRating,
   extractImdbRating,
-  extractRottenTomatoesPercent
+  extractRottenTomatoesPercent,
+  pickBestTmdbMatch
 } from "./enrichLogic.mjs";
 
 async function tmdbFetch(path, params, apiKey){
@@ -85,6 +86,128 @@ export function buildLiveSearchResult(searchHit, tmdbDetails, tmdbProviders, omd
     ...(episodes !== null ? {episodes} : {}),
     isLiveResult: true
   };
+}
+
+// Pure mapper from TMDB's /tv/{id}/season/{n} response to the same
+// {episode, title, date, time} shape the curated catalog's episodeDrops
+// use (see shows.json) -- so an adopted live series can produce real
+// Calendar rows the same way a hand-curated show does. TMDB gives an air
+// date but no air time, unlike curated entries (which are hand-timed), so
+// time is always "" here; Calendar.js/EditorialCard.js only show a time
+// segment when one is present. Episodes with no air_date yet (unaired,
+// TBD) are dropped -- a date-less "drop" is not a real Calendar entry.
+export function buildEpisodeDropsFromSeason(seasonData){
+  return (seasonData?.episodes || [])
+    .filter(e => e.air_date)
+    .map(e => ({
+      episode: e.episode_number,
+      title: e.name || `Episode ${e.episode_number}`,
+      date: e.air_date,
+      time: ""
+    }));
+}
+
+// Fetches one season's real per-episode air dates for a live-search-found
+// series, at the moment someone adopts it to their Watchlist (see
+// adoptLiveResult in state.js) -- not on every search result, since this is
+// an extra network call per title and only actually matters once someone
+// has decided they want it tracked. Never throws: returns [] on any
+// failure (no key, bad id, network error), same "degrade to nothing rather
+// than break the adopt" contract as liveSearch() itself.
+export async function fetchSeasonEpisodeDrops(tmdbShowId, seasonNumber, tmdbApiKey){
+  if(!tmdbShowId || !seasonNumber || !tmdbApiKey) return [];
+  try {
+    const seasonData = await tmdbFetch(`/tv/${tmdbShowId}/season/${seasonNumber}`, {}, tmdbApiKey);
+    return buildEpisodeDropsFromSeason(seasonData);
+  } catch(err){
+    console.warn(`Live search: season details fetch failed for tv/${tmdbShowId} season ${seasonNumber}`, err);
+    return [];
+  }
+}
+
+// ---------------------------------------------------------- Wildcard v2
+// Rotating wildcard picks correlated with the person's own 5-star ratings
+// (see resolveWildcard/selectRotatingWildcard in recommendationService.js
+// for the rotation itself, and triggerWildcardDiscovery in main.js for when
+// this runs). Rather than guess at genre overlap -- this app's editorial
+// genre labels ("Espionage Thriller", "Medical Drama", etc.) don't map
+// cleanly onto TMDB's fixed genre taxonomy -- this asks TMDB directly for
+// each highly-rated title's own "recommendations" (its "people who liked
+// this also liked" list), which is a much more precise correlation signal
+// than a hand-built genre-id table would be.
+
+// Pure mapper: one TMDB discover/recommendations-shaped result -> our
+// live-item shape. No genre names (TMDB recommendations only gives genre
+// ids, and resolving those to names would mean yet another lookup table --
+// left blank rather than guessed at, same spirit as leaving cast empty).
+export function buildWildcardCandidate(result, mediaType){
+  const isMovie = mediaType === "movie";
+  return {
+    id: `live-${mediaType}-${result.id}`,
+    title: result.title || result.name || "Untitled",
+    type: isMovie ? "movie" : "series",
+    poster: result.poster_path ? `https://image.tmdb.org/t/p/w780${result.poster_path}` : null,
+    platform: null,
+    link: null,
+    genre: [],
+    cast: [],
+    summary: result.overview || "",
+    why: "A deliberate wildcard: found via a strong correlation with something you rated highly.",
+    mmRating: Number.isFinite(result.vote_average) ? Math.round(result.vote_average * 10) / 10 : null,
+    ratingSources: null,
+    isLiveResult: true
+  };
+}
+
+// Finds a catalog item's own TMDB entry by title (reusing the same matching
+// logic the weekly enrichment pipeline already trusts), then pulls TMDB's
+// "recommendations" for it. Returns [] on any failure -- a single 5-star
+// title that TMDB can't match, or a request that fails, should never break
+// the wildcard pick for the person's other ratings.
+async function tmdbRecommendationsForItem(item, tmdbApiKey){
+  const mediaType = item.type === "series" ? "tv" : "movie";
+  try {
+    const searchResults = await tmdbFetch(`/search/${mediaType}`, { query: item.title, include_adult: "false" }, tmdbApiKey);
+    const match = pickBestTmdbMatch(searchResults, item.title, null);
+    if(!match) return [];
+    const recs = await tmdbFetch(`/${mediaType}/${match.id}/recommendations`, {}, tmdbApiKey);
+    return (recs.results || []).map(r => ({ result: r, mediaType }));
+  } catch(err){
+    console.warn(`Wildcard discovery: TMDB recommendations lookup failed for "${item.title}"`, err);
+    return [];
+  }
+}
+
+// Orchestrates the whole correlation pool: for each of the person's recent
+// 5-star titles (fiveStarItems, already resolved to catalog items -- see
+// triggerWildcardDiscovery in main.js), pulls TMDB's recommendations,
+// merges and dedupes them, keeps only a real quality bar (vote_average 7.0+
+// on at least 50 votes -- TMDB's own "recommendations" are already a
+// curated similarity list, so this is a lighter bar than discoverExceptional's
+// open-genre-browse 7.5/200, just enough to filter out obscure/poor results),
+// and excludes anything already in the library so it can't "recommend" a
+// title the person already has. Never throws; returns [] on no key/no
+// 5-star ratings/total failure, so callers fall back to the old static pool.
+export async function discoverWildcardCandidates(fiveStarItems, { tmdbApiKey, omdbApiKey, excludeTitles = [], limit = 12 } = {}){
+  if(!tmdbApiKey || !fiveStarItems?.length) return [];
+
+  const exclude = new Set(excludeTitles.map(t => (t || "").trim().toLowerCase()));
+  const seen = new Set();
+  const candidates = [];
+
+  for(const item of fiveStarItems){
+    const recs = await tmdbRecommendationsForItem(item, tmdbApiKey);
+    for(const { result, mediaType } of recs){
+      const key = `${mediaType}-${result.id}`;
+      if(seen.has(key)) continue;
+      const title = (result.title || result.name || "").trim().toLowerCase();
+      if(!title || exclude.has(title)) continue;
+      if(!(result.vote_average >= 7.0 && result.vote_count >= 50)) continue;
+      seen.add(key);
+      candidates.push(buildWildcardCandidate(result, mediaType));
+    }
+  }
+  return candidates.slice(0, limit);
 }
 
 // The real, network-calling search. Returns [] (never throws) if there's no

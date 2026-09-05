@@ -8,6 +8,19 @@ export function platformName(state,id){ return state.platforms.find(p=>p.id===id
 export function allMedia(state){ return [...state.shows,...state.movies]; }
 export function findMedia(state,id){ return allMedia(state).find(x=>x.id===id); }
 
+// Everything eligible to be recommended or suggested for tonight: allMedia()
+// minus anything the person has already marked watched or "not for me".
+// findMedia/allMedia stay unfiltered on purpose -- Details, My Reviews, and
+// the detail modal all need to resolve a title regardless of that status.
+// This is what feeds recommendations()/mmChoice()/pickWildcard() so a title
+// you've dismissed stops being suggested, on top of toggleWatched/
+// toggleNotInterested (state.js) already dropping it from the Watchlist.
+export function activeMedia(state){
+  const watched = state.watched||[];
+  const notInterested = state.notInterested||[];
+  return allMedia(state).filter(x => !watched.includes(x.id) && !notInterested.includes(x.id));
+}
+
 export function mediaCard(state, item, kindOverride, tierOverride){
   const platform = platformName(state, item.platform);
   const inWatchlist = state.watchlist.includes(item.id);

@@ -51,7 +51,17 @@ liveSearchResults: [],
 // pattern liveSearchQuery uses for the text search above.
 movieMoodLiveKey: null,
 movieMoodLiveLoading: false,
-movieMoodLiveResults: []
+movieMoodLiveResults: [],
+// Wildcard v2 (TMDB-correlation rotation, see triggerWildcardDiscovery in
+// main.js and resolveWildcard in recommendationService.js): not persisted,
+// same reasoning as liveSearchResults -- these are live TMDB results, not
+// user data, and shows/movies reload fresh every visit anyway.
+// wildcardCandidatesKey is the sorted, comma-joined set of 5-star-rated ids
+// this pool was built from, so a new 5-star rating (or an un-rating) is
+// detected and triggers a fresh discovery instead of serving a stale pool.
+wildcardCandidatesKey: null,
+wildcardCandidatesLoading: false,
+wildcardCandidates: []
 };
 
 function makeEvent(type, itemId, value){
@@ -98,6 +108,23 @@ this.set({watchlist: next, viewingEvents});
 // if it's a series, etc. -- instead of just an id with nothing behind it.
 adoptLiveResult(item){
 if(!item || !item.id) return;
+// A live search result can be the same show/movie as one already in the
+// curated catalog (e.g. found via a broader search or Movie Desk mood pick
+// even though it's already hand-curated with real episodeDrops). Adopting
+// it as a brand-new entry would create a worse-data duplicate -- no
+// episodeDrops, so it could never appear on Calendar even though a full
+// version of the same title already can. Match by title first and just
+// watchlist the existing entry instead of duplicating it.
+const normalizedTitle = (item.title||"").trim().toLowerCase();
+const existingMatch = normalizedTitle
+  ? [...state.shows, ...state.movies].find(x => (x.title||"").trim().toLowerCase() === normalizedTitle)
+  : null;
+if(existingMatch){
+  if(state.watchlist.includes(existingMatch.id)) return;
+  const viewingEvents = pruneEvents([...(state.viewingEvents||[]), makeEvent("watchlist", existingMatch.id, true)]);
+  this.set({watchlist: [...state.watchlist, existingMatch.id], viewingEvents});
+  return;
+}
 if(state.watchlist.includes(item.id)) return;
 const clean = {...item};
 delete clean.isLiveResult;
@@ -120,20 +147,30 @@ const viewingEvents = pruneEvents([...(state.viewingEvents||[]), makeEvent("prog
 this.set({progress:{...state.progress,[id]:Number(episode)}, viewingEvents});
 },
 toggleWatched(id){
-const next = state.watched.includes(id)
-? state.watched.filter(x => x !== id)
-: [...state.watched, id];
+const willBeWatched = !state.watched.includes(id);
+const next = willBeWatched
+? [...state.watched, id]
+: state.watched.filter(x => x !== id);
 // Watching it settles the question either way -- clear any earlier "not for me".
 const notInterested = state.notInterested.filter(x => x !== id);
-const viewingEvents = pruneEvents([...(state.viewingEvents||[]), makeEvent("watched", id, next.includes(id))]);
-this.set({watched: next, notInterested, viewingEvents});
+// Acknowledging you've watched it means it no longer belongs on an active
+// Watchlist or in future recommendations -- but only on the way to marking
+// it watched, not on undo (unmarking shouldn't silently re-add it).
+const watchlist = willBeWatched ? state.watchlist.filter(x => x !== id) : state.watchlist;
+const viewingEvents = pruneEvents([...(state.viewingEvents||[]), makeEvent("watched", id, willBeWatched)]);
+this.set({watched: next, notInterested, watchlist, viewingEvents});
 },
 toggleNotInterested(id){
-const next = state.notInterested.includes(id)
-? state.notInterested.filter(x => x !== id)
-: [...state.notInterested, id];
+const willBeSkipped = !state.notInterested.includes(id);
+const next = willBeSkipped
+? [...state.notInterested, id]
+: state.notInterested.filter(x => x !== id);
 const watched = state.watched.filter(x => x !== id);
-this.set({notInterested: next, watched});
+// Same reasoning as toggleWatched above: choosing "not for me" removes it
+// from Watchlist and future recommendations, only on the way to marking it.
+const watchlist = willBeSkipped ? state.watchlist.filter(x => x !== id) : state.watchlist;
+const viewingEvents = pruneEvents([...(state.viewingEvents||[]), makeEvent("notInterested", id, willBeSkipped)]);
+this.set({notInterested: next, watched, watchlist, viewingEvents});
 },
 toggleFranchiseFavorite(id){
 const profile = state.profile || {};
