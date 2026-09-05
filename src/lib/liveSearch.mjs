@@ -47,12 +47,26 @@ async function omdbFetch(params, apiKey){
 // A live result is intentionally distinct from a curated catalog entry: its
 // "why" is a generic disclosure rather than editorial voice, and it carries
 // isLiveResult so the UI can label it as such.
+// For a series, TMDB's /tv/{id} details (already fetched for every result,
+// no extra call) list every season's episode count in `seasons`. Watchlist's
+// progress tracker (Progress.js) needs a current season number + episode
+// count to show "Season X - Episode Y of Z" -- without it, a watchlisted
+// live result just shows raw episode numbers with no season context. Picks
+// the highest real season (season_number > 0 excludes "Specials"/season 0).
+function currentSeasonInfo(tmdbDetails){
+  const seasons = (tmdbDetails?.seasons || []).filter(s => s.season_number > 0);
+  if(!seasons.length) return {season: null, episodes: null};
+  const latest = seasons.reduce((a, b) => (b.season_number > a.season_number ? b : a));
+  return {season: latest.season_number, episodes: latest.episode_count || null};
+}
+
 export function buildLiveSearchResult(searchHit, tmdbDetails, tmdbProviders, omdbData, region = "US"){
   const isMovie = searchHit.media_type === "movie";
   const providerInfo = buildProviderInfo(tmdbProviders, region);
   const imdbRating = extractImdbRating(omdbData);
   const rtPercent = extractRottenTomatoesPercent(omdbData);
   const mmRating = computeMMRating(imdbRating, rtPercent);
+  const {season, episodes} = isMovie ? {season: null, episodes: null} : currentSeasonInfo(tmdbDetails);
 
   return {
     id: `live-${searchHit.media_type}-${searchHit.id}`,
@@ -67,6 +81,8 @@ export function buildLiveSearchResult(searchHit, tmdbDetails, tmdbProviders, omd
     why: "Found via live search -- not yet part of your curated library.",
     mmRating,
     ratingSources: mmRating !== null ? { imdb: imdbRating, rottenTomatoes: rtPercent } : null,
+    ...(season !== null ? {season} : {}),
+    ...(episodes !== null ? {episodes} : {}),
     isLiveResult: true
   };
 }

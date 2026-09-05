@@ -101,7 +101,20 @@ function bind(){
  // this. Smooth-scrolls the whole page back to the top, where the nav lives.
  const returnToMenu=document.querySelector("[data-return-to-menu]");
  if(returnToMenu) returnToMenu.onclick=()=>window.scrollTo({top:0,behavior:"smooth"});
- document.querySelectorAll("[data-watch]").forEach(el=>el.onclick=()=>appState.toggleWatchlist(el.dataset.watch));
+ document.querySelectorAll("[data-watch]").forEach(el=>el.onclick=()=>{
+   const id=el.dataset.watch;
+   const state=appState.get();
+   const knownToCatalog=state.shows.some(s=>s.id===id)||state.movies.some(m=>m.id===id);
+   if(!knownToCatalog){
+     // Not in the curated catalog -- this is a live TMDB/OMDb search result
+     // (see liveResultCard in pageUtils.js). Adopting it merges it into the
+     // catalog and watchlist together; plain toggleWatchlist would just
+     // write an id nothing resolves to. See adoptLiveResult in state.js.
+     const liveItem=[...(state.liveSearchResults||[]),...(state.movieMoodLiveResults||[])].find(x=>x.id===id);
+     if(liveItem){ appState.adoptLiveResult(liveItem); return; }
+   }
+   appState.toggleWatchlist(id);
+ });
  document.querySelectorAll("[data-rate-id]").forEach(el=>el.onclick=()=>appState.rate(el.dataset.rateId,Number(el.dataset.rating)));
  document.querySelectorAll("[data-progress-id]").forEach(el=>el.onchange=()=>appState.setProgress(el.dataset.progressId,Number(el.value)));
  document.querySelectorAll("[data-detail]").forEach(el=>{
@@ -182,6 +195,14 @@ function bind(){
  document.querySelectorAll("[data-query]").forEach(el=>el.onclick=()=>{
    triggerSearch(el.dataset.query);
  });
+ // Returns the Search page to its pre-search state: clears the input, the
+ // catalog-match results (query-driven, so this alone empties them), and
+ // the live TMDB/OMDb search state, so a stale "Searching further afield"
+ // or old results can't linger once the box is empty again.
+ const searchClear=document.getElementById("search-clear");
+ if(searchClear) searchClear.onclick=()=>{
+   appState.set({query:"", liveSearchQuery:"", liveSearchLoading:false, liveSearchResults:[]});
+ };
 
  // "Find a franchise to follow" mirrors the main Search page: the instant
  // oninput filter above only ever covers the handful of curated franchises,
@@ -219,6 +240,15 @@ async function init(){
    const hydratedProfile = appState.get().profile;
    const patch = {...data, dataReady:true};
    if(hydratedProfile) patch.profile = hydratedProfile;
+   // Titles adopted from live search (see adoptLiveResult in state.js) live
+   // only in the persisted adoptedTitles list -- shows/movies always reload
+   // fresh from JSON above and would otherwise "forget" them every visit,
+   // leaving their id in watchlist pointing at nothing.
+   const adopted = appState.get().adoptedTitles || [];
+   for(const item of adopted){
+     const bucket = item.type === "series" ? "shows" : "movies";
+     if(!patch[bucket].some(x=>x.id===item.id)) patch[bucket]=[...patch[bucket], item];
+   }
    appState.set(patch);
    startRouter(render);
  }catch(error){

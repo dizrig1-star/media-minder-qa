@@ -13,9 +13,12 @@ const SCORE = {
 // earlier seasons remain in the catalog (e.g. "returning" status) -- but the
 // episodeDrops list is the actual ground truth for what has aired. If the
 // earliest episode on record hasn't dropped yet, there is nothing released
-// to recommend as tonight's watch, regardless of taste score. Movies and any
-// item without episodeDrops/premiere data have nothing to gate on, so they
-// stay eligible.
+// to recommend as tonight's watch, regardless of taste score. Movies have no
+// "premiere" key at all (evergreen catalog entries, nothing to gate on) and
+// stay eligible -- but a show that carries the key with a null value (e.g.
+// "A Knight of the Seven Kingdoms: Season 2") is one Media Minder is
+// explicitly tracking as not-yet-dated/announced, and must NOT default to
+// eligible just because there's no date to compare against.
 export function hasReleasedContent(item, now=new Date()){
   const today = new Date(now);
   today.setHours(0,0,0,0);
@@ -23,7 +26,7 @@ export function hasReleasedContent(item, now=new Date()){
   const earliest = drops.length
     ? drops.map(d=>d.date).sort()[0]
     : item.premiere;
-  if(!earliest) return true;
+  if(!earliest) return !("premiere" in item);
   const earliestDate = new Date(`${earliest}T12:00:00`);
   earliestDate.setHours(0,0,0,0);
   return earliestDate <= today;

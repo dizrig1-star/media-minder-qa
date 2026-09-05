@@ -45,7 +45,7 @@ export function liveResultCard(state, item){
     <div class="details">
       <div class="page-kicker">Live search &middot; not yet in your library</div>
       <h3>${escapeHtml(item.title)}</h3>
-      <p class="muted">${(item.genre||[]).join(' &middot; ')}${item.cast?.length ? ' &middot; ' + item.cast.map(escapeHtml).join(', ') : ''}</p>
+      <p class="muted">${(item.genre||[]).join(' &middot; ')}${item.season ? ' &middot; Season ' + item.season : ''}${item.cast?.length ? ' &middot; ' + item.cast.map(escapeHtml).join(', ') : ''}</p>
       ${item.summary ? `<p>${escapeHtml(item.summary)}</p>` : ''}
       <p class="muted">${platform ? escapeHtml(platform) : 'Platform not confirmed'}${item.link ? ` &middot; <a href="${escapeHtml(item.link)}" target="_blank" rel="noopener">Where to watch</a>` : ''}</p>
       <p>${ratingLabel}</p>
