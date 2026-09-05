@@ -15,7 +15,14 @@ export function nextRelevantDrop(show, progress={}){
   return drops[0] ? {...drops[0],show} : null;
 }
 
-/** Personalized calendar: exactly one next drop per watchlisted series. */
+/**
+ * Personalized calendar: exactly one next drop per watchlisted series, plus
+ * one "Now Showing" row per watchlisted movie. Movies are evergreen catalog
+ * entries with no premiere/episodeDrops date to schedule against (see
+ * recommendationService.hasReleasedContent) -- once a movie is on the
+ * Watchlist it is simply available, so it belongs on the Calendar as an
+ * always-current "Now Showing" entry rather than a dated countdown.
+ */
 export function getPersonalizedCalendarRows(state){
   const watchlistIds=new Set(Array.isArray(state.watchlist) ? state.watchlist.map(String) : []);
   const rows=[];
@@ -24,7 +31,14 @@ export function getPersonalizedCalendarRows(state){
     const next=nextRelevantDrop(show,state.progress||{});
     if(next) rows.push(next);
   }
-  return rows.sort((a,b)=>`${a.date} ${a.time}`.localeCompare(`${b.date} ${b.time}`));
+  const nowShowingRows=[];
+  for(const movie of (state.movies||[])){
+    if(!watchlistIds.has(String(movie.id))) continue;
+    nowShowingRows.push({show:movie, date:null, time:null, title:movie.title, episode:null, nowShowing:true});
+  }
+  rows.sort((a,b)=>`${a.date} ${a.time}`.localeCompare(`${b.date} ${b.time}`));
+  nowShowingRows.sort((a,b)=>a.show.title.localeCompare(b.show.title));
+  return [...nowShowingRows, ...rows];
 }
 
 /**
