@@ -11,7 +11,7 @@ export function openDetail(item, platformName){
    : "";
  overlay.innerHTML=`<div class="modal card" role="dialog" aria-modal="true" aria-label="${item.title}">
    <button class="btn ghost small modal-close">Close</button>
-   <div class="grid-2"><div>${Poster(item.title)}</div><div>
+   <div class="grid-2"><div>${Poster(item)}</div><div>
    <div class="cluster">${MMSelect(item.mmSelect)}${Platform(platformName||"")}</div>
    <h2>${item.title}</h2><p>${item.summary}</p>
    ${item.cast?.length?`<p><strong>Cast:</strong> ${item.cast.join(", ")}</p>`:""}
