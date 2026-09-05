@@ -5,7 +5,10 @@ const ASSET = './assets/branding/approved/';
 
 export function Tonight(state,choice,recs){
  const today=new Date().toISOString().slice(0,10);
- const tonight=state.shows.filter(x=>x.episodeDrops?.some(e=>e.date===today));
+ // Same reasoning as activeMedia() (pageUtils.js): a show airing tonight
+ // that's already been marked watched or "not for me" shouldn't keep
+ // surfacing here just because recs (already filtered) came up short.
+ const tonight=state.shows.filter(x=>!state.watched?.includes(x.id) && !state.notInterested?.includes(x.id) && x.episodeDrops?.some(e=>e.date===today));
  const picks=tonight.length?tonight:recs;
  return `${heading("Tonight","Tonight's Top Viewing Choices Curated For You","Start with the best fit for this evening.")}
  <div class="grid-2"><section class="stack editorial-stack">${picks.slice(0,4).map((x,i)=>{
