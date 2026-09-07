@@ -84,9 +84,9 @@ export function Franchises(state){
 
   <div class="section-heading"><h2>My Worlds</h2></div>
   <div class="search-box"><input id="franchise-search" value="${escapeHtml(state.query||"")}" placeholder="Find a franchise to follow" aria-label="Find a franchise"><button class="btn" id="franchise-search-submit">Search</button></div>
+  ${liveSearchSection(state,"Beyond your worlds")}
   <div class="stack editorial-stack" style="margin-top:var(--space-3)">${all.map(f=>franchiseCard(f, favorites.has(f.id))).join("")}</div>
   <div class="empty-state" id="franchise-search-empty" hidden><h2>We couldn't find that franchise.</h2><p>Try a broader search, or check back as we add more worlds to follow.</p></div>
-  ${liveSearchSection(state,"Beyond your worlds")}
 
   <div class="section-heading"><h2>Prepare for What's Next</h2></div>
   ${mine.length?`<div class="stack">${upNext.map(({franchise,next})=>`
