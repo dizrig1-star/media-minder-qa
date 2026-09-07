@@ -385,7 +385,7 @@
     "episodes": 8,
     "runtime": 50,
     "cast": [
-      "Zoe Salda\u00f1a",
+      "Zoe Saldaña",
       "Nicole Kidman",
       "Morgan Freeman",
       "Michael Kelly"
@@ -705,7 +705,7 @@
     "runtime": 50,
     "cast": [
       "Simon Pegg",
-      "Si\u00e2n Brooke",
+      "Siân Brooke",
       "Hannah Khalique-Brown"
     ],
     "franchises": [],
@@ -1571,7 +1571,7 @@
   },
   {
     "id": "visionquest",
-    "poster": "https://cdn.marvel.com/content/1x/visionquest_lob_crd_02.webp",
+    "poster": "https://image.tmdb.org/t/p/w780/xK27l5uwaVyZSlENWnmLlWwDQNS.jpg",
     "title": "VisionQuest",
     "type": "series",
     "platform": "disney",
@@ -1604,7 +1604,7 @@
   },
   {
     "id": "marble-hall-murders",
-    "poster": "https://www.pbs.org/wgbh/masterpiece/media/original_images/marble-hall-murders-mp-key-art-1920x1080-logo.jpg",
+    "poster": "https://image.tmdb.org/t/p/w780/3WfgRJBIaOTsiu2bQO23xWb08ro.jpg",
     "title": "Marble Hall Murders",
     "type": "series",
     "platform": "pbs",
