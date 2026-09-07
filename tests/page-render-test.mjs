@@ -129,3 +129,33 @@ if(!resultHtml.includes("Doctor Who") || !resultHtml.includes("Beyond your world
 if(!resultHtml.includes('value="Doctor Who"'))
   throw new Error("Franchises: search box does not retain the typed query after a live search runs");
 console.log("PASS — Franchises \"Find a franchise to follow\" box runs a full TMDB/OMDb search, same as the Search page");
+
+// Regression for a real bug: "Beyond your worlds" rendered after the full
+// My Worlds card stack, so a successful search looked like it had done
+// nothing unless a person scrolled past dozens of curated franchise cards
+// first. It must render right under the search box instead.
+const searchBoxIndex=resultHtml.indexOf('id="franchise-search-submit"');
+const beyondWorldsIndex=resultHtml.indexOf("Beyond your worlds");
+const myWorldsStackIndex=resultHtml.indexOf("data-franchise-row");
+if(searchBoxIndex===-1 || beyondWorldsIndex===-1 || myWorldsStackIndex===-1)
+  throw new Error("Franchises: could not locate search box, live results, and My Worlds stack to check ordering");
+if(!(searchBoxIndex < beyondWorldsIndex && beyondWorldsIndex < myWorldsStackIndex))
+  throw new Error("Franchises: live search results must render directly under the search box, above the My Worlds card stack");
+console.log("PASS — Franchises live search results render directly under the search box, not after the full My Worlds list");
+
+// A live/beyond-library result must be actionable, not read-only -- the
+// person searching for it needs a way to actually add it to their library.
+if(!resultHtml.includes('data-watch="tmdb-tv-57243"') || !resultHtml.includes("Add to Watchlist"))
+  throw new Error("Franchises: live search result is missing an Add to Watchlist control");
+
+// Once that exact result (or a title-matching curated entry) is already on
+// the Watchlist, the button must not re-offer to add it -- adoptLiveResult
+// is add-only, and a second click would otherwise fall through to
+// toggleWatchlist and silently remove it.
+const alreadyAddedState={...resultState, watchlist:["tmdb-tv-57243"]};
+const alreadyAddedHtml=Franchises(alreadyAddedState);
+if(alreadyAddedHtml.includes('data-watch="tmdb-tv-57243"'))
+  throw new Error("Franchises: an already-watchlisted live result still offers an Add to Watchlist control");
+if(!alreadyAddedHtml.includes("Added to Watchlist"))
+  throw new Error("Franchises: an already-watchlisted live result gives no indication it's already added");
+console.log("PASS — Franchises live search results can be added to the Watchlist, and don't re-offer once added");
