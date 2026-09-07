@@ -39,12 +39,26 @@ export function timeGreeting(date=new Date()){
   return "Good evening";
 }
 
-// Live results come from TMDB + OMDb, not the curated catalog, so they don't
-// carry watchlist/rating controls -- an "add to watchlist" tap on a title
-// that isn't in state.shows/state.movies would silently do nothing useful.
-// This renders them as read-only discovery cards instead, reusing the same
-// card/media-row classes the rest of the app already uses. Shared between
-// Search.js and Franchises.js so both search boxes behave identically.
+// A live result can already be effectively on the Watchlist -- either the
+// exact live item was adopted before (its own id landed in state.shows/
+// state.movies -- see adoptLiveResult in state.js), or it matches an
+// existing curated title by name and that curated entry is watchlisted
+// instead (adoptLiveResult's own title-match dedup). Mirrors that same
+// matching so the button doesn't offer to "Add" something already added.
+function liveResultInWatchlist(state, item){
+  if((state.watchlist||[]).includes(item.id)) return true;
+  const title = (item.title||"").trim().toLowerCase();
+  if(!title) return false;
+  return [...(state.shows||[]), ...(state.movies||[])]
+    .some(x => (state.watchlist||[]).includes(x.id) && (x.title||"").trim().toLowerCase() === title);
+}
+
+// Live results come from TMDB + OMDb, not the curated catalog, so they carry
+// no rating/progress controls of their own -- but a person still needs a way
+// to act on one, so "Add to Watchlist" adopts it into the catalog (see
+// data-watch handling in main.js / adoptLiveResult in state.js), same
+// button/attribute the curated cards use. Shared between Search.js and
+// Franchises.js so both search boxes behave identically.
 export function liveResultCard(state, item){
   const platform = item.platform ? platformName(state, item.platform) : null;
   const ratingLabel = item.mmRating !== null && item.mmRating !== undefined
@@ -53,6 +67,10 @@ export function liveResultCard(state, item){
   const poster = item.poster
     ? `<img src="${escapeHtml(item.poster)}" alt="${escapeHtml(item.title)} poster" class="poster-img" loading="lazy">`
     : `<div class="poster" role="img" aria-label="${escapeHtml(item.title)} poster"></div>`;
+  const inWatchlist = liveResultInWatchlist(state, item);
+  const watchAction = inWatchlist
+    ? `<span class="btn secondary" aria-disabled="true">Added to Watchlist ✓</span>`
+    : `<button class="btn secondary" data-watch="${escapeHtml(item.id)}">Add to Watchlist</button>`;
   return `<article class="card media-row">
     ${poster}
     <div class="details">
@@ -62,6 +80,7 @@ export function liveResultCard(state, item){
       ${item.summary ? `<p>${escapeHtml(item.summary)}</p>` : ''}
       <p class="muted">${platform ? escapeHtml(platform) : 'Platform not confirmed'}${item.link ? ` &middot; <a href="${escapeHtml(item.link)}" target="_blank" rel="noopener">Where to watch</a>` : ''}</p>
       <p>${ratingLabel}</p>
+      <div class="cluster" style="margin-top:.6rem">${watchAction}</div>
     </div>
   </article>`;
 }
