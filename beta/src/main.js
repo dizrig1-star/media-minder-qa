@@ -146,7 +146,16 @@ function bind(){
  document.querySelectorAll("[data-detail]").forEach(el=>{
    el.onclick=()=>{
      const state=appState.get();
-     const item=[...state.shows,...state.movies].find(x=>x.id===el.dataset.detail);
+     const id=el.dataset.detail;
+     // The Wildcard card (see resolveWildcard/triggerWildcardDiscovery) can
+     // be a live TMDB-correlation candidate that was never adopted into the
+     // catalog -- its id (e.g. "live-movie-12345") won't resolve against
+     // state.shows/state.movies, so Details would silently do nothing.
+     // openDetail only needs title/summary/cast/etc, which live candidates
+     // already carry (see buildWildcardCandidate in liveSearch.mjs), so fall
+     // back to the live pools the same way the data-watch handler does.
+     const item=[...state.shows,...state.movies].find(x=>x.id===id)
+       || [...(state.wildcardCandidates||[]),...(state.liveSearchResults||[]),...(state.movieMoodLiveResults||[])].find(x=>x.id===id);
      if(item) openDetail(item,state.platforms.find(p=>p.id===item.platform)?.name||item.platform);
    };
  });
