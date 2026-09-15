@@ -2,6 +2,21 @@ import assert from "assert";
 import {ensureProfileModel,addCurrentAffinity} from "../src/services/profileModel.js";
 import {scoreItem} from "../src/services/recommendationService.js";
 
+// affinityWeight (profileModel.js) decays 1 point per 30 days against
+// whatever "today" actually is when the app runs (Date.now(), since scoreItem
+// never passes an explicit reference date). A fixed calendar date here (e.g.
+// "2026-08-15") is a ticking time bomb: the test passes until real wall-clock
+// time crosses that date's 30-day decay boundary, then fails on a fresh
+// clone with no code change at fault (this is exactly what happened -- it
+// was still fresh on Sept 10, and had silently aged past the boundary by
+// Sept 15). Dates relative to *whenever the suite actually runs* keep the
+// affinity's age constant across time, so this can't expire again.
+function daysAgo(n){
+  const d=new Date();
+  d.setDate(d.getDate()-n);
+  return d.toISOString().slice(0,10);
+}
+
 const cases=[
   {name:"Mystery Loyalist",watch:{id:"w1",title:"Mystery House",genre:["Mystery"],cast:["A"],platform:"netflix"},candidate:{id:"c1",title:"New Mystery",genre:["Mystery"],cast:[],platform:"netflix"}},
   {name:"Action Thriller",watch:{id:"w2",title:"Reacher",genre:["Action Thriller"],cast:["Alan Ritchson"],platform:"prime"},candidate:{id:"c2",title:"Hard Target",genre:["Action Thriller"],cast:[],platform:"prime"}},
@@ -17,7 +32,7 @@ const cases=[
 
 for(const c of cases){
   const base=ensureProfileModel({name:c.name,favoriteGenres:[],favoriteFranchises:[],favoritePeople:[],platforms:[],ratings:{},watched:[],watchlist:[]});
-  const p=addCurrentAffinity(base,c.watch,5,"2026-08-15");
+  const p=addCurrentAffinity(base,c.watch,5,daysAgo(7));
   assert.equal(p.favoriteGenres.length,0,`${c.name}: affinity leaked into permanent genres`);
   assert.equal(p.favoriteFranchises.length,0,`${c.name}: affinity leaked into permanent franchises`);
   assert.equal(p.currentAffinities.length,1,`${c.name}: affinity missing`);
@@ -25,8 +40,8 @@ for(const c of cases){
   assert(score>=15,`${c.name}: current affinity did not produce a meaningful recommendation signal (score ${score})`);
 }
 
-const recency=addCurrentAffinity(ensureProfileModel({favoriteGenres:[],favoriteFranchises:[],favoritePeople:[],platforms:[]}),cases[2].watch,5,"2026-06-15");
-const fresh=scoreItem(cases[2].candidate,addCurrentAffinity(ensureProfileModel({favoriteGenres:[],favoriteFranchises:[],favoritePeople:[],platforms:[]}),cases[2].watch,5,"2026-08-15"));
+const recency=addCurrentAffinity(ensureProfileModel({favoriteGenres:[],favoriteFranchises:[],favoritePeople:[],platforms:[]}),cases[2].watch,5,daysAgo(100));
+const fresh=scoreItem(cases[2].candidate,addCurrentAffinity(ensureProfileModel({favoriteGenres:[],favoriteFranchises:[],favoritePeople:[],platforms:[]}),cases[2].watch,5,daysAgo(7)));
 const older=scoreItem(cases[2].candidate,recency);
 assert(fresh>older,"recent affinity should be stronger than older affinity");
 
