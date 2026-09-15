@@ -55,6 +55,32 @@ if(!main.includes("data-onboarding-star")) throw new Error("Main binding missing
 if(!main.includes("data-onboarding-complete")) throw new Error("Main binding missing onboarding confirm handler");
 console.log("PASS — First-Time Setup interaction bindings are present");
 
+// Regression for a real bug: the Wildcard card's Details button did nothing
+// when the pick came from the live TMDB-correlation pool (resolveWildcard's
+// state.wildcardCandidates -- see recommendationService.js), because the
+// data-detail click handler only ever looked the id up in state.shows/
+// state.movies, and a live candidate's id (e.g. "live-movie-12345") is never
+// in the catalog. It must also check the live pools, same as data-watch does.
+const detailHandlerBlock=main.slice(main.indexOf('"[data-detail]"'), main.indexOf('"[data-watched]"'));
+if(!detailHandlerBlock.includes("wildcardCandidates"))
+  throw new Error("Main binding: Details button does not fall back to the live Wildcard candidate pool");
+console.log("PASS — Wildcard card's Details button resolves live TMDB-correlation picks, not just catalog items");
+
+// Regression for a real bug: "Dark Matter" (adopted via live search) never
+// showed season/episode info on Watchlist, because it was adopted before
+// buildLiveSearchResult captured that data at all -- its stored
+// adoptedTitles snapshot has no season/episodes field, and nothing about an
+// already-persisted snapshot changes on its own. init() must run a
+// best-effort backfill for any live-adopted series still missing that data.
+if(!main.includes("backfillStaleLiveSeries"))
+  throw new Error("Main binding: missing the stale live-series season/episode backfill");
+if(!main.includes("fetchSeriesSeasonInfo"))
+  throw new Error("Main binding: backfill does not use fetchSeriesSeasonInfo to re-fetch season/episode data");
+const initBlock=main.slice(main.indexOf("async function init()"));
+if(!initBlock.includes("backfillStaleLiveSeries()"))
+  throw new Error("Main binding: backfillStaleLiveSeries is defined but never called from init()");
+console.log("PASS — Watchlist backfills season/episode info for a live-adopted series whose snapshot predates it (e.g. Dark Matter)");
+
 const shards=shows.find(x=>x.title==="The Shards");
 if(!shards || shards.currentEpisode!==4 || shards.nextEpisode!==5 || shards.status!=="returning" || shards.premiere!=="2026-08-05")
   throw new Error("The Shards data is not corrected");

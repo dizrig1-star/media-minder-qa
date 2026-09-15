@@ -125,6 +125,29 @@ export async function fetchSeasonEpisodeDrops(tmdbShowId, seasonNumber, tmdbApiK
   }
 }
 
+// Backfills season/episode-count data for a live-adopted series whose stored
+// snapshot predates buildLiveSearchResult carrying that data at all (see
+// currentSeasonInfo above) -- a title adopted before that existed just has
+// no season/episodes field, and nothing about an already-persisted
+// adoptedTitles entry changes on its own to pick it up. Real case: "Dark
+// Matter", adopted before this data was captured, permanently showed no
+// season/episode info on Watchlist. Same TMDB /tv/{id} details call
+// buildLiveSearchResult already makes for a fresh search, just re-run for
+// one already-adopted title (see backfillStaleLiveSeries in main.js). Never
+// throws: returns null on no key/bad id/network failure/no season data,
+// same degrade-to-nothing contract as the rest of this module.
+export async function fetchSeriesSeasonInfo(tmdbShowId, tmdbApiKey){
+  if(!tmdbShowId || !tmdbApiKey) return null;
+  try {
+    const tmdbDetails = await tmdbFetch(`/tv/${tmdbShowId}`, {}, tmdbApiKey);
+    const {season, episodes} = currentSeasonInfo(tmdbDetails);
+    return (season !== null && episodes !== null) ? {season, episodes} : null;
+  } catch(err){
+    console.warn(`Live search: series details backfill failed for tv/${tmdbShowId}`, err);
+    return null;
+  }
+}
+
 // ---------------------------------------------------------- Wildcard v2
 // Rotating wildcard picks correlated with the person's own 5-star ratings
 // (see resolveWildcard/selectRotatingWildcard in recommendationService.js
