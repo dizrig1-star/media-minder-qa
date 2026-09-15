@@ -8,7 +8,7 @@ import {Header} from "./components/layout/Header.js";
 import {Navigation} from "./components/navigation/Navigation.js";
 import {Footer} from "./components/layout/Footer.js";
 import {openDetail} from "./components/media/Modal.js";
-import {liveSearch, discoverExceptional, TMDB_MOVIE_GENRE_IDS, fetchSeasonEpisodeDrops, discoverWildcardCandidates} from "./lib/liveSearch.mjs";
+import {liveSearch, discoverExceptional, TMDB_MOVIE_GENRE_IDS, fetchSeasonEpisodeDrops, discoverWildcardCandidates, fetchSeriesSeasonInfo} from "./lib/liveSearch.mjs";
 import {activeMedia} from "./pages/pageUtils.js";
 
 import {Landing} from "./pages/Landing.js";
@@ -293,6 +293,33 @@ async function triggerWildcardDiscovery(){
  appState.set({wildcardCandidates:candidates, wildcardCandidatesKey:key, wildcardCandidatesLoading:false});
 }
 
+// One-time best-effort repair for a live-adopted series whose stored
+// adoptedTitles snapshot predates season/episode data being captured at
+// adoption time at all (see fetchSeriesSeasonInfo in liveSearch.mjs) -- Dark
+// Matter, adopted before that existed, is the real case this fixes: it
+// otherwise permanently shows no season/episode info on Watchlist, since
+// nothing about an already-persisted snapshot changes on its own. Only ever
+// matches a live-search-adopted id ("live-tv-<tmdbId>"; see adoptLiveResult/
+// buildLiveSearchResult) -- a hand-curated catalog entry's id never takes
+// that shape, so this can't touch curated data. Best-effort: no TMDB key,
+// nothing stale, or a failed fetch for a given title just leaves it as-is.
+async function backfillStaleLiveSeries(){
+ const state=appState.get();
+ const tmdbApiKey=state.apiKeys?.tmdb;
+ if(!tmdbApiKey) return;
+ const stale=state.shows.filter(s=>/^live-tv-\d+$/.test(s.id) && !s.episodes);
+ for(const show of stale){
+   const tmdbId=show.id.replace("live-tv-","");
+   const info=await fetchSeriesSeasonInfo(tmdbId, tmdbApiKey);
+   if(!info) continue;
+   const current=appState.get();
+   appState.set({
+     shows: current.shows.map(s=>s.id===show.id ? {...s, ...info} : s),
+     adoptedTitles: (current.adoptedTitles||[]).map(a=>a.id===show.id ? {...a, ...info} : a)
+   });
+ }
+}
+
 async function init(){
  hydrateLocalState();
  document.getElementById("app").innerHTML="<div class='app-main'><div class='card'><h1>Media Minder</h1><p>Setting the table...</p></div></div>";
@@ -316,6 +343,7 @@ async function init(){
    }
    appState.set(patch);
    triggerWildcardDiscovery();
+   backfillStaleLiveSeries();
    startRouter(render);
  }catch(error){
    document.getElementById("app").innerHTML=`<main class="app-main"><div class="empty-state"><h1>Media Minder couldn't load.</h1><p>Please run the application through a local web server.</p></div></main>`;
