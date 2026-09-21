@@ -1,7 +1,7 @@
 [
   {
     "id": "slow-horses-s6",
-    "poster": "https://image.tmdb.org/t/p/w780/w2jauz2PeSjFQifDObI3qDen4f7.jpg",
+    "poster": "https://image.tmdb.org/t/p/w780/AdYr4DjOgXvDUMwu6vEhZy1Rnxk.jpg",
     "title": "Slow Horses",
     "type": "series",
     "platform": "apple",
@@ -363,9 +363,9 @@
     "currentEpisode": 4,
     "nextEpisode": 5,
     "link": "https://www.themoviedb.org/tv/298168-the-shards/watch?locale=US",
-    "mmRating": 5.8,
+    "mmRating": 6,
     "ratingSources": {
-      "imdb": 5.8,
+      "imdb": 6,
       "rottenTomatoes": null
     }
   },
@@ -385,7 +385,7 @@
     "episodes": 8,
     "runtime": 50,
     "cast": [
-      "Zoe Salda\u00f1a",
+      "Zoe Saldaña",
       "Nicole Kidman",
       "Morgan Freeman",
       "Michael Kelly"
@@ -705,7 +705,7 @@
     "runtime": 50,
     "cast": [
       "Simon Pegg",
-      "Si\u00e2n Brooke",
+      "Siân Brooke",
       "Hannah Khalique-Brown"
     ],
     "franchises": [],
@@ -847,10 +847,10 @@
     "seasonPremiereDate": "2026-09-15",
     "currentEpisode": 0,
     "nextEpisode": 1,
-    "poster": "https://image.tmdb.org/t/p/w780/5ropLAggzraCNoT6QPltb9lxeP3.jpg",
-    "mmRating": 4.9,
+    "poster": "https://image.tmdb.org/t/p/w780/iisHVZ6we56PE4BcV1csB46SbiG.jpg",
+    "mmRating": 5,
     "ratingSources": {
-      "imdb": 4.9,
+      "imdb": 5,
       "rottenTomatoes": null
     }
   },
@@ -963,7 +963,7 @@
     "seasonPremiereDate": "2026-10-08",
     "currentEpisode": 0,
     "nextEpisode": 1,
-    "poster": "https://image.tmdb.org/t/p/w780/9UvViG3aXy8aik9dJHQKaVEVsZm.jpg"
+    "poster": "https://image.tmdb.org/t/p/w780/7Ix6XJM2z8s3vNtywo7Ob7T7gYL.jpg"
   },
   {
     "id": "traitors-new-blood",
@@ -1054,7 +1054,12 @@
     "seasonPremiereDate": "2026-09-17",
     "currentEpisode": 0,
     "nextEpisode": 1,
-    "poster": "https://image.tmdb.org/t/p/w780/gIXRmBU4H64MUMr8AP9JhflyNwJ.jpg"
+    "poster": "https://image.tmdb.org/t/p/w780/ulYR2NMKwnWoRWiw3KnFpaT2qjj.jpg",
+    "mmRating": 7.7,
+    "ratingSources": {
+      "imdb": 7.7,
+      "rottenTomatoes": null
+    }
   },
   {
     "id": "doc-s3",
@@ -1135,10 +1140,10 @@
     "seasonPremiereDate": "2026-09-22",
     "currentEpisode": 0,
     "nextEpisode": 1,
-    "poster": "https://image.tmdb.org/t/p/w780/4hNOf5ulemoI7EqYg8fDVIclFzq.jpg",
-    "mmRating": 5.9,
+    "poster": "https://image.tmdb.org/t/p/w780/6yFfvnYMGXYmGbtmiIrRuRzJzUU.jpg",
+    "mmRating": 7.8,
     "ratingSources": {
-      "imdb": 5.9,
+      "imdb": 7.8,
       "rottenTomatoes": null
     }
   },
@@ -1369,7 +1374,7 @@
     "seasonPremiereDate": "2026-09-16",
     "currentEpisode": 0,
     "nextEpisode": 1,
-    "poster": "https://image.tmdb.org/t/p/w780/1m6CxPAuGv2oHc1ahERrcVWnk2J.jpg"
+    "poster": "https://image.tmdb.org/t/p/w780/tEPDFIa21VK0Q2YLuzhTt2xrw5W.jpg"
   },
   {
     "id": "ahs-13",
@@ -1481,7 +1486,7 @@
     "seasonPremiereDate": "2026-09-24",
     "currentEpisode": 0,
     "nextEpisode": 1,
-    "poster": "https://image.tmdb.org/t/p/w780/x2c3AvZeTyNehRZXabTojAxfDuR.jpg",
+    "poster": "https://image.tmdb.org/t/p/w780/6znF7sratRw5dvVx6Sx5gslv7sN.jpg",
     "mmRating": 7.9,
     "ratingSources": {
       "imdb": 7.9,
@@ -1567,11 +1572,11 @@
     "seasonPremiereDate": "2026-10-01",
     "currentEpisode": 0,
     "nextEpisode": 1,
-    "poster": "https://image.tmdb.org/t/p/w780/qw9YVGyZaUpSmKHlPVhLn33lEPH.jpg"
+    "poster": "https://image.tmdb.org/t/p/w780/AtCR5LMuvwepTi1kipKq878Rbuq.jpg"
   },
   {
     "id": "visionquest",
-    "poster": "https://cdn.marvel.com/content/1x/visionquest_lob_crd_02.webp",
+    "poster": "https://image.tmdb.org/t/p/w780/xK27l5uwaVyZSlENWnmLlWwDQNS.jpg",
     "title": "VisionQuest",
     "type": "series",
     "platform": "disney",
@@ -1604,7 +1609,7 @@
   },
   {
     "id": "marble-hall-murders",
-    "poster": "https://www.pbs.org/wgbh/masterpiece/media/original_images/marble-hall-murders-mp-key-art-1920x1080-logo.jpg",
+    "poster": "https://image.tmdb.org/t/p/w780/3WfgRJBIaOTsiu2bQO23xWb08ro.jpg",
     "title": "Marble Hall Murders",
     "type": "series",
     "platform": "pbs",
